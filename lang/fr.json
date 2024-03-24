@@ -1,0 +1,173 @@
+{
+  "CEL1922.ItemCreate": "Créer un Équipement",
+  "CEL1922.ItemEdit": "Éditer l′Équipement",
+  "CEL1922.ItemDelete": "Supprimer l′Équipement",
+  "CEL1922.ItemNew": "Nouvel Équipement",
+
+  "CEL1922.TypeOfItem": "Type d′Équipement",
+  "CEL1922.Weapon": "Arme",
+  "CEL1922.Armor": "Protection",
+  "CEL1922.Vehicle": "Véhicule",
+  "CEL1922.Other": "Autre",
+
+  "CEL1922.ResourceMin": "Min",
+  "CEL1922.ResourceValue": "Valeur",
+  "CEL1922.ResourceMax": "Max",
+
+  "CEL1922.DefineTemplate": "Définir comme Modèle",
+  "CEL1922.UnsetTemplate": "Désactiver le Modèle",
+  "CEL1922.NoTemplate": "Aucun Modèle",
+
+  "CEL1922.Quantity": "Quantité",
+  "CEL1922.Weight": "Poids",
+  "CEL1922.Damage": "Dégâts",
+  "CEL1922.Range": "Portée",
+  "CEL1922.Speed": "Vitesse",
+  "CEL1922.Crew": "Équipage",
+
+  "CEL1922.Create": "Créer",
+  "CEL1922.New": "Nouveau",
+
+  "CEL1922.Name": "Nom",
+  "CEL1922.PCName": "Nom du Personnage",
+
+  "CEL1922.NPCName": "Nom du PNJ",
+
+  "CEL1922.Concept": "Concept",
+  "CEL1922.Anomaly": "Anomalie",
+  "CEL1922.Aspect": "Aspect",
+  "CEL1922.Item": "Équipement",
+
+  "CEL1922.Libel": "Libellé",
+
+  "CEL1922.Concepts": "Concepts",
+  "CEL1922.Aspects": "Aspects",
+  "CEL1922.Anomalies": "Anomalies",
+  "CEL1922.Items": "Équipements",
+
+  "CEL1922.Entropie": "ENTROPIE",
+  "CEL1922.CommunicationAvecLesMorts": "COMMUNICATION MORTS",
+  "CEL1922.Illusion": "ILLUSION",
+  "CEL1922.Suggestion": "SUGGESTION",
+  "CEL1922.TarotDivinatoire": "TAROT DIVINATOIRE",
+  "CEL1922.Telekinesie": "TÉLÉKINÉSIE",
+  "CEL1922.Telepathie": "TÉLÉPATHIE",
+  "CEL1922.VoyageAstral": "VOYAGE ASTRAL",
+
+  "CEL1922.Description": "Description",
+  "CEL1922.Attributes": "Attributs",
+  "CEL1922.Skills": "Statistiques",
+
+  "CEL1922.AME": "ÂME",
+  "CEL1922.Attraction": "Attraction",
+  "CEL1922.Artifice": "Artifice",
+  "CEL1922.Coercition": "Coercition",
+  "CEL1922.Faveur": "Faveur",
+
+  "CEL1922.CORPS": "CORPS",
+  "CEL1922.Echauffouree": "Échauffourée",
+  "CEL1922.Effacement": "Effacement",
+  "CEL1922.Prouesse": "Prouesse",
+  "CEL1922.Mobilite": "Mobilité",
+
+  "CEL1922.COEUR": "CŒUR",
+  "CEL1922.Appreciation": "Appréciation",
+  "CEL1922.Arts": "Arts",
+  "CEL1922.Inspiration": "Inspiration",
+  "CEL1922.Traque": "Traque",
+
+  "CEL1922.ESPRIT": "ESPRIT",
+  "CEL1922.Instruction": "Instruction",
+  "CEL1922.Merveilleux technologique": "Merv. technologique",
+  "CEL1922.Raisonnement": "Raisonnement",
+  "CEL1922.Traitement": "Traitement",
+
+  "CEL1922.RES": "RÉS +",
+
+  "CEL1922.Jauge de Blessures": "Jauge de Blessures",
+  "CEL1922.Jauge de Destin": "Jauge de Destin",
+  "CEL1922.Jauge de Spleen": "Jauge de Spleen",
+
+  "CEL1922.Anodin": "Anodin",
+  "CEL1922.Derisoire": "Dérisoire",
+  "CEL1922.Negligeable": "Négligea.",
+  "CEL1922.Superficiel": "Superf.",
+  "CEL1922.Leger": "Léger",
+  "CEL1922.Modere": "Modéré",
+  "CEL1922.Grave": "Grave",
+  "CEL1922.Dramatique": "Dramatique",
+  "CEL1922.Hors-fiction": "Hors-fiction",
+
+  "CEL1922.AspectNew": "Nouvel Aspect",
+  "CEL1922.AspectCreate": "Créer un Aspect",
+  "CEL1922.AspectEdit":  "Modifier l′Aspect",
+  "CEL1922.AspectDelete": "Supprimer l′Aspect",
+
+  "CEL1922.AnomalyNew": "Nouvelle Anomalie",
+  "CEL1922.AnomalyCreate": "Créer une Anomalie",
+  "CEL1922.AnomalyEdit":  "Modifier l′Anomalie",
+  "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
+
+  "CEL1922.Initiative": "Initiative",
+
+  "CEL1922.Die": "Cliquez ici pour jeter les dés pour ",
+  "CEL1922.DieSP": "Cliquez ici pour jeter les dés pour la spécialité ",
+  "CEL1922.DieDM": "Cliquez ici pour jeter les dés pour un de ces domaines",
+  "CEL1922.Debt": "Cochez si vous avec contracté une dette en ",
+
+  "CEL1922.SkillPromptName": "",
+  "CEL1922.MagicPromptName": "",
+
+  "CEL1922.TypeOfThrow": "Type de jet : visible pour…",
+  "CEL1922.Everybody": "Tout le monde",
+  "CEL1922.JustDMAndMe": "Juste le MJ et moi",
+  "CEL1922.DMOnly": "Le MJ uniquement",
+  "CEL1922.MeOnly": "Moi uniquement",
+
+  "CEL1922.Validate": "Valider",
+  "CEL1922.Cancel": "Annuler",
+
+  "CEL1922.Notes": "Notes",
+
+  "CEL1922.Reference": "Référence",
+
+  "CEL1922.Error0": "Impossible de poursuivre : le nombre total de vos dés à lancer est inférieur à 1.",
+  "CEL1922.Error1": "Impossible de poursuivre : vous ne possédez pas cette Compétence.",
+  "CEL1922.Error2": "Impossible de poursuivre : vous ne possédez pas de Spécialité dans cette Compétence.",
+  "CEL1922.Error3": "Impossible de poursuivre : vous ne possédez pas cette Ressource.",
+  "CEL1922.Error4": "Impossible de poursuivre : vous ne possédez pas de Domaine dans cette Ressource.",
+  "CEL1922.Error5": "Impossible de poursuivre : vous ne possédez pas cette Compétence de Magie.",
+  "CEL1922.Error6": "Impossible de poursuivre : vous ne possédez pas cette Spécialité dans cette Compétence de Magie.",
+  "CEL1922.Error10": "Impossible de poursuivre : vous avez 0 ou moins dans cet Aspect.",
+  "CEL1922.Error12": "Impossible de poursuivre : vous ne pouvez pas posséder de Spécialité dans cette Compétence dont le score est inférieur à 1.",
+  "CEL1922.Error14": "Impossible de poursuivre : vous ne pouvez pas posséder de Domaine dans cette Ressource dont le score est inférieur à 1.",
+  "CEL1922.Error16": "Impossible de poursuivre : vous ne pouvez pas posséder de Spécialité dans cette Compétence de Magie dont le score est inférieur à 1.",
+
+  "CEL1922.Preferences": "Préférences pour cet acteur",
+  "CEL1922.TypeOfThrowCheck": "Toujours demander avant d'effectuer un lancer",
+
+  "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
+  "CEL1922.TypeOfThrowTitle": "Modifier le type de jet ?",
+  "CEL1922.CancelChanges": "Annuler les modifications",
+
+  "CEL1922.NextTimeGoToTheSettings": "Tout ceci est paramétrable dans les Préférences",
+
+  "CEL1922.OneDie": "dé",
+  "CEL1922.ManyDice": "dés",
+
+
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc": "PNJ",
+
+      "tinji": "Tin Ji",
+      "loksyu": "Loksyu"
+    },
+    "Item": {
+      "anomaly": "Anomalie",
+      "aspect": "Aspect",
+      "item": "Équipement"
+    }
+  }
+}
