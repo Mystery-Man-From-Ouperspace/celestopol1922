@@ -1,0 +1,1018 @@
+.celestopol1922 {
+  /* Sheet Tabs */
+  /* Items List */
+  /* Attributes */
+}
+/* ------------------------------------------- 
+        Fonts
+ ---------------------------------------------*/
+
+ @font-face {
+  font-family: "Copasetic-Bold";
+  src: url(/systems/celestopol1922/fonts/CopaseticNF-Bold.otf);
+}
+@font-face {
+  font-family: "Copasetic";
+  src: url(/systems/celestopol1922/fonts/CopaseticNF.otf);
+}
+
+.celestopol1922 .window-content {
+  height: 100%;
+  padding: 5px;
+  overflow-y: hidden;
+}
+.celestopol1922 form {
+  height: 100%;
+}
+.celestopol1922 .sheet-header {
+  flex: 0 0 160px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+
+  height: 100%;
+  overflow-y: clip;
+  
+  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-position: top right; 
+}
+
+/*.celestopol1922 .sheet-header .logo-img {
+  max-height : 100%;
+  width : auto;
+}
+
+  .aptitudes .sheet-header .header-fields {
+  flex: 1;
+  height: 150px;
+}
+.celestopol1922 .sheet-header h1.charname {
+  height: 50px;
+  padding: 5px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+.celestopol1922 .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}  */
+
+.celestopol1922 .sheet-display {
+  display: flex;
+  column-gap: 10px;
+  overflow-y: auto;
+}
+
+.celestopol1922 .side-sheet {
+  width: 190px;
+}
+
+.celestopol1922 .side-sheet .logo-img {
+  max-height: 100%;
+  width: auto;
+}
+
+.celestopol1922 .side-sheet .click-prefs {
+  font-size: 20px;
+}
+
+.celestopol1922 .side-sheet h1.charname {
+  height: 50px;
+  padding: 5px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.celestopol1922 .side-sheet h1.charname input {
+  width: 100%;
+  height: 28px;
+  font-size: 22px;
+  margin: 0;
+}
+
+.celestopol1922 .concept {
+  text-align: center;
+}
+
+.celestopol1922 .concept input {
+  height: 28px;
+  text-align: center;
+}
+.celestopol1922 .concept select {
+  text-align: center;
+}
+
+.celestopol1922 .body-sheet {
+  width: 710px;
+}
+
+.celestopol1922.sheet.actor.character .sheet-body {
+  overflow-y: auto;
+}
+
+.celestopol1922 .tabs {
+  flex: 0 0 40px;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+  overflow-y: clip;
+  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-position: top right; 
+}
+
+.celestopol1922 .tabs .item {
+  line-height: 40px;
+  font-weight: bold;
+}
+.celestopol1922 .tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
+}
+
+/*
+.celestopol1922 .sheet-body {
+  overflow: hidden;
+} */
+
+.celestopol1922 .sheet-body .tab {
+  height: 100%;
+  height: 870px;
+  padding: 2px;
+  /* overflow-y: auto; */
+  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-position: bottom left; 
+}
+
+.celestopol1922 .sheet-body .click:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 6px #af010a);
+}
+
+.celestopol1922 .sheet-body .click2:hover {
+  cursor: pointer;
+}
+
+.celestopol1922 .sheet-body img {
+border: 0;
+}
+
+
+/* concerne les compétences */
+.celestopol1922 .sheet-body .tab.skills th {
+  color: orange;
+  background-color: rgb(12, 76, 12);
+}
+
+.celestopol1922 .sheet-body .tab.skills td {
+  text-align: center;
+}
+
+.celestopol1922 .sheet-body .tab.skills th.blessures,
+.celestopol1922 .sheet-body .tab.skills th.destin,
+.celestopol1922 .sheet-body .tab.skills th.spleen {
+  color: orange;
+  background-color: transparent;
+  border-bottom: orange;
+}
+
+
+.celestopol1922 .sheet-body .tab.skills th input {
+  color: orange;
+}
+
+.celestopol1922 .sheet-body .tab.skills  {
+  font-weight: bold;
+}
+
+
+.celestopol1922 .sheet-body .tab.skills input {
+  font-weight: none;
+  width: 30px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.celestopol1922 .sheet-body .tab.skills select[name="system.ame"],
+.celestopol1922 .sheet-body .tab.skills select[name="system.corps"],
+.celestopol1922 .sheet-body .tab.skills select[name="system.coeur"],
+.celestopol1922 .sheet-body .tab.skills select[name="system.esprit"] {
+  width: none;
+}
+
+.celestopol1922 .sheet-body .tab.skills .tab-titre {
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+.celestopol1922 .sheet-body .skills image img {
+border: 0;
+z-index: 4;
+width: 100%;
+}
+.celestopol1922 .sheet-body .skills image div.stick {
+margin-top: -52px;
+z-index: 2;
+width: 3%;
+text-align: center;
+}
+.celestopol1922 .sheet-body .skills table tr td.click {
+width: 27px;
+}
+.celestopol1922 .sheet-body .skills table tr td.noclick {
+width: 27px;
+} 
+.celestopol1922 .sheet-body .skills table tr td table tr td.icon-d {
+width: 27px;
+}
+.celestopol1922 .sheet-body .skills table tr td.bonus {
+width: 35px;
+}
+.celestopol1922 .sheet-body .skills table tr td.label {
+width: 25%;
+}
+.celestopol1922 .sheet-body .skills table tr td.check {
+width: 5%;
+}
+.celestopol1922 .sheet-body .skills table tr td.image {
+width: 5%;
+text-align: center;
+}
+.celestopol1922 .sheet-body .skills table tr td.image img {
+z-index: 4;
+width: 100%;
+}
+.celestopol1922 .sheet-body .skills table tr td.image div.stick {
+margin-top: -52px;
+z-index: 2;
+width: 3%;
+text-align: center;
+}
+.celestopol1922 .sheet-body .skills table tr td.image input.input {
+border: 0;
+width: 30px;
+text-align: center;
+}
+.celestopol1922 .sheet-body .skills table tr td.specialities input.input {
+width: 100%;
+text-align: left;
+}
+
+
+/* concerne la magie */
+
+.celestopol1922 .sheet-body .magics .linear-green {
+	background: linear-gradient(Khaki, ForestGreen);
+}
+
+
+.celestopol1922 .sheet-body .magics .linear-red {
+	background: linear-gradient(Khaki, Red);
+}
+
+
+.celestopol1922 .sheet-body .magics .linear-brown {
+	background: linear-gradient(Khaki, Sienna);
+}
+
+
+.celestopol1922 .sheet-body .magics .linear-blue {
+	background: linear-gradient(Khaki, DodgerBlue);
+}
+
+
+.celestopol1922 .sheet-body .magics .linear-grey {
+	background: linear-gradient(Khaki, SlateGray);
+}
+
+
+.celestopol1922 .sheet-body .magics table tr td.label {
+  width: 150px;
+}
+  .celestopol1922 .sheet-body .magics table tr td table tr td.label {
+  width: 150px;
+}
+  .celestopol1922 .sheet-body .magics .check {
+  width: 5%;
+}
+  .celestopol1922 .sheet-body .magics table tr td.image {
+  width: 5%;
+  text-align: center;
+}
+  .celestopol1922 .sheet-body .magics .image img {
+  z-index: 4;
+  width: 50px;
+}
+  .celestopol1922 .sheet-body .magics .image div.stick {
+  margin-top: -46px;
+  z-index: 2;
+  width: 3%;
+  text-align: center;
+}
+  .celestopol1922 .sheet-body .magics .image input {
+  border: 0;
+  margin-top: -30px;
+  text-align: center;
+}
+  .celestopol1922 .sheet-body .magics .click {
+  width: 4%;
+}
+  .celestopol1922 .sheet-body .magics .icon-d {
+  width: 8%;
+}
+  .celestopol1922 .sheet-body .magics .icon-element img {
+  width: 50%;
+  margin-left: 6px;
+  margin-bottom: 2px;
+}
+  .celestopol1922 .sheet-body .magics .icon-yin img {
+  width: 25%;
+  margin-left: 8px;
+  margin-bottom: 2px;
+}
+  .celestopol1922 .sheet-body .magics .icon-yang img {
+  width: 40%;
+  margin-left: 0;
+  margin-bottom: 2px;
+}
+  .celestopol1922 .sheet-body .magics .icon-yinyang img {
+  width: 40%;
+  margin-left: 0;
+  margin-bottom: 2px;
+}
+  
+
+/* concerne l'onglet ng hang */
+
+.celestopol1922 .sheet-body .nghang_wrap {
+  background-image: url("");
+}  
+	
+.celestopol1922 .sheet-body .nghang_wrap {
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+    border: no-border;
+}
+.celestopol1922 .sheet-body .nghang_wrap .schema {
+    padding: 100px;
+    position: relative;
+    z-index: 2;
+}
+.celestopol1922 .sheet-body .nghang_wrap img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+.celestopol1922 .sheet-body .nghang_wrap .logo {
+  z-index: 4;
+  width: 21%;
+  margin-top: -30px;
+  margin-left: -22px;
+}
+
+.celestopol1922 .nghangpart1 {
+  margin-top: -65px;
+  margin-left: 267px;
+}
+.celestopol1922 .nghangpart1 .fire .click2 {
+  width: 30px;
+  margin-top: 86px;
+  margin-left: 320px;
+}
+.celestopol1922 .nghangpart1 input {
+  width: 40px;
+  height: 28px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.celestopol1922 .nghangpart2 {
+  margin-top: 113px;
+  margin-left: 67px;
+}
+.celestopol1922 .nghangpart2 .wood .click2 {
+  width: 30px;
+  margin-top: 231px;
+  margin-left: 123px;
+}
+.celestopol1922 .nghangpart2 input {
+  width: 40px;
+  height: 28px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.celestopol1922 .nghangpart4 {
+  margin-top: -23px;
+  margin-left: 467px;
+}
+.celestopol1922 .nghangpart4 .earth .click2 {
+  width: 30px;
+  margin-top: 235px;
+  margin-left: 520px;
+
+}
+.celestopol1922 .nghangpart4 input {
+  width: 40px;
+  height: 28px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.celestopol1922 .nghangpart5 {
+  margin-top: 175px;
+  margin-left: 120px;
+}
+.celestopol1922 .nghangpart5 .water .click2 {
+  width: 30px;
+  margin-top: 440px;
+  margin-left: 176px;
+}
+.celestopol1922 .nghangpart5 input {
+  width: 40px;
+  height: 28px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.celestopol1922 .nghangpart7 {
+  margin-top: -27px;
+  margin-left: 403px;
+}
+.celestopol1922 .nghangpart7 .metal .click2 {
+  width: 30px;
+  margin-top: 440px;
+  margin-left: 460px;
+}
+.celestopol1922 .nghangpart7 input {
+  width: 40px;
+  height: 28px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+/* concerne les items */
+
+.celestopol1922 .editor,
+.celestopol1922 .editor-content {
+  height: 100%;
+}
+
+.celestopol1922 .attributes .quantity,
+.celestopol1922 .attributes .weight {
+  width: 60px;
+  text-align: center;
+}
+
+.celestopol1922 .item-list {
+  list-style: none;
+  margin: 7px 0;
+  padding: 0;
+  overflow-y: auto;
+}
+.celestopol1922 .item-list .item {
+  min-height: 30px;
+  line-height: 24px;
+  padding: 3px 0;
+  border-bottom: 1px solid #BBB;
+  align-items: stretch;
+}
+.celestopol1922 .item-list .item img {
+  flex: 0 0 24px;
+  margin-right: 5px;
+}
+.celestopol1922 .item-list .item-name {
+  margin: 0;
+}
+.celestopol1922 .item-list .item-controls {
+  flex: 0 0 36px;
+}
+.celestopol1922 .item-list .item-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  flex: 2;
+  justify-content: flex-start;
+}
+.celestopol1922 .item-list .item-button {
+  line-height: 1;
+  font-size: 11px;
+  flex: none;
+  width: auto;
+}
+.celestopol1922 .attributes {
+  position: relative;
+}
+.celestopol1922 .attributes .attribute-control,
+.celestopol1922 .attributes .group-control {
+  flex: 0 0 20px;
+  text-align: center;
+  line-height: 28px;
+  border: none;
+}
+.celestopol1922 .attributes .attribute-roll {
+  flex: 0 0 20px;
+  text-align: center;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.celestopol1922 .attributes .group-prefix {
+  height: 31px;
+  margin-right: 10px;
+}
+.celestopol1922 .attributes .button {
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px groove #f0f0e0;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 28px;
+  display: block;
+}
+.celestopol1922 .attributes .attribute-key {
+  background: transparent;
+  border: none;
+}
+.celestopol1922 .attributes-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  align-items: center;
+  padding: 0 5px;
+  margin: 5px 0;
+  background: #cfcdc2;
+  border: 1px solid #AAA;
+  border-radius: 2px;
+  text-align: left;
+  font-weight: bold;
+}
+.celestopol1922 .attributes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.celestopol1922 .attributes-list li > * {
+  margin: 0 3px;
+  height: 28px;
+  line-height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #AAA;
+}
+.celestopol1922 .attributes-list .attribute-col label {
+  font-size: 10px;
+  text-align: center;
+  line-height: 1;
+}
+.celestopol1922 .attributes-list .attribute-col input {
+  font-size: 11px;
+  text-align: center;
+  line-height: 1;
+  height: 50%;
+}
+.celestopol1922 .attribute input[type="text"]::placeholder,
+.celestopol1922 .group-header input[type="text"]::placeholder {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+.celestopol1922 .attribute input[type="text"]:focus::placeholder,
+.celestopol1922 .group-header input[type="text"]:focus::placeholder {
+  opacity: 1;
+}
+.celestopol1922 .group-controls {
+  margin: 5px;
+}
+.celestopol1922 .groups-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.celestopol1922 .group {
+  margin: 5px 0 0;
+  padding: 0;
+}
+.celestopol1922 .group-header {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #AAA;
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+.celestopol1922 .group-key,
+.celestopol1922 .group-label {
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  background: transparent;
+  border-radius: 0;
+  margin-right: 6px;
+}
+.celestopol1922 .group-key {
+  opacity: 0.75;
+}
+.celestopol1922 .group-label {
+  flex: 2;
+}
+.celestopol1922 .group-dtype {
+  height: 24px;
+  flex: 0 0 116px;
+  margin: 0 5px;
+}
+
+
+
+
+.celestopol1922.sheet.character {
+  min-width: 920px; /* 560px; */
+  max-width: 920px;
+  min-height: 350px;
+  max-height: 900px;
+}
+
+.celestopol1922.sheet.item,
+.celestopol1922.sheet.kungfu,
+.celestopol1922.sheet.spell,
+.celestopol1922.sheet.supernatural {
+  min-width: 460px;
+  min-height: 400px;
+}
+
+.celestopol1922.sheet.item .sheet-body,
+.celestopol1922.sheet.kungfu .sheet-body,
+.celestopol1922.sheet.spell .sheet-body,
+.celestopol1922.sheet.supernatural .sheet-body {
+  overflow-y: auto;
+}
+
+
+/* concerne la fiche tinji-sheet */
+
+.celestopol1922 .sheet-body .tinji_wrap {
+  background-image: url("");
+}  
+	
+.celestopol1922 .sheet-body .tinji_wrap {
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+    border: no-border;
+}
+.celestopol1922 .sheet-body .tinji_wrap .schema {
+    padding: 100px;
+    position: relative;
+    z-index: 2;
+}
+.celestopol1922 .sheet-body .tinji_wrap img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+.celestopol1922 .sheet-body .tinji_wrap .logo {
+  z-index: 4;
+  width: 21%;
+  margin-top: -30px;
+  margin-left: -22px;
+}
+
+.celestopol1922.sheet.actor.tinji {
+  min-width: 700px; /* 560px; */
+  max-width: 700px;
+  min-height: 420px;
+  max-height: 800px;
+}
+
+.celestopol1922.sheet.actor.tinji .sheet-header {
+  flex: 0 0 100px;
+}
+
+.celestopol1922.sheet.actor.tinji .sheet-body {
+  overflow-y: auto;
+}
+
+.celestopol1922 .sheet-body .tinji .tinji-value
+{
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: -35px;
+  margin-left:205px;
+}
+
+
+/* concerne la fiche loksyu-sheet */
+
+.celestopol1922 .sheet-body .loksyu_wrap {
+  background-image: url("");
+}  
+	
+.celestopol1922 .sheet-body .loksyu_wrap {
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+    border: no-border;
+}
+.celestopol1922 .sheet-body .loksyu_wrap .schema {
+    padding: 100px;
+    position: relative;
+    z-index: 2;
+}
+.celestopol1922 .sheet-body .loksyu_wrap img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+.celestopol1922 .sheet-body .loksyu_wrap .logo {
+  z-index: 4;
+  width: 21%;
+  margin-top: -30px;
+  margin-left: -22px;
+}
+
+
+.celestopol1922.sheet.actor.loksyu {
+  min-width: 700px; /* 560px; */
+  max-width: 700px;
+  min-height: 420px;
+  max-height: 800px;
+}
+
+.celestopol1922.sheet.actor.loksyu .sheet-body {
+  overflow-y: auto;
+}
+
+.celestopol1922.sheet.actor.loksyu .sheet-header {
+  flex: 0 0 100px;
+}
+
+/* .celestopol1922 .sheet-body .loksyu .number
+{
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 4;
+} */
+
+.celestopol1922 .sheet-body .loksyu div.wood-yang
+{
+  margin-top: 5px;
+  margin-left : 123px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .wood-yin
+{
+  margin-top: 12px;
+  margin-left : 285px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .metal-yang
+{
+  margin-top: 20px;
+  margin-left : 25px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .fire-yang
+{
+  margin-top: -38px;
+  margin-left: 420px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .earth-yang
+{
+  margin-top: 45px;
+  margin-left: 123px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .earth-yin
+{
+  margin-top: 12px;
+  margin-left: 285px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .metal-yin
+{
+  margin-top: 35px;
+  margin-left: -15px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .fire-yin
+{
+  margin-top: -40px;
+  margin-left: 380px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .water-yang
+{
+  margin-top: 42px;
+  margin-left : 125px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.celestopol1922 .sheet-body .loksyu .water-yin
+{
+  margin-top: 10px;
+  margin-left : 285px;
+  width: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+/* concerne la fiche npc-sheet */
+
+.celestopol1922 .sheet-body .aptitudes table tr td.image input.input {
+  border: 0;
+}
+.celestopol1922 .sheet-body .aptitudes table tr td.image {
+  width: 5%;
+  text-align: center;
+}
+.celestopol1922 .sheet-body .aptitudes table tr td.image img {
+  z-index: 4;
+  width: 100%;
+}
+.celestopol1922 .sheet-body .aptitudes table tr td.image div.stick {
+  margin-top: -52px;
+  z-index: 2;
+  width: 3%;
+  text-align: center;
+}
+
+
+.celestopol1922.sheet.actor.npc {
+  min-width: 920px; /* 560px; */
+  max-width: 920px;
+  min-height: 420px;
+  max-height: 750px;
+}
+
+
+.celestopol1922 .sheet-body .aptitudes table tr td.image2 {
+  margin-top: 0;
+  width: 5%;
+  text-align: center;
+}
+.celestopol1922 .sheet-body .aptitudes table tr td.image2 img {
+  margin-top: -5px;
+  z-index: 4;
+  width: 100%;
+}
+.celestopol1922 .sheet-body .aptitudes table tr td.image2 div.stick {
+  margin-top: -47px;
+  z-index: 2;
+  width: 3%;
+  text-align: center;
+}
+.celestopol1922 .sheet-body .aptitudes .specialities {
+  width: 70%;
+}
+
+.celestopol1922 .sheet-body .aptitudes .dragon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.celestopol1922 .sheet-body .aptitudes .dragon .logo {
+  width : 55%;
+}
+
+
+/* concerne l'item kung-fu */
+
+.celestopol1922 .sheet-header .kungfu .libel {
+  text-align: center;
+}
+
+
+/* Concerne les prompts */
+
+.celestopol1922 .sheet-body .frame {
+  background-image: url("/systems/celestopol1922/images/cde_fond_transp.png");
+}
+
+.celestopol1922 .sheet-body .frame .input {
+  text-align: center;
+}
+
+.celestopol1922 .sheet-body .frame table tr {
+  border: 0;
+}
+
+.celestopol1922 .sheet-body table tr td input {
+  margin-top: -30;
+}
+
+.celestopol1922 .sheet-body .frame table tr:nth-child(odd) {
+  background-color: transparent;
+}
+
+.celestopol1922 .sheet-body .frame table tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.celestopol1922 .side-sheet h1.charname {
+  font-family: "Copasetic-Bold";
+  font-size: 20px;
+}
+.celestopol1922 .side-sheet .concept input[type="text"] {
+  font-family: "Copasetic";
+  font-size: 20px;
+}
+.celestopol1922 .side-sheet .concept select[name="system.anomaly"] {
+  font-family: "Copasetic";
+  font-size: 16px;
+}
+.celestopol1922 .side-sheet .concept input[type="number"] {
+  font-family: "Copasetic-Bold";
+  font-size: 16px;
+  width: 20px;
+}
+.celestopol1922 .side-sheet .concept select[name="system.anomalymax"] {
+  font-family: "Copasetic";
+  font-size: 16px;
+}
+
+.celestopol1922 .side-sheet .concept .initiative {
+  font-family: "Copasetic";
+  font-size: 16px;
+}
+
+/*
+.image-popout .window-content {
+  box-shadow: 10px 10px 5px black;
+}
+
+#fullscreen-layer .background {
+  box-shadow: 10px 5px 5px black;
+}
+*/
+
+
+
+
+/* concerne l'interface de Foundry */
+
+#logo {
+  content: url("/systems/celestopol1922/images/logo_jeu.png");
+  width: 80px;
+  height: 40px;
+  margin-left: 22px;
+  margin-top: 10px;
+}
+
+#pause > img {
+  content: url("/systems/celestopol1922/images/wheel.png");
+  height: 192px;
+  width: 192px;
+  top: -45px;
+  left: calc(50% - 96px);
+}
+
+
+/* concerne les préférences */
+
+.celestopol1922 .side-sheet .click-prefs:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 6px #af010a);
+}

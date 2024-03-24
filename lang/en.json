@@ -1,0 +1,379 @@
+{
+  "CEL1922.ItemCreate": "Create Equipment",
+  "CEL1922.ItemEdit": "Edit Equipment",
+  "CEL1922.ItemDelete": "Delete Equipment",
+  "CEL1922.ItemNew": "New Equipment",
+
+  "CEL1922.TypeOfItem": "Type of Equipment",
+  "CEL1922.Weapon": "Weapon",
+  "CEL1922.Armor": "Armor",
+  "CEL1922.Vehicle": "Vehicle",
+  "CEL1922.Other": "Other",
+
+
+  "CEL1922.ResourceMin": "Min",
+  "CEL1922.ResourceValue": "Value",
+  "CEL1922.ResourceMax": "Max",
+
+  "CEL1922.DefineTemplate": "Define as Template",
+  "CEL1922.UnsetTemplate": "Unset Template",
+  "CEL1922.NoTemplate": "No Template",
+
+  "CEL1922.Quantity": "Quantity",
+  "CEL1922.Weight": "Weight",
+  "CEL1922.Damage": "Damage",
+  "CEL1922.Range": "Range",
+  "CEL1922.Speed": "Speed",
+  "CEL1922.Crew": "Crew",
+
+  "CEL1922.Masterized": "You have mastered this Technique",
+
+  "CEL1922.Create": "Create",
+  "CEL1922.New": "New",
+
+  "CEL1922.Name": "Name",
+  "CEL1922.PCName": "Character's Name",
+  "CEL1922.Concept": "Concept",
+  "CEL1922.Anomaly": "Anomaly",
+  "CEL1922.Entropie": "ENTROPIE",
+  "CEL1922.CommunicationAvecLesMorts": "COMMUNICATION MORTS",
+  "CEL1922.Illusion": "ILLUSION",
+  "CEL1922.Suggestion": "SUGGESTION",
+  "CEL1922.TarotDivinatoire": "TAROT DIVINATOIRE",
+  "CEL1922.Telekinesie": "TÉLÉKINÉSIE",
+  "CEL1922.Telepathie": "TÉLÉPATHIE",
+  "CEL1922.VoyageAstral": "VOYAGE ASTRAL",
+
+
+  "CEL1922.Description": "Description",
+  "CEL1922.Description2": "Description",
+  "CEL1922.Attributes": "Attributes",
+  "CEL1922.Skills": "Skills",
+
+  "CEL1922.AME": "ÂME",
+  "CEL1922.Attraction": "Attraction",
+  "CEL1922.Artifice": "Artifice",
+  "CEL1922.Coercition": "Coercition",
+  "CEL1922.Faveur": "Faveur",
+
+
+  "CEL1922.CORPS": "CORPS",
+  "CEL1922.Echauffouree": "Échauffourée",
+  "CEL1922.Effacement": "Effacement",
+  "CEL1922.Prouesse": "Prouesse",
+  "CEL1922.Mobilite": "Mobilité",
+
+
+  "CEL1922.COEUR": "CŒUR",
+  "CEL1922.Appreciation": "Appréciation",
+  "CEL1922.Arts": "Arts",
+  "CEL1922.Inspiration": "Inspiration",
+  "CEL1922.Traque": "Traque",
+
+
+  "CEL1922.ESPRIT": "ESPRIT",
+  "CEL1922.Instruction": "Instruction",
+  "CEL1922.Merveilleux technologique": "Merv. technologique",
+  "CEL1922.Raisonnement": "Raisonnement",
+  "CEL1922.Traitement": "Traitement",
+
+
+  "CEL1922.RES": "RÉS +",
+
+
+  "CEL1922.Jauge de Blessures": "Jauge de Blessures",
+  "CEL1922.Jauge de Destin": "Jauge de Destin",
+  "CEL1922.Jauge de Spleen": "Jauge de Spleen",
+  
+  
+
+
+  "CEL1922.Magics": "Magics",
+  "CEL1922.Resources": "Resources",
+  "CEL1922.Treasures": "Three Treasures",
+  "CEL1922.NgHang": "Ng Hang",
+  "CEL1922.Items": "Equipment",
+  "CEL1922.KungFu": "Kung Fu",
+  "CEL1922.Spells": "Spells",
+
+  "CEL1922.Die": "Click Here to Throw Dice For ",
+  "CEL1922.DieSP": "Click Here to Throw Dice For This Speciality: ",
+  "CEL1922.DieDM": "Click Here to Throw Dice For One Of These Fields",
+  "CEL1922.Debt": "Check If You Have Incurred a Debt For ",
+
+  "CEL1922.Specialities": "Specialities",
+  "CEL1922.Fields": "Fields",
+  "CEL1922.Art": "Art",
+  "CEL1922.Investigation": "Investigation",
+  "CEL1922.Erudition": "Erudition",
+  "CEL1922.Knavery": "Knavery",
+  "CEL1922.Wordliness": "Wordliness",
+  "CEL1922.Prowess": "Prowess",
+  "CEL1922.Sciences": "Sciences",
+  "CEL1922.Technologies": "Technologies",
+  "CEL1922.RangedCombat": "Ranged Combat",
+
+
+  "CEL1922.Initiative": "Initiative",
+
+
+  "CEL1922.Supply": "Supply",
+  "CEL1922.Inquiry": "Inquiry",
+  "CEL1922.Influence": "Influence",
+
+  "CEL1922.Components2": "Components & Ingredients",
+  "CEL1922.Component": "Component #",
+  "CEL1922.ChanceThrow": "Selecting a Component at Random in a Hurry",
+  "CEL1922.TypesOfMagic": "Types of Magic",
+
+  "CEL1922.InternalCinnabar": "Internal Cinnabar",
+  "CEL1922.Alchemy": "Alchemy",
+  "CEL1922.MasteryOfTheWay": "Mastery of the Way",
+  "CEL1922.Exorcism": "Exorcism",
+  "CEL1922.Geomancy": "Geomancy",
+
+  "CEL1922.Metal": "㊎ Metal ",
+  "CEL1922.MetalQualities": "– aggressive, passionate, combative, enthusiastic…",
+  "CEL1922.Water": "㊌ Water ",
+  "CEL1922.WaterQualities": "– flexible, diligent, adaptable, disciplined…",
+  "CEL1922.Earth": "㊏ Earth ",
+  "CEL1922.EarthQualities": "– stubborn, resilient, enduring, patient…",
+  "CEL1922.Fire": "㊋ Fire ",
+  "CEL1922.FireQualities": "– warm, creative, empathetic, inspired…",
+  "CEL1922.Wood": "㊍ Wood ",
+  "CEL1922.WoodQualities": "– intuitive, observant, open, instinctive…",
+
+  "CEL1922.PracticeSpecialty": "Check If You Practice This Speciality: ",
+
+  "CEL1922.Essence": "Essence",
+  "CEL1922.Mind": "Mind",
+  "CEL1922.Purification": "Purification",
+  "CEL1922.Manipulation": "Manipulation",
+  "CEL1922.Aura": "Aura",
+
+  "CEL1922.Acupuncture": "Acupuncture",
+  "CEL1922.Elixirs": "Elixirs",
+  "CEL1922.Poisons": "Poisons",
+  "CEL1922.Arsenal": "Arsenal",
+  "CEL1922.Potions": "Potions",
+
+  "CEL1922.Curse": "Curse",
+  "CEL1922.Transfiguration": "Transfiguration",
+  "CEL1922.Necromancy": "Necromancy",
+  "CEL1922.ClimateControl": "Climate Control",
+  "CEL1922.GoldenMagic": "Golden Magic",
+
+  "CEL1922.Invocation": "Invocation",
+  "CEL1922.Tracking": "Tracking",
+  "CEL1922.Protection": "Protection",
+  "CEL1922.Punishment": "Punishment",
+  "CEL1922.Domination": "Domination",
+
+  "CEL1922.Neutralization": "Neutralization",
+  "CEL1922.Divination": "Divination",
+  "CEL1922.EarthlyPrayer": "Earthly Prayer",
+  "CEL1922.HeavenlyPrayer": "Heavenly Prayer",
+  "CEL1922.Fungseoi": "Fungseoi",
+
+  "CEL1922.HEI": "HEI",
+  "CEL1922.Essence2": "(Essence)",
+  "CEL1922.YANG-YIN": "YANG ● YIN",
+  "CEL1922.Max-Present-Present-Max": "Max ● Present ● Present ● Max",
+  "CEL1922.SAN-ZING": "SAN ● ZING",
+  "CEL1922.MentalHealth-PhysicalHealth": "(Mental Health ● Physical Health)",
+  "CEL1922.Max-Present-Malus-Present-Max": "Max ● Present ● Malus ● Present ● Max",
+  "CEL1922.PTAO": "PTAO",
+  "CEL1922.Experience": "(Experience)",
+  "CEL1922.Total-Present": "Total ● Present",
+
+  "CEL1922.Present": "Present",
+  "CEL1922.Total": "Total",
+  "CEL1922.Max": "Max",
+
+  "CEL1922.Orientation": "Orientation",
+  "CEL1922.Aspect": "Aspect",
+  "CEL1922.Skill": "Skill",
+  "CEL1922.Speciality": "Speciality",
+  "CEL1922.Style": "Style",
+  "CEL1922.Field": "Field",
+  "CEL1922.Technique": "Technique",
+  "CEL1922.Activation": "Activation",
+
+  "CEL1922.KFCreate": "Create Martial Art",
+  "CEL1922.KFEdit": "Edit Martial Art",
+  "CEL1922.KFDelete": "Delete Martial Art",
+  "CEL1922.KFNew": "New Martial Art",
+
+  "CEL1922.SpecialityName": "Speciality Name",
+  "CEL1922.AssociatedElement": "Associated Element",
+  "CEL1922.HEI2": "Hei",
+  "CEL1922.RealizationTimeRitual": "Realization Time (Ritual)",
+  "CEL1922.RealizationTimeAccelerated": "Realization Time (Accelerated)",
+  "CEL1922.Data": "Data",
+  "CEL1922.Flashback": "Flashback",
+  "CEL1922.Components": "Components",
+  "CEL1922.Effects": "Effects",
+  "CEL1922.Examples": "Examples",
+
+  "CEL1922.SpellCreate": "Create Spell",
+  "CEL1922.SpellEdit": "Edit Spell",
+  "CEL1922.SpellDelete": "Delete Spell",
+  "CEL1922.SpellNew": "New Spell",
+
+  "CEL1922.SkillPromptName": "",
+  "CEL1922.BonusMalus": "Bonus/Malus",
+  "CEL1922.BonusAuspiciousDice": "Bonus/Auspicious-Dice",
+
+  "CEL1922.MagicPromptName": "",
+  "CEL1922.OneMagicRoll": "1. Magic Roll",
+  "CEL1922.DoNotModify": "Do not Modify this Aspect",
+  "CEL1922.AspectSkill": "Aspect/Skill",
+  "CEL1922.TwoPowerOfSpell": "2. Power of Spell",
+  "CEL1922.AspectSpeciality": "Aspect/Speciality",
+  "CEL1922.RollDifficulty": "Roll Difficulty",
+
+  "CEL1922.TypeOfThrow": "Type of Throwing: Visible by…",
+  "CEL1922.Everybody": "Everybody",
+  "CEL1922.JustDMAndMe": "Just the DM and Me",
+  "CEL1922.DMOnly": "DM Only",
+  "CEL1922.MeOnly": "Me Only",
+  "CEL1922.AuspiciousDice": "Auspicious-Dice",
+  "CEL1922.AuspiciousDie": "Auspicious-Die",
+
+  "CEL1922.Validate": "Validate",
+  "CEL1922.Cancel": "Cancel",
+
+  "CEL1922.NPCName": "NPC's Name",
+  "CEL1922.TypeOfCreature": "Type of Creature",
+
+  "CEL1922.Threat": "Capacity of Threat",
+  "CEL1922.Profane": "Profane",
+  "CEL1922.Apprentice": "Apprentice",
+  "CEL1922.Initiate": "Initiate",
+  "CEL1922.Accomplished": "Accomplished",
+  "CEL1922.Reknowned": "Reknowned",
+
+  "CEL1922.Nuisance": "Level of Nuisance",
+  "CEL1922.Figurant": "Figurant",
+  "CEL1922.Minion": "Minion",
+  "CEL1922.Adversary": "Adversary",
+  "CEL1922.Ally": "Ally",
+  "CEL1922.Boss": "Boss",
+  "CEL1922.Dininity": "Divinity",
+
+  "CEL1922.Aptitudes": "Aptitudes",
+  "CEL1922.SuperNatural": "Supernatural Abilities",
+
+  "CEL1922.Physical": "● Physical",
+  "CEL1922.Martial": "● Martial",
+  "CEL1922.Mental": "● Mental",
+  "CEL1922.Social": "● Social",
+  "CEL1922.Spiritual": "● Spiritual",
+
+  "CEL1922.Vitality": "Vitality",
+  "CEL1922.Hei": "Hei",
+
+  "CEL1922.Notes": "Notes",
+
+  "CEL1922.SupernaturalCreate": "Create Supernatural Ability",
+  "CEL1922.SupernaturalEdit": "Edit Supernatural Ability",
+  "CEL1922.SupernaturalDelete": "Delete Supernatural Ability",
+  "CEL1922.SupernaturalNew": "New Supernatural Ability",
+
+  "CEL1922.LoksyuName": "Loksyu Name",
+  "CEL1922.Loksyu": "Loksyu",
+  "CEL1922.MetalYang": "㊎ Yang Metal (3)",
+  "CEL1922.MetalYin": "㊎ Yin Metal (8)",
+  "CEL1922.WaterYang": "㊌ Yang Water (1)",
+  "CEL1922.WaterYin": "㊌ Yin Water (6)",
+  "CEL1922.EarthYang": "㊏Yang Earth (5)",
+  "CEL1922.EarthYin": "㊏Yin Earth (0)",
+  "CEL1922.FireYang": "㊋ Yang Fire (7)",
+  "CEL1922.FireYin": "㊋ Yin Fire (2)",
+  "CEL1922.WoodYang": "㊍ Yang Wood (9)",
+  "CEL1922.WoodYin": "㊍ Yin Wood (4)",
+
+  "CEL1922.Yin": "● Yin",
+  "CEL1922.Yang": "○ Yang",
+  "CEL1922.Successes": "Successes",
+  "CEL1922.Beneficial": "Auspicious-Dice",
+  "CEL1922.Noxious": "Noxious-Dice",
+  "CEL1922.TinJi": "Tin Ji:",
+  "CEL1922.Loksyu2": "Loksyu:",
+  "CEL1922.Results": "Results:",
+  "CEL1922.SpecialAspect": "Speciality Aspect",
+
+  "CEL1922.Randomize": "Randomize",
+  "CEL1922.RandomizeSentence": "# of the Component Selected at Random in a Hurry",
+
+  "CEL1922.Reference": "Reference",
+
+  "CEL1922.Error0": "Unable to proceed: total dice number to be thrown is less than 1.",
+  "CEL1922.Error1": "Unable to proceed: you don't possess this Skill.",
+  "CEL1922.Error2": "Unable to proceed: you don't possess any Speciality in this Skill.",
+  "CEL1922.Error3": "Unable to proceed: you don't possess this Resource.",
+  "CEL1922.Error4": "Unable to proceed: you don't possess any Field in this Resource.",
+  "CEL1922.Error5": "Unable to proceed: you don't possess this Magical Skill.",
+  "CEL1922.Error6": "Unable to proceed: you don't possess this Speciality in this Magical Skill.",
+  "CEL1922.Error10": "Unable to proceed: you've got 0 or less in this Aspect.",
+  "CEL1922.Error12": "Unable to proceed: you can't possess any Speciality in this Skill which score is less than 1.",
+  "CEL1922.Error14": "Unable to proceed: you can't possess any Field in this Resource which score is less than 1.",
+  "CEL1922.Error16": "Unable to proceed: you can't possess any Speciality in this Magical Skill which score is less than 1.",
+
+  "CEL1922.Preferences": "Preferences for this actor",
+  "CEL1922.TypeOfThrowCheck": "Always ask before making a throw",
+
+  "CEL1922.TypeOfThrow4ThisTime": "Type of Throwing for this time: Visible by…",
+  "CEL1922.TypeOfThrowTitle": "Modify Type of Throw?",
+  "CEL1922.CancelChanges": "Cancel Changes",
+
+  "CEL1922.NextTimeGoToTheSettings": "All these are parametrable in the Settings",
+
+
+  "CEL1922.OneDie": "Die",
+  "CEL1922.ManyDice": "Dice",
+
+  "CEL1922.HasCastASpell": "has cast a spell ",
+  "CEL1922.MsgMagic1": "The number of Hei points spent on the  ",
+  "CEL1922.MsgMagic2": "speciality spell is ",
+  "CEL1922.MsgMagic3": ". The power to be invoked is ",
+  "CEL1922.MsgMagic4": ", if the spell is cast successfully.",
+
+
+  "CEL1922.TinJiName": "Tin Ji Name",
+  "CEL1922.TinJi2": "Tin Ji",
+
+  "CEL1922.UpperCaseSuccesses": "SUCCESSES",
+  "CEL1922.UpperCaseAuspiciousDice": "AUSPICIOUS-DICE",
+  "CEL1922.UpperCaseNoxiousDice": "NOXIOUS-DICE",
+  "CEL1922.UpperCaseLoksyu": "LOKSYU",
+  "CEL1922.UpperCaseTinJi": "TIN JI",
+
+  "CEL1922.UpperCaseMetal": "METAL",
+  "CEL1922.UpperCaseWater": "WATER",
+  "CEL1922.UpperCaseEarth": "EARTH",
+  "CEL1922.UpperCaseFire": "FIRE",
+  "CEL1922.UpperCaseWood": "WOOD",
+
+
+  "CEL1922.Visible": "Visible Specialities",
+
+  "CEL1922.MartialArts": "Martial Arts",
+
+  
+
+  "TYPES": {
+    "Actor": {
+      "character": "Fat si",
+      "npc": "Creature",
+      "tinji": "Tin Ji",
+      "loksyu": "Loksyu"
+    },
+    "Item": {
+      "item": "Equipment",
+      "kungfu": "Martial Art",
+      "spell": "Spell",
+      "supernatural": "Supernatural Ability"
+    }
+  }
+}

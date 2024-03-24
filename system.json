@@ -1,0 +1,73 @@
+{
+  "id": "celestopol1922",
+  "version": "0.0.1",
+  "title": "Célestopol 1922 (Unofficial)",
+  "url": "https://chroniques-etrange-no.fr/blog/foundry-vtt/",
+  "description": "Unofficial game system for Célestopol 1922.",
+  "license": "LICENSE.txt",
+  "authors": [
+    {
+      "name": "Man From Outerspace",
+      "url": "https://chroniques-etrange-no.fr"
+    },
+    {
+      "name": "with help from Kristov from La Fonderie"
+    }
+  ],
+  "esmodules": ["module/celestopol1922.js"],
+  "styles": ["css/celestopol1922.css"],
+  "packs": [
+    {
+      "name": "aides-pour-les-joueuses",
+      "label": "FR - Aides pour les Joueuses",
+      "system": "celestopol1922",
+      "path": "packs/aides-pour-les-joueuses",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "telecharger-compendiums",
+      "label": "Télécharger Compendiums",
+      "system": "celestopol1922",
+      "path": "packs/telecharger-compendiums",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+	  {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "background": "",
+  "gridDistance": 5,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "threetreasures.heiyang",
+  "secondaryTokenAttribute": "threetreasures.heiyin",
+  "manifest": "https://chroniques-etrange-no.fr/download/foundry/system.json",
+  "download": "https://chroniques-etrange-no.fr/download/foundry/release-204.zip"
+}

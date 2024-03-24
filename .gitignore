@@ -1,0 +1,10 @@
+# IDE
+.idea/
+.vs/
+.history/
+
+# Node Modules
+node_modules/
+package-lock.json
+
+celestopol1922.lock

@@ -1,0 +1,340 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "tinji", "loksyu"],
+    "htmlFields": ["description"],
+
+    "character": {
+      "concept": "",
+      "anomaly": "0",
+      "anomalyval": 0,
+      "anomalymax": "1",
+      "initiative": 0,
+      "description": "",
+      "prefs": {
+        "typeofthrow": {
+          "check": true,
+          "choice": "0"
+        }
+      },
+      "prompt": {
+        "typeofthrow": {
+          "check": true,
+          "choice": "0"
+        },
+        "configure": {
+          "numberofdice": 0,
+          "aspect": 0,
+          "bonus": 0,
+          "bonusauspiciousdice": 0,
+          "typeofthrow": 0,
+          "aspectskill": 0,
+          "bonusmalusskill": 0,
+          "aspectspeciality": 0,
+          "rolldifficulty": 0,
+          "bonusmalusspeciality": 0
+        }
+      },
+      "skill": {
+        "ame": {
+          "res": 0,
+          "attraction": {
+            "value": 0
+          },
+          "artifice": {
+            "value": 0
+          },
+          "coercition": {
+          "value": 0
+          },
+          "faveur": {
+            "value": 0
+          }
+        },
+        "corps": {
+          "res": 0,
+          "echauffouree": {
+            "value": 0
+          },
+          "effacement": {
+            "value": 0
+          },
+          "prouesse": {
+            "value": 0
+          },
+          "mobilite": {
+            "value": 0
+          }
+        },
+        "coeur": {
+          "res": 0,
+          "appreciation": {
+            "value": 0
+          },
+          "arts": {
+            "value": 0
+          },
+          "inspiration": {
+          "value": 0
+          },
+          "traque": {
+            "value": 0
+          }
+        },
+        "esprit": {
+          "res": 0,
+          "instruction": {
+            "value": 0
+          },
+          "mtechnologique": {
+            "value": 0
+          },
+          "raisonnement": {
+          "value": 0
+          },
+          "traitement": {
+            "value": 0
+          }
+        }
+      },
+      "blessures": {
+        "lvl": 0,
+        "blessure_1": {
+          "check": false
+        },
+        "blessure_2": {
+          "check": false
+        },
+        "blessure_3": {
+          "check": false
+        },
+        "blessure_4": {
+          "check": false
+        },
+        "blessure_5": {
+          "check": false
+        },
+        "blessure_6": {
+          "check": false
+        },
+        "blessure_7": {
+          "check": false
+        },
+        "blessure_8": {
+          "check": false
+        }
+      },
+      "destin": {
+        "lvl": 0,
+        "destin_1": {
+          "check": false
+        },
+        "destin_2": {
+          "check": false
+        },
+        "destin_3": {
+          "check": false
+        },
+        "destin_4": {
+          "check": false
+        },
+        "destin_5": {
+          "check": false
+        },
+        "destin_6": {
+          "check": false
+        },
+        "destin_7": {
+          "check": false
+        },
+        "destin_8": {
+          "check": false
+        }
+      },
+      "spleen": {
+        "lvl": 0,
+        "spleen_1": {
+          "check": false
+        },
+        "spleen_2": {
+          "check": false
+        },
+        "spleen_3": {
+          "check": false
+        },
+        "spleen_4": {
+          "check": false
+        },
+        "spleen_5": {
+          "check": false
+        },
+        "spleen_6": {
+          "check": false
+        },
+        "spleen_7": {
+          "check": false
+        },
+        "spleen_8": {
+          "check": false
+        }
+      }
+    },
+    "npc": {
+      "type": "",
+      "levelofthreat": 0,
+      "powerofnuisance": 0,
+      "aptitudes": {
+        "physical": {
+          "value": 0,
+          "speciality": ""
+        },
+        "martial": {
+          "value": 0,
+          "speciality": ""
+        },
+        "mental": {
+          "value": 0,
+          "speciality": ""
+        },
+        "social": {
+          "value": 0,
+          "speciality": ""
+        },
+        "spiritual": {
+          "value": 0,
+          "speciality": ""
+        }
+      },
+      "vitality": {
+        "value": 0,
+        "calcul": 0,
+        "note": ""
+      },
+      "hei": {
+        "value": 0,
+        "calcul": 0,
+        "note": ""
+      },
+      "description": ""
+    },
+
+    "tinji": {
+      "value": 0,
+      "description": ""
+    },
+
+    "loksyu": {
+      "fire": {
+        "yin": {
+          "value": 0
+        },
+        "yang": {
+          "value": 0
+        }
+      },
+      "earth": {
+        "yin": {
+          "value": 0
+        },
+        "yang": {
+          "value": 0
+        }
+      },
+      "metal": {
+        "yin": {
+          "value": 0
+        },
+        "yang": {
+          "value": 0
+        }
+      },
+      "water": {
+        "yin": {
+          "value": 0
+        },
+        "yang": {
+          "value": 0
+        }
+      },
+      "wood": {
+        "yin": {
+          "value": 0
+        },
+        "yang": {
+          "value": 0
+        }
+      },
+      "description": ""
+    }
+  },
+
+  "Item": {
+    "types": ["item", "kungfu", "spell", "supernatural"],
+    "htmlFields": ["description", "style", "technique", "components", "effects", "examples"],
+
+    "item": {
+      "subtype": "",
+      "reference": "",
+      "description": "",
+      "quantity": 1,
+      "weight": 0,
+      "protection": "",
+      "damage": "",
+      "range": "",
+      "speed": "",
+      "crew": "",
+      "notes": ""
+    },
+
+    "kungfu": {
+      "reference": "",
+      "description": "",
+      "orientation": "",
+      "aspect": "",
+      "skill": "",
+      "speciality": "",
+      "style": "",
+      "techniques": {
+        "technique1": {
+          "check": false,
+          "name": "",
+          "activation": "",
+          "technique": ""
+        },
+        "technique2": {
+          "check": false,
+          "name": "",
+          "activation": "",
+          "technique": ""
+        },
+        "technique3": {
+          "check": false,
+          "name": "",
+          "activation": "",
+          "technique": ""
+        }
+      },
+      "notes": ""
+    },
+
+    "spell": {
+      "reference": "",
+      "description": "",
+      "specialityname": "",
+      "associatedelement": "",
+      "hei": "",
+      "realizationtimeritual": "",
+      "realizationtimeaccelerated": "",
+      "flashback": "",
+      "components": "",
+      "effects": "",
+      "examples": "",
+      "notes": ""
+    },
+
+    "supernatural": {
+      "reference": "",
+      "description": "",
+      "notes": ""
+    }
+  }
+}
