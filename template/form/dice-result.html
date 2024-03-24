@@ -1,0 +1,445 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+
+    </header>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Frame --}}
+        <div class="frame">
+
+            <table hidden style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <span class="text" " style="font-size: 1px;" type="text" name="{{ aspect }}" value="{{ aspect }}"></span>
+                    </td>
+                </tr>
+            </table>
+
+            {{#if (eq aspect 'wood')}}
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ successesdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_bois.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseSuccesses" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ auspiciousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_feu.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseAuspiciousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ noxiousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_eau.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseNoxiousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ loksyudice }}&nbsp;{{ loksyurepartition }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_terre.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseLoksyu" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ tinjidice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_metal.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseTinJi" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{/if}}
+
+            {{#if (eq aspect 'fire')}}
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ successesdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_feu.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseSuccesses" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ auspiciousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_terre.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseAuspiciousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ noxiousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_bois.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseNoxiousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ loksyudice }}&nbsp;{{ loksyurepartition }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_metal.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseLoksyu" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ tinjidice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_eau.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseTinJi" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{/if}}
+
+            {{#if (eq aspect 'earth')}}
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ successesdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_terre.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseSuccesses" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ auspiciousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_metal.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseAuspiciousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ noxiousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_feu.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseNoxiousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ loksyudice }}&nbsp;{{ loksyurepartition }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_eau.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseLoksyu" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ tinjidice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_bois.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseTinJi" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{/if}}
+
+            {{#if (eq aspect 'metal')}}
+            <table style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ successesdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_metal.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseSuccesses" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ auspiciousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_eau.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseAuspiciousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ noxiousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_terre.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseNoxiousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ loksyudice }}&nbsp;{{ loksyurepartition }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_bois.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseLoksyu" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ tinjidice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_feu.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseTinJi" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{/if}}
+
+            {{#if (eq aspect 'water')}}
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ successesdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_eau.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(0, 159, 226, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseSuccesses" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ auspiciousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_bois.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(65, 164, 54, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseAuspiciousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 25px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ noxiousdice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_metal.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="label" style="font-size: 20px; color: rgba(112, 112, 110, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseNoxiousDice" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ loksyudice }}&nbsp;{{ loksyurepartition }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_feu.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(205, 23, 26, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseLoksyu" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 25px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ tinjidice }}</b></span>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img class="aspect" style="border: 0px; width:10%;" src="systems/celestopol1922/images/cde_terre.png" />
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <span class="value" style="font-size: 20px; color: rgba(168, 87, 71, 1); text-align: center;"><b>{{ localize "CEL1922.UpperCaseTinJi" }}</b></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{/if}}
+
+            <table style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d1 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d2 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d3 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d4 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d5 }}</b></span>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-1.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-2.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-3.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-4.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-5.png" />
+                    </td>
+                </tr>
+            </table>
+            <table style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d6 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d7 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d8 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d9 }}</b></span>
+                    </td>
+                    <td>
+                        <span style="display: flex; justify-content: center; align-items: center; font-size: 25px; text-align: center;" class="value"><b>{{ d0 }}</b></span>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-6.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-7.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-8.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-9.png" />
+                    </td>
+                    <td>
+                        <img class="plate" style="width: 100%; border: 0px;" src="systems/celestopol1922/images/dice-plate/d10-0.png" />
+                    </td>
+                </tr>
+            </table>
+
+        </div>	
+    </section>
+</form>
