@@ -1,0 +1,98 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    {{log 'item-sheet' this}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="header-fields">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+            </h1>
+            <label><b>{{localize "CEL1922.TypeOfItem"}}</b></label>
+            <div class="resource">
+                <select name="system.subtype">
+                    {{selectOptions subtypes selected=systemData.subtype labelAttr="label"}}
+                </select>
+            </div>
+            <div class="resource">
+				<label><b>{{localize "CEL1922.Reference"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Reference' }}" name="system.reference" value="{{systemData.reference}}" />
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "CEL1922.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "CEL1922.Attributes"}}</a>
+        <a class="item" data-tab="notes">{{localize "CEL1922.Notes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+			<div class="quantity">
+				<label><b>{{localize "CEL1922.Quantity"}}</b></label>
+				<input class="input" type="number" name="system.quantity" value="{{systemData.quantity}}" />
+			</div>
+			<div class="weight">
+				<label><b>{{localize "CEL1922.Weight"}}</b></label>
+				<input class="input" type="number" name="system.weight" value="{{systemData.weight}}" />
+			</div>
+            {{#if isArmor}}
+			<div class="protection">
+				<label><b>{{localize "CEL1922.Protection"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Protection' }}" name="system.protection" value="{{systemData.protection}}" />
+			</div>
+            {{/if}}
+
+            {{#if isVehicle}}
+            <div class="crew">
+				<label><b>{{localize "CEL1922.Crew"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Crew' }}" name="system.crew" value="{{systemData.crew}}" />
+			</div>
+            <div class="speed">
+				<label><b>{{localize "CEL1922.Speed"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Speed' }}" name="system.speed" value="{{systemData.speed}}" />
+			</div>
+			<div class="protection">
+				<label><b>{{localize "CEL1922.Protection"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Protection' }}" name="system.protection" value="{{systemData.protection}}" />
+			</div>
+            <div class="damage">
+				<label><b>{{localize "CEL1922.Damage"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Damage' }}" name="system.damage" value="{{systemData.damage}}" />
+			</div>
+			<div class="range">
+				<label><b>{{localize "CEL1922.Range"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Range' }}" name="system.range" value="{{systemData.range}}" />
+			</div>
+
+            {{/if}}
+
+
+
+            {{#if isWeapon}}
+			<div class="damage">
+				<label><b>{{localize "CEL1922.Damage"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Damage' }}" name="system.damage" value="{{systemData.damage}}" />
+			</div>
+			<div class="range">
+				<label><b>{{localize "CEL1922.Range"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Range' }}" name="system.range" value="{{systemData.range}}" />
+			</div>
+            {{/if}}            
+        </div>
+
+		{{!-- Notes Tab --}}
+        <div class="tab" data-group="primary" data-tab="notes">
+            {{editor notesHTML target="system.notes" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+    </section>
+</form>
