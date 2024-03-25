@@ -40,6 +40,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     html.find(".click-prefs").click(this._onClickPrefs.bind(this));
   }
 
+  /* -------------------------------------------- */
+
   /**
    * Listen for click on Gear.
    * @param {MouseEvent} event    The originating left click event
@@ -91,7 +93,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     }
   }
 
-  
+    /* -------------------------------------------- */
 
   /**
    * Listen for roll buttons on Clickable d10.
@@ -116,17 +118,11 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myTypeOfThrow = 0;
 
 
-
     let myResultDialog =  await _skillDiceRollDialog(
       myActor, template, myTitle, myDialogOptions, myNumberOfDice,
       mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
       myWounds, myDestiny, mySpleen, myTypeOfThrow
     );
-
-
-
-
-
 
 
     let myRoll = "2d8";
@@ -216,8 +212,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       default: console.log("C'est bizarre !");
     };
 
-
-
     switch ( typeOfThrow ) {
       case 0:
         ChatMessage.create({
@@ -261,6 +255,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       default: console.log("C'est bizarre !");
     };
 
+  /* -------------------------------------------- */
 
     async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
     // Render modal dialog
@@ -322,6 +317,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 }
 }
 
+/* -------------------------------------------- */
+
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
   mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
@@ -331,10 +328,13 @@ async function _skillDiceRollDialog(
   template = template || 'systems/celestopol1922/templates/form/skill-dice-prompt.html';
   const title = myTitle;
 
-  let dialogOptions = myDialogOptions;
-  // let dialogOptions = await getDataSkill(myActor);
-  console.log("dialogOptions = ", dialogOptions)
 
+  ///////////////////////////////////////////////////////////////
+  let dialogOptions = myDialogOptions || await _getDataSkill(myActor);
+  console.log("dialogOptions = ", dialogOptions)
+  ///////////////////////////////////////////////////////////////
+  
+  
   var dialogData = {
     numberofdice: myNumberOfDice.toString(),
     skill: mySkill.toString(),
@@ -401,11 +401,9 @@ async function _skillDiceRollDialog(
     return myDialogData;
   };
 
+  /* -------------------------------------------- */
 
-
-
-
-  async function getDataSkill(myActor) {
+  async function _getDataSkill(myActor) {
 
     const menuSkill = myActor.system.skill.skilltypes;
     const menuAnomaly = myActor.system.skill.anomalytypes;
@@ -490,7 +488,7 @@ async function _skillDiceRollDialog(
       myJauge_Spleen[i.toString()] = new jauge_spleen(i.toString(), menuJaugeSpleen[i]);
     };
 
-    const context = await {
+    const context = {
     skillchoices : mySkill,
     anomalychoices : myAnomaly,
     aspectchoices: myAspect,
