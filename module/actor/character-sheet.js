@@ -335,10 +335,17 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       default: console.log("C'est bizarre !");
     };
 
+    let specialityLibel = game.i18n.localize(myActor.system.skill.skilltypes[mySkill]);
+    let specialityTab = specialityLibel.split(' ');
+    if (specialityTab[0] == "·") {
+      specialityLibel = specialityLibel.substr(2);
+    }
+
     // Smart Message
     const smartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const smartData = {
-      numberofdice: myNumberOfDice
+      numberofdice: myNumberOfDice,
+      speciality: specialityLibel
     }
     console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
