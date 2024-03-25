@@ -22,6 +22,7 @@
                     <td style="display: flex; align-items: content; justify-content: end;">
                     <select name="numberofdice" data-type="String">
                         {{#select numberofdice}}
+                            <option value="1">{{ localize "CEL1922.One" }}</option>
                             <option value="2">{{ localize "CEL1922.Two" }}</option>
                             <option value="3">{{ localize "CEL1922.Three" }}</option>
                             <option value="4">{{ localize "CEL1922.Four" }}</option>
@@ -47,8 +48,8 @@
                 </tr>
             </table>
 
-            <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent;">
+            <table style="border: 0px; background-color: transparent; width: 100%;" >
+                <tr style="background-color: transparent; width:100%;">
                     <td>
                         <div>
                             <span class="value"><b>{{ localize "CEL1922.anomaly" }}</b></span>
@@ -69,15 +70,15 @@
                             <span class="value"><b>{{ localize "CEL1922.aspect" }}</b></span>
                         </div>
                     </td>
+                    <td>
+                        <div style="width:50px; text-align: center; display: flex; align-items: content; justify-content: end;">
+                            <input type="number" name="aspectvalue" value="{{aspectvalue}}" placeholder="0" />
+                        </div>
+                    </td>
                     <td style="display: flex; align-items: content; justify-content: end;">
                         <select name="aspect" data-type="String">
                             {{selectOptions aspectchoices selected=aspect labelAttr="label" localize=true}}
                         </select>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="number" name="aspectvalue" value="{{aspectvalue}}" placeholder="0" />
-                        </div>
                     </td>
                 </tr>
             </table>
@@ -92,7 +93,7 @@
                     <td style="display: flex; align-items: content; justify-content: end;">
                         <select name="bonus" data-type="String">
                         {{#select bonus }}
-                        <option value="0">0</option>
+                        <option value="0">{{ localize "CEL1922.opt.none" }}</option>
                         <option value="1">+1</option>
                         <option value="2">+2</option>
                         <option value="3">+3</option>
@@ -115,7 +116,7 @@
                     <td style="display: flex; align-items: content; justify-content: end;">
                         <select name="malus" data-type="String">
                         {{#select malus }}
-                        <option value="0">0</option>
+                        <option value="0">{{ localize "CEL1922.opt.none" }}</option>
                         <option value="-1">-1</option>
                         <option value="-2">-2</option>
                         <option value="-3">-3</option>

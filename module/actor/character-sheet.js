@@ -101,21 +101,38 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
    */
   async _onClickDieRoll(event) {
 
+
+    
+
+    const element = event.currentTarget;                        // On récupère le clic
+    const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
+    console.log("whatIsIt = ", whatIsIt)
+    const whatIsItTab = whatIsIt.split('-');
+    const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
+    console.log("specialityUsedLibel = "+specialityUsedLibel)
+    const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
+    console.log("skillUsedLibel = ", skillUsedLibel)
+    const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
+    console.log("skillNumUsedLibel = ", skillNumUsedLibel)
+
+    
+    
     let myActor = this.actor;
+
     let template = "";
-    let myTitle = "";
+    let myTitle = game.i18n.localize("CEL1922.ThrowDice");
     let myDialogOptions = {};
     let myNumberOfDice = 2;
-    let mySkill = 0;
-    let myAnomaly = 0;
+    let mySkill = parseInt(skillNumUsedLibel);
+    let myAnomaly = myActor.system.anomaly;
     let myAspect = 0;
     let myAspect_value = 2;
     let myBonus = 2;
     let myMalus = -2;
-    let myWounds = 0;
-    let myDestiny = 0;
-    let mySpleen = 0;
-    let myTypeOfThrow = 0;
+    let myWounds = myActor.system.blessures.lvl;
+    let myDestiny = myActor.system.destin.lvl;
+    let mySpleen = myActor.system.spleen.lvl;
+    let myTypeOfThrow = myActor.system.prefs.typeofthrow.choice;
 
 
     let myResultDialog =  await _skillDiceRollDialog(
@@ -124,14 +141,31 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myWounds, myDestiny, mySpleen, myTypeOfThrow
     );
 
+    if (myResultDialog === null) {
+      return;
+    };
 
-    let myRoll = "2d8";
-    let typeOfThrow = 0;
+
+    myNumberOfDice = parseInt(myResultDialog.numberofdice);
+    mySkill = parseInt(myResultDialog.skill);
+    myAnomaly = parseInt(myResultDialog.anomaly);
+    myAspect = parseInt(myResultDialog.aspect);
+    myAspect_value = parseInt(myResultDialog.aspectvalue);
+    myBonus = parseInt(myResultDialog.bonus);
+    myMalus = parseInt(myResultDialog.malus);
+    myWounds = parseInt(myResultDialog.jaugewounds);
+    myDestiny = parseInt(myResultDialog.jaugedestiny);
+    mySpleen = parseInt(myResultDialog.jaugespleen);
+    myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
+
+
+    let myRoll = myNumberOfDice+"d8";
 
     const r = new Roll(myRoll, this.actor.getRollData());
     await r.evaluate();
     console.log(r);
 
+    let typeOfThrow = myTypeOfThrow;
     var msg;
     switch ( typeOfThrow ) {
       case 0: msg = await r.toMessage({
@@ -150,7 +184,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         rollMode: 'blindroll'                 // Blind GM Roll
-      });As
+      });
       break;
       case 3: msg = await r.toMessage({
         user: game.user.id,
@@ -330,8 +364,7 @@ async function _skillDiceRollDialog(
 
 
   ///////////////////////////////////////////////////////////////
-  let dialogOptions = myDialogOptions;
-  dialogOptions = await _getDataSkill(myActor);
+  const dialogOptions = await _getDataSkill(myActor);
   console.log("dialogOptions = ", dialogOptions)
   ///////////////////////////////////////////////////////////////
   
@@ -351,7 +384,8 @@ async function _skillDiceRollDialog(
 
   };
   console.log("dialogData avant retour func = ", dialogData);
-  const html = await renderTemplate(template, dialogData);
+  const templateData = foundry.utils.mergeObject(dialogData, dialogOptions);
+  const html = await renderTemplate(template, templateData);
 
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {

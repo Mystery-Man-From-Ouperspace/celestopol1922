@@ -47,18 +47,26 @@
         ],
         "woundstypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.anodin", "CEL1922.opt.derisoire", "CEL1922.opt.negligeable", "CEL1922.opt.supperficiel",
+          "CEL1922.opt.anodin", "CEL1922.opt.derisoire", "CEL1922.opt.negligeable", "CEL1922.opt.superficiel",
           "CEL1922.opt.leger", "CEL1922.opt.modere", "CEL1922.opt.grave", "CEL1922.opt.dramatique" 
+        ],
+        "woundsmalus": [
+          0, 0, 0, -1, -1, -2, -2, -3, 999 
+        ],
+        "woundsrecup": [
+          "CEL1922.opt.none",
+          "CEL1922.1 minute", "CEL1922.1 minute", "CEL1922.10 minutes", "CEL1922.10 minutes",
+          "CEL1922.30 minutes", "CEL1922.30 minutes", "CEL1922.1 day", "CEL1922.Out of Fiction"
         ],
         "destinytypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libelle1", "CEL1922.opt.libelle2","CEL1922.opt.libelle3","CEL1922.opt.libelle4",
-          "CEL1922.opt.libelle5","CEL1922.opt.libelle6","CEL1922.opt.libelle7","CEL1922.opt.libelle8"
+          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
+          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
         ],
         "spleentypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libelle1", "CEL1922.opt.libelle2","CEL1922.opt.libelle3","CEL1922.opt.libelle4",
-          "CEL1922.opt.libelle5","CEL1922.opt.libelle6","CEL1922.opt.libelle7","CEL1922.opt.libelle8"
+          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
+          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
         ],
         "anomalytypes": [
           "CEL1922.opt.none",
