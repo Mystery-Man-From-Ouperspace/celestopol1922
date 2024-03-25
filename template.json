@@ -52,13 +52,13 @@
         ],
         "destinytypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libelle 1", "CEL1922.opt.libelle 2","CEL1922.opt.libelle 3","CEL1922.opt.libelle 4",
-          "CEL1922.opt.libelle 5","CEL1922.opt.libelle 6","CEL1922.opt.libelle 7","CEL1922.opt.libelle 8"
+          "CEL1922.opt.libelle1", "CEL1922.opt.libelle2","CEL1922.opt.libelle3","CEL1922.opt.libelle4",
+          "CEL1922.opt.libelle5","CEL1922.opt.libelle6","CEL1922.opt.libelle7","CEL1922.opt.libelle8"
         ],
         "spleentypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libelle 1", "CEL1922.opt.libelle 2","CEL1922.opt.libelle 3","CEL1922.opt.libelle 4",
-          "CEL1922.opt.libelle 5","CEL1922.opt.libelle 6","CEL1922.opt.libelle 7","CEL1922.opt.libelle 8"
+          "CEL1922.opt.libelle1", "CEL1922.opt.libelle2","CEL1922.opt.libelle3","CEL1922.opt.libelle4",
+          "CEL1922.opt.libelle5","CEL1922.opt.libelle6","CEL1922.opt.libelle7","CEL1922.opt.libelle8"
         ],
         "anomalytypes": [
           "CEL1922.opt.none",
