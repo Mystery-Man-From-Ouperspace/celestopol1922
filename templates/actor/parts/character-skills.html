@@ -1,69 +1,62 @@
 <table>
   <tr>
     <th>
-      {{ localize "CEL1922.MOOONSIETHROW" }}
+      <img
+      style="width: 27px"
+      class="click"
+      data-libel-id="randomize-moon-die"
+      src="systems/celestopol1922/images/wheel.png"
+      title="{{ localize 'CEL1922.MoonDieThrow' }}"
+      alt="Die"
+      >
     </th>
-    <td>
-    <img
-    style="width: 27px"
-    class="click"
-    data-libel-id="randomize-randomize"
-    src="systems/celestopol1922/images/wheel.png"
-    title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.MoonDice' }}"
-    alt="Die"
-    >
-    </td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <th>
+     <th RES AME>
       {{ localize "CEL1922.AME" }}
       <img
       style="width: 27px"
       class="click"
       data-libel-id="randomize-randomize"
       src="systems/celestopol1922/images/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ChanceThrow' }}"
+      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ame' }}"
       alt="Die"
       >
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.ame.res" value="{{systemData.skill.ame.res}}" placeholder="0" />
     </th>
-    <th>
+    <th RES CORPS>
       {{ localize "CEL1922.CORPS" }}
       <img
       style="width: 27px"
       class="click"
       data-libel-id="randomize-randomize"
       src="systems/celestopol1922/images/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ChanceThrow' }}"
+      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.corps' }}"
       alt="Die"
       >
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.corps.res" value="{{systemData.skill.corps.res}}" placeholder="0" />
     </th>
-    <th>
+    <th RES COEUR>
       {{ localize "CEL1922.COEUR" }}
       <img
       style="width: 27px"
       class="click"
       data-libel-id="randomize-randomize"
       src="systems/celestopol1922/images/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ChanceThrow' }}"
+      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.coeur' }}"
       alt="Die"
       >
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.coeur.res" value="{{systemData.skill.coeur.res}}" placeholder="0" />
     </th>
-    <th>
+    <th RES ESPRIT>
       {{ localize "CEL1922.ESPRIT" }}
       <img
       style="width: 27px"
       class="click"
       data-libel-id="randomize-randomize"
       src="systems/celestopol1922/images/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ChanceThrow' }}"
+      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.esprit' }}"
       alt="Die"
       >
       {{ localize "CEL1922.RES" }}
@@ -71,6 +64,9 @@
     </th>
   </tr>
   <tr>
+    <td>
+      ●
+    </td>
     <td class="attraction AME">
       <p>{{ localize "CEL1922.Attraction" }}</p>
       <img
@@ -121,6 +117,9 @@
     </td>
   </tr>
   <tr>
+    <td>
+      ●
+    </td>
     <td class="artifice AME">
       <p>{{ localize "CEL1922.Artifice" }}</p>
       <img
@@ -171,6 +170,9 @@
     </td>
   </tr>
   <tr>
+    <td>
+      ●
+    </td>
     <td class="coercition AME">
       <p>{{ localize "CEL1922.Coercition" }}</p>
       <img
@@ -221,6 +223,9 @@
     </td>
   </tr>
   <tr>
+    <td>
+      ●
+    </td>
     <td class="faveur AME">
       <p>{{ localize "CEL1922.Faveur" }}</p>
       <img
@@ -305,7 +310,7 @@
       {{ localize "CEL1922.Dramatique" }}
     </td>
   <tr>
-    <td class="check">
+    <td class="check blessure-1">
       <input
       type="checkbox"
       name="system.blessure.blessure_1.check"
@@ -316,7 +321,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-2">
       <input
       type="checkbox"
       name="system.blessure.blessure_2.check"
@@ -327,7 +332,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-3">
       <input
       type="checkbox"
       name="system.blessure.blessure_3.check"
@@ -338,7 +343,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-4">
       <input
       type="checkbox"
       name="system.blessure.blessure_4.check"
@@ -349,7 +354,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-5">
       <input
       type="checkbox"
       name="system.blessure.blessure_5.check"
@@ -360,7 +365,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-6">
       <input
       type="checkbox"
       name="system.blessure.blessure_6.check"
@@ -371,7 +376,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-7">
       <input
       type="checkbox"
       name="system.blessure.blessure_7.check"
@@ -382,7 +387,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check blessure-8">
       <input
       type="checkbox"
       name="system.blessure.blessure_8.check"
@@ -455,7 +460,7 @@
       {{ localize "CEL1922.Libel" }}
     </td>
   <tr>
-    <td class="check">
+    <td class="check destin-1">
       <input
       type="checkbox"
       name="system.destin.destin_1.check"
@@ -466,7 +471,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-2">
       <input
       type="checkbox"
       name="system.destion.destin_2.check"
@@ -477,7 +482,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-3">
       <input
       type="checkbox"
       name="system.destion.destin_3.check"
@@ -488,7 +493,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-4">
       <input
       type="checkbox"
       name="system.destin.destin_4.check"
@@ -499,7 +504,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-5">
       <input
       type="checkbox"
       name="system.destion.destin_5.check"
@@ -510,7 +515,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-6">
       <input
       type="checkbox"
       name="system.destion.destin_6.check"
@@ -521,7 +526,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-7">
       <input
       type="checkbox"
       name="system.destion.destin_7.check"
@@ -532,7 +537,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check destin-8">
       <input
       type="checkbox"
       name="system.destion.destin_8.check"
@@ -605,7 +610,7 @@
       {{ localize "CEL1922.Libel" }}
     </td>
   <tr>
-    <td class="check">
+    <td class="check spleen-1">
       <input
       type="checkbox"
       name="system.spleen.spleen_1.check"
@@ -616,7 +621,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-2">
       <input
       type="checkbox"
       name="system.spleen.spleen_2.check"
@@ -627,7 +632,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-3">
       <input
       type="checkbox"
       name="system.spleen.spleen_3.check"
@@ -638,7 +643,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-4">
       <input
       type="checkbox"
       name="system.spleen.spleen_4.check"
@@ -649,7 +654,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-5">
       <input
       type="checkbox"
       name="system.spleen.spleen_5.check"
@@ -660,7 +665,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-6">
       <input
       type="checkbox"
       name="system.spleen.spleen_6.check"
@@ -671,7 +676,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-7">
       <input
       type="checkbox"
       name="system.spleen.spleen_7.check"
@@ -682,7 +687,7 @@
       title=""
       />
     </td>
-    <td class="check">
+    <td class="check spleen-8">
       <input
       type="checkbox"
       name="system.spleen.spleen_8.check"

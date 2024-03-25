@@ -91,13 +91,43 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     }
   }
 
-
+  
 
   /**
    * Listen for roll buttons on Clickable d10.
    * @param {MouseEvent} event    The originating left click event
    */
   async _onClickDieRoll(event) {
+
+    let myActor = this.actor;
+    let template = "";
+    let myTitle = "";
+    let myDialogOptions = {};
+    let myNumberOfDice = 2;
+    let mySkill = 0;
+    let myAnomaly = 0;
+    let myAspect = 0;
+    let myAspect_value = 2;
+    let myBonus = 2;
+    let myMalus = -2;
+    let myWounds = 0;
+    let myDestiny = 0;
+    let mySpleen = 0;
+    let myTypeOfThrow = 0;
+
+
+
+    let myResultDialog =  await _skillDiceRollDialog(
+      myActor, template, myTitle, myDialogOptions, myNumberOfDice,
+      mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
+      myWounds, myDestiny, mySpleen, myTypeOfThrow
+    );
+
+
+
+
+
+
 
     let myRoll = "2d8";
     let typeOfThrow = 0;
@@ -292,18 +322,32 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 }
 }
 
-async function _skillDiceRollDialog(myActor, template, myTitle, myDialogOptions, myNumberOfDice, myIsSpecial, myAspect, myBonus, myBonusAuspiciousDice, myTypeOfThrow) {
+async function _skillDiceRollDialog(
+  myActor, template, myTitle, myDialogOptions, myNumberOfDice,
+  mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
+  myWounds, myDestiny, mySpleen, myTypeOfThrow
+) {
   // Render modal dialog
   template = template || 'systems/celestopol1922/templates/form/skill-dice-prompt.html';
   const title = myTitle;
+
   let dialogOptions = myDialogOptions;
-  let isspecial = myIsSpecial;
+  // let dialogOptions = await getDataSkill(myActor);
+  console.log("dialogOptions = ", dialogOptions)
+
   var dialogData = {
-    numberofdice: myNumberOfDice,
+    numberofdice: myNumberOfDice.toString(),
+    skill: mySkill.toString(),
+    anomaly: myAnomaly.toString(),
     aspect: myAspect.toString(),
-    bonusmalus: myBonus,
-    bonusauspiciousdice: myBonusAuspiciousDice.toString(),
+    aspectvalue: myAspect_value,
+    bonus: myBonus.toString(),
+    malus: myMalus.toString(),
+    jaugewounds: myWounds.toString(),
+    jaugedestiny: myDestiny.toString(),
+    jaugespleen: mySpleen.toString(),
     typeofthrow: myTypeOfThrow.toString()
+
   };
   console.log("dialogData avant retour func = ", dialogData);
   const html = await renderTemplate(template, dialogData);
@@ -329,8 +373,8 @@ async function _skillDiceRollDialog(myActor, template, myTitle, myDialogOptions,
     },
     dialogOptions
     ).render(true, {
-      width: 520,
-      height: 375
+      width: 375,
+      height: 540
     });
   });
 
@@ -342,139 +386,121 @@ async function _skillDiceRollDialog(myActor, template, myTitle, myDialogOptions,
 
   function _computeResult(myDialogData, myHtml) {
     console.log("J'exécute bien _computeResult()");
+    myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
+    myDialogData.skill = myHtml.find("select[name='skill']").val();
+    myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
     myDialogData.aspect = myHtml.find("select[name='aspect']").val();
-    myDialogData.bonusmalus = myHtml.find("input[name='bonusmalus']").val();
-    myDialogData.bonusauspiciousdice = myHtml.find("select[name='bonusauspiciousdice']").val();
+    myDialogData.aspect_value = myHtml.find("select[name='aspect_value']").val();
+    myDialogData.bonus = myHtml.find("input[name='bonus']").val();
+    myDialogData.malus = myHtml.find("input[name='malus']").val();
+    myDialogData.jaugewounds = myHtml.find("input[name='jauge_wounds']").val();
+    myDialogData.jaugedestiny = myHtml.find("input[name='jauge_destiny']").val();
+    myDialogData.jauge_spleen = myHtml.find("input[name='jauge_spleen']").val();
     myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
     console.log("myDialogData après traitement et avant retour func = ", myDialogData);
     return myDialogData;
   };
 
-}
 
-async function _skillSpecialDiceRollDialog(myActor, template, myTitle, myDialogOptions, myNumberOfDice, myIsSpecial, myAspect, myBonus, myBonusAuspiciousDice, myTypeOfThrow) {
-  // Render modal dialog
-  template = template || 'systems/celestopol1922/templates/form/skill-special-dice-prompt.html';
-  const title = myTitle;
-  let dialogOptions = myDialogOptions;
-  let isspecial = myIsSpecial;
-  var dialogData = {
-    numberofdice: myNumberOfDice,
-    aspect: myAspect.toString(),
-    bonusmalus: myBonus,
-    bonusauspiciousdice: myBonusAuspiciousDice.toString(),
-    typeofthrow: myTypeOfThrow.toString()
-  };
-  console.log("dialogData avant retour func = ", dialogData);
-  const html = await renderTemplate(template, dialogData);
 
-  // Create the Dialog window
-  let prompt = await new Promise((resolve) => {
-    new Dialog(
-      {
-        title: title,
-        content: html,
-        buttons: {
-          validateBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
-            callback: (html) => resolve( dialogData = _computeResult(dialogData, html) )
-          },
-          cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
-            callback: (html) => (resolve) => { dialogData = null }
-          }
-        },
-        default: 'validateBtn',
-        close: () => resolve( null )
-    },
-    dialogOptions
-    ).render(true, {
-      width: 520,
-      height: 375
-    });
-  });
 
-  if (prompt == null) {
-    dialogData = null;
-  };
 
-  return dialogData;
+  async function getDataSkill(myActor) {
 
-  function _computeResult(myDialogData, myHtml) {
-    console.log("J'exécute bien _computeResult()");
-    myDialogData.aspect = myHtml.find("select[name='aspect']").val();
-    myDialogData.bonusmalus = myHtml.find("input[name='bonusmalus']").val();
-    myDialogData.bonusauspiciousdice = myHtml.find("select[name='bonusauspiciousdice']").val();
-    myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val().toString();
-    console.log("myDialogData après traitement et avant retour func = ", myDialogData);
-    return myDialogData;
-  };
+    const menuSkill = myActor.system.skill.skilltypes;
+    const menuAnomaly = myActor.system.skill.anomalytypes;
+    const menuAspect = myActor.system.skill.aspecttypes;
+    const menuJaugeWounds = myActor.system.skill.woundstypes;
+    const menuJaugeDestiny = myActor.system.skill.destinytypes;
+    const menuJaugeSpleen = myActor.system.skill.spleentypes;
 
-}
+    console.log("menuSkill", menuSkill);
 
-async function _magicDiceRollDialog(myActor, template, myTitle, myDialogOptions, myNumberOfDice, myIsSpecial, myAspectSkill, myBonusMalusSkill, myBonusAuspiciousDice,
-  myAspectSpecial, myRollDifficulty, myBonusMalusSpecial, myTypeOfThrow) {
-  // Render modal dialog
-  template = template || 'systems/celestopol1922/templates/form/magic-dice-prompt.html';
-  const title = myTitle;
-  let dialogOptions = myDialogOptions;
-  let isspecial = myIsSpecial;
-  var dialogData = {
-    numberofdice: myNumberOfDice,
-    aspectskill: myAspectSkill.toString(),
-    bonusmalusskill: myBonusMalusSkill,
-    bonusauspiciousdice: myBonusAuspiciousDice.toString(),
-    aspectspeciality: myAspectSpecial.toString(),
-    rolldifficulty: myRollDifficulty,
-    bonusmalusspeciality: myBonusMalusSpecial,
-    typeofthrow: myTypeOfThrow.toString()
-  };
-  console.log("dialogData avant retour func = ", dialogData);
-  const html = await renderTemplate(template, dialogData);
+    const sizeMenuSkill = menuSkill.length;
+    const sizeMenuAnomaly = menuAnomaly.length;
+    const sizeMenuAspect = menuAspect.length;
+    const sizeMenuJaugeWounds = menuJaugeWounds.length;
+    const sizeMenuJaugeDestiny = menuJaugeDestiny.length;
+    const sizeMenuJaugeSpleen = menuJaugeSpleen.length;
 
-  // Create the Dialog window
-  let prompt = await new Promise((resolve) => {
-    new Dialog(
-      {
-        title: title,
-        content: html,
-        buttons: {
-          validateBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
-            callback: (html) => resolve ( dialogData = _computeResult(dialogData, html) )
-          },
-          cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
-            callback: (html) => resolve( null )
-          }
-        },
-        default: 'validateBtn',
-        close: () => resolve( null )
-      },
-      dialogOptions
-    ).render(true, {
-      width: 520,
-      height: 530
-    });
-  });
+    console.log("sizeMenuSkill", sizeMenuSkill);
 
-  if (prompt == null) {
-    dialogData = null;
-  };
 
-  return dialogData;
+    let mySkill = {};
+    let myAnomaly = {};
+    let myAspect = {};
+    let myJauge_Wounds = {};
+    let myJauge_Destiny = {};
+    let myJauge_Spleen = {};
 
-  function _computeResult(myDialogData, myHtml) {
-    console.log("J'exécute bien _computeResult()");
-    myDialogData.aspectskill = myHtml.find("select[name='aspectskill']").val();
-    myDialogData.bonusmalusskill = myHtml.find("input[name='bonusmalusskill']").val();
-    myDialogData.bonusauspiciousdice = myHtml.find("select[name='bonusauspiciousdice']").val();
-    myDialogData.aspectspeciality = myHtml.find("select[name='aspectspeciality']").val();
-    myDialogData.rolldifficulty = myHtml.find("input[name='rolldifficulty']").val();
-    myDialogData.bonusmalusspeciality = myHtml.find("input[name='bonusmalusspeciality']").val();
-    myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
-    console.log("myDialogData après traitement et avant retour func = ", myDialogData);
-    return myDialogData;
-  };
+    function skill(id, label)
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuSkill; i++) {
+      mySkill[i.toString()] = new skill(i.toString(), menuSkill[i]);
+    };
+
+    console.log("mySkill", mySkill);
+
+
+   function anomaly(id, label )
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuAnomaly; i++) {
+      myAnomaly[i.toString()] = new anomaly(i.toString(), menuAnomaly[i]);
+    };
+
+    function aspect(id, label)
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuAspect; i++) {
+      myAspect[i.toString()] = new aspect(i.toString(), menuAspect[i]);
+    };
+
+    function jauge_wounds(id, label)
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuJaugeWounds; i++) {
+      myJauge_Wounds[i.toString()] = new jauge_wounds(i.toString(), menuJaugeWounds[i]);
+    };
+
+    function jauge_destiny(id, label)
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuJaugeDestiny; i++) {
+      myJauge_Destiny[i.toString()] = new jauge_destiny(i.toString(), menuJaugeDestiny[i]);
+    };
+
+    function jauge_spleen(id, label)
+    {
+      this.id = id;
+      this.label = label;
+    };
+    for (let i=0; i<sizeMenuJaugeSpleen; i++) {
+      myJauge_Spleen[i.toString()] = new jauge_spleen(i.toString(), menuJaugeSpleen[i]);
+    };
+
+    const context = await {
+    skillchoices : mySkill,
+    anomalychoices : myAnomaly,
+    aspectchoices: myAspect,
+    jaugewoundschoices: myJauge_Wounds,
+    jaugedestinychoices: myJauge_Destiny,
+    jaugespleenchoices: myJauge_Spleen
+    };
+
+    console.log("context = ", context)
+    return context;
+  }
 
 }

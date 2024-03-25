@@ -27,7 +27,7 @@ export class CEL1922Actor extends Actor {
       this.system.hei.calcul = this.system.aptitudes.spiritual.value * 4;
     }
     if (this.type === "character") {
-      this.system.initiative = this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;
+      this.system.initiative = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;
     }
   }
 }

@@ -35,6 +35,41 @@
         }
       },
       "skill": {
+        "skilltypes": [
+          "CEL1922.opt.ame", "CEL1922.opt.attraction", "CEL1922.opt.artifice", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
+          "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.prouesse", "CEL1922.opt.mobilite",
+          "CEL1922.opt.coeur", "CEL1922.opt.appreciation", "CEL1922.opt.arts", "CEL1922.opt.inspiration", "CEL1922.opt.traque",
+          "CEL1922.opt.esprit", "CEL1922.opt.instruction", "CEL1922.opt.mtechnologique", "CEL1922.opt.raisonnement", "CEL1922.opt.traitement"
+        ],
+        "moondicetypes": [
+          "CEL1922.opt.nouvellelune", "CEL1922.opt.premiercroissant", "CEL1922.opt.premierquartier", "CEL1922.opt.lunegibbeuse",
+          "CEL1922.opt.lunevoutee", "CEL1922.opt.derniercroissant", "CEL1922.opt.dernierquartier", "CEL1922.opt.pleinelune"
+        ],
+        "woundstypes": [
+          "CEL1922.opt.none",
+          "CEL1922.opt.anodin", "CEL1922.opt.derisoire", "CEL1922.opt.negligeable", "CEL1922.opt.supperficiel",
+          "CEL1922.opt.leger", "CEL1922.opt.modere", "CEL1922.opt.grave", "CEL1922.opt.dramatique" 
+        ],
+        "destinytypes": [
+          "CEL1922.opt.none",
+          "CEL1922.opt.libelle 1", "CEL1922.opt.libelle 2","CEL1922.opt.libelle 3","CEL1922.opt.libelle 4",
+          "CEL1922.opt.libelle 5","CEL1922.opt.libelle 6","CEL1922.opt.libelle 7","CEL1922.opt.libelle 8"
+        ],
+        "spleentypes": [
+          "CEL1922.opt.none",
+          "CEL1922.opt.libelle 1", "CEL1922.opt.libelle 2","CEL1922.opt.libelle 3","CEL1922.opt.libelle 4",
+          "CEL1922.opt.libelle 5","CEL1922.opt.libelle 6","CEL1922.opt.libelle 7","CEL1922.opt.libelle 8"
+        ],
+        "anomalytypes": [
+          "CEL1922.opt.none",
+          "CEL1922.opt.entropie", "CEL1922.opt.communicationaveclesmorts", "CEL1922.opt.illusion", "CEL1922.opt.suggestion",
+          "CEL1922.opt.tarotdivinatoire", "CEL1922.opt.telekinesie", "CEL1922.opt.telepathie", "CEL1922.opt.voyageastral"
+        ],
+        "aspecttypes": [
+          "CEL1922.opt.none",
+          "CEL1922.opt.aspect1", "CEL1922.opt.aspect2", "CEL1922.opt.aspect3", "CEL1922.opt.aspect4",
+          "CEL1922.opt.aspect5", "CEL1922.opt.aspect6", "CEL1922.opt.aspect7", "CEL1922.opt.aspect8"
+        ],
         "ame": {
           "res": 0,
           "attraction": {

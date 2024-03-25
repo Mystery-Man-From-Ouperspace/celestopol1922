@@ -84,6 +84,41 @@
 
   "CEL1922.RES": "RÉS +",
 
+  "CEL1922.opt.ame": "Âme",
+  "CEL1922.opt.attraction" : "● Attraction",
+  "CEL1922.opt.artifice" : "● Artifice",
+  "CEL1922.opt.coercition" : "● Coercition",
+  "CEL1922.opt.faveur": "● Faveur",
+  "CEL1922.opt.corps": "Corps",
+  "CEL1922.opt.echauffouree": "● Échauffourée",
+  "CEL1922.opt.effacement": "● Effacement",
+  "CEL1922.opt.prouesse": "● Prouesse",
+  "CEL1922.opt.mobilite": "● Mobilité",
+  "CEL1922.opt.coeur": "Cœur",
+  "CEL1922.opt.appreciation": "● Appréciation",
+  "CEL1922.opt.arts": "● Arts",
+  "CEL1922.opt.inspiration": "● Inspiratiobn",
+  "CEL1922.opt.traque": "● Traque",
+  "CEL1922.opt.esprit": "Esprit",
+  "CEL1922.opt.instruction": "● Instruction",
+  "CEL1922.opt.mtechnologique": "● Miracle technologiqe",
+  "CEL1922.opt.raisonnement": "● Raisonnement",
+  "CEL1922.opt.traitement": "● Traitement",
+
+  "CEL1922.opt.entropie": "Entropie",
+  "CEL1922.opt.communicationaveclesmorts": "Communication avec les morts",
+  "CEL1922.opt.illusion": "Illusion",
+  "CEL1922.opt.suggestion": "Suggestion",
+  "CEL1922.opt.tarotdivinatoire": "Tarot divinatoire",
+  "CEL1922.opt.telekinesie": "Télékinésie",
+  "CEL1922.opt.telepathie": "Télépathie",
+  "CEL1922.opt.voyageastral": "Voyage astral",
+
+
+  "CEL1922.opt.none": "—",
+
+
+
   "CEL1922.Jauge de Blessures": "Jauge de Blessures",
   "CEL1922.Jauge de Destin": "Jauge de Destin",
   "CEL1922.Jauge de Spleen": "Jauge de Spleen",
@@ -111,9 +146,11 @@
   "CEL1922.Initiative": "Initiative",
 
   "CEL1922.Die": "Cliquez ici pour jeter les dés pour ",
-  "CEL1922.DieSP": "Cliquez ici pour jeter les dés pour la spécialité ",
-  "CEL1922.DieDM": "Cliquez ici pour jeter les dés pour un de ces domaines",
-  "CEL1922.Debt": "Cochez si vous avec contracté une dette en ",
+  "CEL1922.MoonDieThrow": "Cliquez ici pour jeter un dé de la Lune",
+  "CEL1922.ame": "Âme",
+  "CEL1922.corps": "Corps",
+  "CEL1922.coeur": "Cœur",
+  "CEL1922.esprit": "Esprit",
 
   "CEL1922.SkillPromptName": "",
   "CEL1922.MagicPromptName": "",
