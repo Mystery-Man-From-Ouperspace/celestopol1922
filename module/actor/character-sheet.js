@@ -330,7 +330,8 @@ async function _skillDiceRollDialog(
 
 
   ///////////////////////////////////////////////////////////////
-  let dialogOptions = myDialogOptions || await _getDataSkill(myActor);
+  let dialogOptions = myDialogOptions;
+  dialogOptions = await _getDataSkill(myActor);
   console.log("dialogOptions = ", dialogOptions)
   ///////////////////////////////////////////////////////////////
   
