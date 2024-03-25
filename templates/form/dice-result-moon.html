@@ -1,0 +1,122 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+
+    </header>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Frame --}}
+        <div class="frame">
+
+            <table hidden style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <span class="text" style="font-size: 1px;" type="text" name="{{ theresult }}" value="{{ theresult }}"></span>
+                    </td>
+                </tr>
+            </table>
+            <table style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td style="text-align: center;">
+                        {{moonname}}
+                    </td>
+                </tr>
+            </table>
+
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        {{#if (eq theresult 1)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/1_nouvelle_lune.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 2)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/2_premier_croissant.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 3)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/3_premier_quartier.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 4)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/4_lune_gibbeuse.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 5)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/5_lune_voutee.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 6)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/6_dernier_croissant.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 7)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/7_dernier_quartier.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if (eq theresult 8)}}
+                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                            <img
+                            style="width: 75px; border-width: 0;"
+                            src="systems/celestopol1922/images/8_pleine_lune.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                </tr>
+            </table>
+
+        </div>	
+    </section>
+</form>

@@ -321,7 +321,7 @@
   "CEL1922.Error16": "Unable to proceed: you can't possess any Speciality in this Magical Skill which score is less than 1.",
 
   "CEL1922.Preferences": "Preferences for this actor",
-  "CEL1922.TypeOfThrowCheck": "Always ask before making a throw",
+  "CEL1922.TypeOfThrowCheck": "Always ask for a dice prompt before making a throw",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type of Throwing for this time: Visible by…",
   "CEL1922.TypeOfThrowTitle": "Modify Type of Throw?",

@@ -36,7 +36,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     super.activateListeners(html);
 
     html.find(".click").click(this._onClickDieRoll.bind(this));
-    html.find(".click2").click(this._onClickDieRoll.bind(this));
     html.find(".click-prefs").click(this._onClickPrefs.bind(this));
   }
 
@@ -79,7 +78,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         },
         dialogOptions
       ).render(true, {
-        width: 520,
+        width: 620,
         height: 150
       });
     });
@@ -115,9 +114,150 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
     console.log("skillNumUsedLibel = ", skillNumUsedLibel)
 
-    
-    
+
     let myActor = this.actor;
+    let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
+    let myPromptPresent = await myActor.system.prefs.typeofthrow.check;
+    let myRoll;
+    var msg;
+
+
+    if (specialityUsedLibel == "moon") {
+      myRoll = "1d8";
+      const rMoon = new Roll(myRoll, this.actor.getRollData());
+      await rMoon.evaluate();
+      console.log(rMoon);
+  
+      switch ( myTypeOfThrow ) {
+        case 0: msg = await rMoon.toMessage({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rollMode: 'roll'                      // Public Roll
+          });
+        break;
+        case 1: msg = await rMoon.toMessage({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rollMode: 'gmroll'                    // Private Roll
+          });
+        break;
+        case 2: msg = await rMoon.toMessage({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rollMode: 'blindroll'                 // Blind GM Roll
+        });
+        break;
+        case 3: msg = await rMoon.toMessage({
+          user: game.user.id,
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          rollMode: 'selfroll'                      // Self Roll
+        });
+        break;
+        default: console.log("C'est bizarre !");
+      };
+  
+      // Smart Message
+      const myMoonName = "Moon Name";
+      const smartMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-moon.html';
+      const smartMoonData =
+      {
+        moonname: game.i18n.localize(myActor.system.skill.moondicetypes[rMoon._total - 1]),
+        theresult: rMoon._total,
+      };
+      console.log("smartMoonData avant retour func = ", smartMoonData);
+      const smartHtml = await renderTemplate(smartMoonTemplate, smartMoonData);
+    
+      switch ( myTypeOfThrow ) {
+        case 0:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: smartHtml,
+            rollMode: 'roll'                          // Public Roll
+          });
+  
+        break;
+        case 1:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content:smartHtml,
+            rollMode: 'gmroll'                        // Private Roll
+          });
+  
+        break;
+        case 2:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: smartHtml,
+            rollMode: 'blindroll'                       // Blind GM Roll
+          });
+  
+        break;
+        case 3:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: smartHtml,
+            rollMode: 'selfroll'                        // Self Roll
+          });
+  
+        break;
+        default: console.log("C'est bizarre !");
+      };
+  
+      switch ( myTypeOfThrow ) {
+        case 0:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: rMoon,
+            rollMode: 'roll'                          // Public Roll
+          });
+  
+        break;
+        case 1:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: rMoon,
+            rollMode: 'gmroll'                        // Private Roll
+          });
+  
+        break;
+        case 2:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: rMoon,
+            rollMode: 'blindroll'                       // Blind GM Roll
+          });
+        break;
+        case 3:
+          ChatMessage.create({
+            user: game.user.id,
+            // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: rMoon,
+            rollMode: 'selfroll'                        // Self Roll
+          });
+  
+        break;
+        default: console.log("C'est bizarre !");
+      };
+  
+      return;
+    }
+    
+
 
     let template = "";
     let myTitle = game.i18n.localize("CEL1922.ThrowDice");
@@ -132,42 +272,42 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myWounds = myActor.system.blessures.lvl;
     let myDestiny = myActor.system.destin.lvl;
     let mySpleen = myActor.system.spleen.lvl;
-    let myTypeOfThrow = myActor.system.prefs.typeofthrow.choice;
 
 
-    let myResultDialog =  await _skillDiceRollDialog(
-      myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-      mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
-      myWounds, myDestiny, mySpleen, myTypeOfThrow
-    );
+    if (myPromptPresent === true) {
 
-    if (myResultDialog === null) {
-      return;
+      let myResultDialog =  await _skillDiceRollDialog(
+        myActor, template, myTitle, myDialogOptions, myNumberOfDice,
+        mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
+        myWounds, myDestiny, mySpleen, myTypeOfThrow
+      );
+
+      if (myResultDialog === null) {
+        return;
+      };
+
+      myNumberOfDice = parseInt(myResultDialog.numberofdice);
+      mySkill = parseInt(myResultDialog.skill);
+      myAnomaly = parseInt(myResultDialog.anomaly);
+      myAspect = parseInt(myResultDialog.aspect);
+      myAspect_value = parseInt(myResultDialog.aspectvalue);
+      myBonus = parseInt(myResultDialog.bonus);
+      myMalus = parseInt(myResultDialog.malus);
+      myWounds = parseInt(myResultDialog.jaugewounds);
+      myDestiny = parseInt(myResultDialog.jaugedestiny);
+      mySpleen = parseInt(myResultDialog.jaugespleen);
+      myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
+
     };
 
 
-    myNumberOfDice = parseInt(myResultDialog.numberofdice);
-    mySkill = parseInt(myResultDialog.skill);
-    myAnomaly = parseInt(myResultDialog.anomaly);
-    myAspect = parseInt(myResultDialog.aspect);
-    myAspect_value = parseInt(myResultDialog.aspectvalue);
-    myBonus = parseInt(myResultDialog.bonus);
-    myMalus = parseInt(myResultDialog.malus);
-    myWounds = parseInt(myResultDialog.jaugewounds);
-    myDestiny = parseInt(myResultDialog.jaugedestiny);
-    mySpleen = parseInt(myResultDialog.jaugespleen);
-    myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
-
-
-    let myRoll = myNumberOfDice+"d8";
+    myRoll = myNumberOfDice+"d8";
 
     const r = new Roll(myRoll, this.actor.getRollData());
     await r.evaluate();
     console.log(r);
 
-    let typeOfThrow = myTypeOfThrow;
-    var msg;
-    switch ( typeOfThrow ) {
+    switch ( myTypeOfThrow ) {
       case 0: msg = await r.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -198,11 +338,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     // Smart Message
     const smartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const smartData = {
+      numberofdice: myNumberOfDice
     }
     console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
   
-    switch ( typeOfThrow ) {
+    switch ( myTypeOfThrow ) {
       case 0:
         ChatMessage.create({
           user: game.user.id,
@@ -246,7 +387,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       default: console.log("C'est bizarre !");
     };
 
-    switch ( typeOfThrow ) {
+    switch ( myTypeOfThrow ) {
       case 0:
         ChatMessage.create({
           user: game.user.id,

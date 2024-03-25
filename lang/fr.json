@@ -158,6 +158,17 @@
   "CEL1922.opt.aspect8": "Aspect 8",
 
 
+  "CEL1922.opt.nouvellelune": "Nouvelle Lune",
+  "CEL1922.opt.premiercroissant": "Premier Croissant",
+  "CEL1922.opt.premierquartier": "Premier Quartier",
+  "CEL1922.opt.lunegibbeuse": "Lune Gibbeuse",
+  "CEL1922.opt.lunevoutee": "Lune Voûtée",
+  "CEL1922.opt.derniercroissant": "Dernier Croissant",
+  "CEL1922.opt.dernierquartier": "Dernier Quartier",
+  "CEL1922.opt.pleinelune": "Pleine Lune",
+
+
+
 
   "CEL1922.numberofdice": "Nbre de Dés",
   "CEL1922.anomaly": "Anomalie",
@@ -239,7 +250,7 @@
   "CEL1922.Error16": "Impossible de poursuivre : vous ne pouvez pas posséder de Spécialité dans cette Compétence de Magie dont le score est inférieur à 1.",
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours demander avant d'effectuer un lancer",
+  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt avant d'effectuer un lancer",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Modifier le type de jet ?",

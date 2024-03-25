@@ -322,7 +322,7 @@
   "CEL1922.Error16": "No se puede continuar: no puede poseer ninguna especialidad en esta habilidad mágica cuya puntuación sea inferior a 1.",
 
   "CEL1922.Preferences": "Preferencias para este actor",
-  "CEL1922.TypeOfThrowCheck": "Preguntar siempre antes de realizar una tirada",
+  "CEL1922.TypeOfThrowCheck": "Preguntar siempre una indicación de dados antes de tirar-los",
 
   "CEL1922.TypeOfThrow4ThisTime": "Tipo de tirada por esta vez: visible por…",
   "CEL1922.TypeOfThrowTitle": "¿Modificar el tipo de tirada?",
