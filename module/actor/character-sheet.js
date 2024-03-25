@@ -432,61 +432,37 @@ async function _skillDiceRollDialog(
     let myJauge_Destiny = {};
     let myJauge_Spleen = {};
 
-    function skill(id, label)
+    function myObject(id, label)
     {
       this.id = id;
       this.label = label;
     };
+
+
     for (let i=0; i<sizeMenuSkill; i++) {
-      mySkill[i.toString()] = new skill(i.toString(), menuSkill[i]);
+      mySkill[i.toString()] = new myObject(i.toString(), menuSkill[i]);
     };
 
     console.log("mySkill", mySkill);
 
-
-   function anomaly(id, label )
-    {
-      this.id = id;
-      this.label = label;
-    };
     for (let i=0; i<sizeMenuAnomaly; i++) {
-      myAnomaly[i.toString()] = new anomaly(i.toString(), menuAnomaly[i]);
+      myAnomaly[i.toString()] = new myObject(i.toString(), menuAnomaly[i]);
     };
 
-    function aspect(id, label)
-    {
-      this.id = id;
-      this.label = label;
-    };
     for (let i=0; i<sizeMenuAspect; i++) {
-      myAspect[i.toString()] = new aspect(i.toString(), menuAspect[i]);
+      myAspect[i.toString()] = new myObject(i.toString(), menuAspect[i]);
     };
 
-    function jauge_wounds(id, label)
-    {
-      this.id = id;
-      this.label = label;
-    };
     for (let i=0; i<sizeMenuJaugeWounds; i++) {
-      myJauge_Wounds[i.toString()] = new jauge_wounds(i.toString(), menuJaugeWounds[i]);
+      myJauge_Wounds[i.toString()] = new myObject(i.toString(), menuJaugeWounds[i]);
     };
 
-    function jauge_destiny(id, label)
-    {
-      this.id = id;
-      this.label = label;
-    };
     for (let i=0; i<sizeMenuJaugeDestiny; i++) {
-      myJauge_Destiny[i.toString()] = new jauge_destiny(i.toString(), menuJaugeDestiny[i]);
+      myJauge_Destiny[i.toString()] = new myObject(i.toString(), menuJaugeDestiny[i]);
     };
 
-    function jauge_spleen(id, label)
-    {
-      this.id = id;
-      this.label = label;
-    };
     for (let i=0; i<sizeMenuJaugeSpleen; i++) {
-      myJauge_Spleen[i.toString()] = new jauge_spleen(i.toString(), menuJaugeSpleen[i]);
+      myJauge_Spleen[i.toString()] = new myObject(i.toString(), menuJaugeSpleen[i]);
     };
 
     const context = {
