@@ -63,7 +63,7 @@
     "minimum": "11",
     "verified": "11"
   },
-  "background": "",
+  "background": "/systems/celestopol1922/images/background/celestopol_game_banniere.webp",
   "gridDistance": 5,
   "gridUnits": "m",
   "primaryTokenAttribute": "threetreasures.heiyang",

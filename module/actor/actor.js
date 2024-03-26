@@ -30,4 +30,5 @@ export class CEL1922Actor extends Actor {
       this.system.initiative = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;
     }
   }
+
 }
