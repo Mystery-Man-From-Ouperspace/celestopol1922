@@ -6,8 +6,8 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
-            <label><b>{{localize "CEL1922.TypeOfItem"}}</b></label>
             <div class="resource">
+                <label><b>{{localize "CEL1922.TypeOfItem"}}</b></label>
                 <select name="system.subtype">
                     {{selectOptions subtypes selected=systemData.subtype labelAttr="label"}}
                 </select>

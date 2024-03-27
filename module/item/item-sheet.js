@@ -9,7 +9,7 @@ export class CEL1922ItemSheet extends ItemSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["celestopol1922", "sheet", "item"],
       template: "systems/celestopol1922/templates/item/item-sheet.html",
-      width: 520,
+      width: 450,
       height: 520,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description-technique" }],
       scrollY: [".description-technique", ".description-narratif", ".attributes", ".notes"],

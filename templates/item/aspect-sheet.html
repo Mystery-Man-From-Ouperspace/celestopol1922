@@ -6,10 +6,15 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
-            <label><b>{{localize "CEL1922.TypeOfItem"}}</b></label>
-            <div class="resource">
-                <select name="system.subtype">
-                    {{selectOptions subtypes selected=systemData.subtype labelAttr="label"}}
+            <div class="value">
+                <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
+                <select name="system.value">
+                {{#select systemData.value }}
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                {{/select}}
                 </select>
             </div>
             <div class="resource">
@@ -42,60 +47,48 @@
         </div>
 
 
+
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
-			<div class="quantity">
-				<label><b>{{localize "CEL1922.Quantity"}}</b></label>
-				<input class="input" type="number" name="system.quantity" value="{{systemData.quantity}}" />
-			</div>
-			<div class="weight">
-				<label><b>{{localize "CEL1922.Weight"}}</b></label>
-				<input class="input" type="number" name="system.weight" value="{{systemData.weight}}" />
-			</div>
-
-
-            {{#if isArmor}}
-			<div class="protection">
-				<label><b>{{localize "CEL1922.Protection"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Protection' }}" name="system.protection" value="{{systemData.protection}}" />
-			</div>
-            {{/if}}
-
-
-            {{#if isVehicle}}
-            <div class="crew">
-				<label><b>{{localize "CEL1922.Crew"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Crew' }}" name="system.crew" value="{{systemData.crew}}" />
-			</div>
-            <div class="speed">
-				<label><b>{{localize "CEL1922.Speed"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Speed' }}" name="system.speed" value="{{systemData.speed}}" />
-			</div>
-			<div class="protection">
-				<label><b>{{localize "CEL1922.Protection"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Protection' }}" name="system.protection" value="{{systemData.protection}}" />
-			</div>
-            <div class="damage">
-				<label><b>{{localize "CEL1922.Damage"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Damage' }}" name="system.damage" value="{{systemData.damage}}" />
-			</div>
-			<div class="range">
-				<label><b>{{localize "CEL1922.Range"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Range' }}" name="system.range" value="{{systemData.range}}" />
-			</div>
-            {{/if}}
-
-
-            {{#if isWeapon}}
-			<div class="damage">
-				<label><b>{{localize "CEL1922.Damage"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Damage' }}" name="system.damage" value="{{systemData.damage}}" />
-			</div>
-			<div class="range">
-				<label><b>{{localize "CEL1922.Range"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Range' }}" name="system.range" value="{{systemData.range}}" />
-			</div>
-            {{/if}}            
+            <div>
+                <table>
+                    <tr>
+                        <th class="libel-skills">
+                            {{localize "CEL1922.concerned skill"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.bonus"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.malus"}}
+                        </th>
+                    </tr>
+                    {{#each systemData.scores as |score key|}}
+                    <tr>
+                        <td>
+                            <label><b>{{localize score.label}}</b></label>
+                        </td>
+                        <td class="bonus">
+                            <input class="input" type="number" name="system.{{@key}}.bonus_malus.bonus" value="{{score.bonus_malus.bonus}}" />
+                        </td>
+                        <td class="malus">
+                            <input class="input" type="number" name="system.{{@key}}.bonus_malus.malus" value="{{score.bonus_malus.malus}}" />
+                        </td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <th>
+                            {{localize "CEL1922.concerned skill"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.bonus"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.malus"}}
+                        </th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
 		

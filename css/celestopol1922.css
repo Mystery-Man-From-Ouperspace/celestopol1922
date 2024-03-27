@@ -642,17 +642,15 @@ text-align: left;
 }
 
 .celestopol1922.sheet.item,
-.celestopol1922.sheet.kungfu,
-.celestopol1922.sheet.spell,
-.celestopol1922.sheet.supernatural {
+.celestopol1922.sheet.anomaly,
+.celestopol1922.sheet.aspect {
   min-width: 460px;
   min-height: 400px;
 }
 
 .celestopol1922.sheet.item .sheet-body,
-.celestopol1922.sheet.kungfu .sheet-body,
-.celestopol1922.sheet.spell .sheet-body,
-.celestopol1922.sheet.supernatural .sheet-body {
+.celestopol1922.sheet.anomaly .sheet-body,
+.celestopol1922.sheet.aspect .sheet-body {
   overflow-y: auto;
 }
 
@@ -918,9 +916,13 @@ text-align: left;
 }
 
 
-/* concerne l'item kung-fu */
+/* concerne les items aspect et anomaly */
 
-.celestopol1922 .sheet-header .kungfu .libel {
+.celestopol1922 .sheet-body .attributes .libel-skills {
+  width: 75%;
+}
+.celestopol1922 .sheet-body .attributes .bonus,
+.celestopol1922 .sheet-body .attributes .malus {
   text-align: center;
 }
 

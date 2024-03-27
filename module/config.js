@@ -1,6 +1,10 @@
 export const CEL1922 = {};
 
 CEL1922.SUBTYPES = {
+  other: {
+    id: "other",
+    label: "CEL1922.Other",
+  },
   weapon: {
     id: "weapon",
     label: "CEL1922.Weapon",
@@ -12,9 +16,5 @@ CEL1922.SUBTYPES = {
   vehicle: {
     id: "vehicle",
     label: "CEL1922.Vehicle",
-  },
-  other: {
-    id: "other",
-    label: "CEL1922.Other",
   },
 };

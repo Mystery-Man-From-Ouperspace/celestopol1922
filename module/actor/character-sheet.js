@@ -727,7 +727,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     let specialityLibel = game.i18n.localize(myActor.system.skill.skilltypes[mySkill]);
     let specialityTab = specialityLibel.split(' ');
-    if (specialityTab[0] == "·") {
+    if (specialityTab[0] == "⌞") {
       specialityLibel = specialityLibel.substring(2);
     }
 

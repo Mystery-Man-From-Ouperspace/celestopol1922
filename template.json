@@ -313,7 +313,172 @@
   "Item": {
     "types": ["item", "anomaly", "aspect"],
     "htmlFields": ["technique", "narratif", "notes"],
-
+    "templates":{
+      "myscores": {
+        "scores": {
+          "ame": {
+            "indice": 0,
+            "label": "CEL1922.opt.ame",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "attraction": {
+            "indice": 1,
+            "label": "CEL1922.opt.attraction",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "artifice": {
+            "indice": 2,
+            "label": "CEL1922.opt.artifice",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "coercition": {
+            "indice": 3,
+            "label": "CEL1922.opt.coercition",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "faveur": {
+            "indice": 4,
+            "label": "CEL1922.opt.faveur",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "corps": {
+            "indice": 5,
+            "label": "CEL1922.opt.corps",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "echauffouree": {
+            "indice": 6,
+            "label": "CEL1922.opt.echauffouree",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "effacement": {
+            "indice": 7,
+            "label": "CEL1922.opt.effacement",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "prouesse": {
+            "indice": 8,
+            "label": "CEL1922.opt.prouesse",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "mobilite": {
+            "indice": 9,
+            "label": "CEL1922.opt.mobilite",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "coeur": {
+            "indice": 10,
+            "label": "CEL1922.opt.coeur",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "appreciation": {
+            "indice": 11,
+            "label": "CEL1922.opt.appreciation",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "arts": {
+            "indice": 12,
+            "label": "CEL1922.opt.arts",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "inspiration": {
+            "indice": 13,
+            "label": "CEL1922.opt.inspiration",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "traque": {
+            "indice": 14,
+            "label": "CEL1922.opt.traque",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "esprit": {
+            "indice": 15,
+            "label": "CEL1922.opt.esprit",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "instruction": {
+            "indice": 16,
+            "label": "CEL1922.opt.instruction",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "mtechnologique": {
+            "indice": 17,
+            "label": "CEL1922.opt.mtechnologique",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "raisonnement": {
+            "indice": 18,
+            "label": "CEL1922.opt.raisonnement",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          },
+          "traitement": {
+            "indice": 19,
+            "label": "CEL1922.opt.traitement",
+            "bonus_malus": {
+              "bonus": 0,
+              "malus": 0
+            }
+          }
+        }
+      }
+    },
     "item": {
       "subtype": "",
       "reference": "",
@@ -330,32 +495,22 @@
     },
 
     "anomaly": {
+      "value": "0",
       "subtype": "",
       "reference": "",
       "technique": "",
       "narratif": "",
-      "quantity": 1,
-      "weight": 0,
-      "protection": "",
-      "damage": "",
-      "range": "",
-      "speed": "",
-      "crew": "",
+      "templates": ["myscores"],
       "notes": ""
     },
 
     "aspect": {
+      "value": "0",
       "subtype": "",
       "reference": "",
       "technique": "",
       "narratif": "",
-      "quantity": 1,
-      "weight": 0,
-      "protection": "",
-      "damage": "",
-      "range": "",
-      "speed": "",
-      "crew": "",
+      "templates": ["myscores"],
       "notes": ""
     }
   }
