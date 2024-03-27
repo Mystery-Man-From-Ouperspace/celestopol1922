@@ -244,7 +244,9 @@
   "CEL1922.AspectValue": "Valeur d′Aspect",
   "CEL1922.AnomalyValue": "Valeur d′Anomalie",
 
-  "CEL1922.concerned skill": "Spécialités affectées",
+  "CEL1922.concerned skill": "▾ Spécialités affectées ▾",
+  "CEL1922.concerned skill UP": "▴ Spécialités affectées ▴",
+
 
   "CEL1922.Error0": "Impossible de poursuivre : le nombre total de vos dés à lancer est inférieur à 1.",
   "CEL1922.Error1": "Impossible de poursuivre : vous ne possédez pas cette Compétence.",
