@@ -1,3 +1,4 @@
+import { CEL1922 } from "../config.js";
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -10,10 +11,11 @@ export class CEL1922AspectSheet extends ItemSheet {
       template: "systems/celestopol1922/templates/item/aspect-sheet.html",
       width: 620,
       height: 530,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
-      scrollY: [".description", ".data", ".components", ".effects", ".examples", ".notes"],
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description-technique" }],
+      scrollY: [".description-technique", ".description-narratif", ".attributes", ".notes"],
     });
   }
+
 
   /* -------------------------------------------- */
 
@@ -21,19 +23,16 @@ export class CEL1922AspectSheet extends ItemSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.systemData = this.item.system;
-    context.spellDescriptionHTML = await TextEditor.enrichHTML(this.item.system.description, {
+    context.subtypes = CEL1922.SUBTYPES
+    context.isWeapon = this.item.isWeapon;
+    context.isArmor = this.item.isArmor;
+    context.isVehicle = this.item.isVehicle;
+    context.isOther = this.item.isOther;
+    context.techniqueHTML = await TextEditor.enrichHTML(this.item.system.technique, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.componentsDescriptionHTML = await TextEditor.enrichHTML(this.item.system.components, {
-      secrets: this.document.isOwner,
-      async: true,
-    });
-    context.effectsDescriptionHTML = await TextEditor.enrichHTML(this.item.system.effects, {
-      secrets: this.document.isOwner,
-      async: true,
-    });
-    context.examplesDescriptionHTML = await TextEditor.enrichHTML(this.item.system.examples, {
+    context.narratifHTML = await TextEditor.enrichHTML(this.item.system.narratif, {
       secrets: this.document.isOwner,
       async: true,
     });

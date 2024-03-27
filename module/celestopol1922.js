@@ -11,7 +11,7 @@ import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
 
 import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
-import { registerHandlebarsHelpers } from "./helpers.js";
+// import { registerHandlebarsHelpers } from "./helpers.js";
 
 
 /* -------------------------------------------- */
@@ -46,7 +46,7 @@ Hooks.once("init", async function () {
   await preloadHandlebarsTemplates();
 
   // Register Handlebars Helpers
-  registerHandlebarsHelpers();
+  // registerHandlebarsHelpers();
 
   // Modify Runtime configuration settings / Added by MMFO
   await modifyConfigurationSettings();

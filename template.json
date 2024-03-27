@@ -311,13 +311,14 @@
   },
 
   "Item": {
-    "types": ["item", "kungfu", "spell", "supernatural"],
-    "htmlFields": ["description", "style", "technique", "components", "effects", "examples"],
+    "types": ["item", "anomaly", "aspect"],
+    "htmlFields": ["technique", "narratif", "notes"],
 
     "item": {
       "subtype": "",
       "reference": "",
-      "description": "",
+      "technique": "",
+      "narratif": "",
       "quantity": 1,
       "weight": 0,
       "protection": "",
@@ -328,55 +329,33 @@
       "notes": ""
     },
 
-    "kungfu": {
+    "anomaly": {
+      "subtype": "",
       "reference": "",
-      "description": "",
-      "orientation": "",
-      "aspect": "",
-      "skill": "",
-      "speciality": "",
-      "style": "",
-      "techniques": {
-        "technique1": {
-          "check": false,
-          "name": "",
-          "activation": "",
-          "technique": ""
-        },
-        "technique2": {
-          "check": false,
-          "name": "",
-          "activation": "",
-          "technique": ""
-        },
-        "technique3": {
-          "check": false,
-          "name": "",
-          "activation": "",
-          "technique": ""
-        }
-      },
+      "technique": "",
+      "narratif": "",
+      "quantity": 1,
+      "weight": 0,
+      "protection": "",
+      "damage": "",
+      "range": "",
+      "speed": "",
+      "crew": "",
       "notes": ""
     },
 
-    "spell": {
+    "aspect": {
+      "subtype": "",
       "reference": "",
-      "description": "",
-      "specialityname": "",
-      "associatedelement": "",
-      "hei": "",
-      "realizationtimeritual": "",
-      "realizationtimeaccelerated": "",
-      "flashback": "",
-      "components": "",
-      "effects": "",
-      "examples": "",
-      "notes": ""
-    },
-
-    "supernatural": {
-      "reference": "",
-      "description": "",
+      "technique": "",
+      "narratif": "",
+      "quantity": 1,
+      "weight": 0,
+      "protection": "",
+      "damage": "",
+      "range": "",
+      "speed": "",
+      "crew": "",
       "notes": ""
     }
   }

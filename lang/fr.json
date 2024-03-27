@@ -233,9 +233,14 @@
   "CEL1922.Validate": "Valider",
   "CEL1922.Cancel": "Annuler",
 
-  "CEL1922.Notes": "Notes",
+  "CEL1922.Notes": "Vos notes",
 
   "CEL1922.Reference": "Référence",
+
+  "CEL1922.Technique": "Technique",
+  "CEL1922.Narratif": "Narratif",
+
+
 
   "CEL1922.Error0": "Impossible de poursuivre : le nombre total de vos dés à lancer est inférieur à 1.",
   "CEL1922.Error1": "Impossible de poursuivre : vous ne possédez pas cette Compétence.",

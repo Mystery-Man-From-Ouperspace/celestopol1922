@@ -1,5 +1,6 @@
 import { CEL1922 } from "../config.js";
 /**
+ * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
 export class CEL1922ItemSheet extends ItemSheet {
@@ -10,10 +11,11 @@ export class CEL1922ItemSheet extends ItemSheet {
       template: "systems/celestopol1922/templates/item/item-sheet.html",
       width: 520,
       height: 520,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
-      scrollY: [".description", ".attributes", ".notes"],
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description-technique" }],
+      scrollY: [".description-technique", ".description-narratif", ".attributes", ".notes"],
     });
   }
+
 
   /* -------------------------------------------- */
 
@@ -26,7 +28,11 @@ export class CEL1922ItemSheet extends ItemSheet {
     context.isArmor = this.item.isArmor;
     context.isVehicle = this.item.isVehicle;
     context.isOther = this.item.isOther;
-    context.descriptionHTML = await TextEditor.enrichHTML(this.item.system.description, {
+    context.techniqueHTML = await TextEditor.enrichHTML(this.item.system.technique, {
+      secrets: this.document.isOwner,
+      async: true,
+    });
+    context.narratifHTML = await TextEditor.enrichHTML(this.item.system.narratif, {
       secrets: this.document.isOwner,
       async: true,
     });

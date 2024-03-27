@@ -36,7 +36,7 @@ export class CEL1922ActorSheet extends ActorSheet {
   }
 
   /**
-   * Handle click events for Item, Spell, Kungfu control buttons within the Actor Sheet
+   * Handle click events for Item, Aspect, Anomaly control buttons within the Actor Sheet
    * @param event
    * @private
    */

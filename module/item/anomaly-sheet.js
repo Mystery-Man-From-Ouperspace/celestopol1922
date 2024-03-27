@@ -1,3 +1,4 @@
+import { CEL1922 } from "../config.js";
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -10,30 +11,28 @@ export class CEL1922AnomalySheet extends ItemSheet {
       template: "systems/celestopol1922/templates/item/anomaly-sheet.html",
       width: 720,
       height: 520,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
-      scrollY: [".description", ".technique1", ".technique2", ".technique3", ".notes"],
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description-technique" }],
+      scrollY: [".description-technique", ".description-nattatif", ".attributes", ".notes"],
     });
   }
 
-  /* -------------------------------------------- */
+  
+   /* -------------------------------------------- */
 
   /** @inheritdoc */
   async getData(options) {
     const context = await super.getData(options);
     context.systemData = this.item.system;
-    context.descriptionHTML = await TextEditor.enrichHTML(this.item.system.description, {
+    context.subtypes = CEL1922.SUBTYPES
+    context.isWeapon = this.item.isWeapon;
+    context.isArmor = this.item.isArmor;
+    context.isVehicle = this.item.isVehicle;
+    context.isOther = this.item.isOther;
+    context.techniqueHTML = await TextEditor.enrichHTML(this.item.system.technique, {
       secrets: this.document.isOwner,
       async: true,
     });
-    context.descriptionTechnique1HTML = await TextEditor.enrichHTML(this.item.system.techniques.technique1.technique, {
-      secrets: this.document.isOwner,
-      async: true,
-    });
-    context.descriptionTechnique2HTML = await TextEditor.enrichHTML(this.item.system.techniques.technique2.technique, {
-      secrets: this.document.isOwner,
-      async: true,
-    });
-    context.descriptionTechnique3HTML = await TextEditor.enrichHTML(this.item.system.techniques.technique3.technique, {
+    context.narratifHTML = await TextEditor.enrichHTML(this.item.system.narratif, {
       secrets: this.document.isOwner,
       async: true,
     });

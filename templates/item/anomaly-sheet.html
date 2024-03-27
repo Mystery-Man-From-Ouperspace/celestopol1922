@@ -18,15 +18,15 @@
             </div>
         </div>
     </header>
-
-    {{!-- Sheet Tab Navigation --}}
+	
+	{{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description-technique">{{localize "CEL1922.Technique"}}</a>
         <a class="item" data-tab="description-narratif">{{localize "CEL1922.Narratif"}}</a>
         <a class="item" data-tab="attributes">{{localize "CEL1922.Attributes"}}</a>
         <a class="item" data-tab="notes">{{localize "CEL1922.Notes"}}</a>
     </nav>
-
+	
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
@@ -40,6 +40,7 @@
         <div class="tab" data-group="primary" data-tab="description-narratif">
             {{editor narratifHTML target="system.narratif" button=true editable=editable engine="prosemirror"}}
         </div>
+
 
 
         {{!-- Attributes Tab --}}
@@ -61,7 +62,7 @@
 			</div>
             {{/if}}
 
-
+			
             {{#if isVehicle}}
             <div class="crew">
 				<label><b>{{localize "CEL1922.Crew"}}</b></label>
@@ -86,7 +87,7 @@
             {{/if}}
 
 
-            {{#if isWeapon}}
+			{{#if isWeapon}}
 			<div class="damage">
 				<label><b>{{localize "CEL1922.Damage"}}</b></label>
 				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Damage' }}" name="system.damage" value="{{systemData.damage}}" />
@@ -98,7 +99,7 @@
             {{/if}}            
         </div>
 
-        
+
 		{{!-- Notes Tab --}}
         <div class="tab" data-group="primary" data-tab="notes">
             {{editor notesHTML target="system.notes" button=true editable=editable engine="prosemirror"}}
