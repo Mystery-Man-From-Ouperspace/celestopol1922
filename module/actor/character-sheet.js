@@ -521,10 +521,13 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   let myRoll;
   var msg;
 
+
+
   myRoll = "1d8";
   const rMoon = new Roll(myRoll, this.actor.getRollData());
   await rMoon.evaluate();
   console.log(rMoon);
+
 
   switch ( myTypeOfThrow ) {
     case 0: msg = await rMoon.toMessage({
@@ -553,6 +556,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     break;
     default: console.log("C'est bizarre !");
   };
+
+
+  if (game.modules.get("dice-so-nice")?.active) {
+    await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
+  };
+
 
   // Smart Message
   const myMoonName = "Moon Name";
@@ -729,6 +738,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     await r.evaluate();
     console.log(r);
 
+
     switch ( myTypeOfThrow ) {
       case 0: msg = await r.toMessage({
         user: game.user.id,
@@ -756,6 +766,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       break;
       default: console.log("C'est bizarre !");
     };
+
+
+    if (game.modules.get("dice-so-nice")?.active) {
+      await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
+    };
+  
 
     let specialityLibel = game.i18n.localize(myActor.system.skill.skilltypes[mySkill]);
     let specialityTab = specialityLibel.split(' ');

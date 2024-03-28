@@ -161,7 +161,7 @@
 .celestopol1922 .side-sheet .initiative .tromblon-click {
   width: 27px;
   background-color: rgb(12, 76, 12);
-  border-color: rgb(12, 76, 12);
+  border-color: orange;
   border-radius: 4px;
 }
 
@@ -191,6 +191,7 @@ border: 0;
 .celestopol1922 .sheet-body .tab.skills th {
   color: orange;
   background-color: rgb(12, 76, 12);
+  border-bottom: orange;
 }
 
 .celestopol1922 .sheet-body .tab.skills td {
@@ -201,7 +202,7 @@ border: 0;
 .celestopol1922 .sheet-body .tab.skills th.destin,
 .celestopol1922 .sheet-body .tab.skills th.spleen {
   color: orange;
-  background-color: transparent;
+  background-color: rgb(12, 76, 12);
   border-bottom: orange;
 }
 
