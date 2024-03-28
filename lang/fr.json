@@ -250,26 +250,16 @@
   "CEL1922.Fight": "Combattre !",
 
 
-  "CEL1922.Error0": "Impossible de poursuivre : le nombre total de vos dés à lancer est inférieur à 1.",
-  "CEL1922.Error1": "Impossible de poursuivre : vous ne possédez pas cette Compétence.",
-  "CEL1922.Error2": "Impossible de poursuivre : vous ne possédez pas de Spécialité dans cette Compétence.",
-  "CEL1922.Error3": "Impossible de poursuivre : vous ne possédez pas cette Ressource.",
-  "CEL1922.Error4": "Impossible de poursuivre : vous ne possédez pas de Domaine dans cette Ressource.",
-  "CEL1922.Error5": "Impossible de poursuivre : vous ne possédez pas cette Compétence de Magie.",
-  "CEL1922.Error6": "Impossible de poursuivre : vous ne possédez pas cette Spécialité dans cette Compétence de Magie.",
-  "CEL1922.Error10": "Impossible de poursuivre : vous avez 0 ou moins dans cet Aspect.",
-  "CEL1922.Error12": "Impossible de poursuivre : vous ne pouvez pas posséder de Spécialité dans cette Compétence dont le score est inférieur à 1.",
-  "CEL1922.Error14": "Impossible de poursuivre : vous ne pouvez pas posséder de Domaine dans cette Ressource dont le score est inférieur à 1.",
-  "CEL1922.Error16": "Impossible de poursuivre : vous ne pouvez pas posséder de Spécialité dans cette Compétence de Magie dont le score est inférieur à 1.",
+  "CEL1922.Error0": "Impossible de poursuivre : la gestion de l'Inititiative n'a pas été encore programmée.",
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt avant d'effectuer un lancer",
+  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un lancer",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Modifier le type de jet ?",
   "CEL1922.CancelChanges": "Annuler les modifications",
 
-  "CEL1922.NextTimeGoToTheSettings": "Tout ceci est paramétrable dans les Préférences",
+  "CEL1922.NextTimeGoToTheSettings": "Tout ceci est réglable dans les Préférences",
 
   "CEL1922.OneDie": "dé",
   "CEL1922.ManyDice": "dés",

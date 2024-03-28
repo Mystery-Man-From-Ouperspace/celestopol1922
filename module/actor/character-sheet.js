@@ -39,7 +39,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     html.find(".moon-click").click(this._onClickMoonDieRoll.bind(this));
     html.find(".click-prefs").click(this._onClickPrefs.bind(this));
     html.find(".jauge-check").click(this._onClickJaugeCheck.bind(this));
-    html.find(".tromblon-check").click(this._onClickInitiative.bind(this));
+    html.find(".tromblon-click").click(this._onClickInitiative.bind(this));
   }
 
   /* -------------------------------------------- */
@@ -490,6 +490,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
    * @param {MouseEvent} event    The originating left click event
    */
   async _onClickInitiative(event) {
+    ui.notifications.warn(game.i18n.localize("CEL1922.Error0"));
   }
 
 
@@ -895,7 +896,7 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
       },
       dialogOptions
     ).render(true, {
-      width: 520,
+      width: 480,
       height: 180
     });
   });
