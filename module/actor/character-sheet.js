@@ -82,7 +82,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 176
+        height: 185
       });
     });
     async function _computeResult(myActor, myHtml) {

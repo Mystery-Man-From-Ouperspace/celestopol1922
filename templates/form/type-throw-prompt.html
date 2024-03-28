@@ -14,22 +14,28 @@
             <div style="border-radius: 5px 5px 0px 0px; height: 25px; background-color: rgb(12, 76, 12);">
 
             </div>
+            <div style="height: 5px;">
 
-            <table style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
-                    <b>{{ localize "CEL1922.TypeOfThrow4ThisTime" }}</b>
-                        <select name="choice">
-                        {{#select choice }}
-                            <option value="0">{{ localize "CEL1922.Everybody" }}</option>
-                            <option value="1">{{ localize "CEL1922.JustDMAndMe" }}</option>
-                            <option value="2">{{ localize "CEL1922.DMOnly" }}</option>
-                            <option value="3">{{ localize "CEL1922.MeOnly" }}</option>
-                        {{/select}}
-                        </select>
-                </tr>
-            </table>
+            </div>
+
+            <div>
+                <b>{{ localize "CEL1922.TypeOfThrow4ThisTime" }}</b>
+                <select name="choice">
+                {{#select choice }}
+                    <option value="0">{{ localize "CEL1922.Everybody" }}</option>
+                    <option value="1">{{ localize "CEL1922.JustDMAndMe" }}</option>
+                    <option value="2">{{ localize "CEL1922.DMOnly" }}</option>
+                    <option value="3">{{ localize "CEL1922.MeOnly" }}</option>
+                {{/select}}
+                </select>
+            </div>
+            <div style="height: 5px;">
+
+            </div>
+            <div>
             <i class="click-prefs fas fa-gear"></i>&nbsp;<i>{{ localize "CEL1922.NextTimeGoToTheSettings" }}</i>
             <br>&nbsp;
+            </div>
 		</div>	
     </section>
 </form>
