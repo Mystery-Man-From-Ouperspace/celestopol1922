@@ -145,14 +145,40 @@
   background-position: bottom left; 
 }
 
-.celestopol1922 .sheet-body .click:hover {
+
+
+
+
+
+.celestopol1922 .side-sheet .initiative {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.celestopol1922 .side-sheet .initiative .tromblon-click {
+  width: 27px;
+  background-color: rgb(12, 76, 12);
+  border-color: rgb(12, 76, 12);
+  border-radius: 4px;
+}
+
+.celestopol1922 .side-sheet .initiative .tromblon-click:hover {
   cursor: pointer;
   filter: drop-shadow(0px 0px 6px #af010a);
 }
 
-.celestopol1922 .sheet-body .click2:hover {
+
+
+
+
+.celestopol1922 .sheet-body .click:hover,
+.celestopol1922 .sheet-body .moon-click:hover {
   cursor: pointer;
+  filter: drop-shadow(0px 0px 6px #af010a);
 }
+
+
 
 .celestopol1922 .sheet-body img {
 border: 0;
