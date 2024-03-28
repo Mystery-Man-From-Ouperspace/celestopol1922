@@ -82,7 +82,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 155
+        height: 176
       });
     });
     async function _computeResult(myActor, myHtml) {
@@ -990,7 +990,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 540
+      height: 564
     });
   });
 

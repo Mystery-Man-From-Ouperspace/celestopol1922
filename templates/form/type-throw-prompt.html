@@ -11,11 +11,13 @@
 
         {{!-- Frame --}}
         <div class="frame">
+            <div style="height: 25px; background-color: rgb(12, 76, 12);">
+
+            </div>
 
             <table style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
                     <b>{{ localize "CEL1922.TypeOfThrow4ThisTime" }}</b>
-                    <td>
                         <select name="choice">
                         {{#select choice }}
                             <option value="0">{{ localize "CEL1922.Everybody" }}</option>
@@ -24,7 +26,6 @@
                             <option value="3">{{ localize "CEL1922.MeOnly" }}</option>
                         {{/select}}
                         </select>
-                    </td>
                 </tr>
             </table>
             <i class="click-prefs fas fa-gear"></i>&nbsp;<i>{{ localize "CEL1922.NextTimeGoToTheSettings" }}</i>
