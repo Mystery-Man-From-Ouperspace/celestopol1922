@@ -29,11 +29,12 @@ Hooks.once("init", async function () {
 	 * Set an initiative formula for the system
 	 * @type {String}
 	 */
+  /*
 	CONFIG.Combat.initiative = {
         formula: "@initiative",
         decimals: 0
       };
-
+*/
 
   game.system.CONST = CEL1922;
 
