@@ -24,6 +24,17 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initializing`);
 
+
+   /**
+	 * Set an initiative formula for the system
+	 * @type {String}
+	 */
+	CONFIG.Combat.initiative = {
+        formula: "@initiative",
+        decimals: 0
+      };
+
+
   game.system.CONST = CEL1922;
 
   // Define custom Document classes

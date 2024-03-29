@@ -256,7 +256,7 @@
   "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un lancer",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
-  "CEL1922.TypeOfThrowTitle": "Modifier le type de jet ?",
+  "CEL1922.TypeOfThrowTitle": "Modifier la visibilité du jet ?",
   "CEL1922.CancelChanges": "Annuler les modifications",
 
   "CEL1922.NextTimeGoToTheSettings": "Tout ceci est réglable dans les Préférences",

@@ -483,15 +483,29 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       }
     };
 
-      /* -------------------------------------------- */
+   
+  /* -------------------------------------------- */
 
   /**
    * Listen for click buttons on Tromblon.
    * @param {MouseEvent} event    The originating left click event
    */
   async _onClickInitiative(event) {
-    ui.notifications.warn(game.i18n.localize("CEL1922.Error0"));
-  }
+      /*
+
+    let myActor = this.actor;
+    let formula = "d0"+myActor.system.initiative.toString();
+    myActor.rollInitiative(formula);
+  
+    if (myActor.inCombat) {
+      console.log("Acteur en combat");
+      let myCombatant = await getCombatantByActor(myActor);
+      const myInitiative = await myActor.system.initiative;
+      myCombatant?.update({ initiative: myInitiative });
+      
+    } else ui.notifications.warn(game.i18n.localize("CEL1922.Error1"));
+    */
+  };
 
 
   /* -------------------------------------------- */
