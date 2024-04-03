@@ -545,7 +545,7 @@
     },
 
     "anomaly": {
-      "value": "0",
+      "value": 0,
       "subtype": "",
       "reference": "",
       "technique": "",
@@ -555,7 +555,7 @@
     },
 
     "aspect": {
-      "value": "0",
+      "value": 0,
       "subtype": "",
       "reference": "",
       "technique": "",

@@ -178,35 +178,43 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       };
     }
 
-    console.log ("rESTotalScore : ", rESTotalScore);
-    console.log ("rESScoreTestMax : ", rESScoreTestMax);
-    console.log ("specialScoreTestMax : ", specialScoreTestMax);
+    // console.log ("rESTotalScore : ", rESTotalScore);
+    // console.log ("rESScoreTestMax : ", rESScoreTestMax);
+    // console.log ("specialScoreTestMax : ", specialScoreTestMax);
 
-    console.log ("specialTotalScore : ", specialTotalScore);
-    console.log ("specialScoreTestMax : ", specialScoreTestMax);
-    console.log ("specialScoreTestMin : ", specialScoreTestMin);
+    // console.log ("specialTotalScore : ", specialTotalScore);
+    // console.log ("specialScoreTestMax : ", specialScoreTestMax);
+    // console.log ("specialScoreTestMin : ", specialScoreTestMin);
 
 
     // Aspects/Anomalies
     for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
       anomalyNbr++;
       if (anomalyNbr == 1) {
-        anomalyScoreTest = parseInt(anomaly.value);
+        anomalyScoreTest = parseInt(anomaly.system.value);
       };
     };
+    // console.log("anomalyNbr : ", anomalyNbr);
+    // console.log("anomalyScoreTest : ", anomalyScoreTest);
+
 
     for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
       if (aspectNbr < 4) {
-        if (parseInt(aspect.value) > aspectScoreTestMax) {
-          aspectScoreTestMax = parseInt(aspect.value);
+        if (parseInt(aspect.system.value) > aspectScoreTestMax) {
+          aspectScoreTestMax = parseInt(aspect.system.value);
         };
-        if (parseInt(aspect.value) < aspectScoreTestMin) {
-          aspectScoreTestMin = parseInt(aspect.value);
+        if (parseInt(aspect.system.value) < aspectScoreTestMin) {
+          aspectScoreTestMin = parseInt(aspect.system.value);
         };
-        aspectTotalScore += parseInt(aspect.value);
+        aspectTotalScore += parseInt(aspect.system.value);
       };
       aspectNbr++;
     };
+    // console.log("aspectNbr : ", aspectNbr);
+    // console.log("aspectScoreTestMax : ", aspectScoreTestMax);
+    // console.log("aspectScoreTestMin : ", aspectScoreTestMin);
+    // console.log("aspectTotalScore : ", aspectTotalScore);
+
 
 
     if (!aspectNbr) { // Aucun Aspect
@@ -299,7 +307,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       choice: this.actor.system.prefs.typeofthrow.choice,
       check: this.actor.system.prefs.typeofthrow.check
     };
-    console.log("Gear dialogData = ", dialogData);
+    // console.log("Gear dialogData = ", dialogData);
     const html = await renderTemplate(template, dialogData);
 
     // Create the Dialog window
@@ -328,11 +336,11 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       });
     });
     async function _computeResult(myActor, myHtml) {
-      console.log("I'm in _computeResult(myActor, myHtml)");
+      // console.log("I'm in _computeResult(myActor, myHtml)");
       const choice =  parseInt(myHtml.find("select[name='choice']").val());
-      console.log("choice = ", choice);
+      // console.log("choice = ", choice);
       const isChecked = myHtml.find("input[name='check']").is(':checked');
-      console.log("isChecked = ", isChecked);
+      // console.log("isChecked = ", isChecked);
       await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString(), "system.prefs.typeofthrow.check": isChecked });
     }
   }
@@ -346,16 +354,16 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
    */
   async _onClickJaugeCheck(event) {
 
-    console.log("J'entre dans _onClickJaugeCheck()");
+    // console.log("J'entre dans _onClickJaugeCheck()");
 
     const element = event.currentTarget;                        // On récupère le clic
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'blessure-1' par exemple
-    console.log("whatIsIt = ", whatIsIt);
+    // console.log("whatIsIt = ", whatIsIt);
     const whatIsItTab = whatIsIt.split('-');
     const jaugeType = whatIsItTab[0];                           // Va récupérer 'blessure'
-    console.log("jaugeType = ", jaugeType);
+    // .log("jaugeType = ", jaugeType);
     const jaugeNumber = whatIsItTab[1];                         // Va récupérer '1'
-    console.log("jaugeNumber = ", jaugeNumber);
+    // console.log("jaugeNumber = ", jaugeNumber);
     let whichCheckBox ="";
     let whichLevel = 0;
     let myActor = this.actor;
@@ -463,8 +471,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
    
           myActor.update({ "system.blessures.lvl": newLevelBlessures });
 
-          console.log("oldLevelBlessures (OLD) = ", oldLevelBlessures);
-          console.log("newLevelBlessures (NEW) = ", newLevelBlessures);
+          // console.log("oldLevelBlessures (OLD) = ", oldLevelBlessures);
+          // console.log("newLevelBlessures (NEW) = ", newLevelBlessures);
 
           if (newLevelBlessures > oldLevelBlessures) {
             if (newLevelBlessures > 0) {
@@ -551,8 +559,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
           myActor.update({ "system.destin.lvl": newLevelDestin});
 
-          console.log("oldLevelDestin (OLD) = ", oldLevelDestin);
-          console.log("newLevelDestin (NEW) = ", newLevelDestin);
+          // console.log("oldLevelDestin (OLD) = ", oldLevelDestin);
+          // console.log("newLevelDestin (NEW) = ", newLevelDestin);
 
           if (newLevelDestin > oldLevelDestin) {
             if (newLevelDestin > 0) {
@@ -640,8 +648,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
           myActor.update({ "system.spleen.lvl": newLevelSpleen});
 
-          console.log("oldLevelSpleen (OLD) = ", oldLevelSpleen);
-          console.log("newLevelSpleen (NEW) = ", newLevelSpleen);
+          // console.log("oldLevelSpleen (OLD) = ", oldLevelSpleen);
+          // console.log("newLevelSpleen (NEW) = ", newLevelSpleen);
 
           if (newLevelSpleen > oldLevelSpleen) {
             if (newLevelSpleen > 0) {
@@ -773,7 +781,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   let myActor = this.actor;
   let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
   myTypeOfThrow = await _whichTypeOfThrow(myActor, myTypeOfThrow.toString());
-  console.log("myTypeOfThrow : ", myTypeOfThrow);
+  // console.log("myTypeOfThrow : ", myTypeOfThrow);
   let myRoll;
   var msg;
 
@@ -782,7 +790,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   myRoll = "1d8";
   const rMoon = new Roll(myRoll, this.actor.getRollData());
   await rMoon.evaluate();
-  console.log(rMoon);
+  // console.log(rMoon);
 
 
   switch ( myTypeOfThrow ) {
@@ -827,7 +835,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     moonname: game.i18n.localize(myActor.system.skill.moondicetypes[rMoon._total - 1]),
     theresult: rMoon._total,
   };
-  console.log("smartMoonData avant retour func = ", smartMoonData);
+  // console.log("smartMoonData avant retour func = ", smartMoonData);
   const smartHtml = await renderTemplate(smartMoonTemplate, smartMoonData);
 
   switch ( myTypeOfThrow ) {
@@ -930,14 +938,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     const element = event.currentTarget;                        // On récupère le clic
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
-    console.log("whatIsIt = ", whatIsIt)
+    // console.log("whatIsIt = ", whatIsIt)
     const whatIsItTab = whatIsIt.split('-');
     const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
-    console.log("specialityUsedLibel = "+specialityUsedLibel)
+    // console.log("specialityUsedLibel = "+specialityUsedLibel)
     const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
-    console.log("skillUsedLibel = ", skillUsedLibel)
+    // console.log("skillUsedLibel = ", skillUsedLibel)
     const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
-    console.log("skillNumUsedLibel = ", skillNumUsedLibel)
+    // console.log("skillNumUsedLibel = ", skillNumUsedLibel)
 
     let myActor = this.actor;
     let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
@@ -989,14 +997,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     } else {
       myTypeOfThrow = await _whichTypeOfThrow(myActor, myTypeOfThrow.toString());
-      console.log("myTypeOfThrow : ", myTypeOfThrow);
+     // console.log("myTypeOfThrow : ", myTypeOfThrow);
     };
 
     myRoll = myNumberOfDice+"d8";
 
     const r = new Roll(myRoll, this.actor.getRollData());
     await r.evaluate();
-    console.log(r);
+    // console.log(r);
 
 
     switch ( myTypeOfThrow ) {
@@ -1045,7 +1053,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       numberofdice: myNumberOfDice,
       speciality: specialityLibel
     }
-    console.log("smartData avant retour func = ", smartData);
+    // console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
   
     switch ( myTypeOfThrow ) {
@@ -1148,7 +1156,7 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
   var dialogData = {
     choice: myTypeOfThrow,
   };
-  console.log(dialogData);
+  // console.log(dialogData);
   const html = await renderTemplate(template, dialogData);
 
   // Create the Dialog window
@@ -1185,9 +1193,9 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
 
 
   async function _computeResult(myActor, myHtml) {
-    console.log("I'm in _computeResult(myActor, myHtml)");
+    // console.log("I'm in _computeResult(myActor, myHtml)");
     const choice =  parseInt(myHtml.find("select[name='choice']").val());
-    console.log("choice = ", choice);
+    // console.log("choice = ", choice);
     return choice;
   }
 }
@@ -1207,7 +1215,7 @@ async function _skillDiceRollDialog(
 
   ///////////////////////////////////////////////////////////////
   const dialogOptions = await _getDataSkill(myActor);
-  console.log("dialogOptions = ", dialogOptions)
+  // console.log("dialogOptions = ", dialogOptions)
   ///////////////////////////////////////////////////////////////
   
   
@@ -1227,7 +1235,7 @@ async function _skillDiceRollDialog(
     typeofthrow: myTypeOfThrow.toString()
 
   };
-  console.log("dialogData avant retour func = ", dialogData);
+  // console.log("dialogData avant retour func = ", dialogData);
   const templateData = foundry.utils.mergeObject(dialogData, dialogOptions);
   const html = await renderTemplate(template, templateData);
 
@@ -1264,7 +1272,7 @@ async function _skillDiceRollDialog(
   return dialogData;
 
   function _computeResult(myDialogData, myHtml) {
-    console.log("J'exécute bien _computeResult()");
+    // console.log("J'exécute bien _computeResult()");
     myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
     myDialogData.skill = myHtml.find("select[name='skill']").val();
     myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
@@ -1278,7 +1286,7 @@ async function _skillDiceRollDialog(
     myDialogData.jaugedestiny = myHtml.find("input[name='jauge_destiny']").val();
     myDialogData.jauge_spleen = myHtml.find("input[name='jauge_spleen']").val();
     myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
-    console.log("myDialogData après traitement et avant retour func = ", myDialogData);
+    // console.log("myDialogData après traitement et avant retour func = ", myDialogData);
     return myDialogData;
   };
 
@@ -1291,14 +1299,14 @@ async function _skillDiceRollDialog(
     const menuJaugeDestiny = myActor.system.skill.destinytypes;
     const menuJaugeSpleen = myActor.system.skill.spleentypes;
 
-    console.log("menuSkill", menuSkill);
+    // console.log("menuSkill", menuSkill);
 
     const sizeMenuSkill = menuSkill.length;
     const sizeMenuJaugeWounds = menuJaugeWounds.length;
     const sizeMenuJaugeDestiny = menuJaugeDestiny.length;
     const sizeMenuJaugeSpleen = menuJaugeSpleen.length;
 
-    console.log("sizeMenuSkill", sizeMenuSkill);
+    // console.log("sizeMenuSkill", sizeMenuSkill);
 
 
     let mySkill = {};
@@ -1322,7 +1330,7 @@ async function _skillDiceRollDialog(
       mySkill[i.toString()] = new myObject(i.toString(), menuSkill[i]);
     };
 
-    console.log("mySkill", mySkill);
+    // console.log("mySkill", mySkill);
 
     for (let i=0; i<sizeMenuJaugeWounds; i++) {
       myJauge_Wounds[i.toString()] = new myObject(i.toString(), menuJaugeWounds[i]);
@@ -1380,7 +1388,7 @@ async function _skillDiceRollDialog(
     jaugespleenchoices: myJauge_Spleen
     };
 
-    console.log("context = ", context)
+    // console.log("context = ", context)
     return context;
   }
 
