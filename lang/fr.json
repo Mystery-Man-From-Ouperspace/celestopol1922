@@ -250,7 +250,6 @@
   "CEL1922.Fight": "Combattre !",
 
 
-  "CEL1922.Error0": "Impossible de poursuivre : la gestion de l'Inititiative n'a pas été encore programmée.",
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
   "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un lancer",
@@ -260,6 +259,40 @@
   "CEL1922.CancelChanges": "Annuler les modifications",
 
   "CEL1922.NextTimeGoToTheSettings": "Tout ceci est réglable dans les Préférences",
+
+  "CEL1922.Verify Sheet": "Vérifier la cohérence de la fiche",
+
+  "CEL1922.Info1": "Je commence à vérifier votre fiche…",
+  "CEL1922.Info2": "Tout me paraît normal",
+  "CEL1922.Info3": "J'ai fini de vérifier votre fiche !",
+
+  "CEL1922.Error0": "Impossible de poursuivre : la gestion de l'Inititiative n'a pas été encore programmée.",
+  "CEL1922.Error1": "J'ai trouvé au moins ^0 erreur(s) !",
+  "CEL1922.Souci2": "J'ai trouvé ^0 souci(s) !",
+
+  "CEL1922.Souci3": "Votre personnage possède plus de ^1 Aspect(s) (^0 au total) ! Seuls les 4 premiers de la liste seront pris en compte ; supprimez des Aspects de la liste si nécessaire",
+  "CEL1922.Error4": "La somme des scores de vos Aspects (du moins les ^2 premier(s) de la liste) est supérieure à ^1 (^0 au total) ! Veuillez corriger cela",
+  "CEL1922.Error5": "La somme des scores de vos Aspects (du moins les ^2 premier(s) de la liste) est inférieure au nombre d'Aspects ! Veuillez corriger cela",
+
+  "CEL1922.Souci6": "Votre personnage possède plus de 1 Anomalie (^0 au total) ! Seule la première de la liste sera prise en compte ; supprimez des Anomalies de la liste si nécessaire",
+  "CEL1922.Error7": "Le score de votre Anomalie (du moins la première de la liste) est supérieur à ^1 (score : ^0) ! Veuillez corriger cela",
+  "CEL1922.Error8": "Le score de votre Anomalie (du moins la première de la liste) est inférieur à  ^1 (score : ^0) ! Veuillez corriger cela",
+
+  "CEL1922.Error9": "La somme des scores de vos RES est inférieur à ^1 (total : ^0) ! Veuillez corriger cela",
+  "CEL1922.Error10": "La somme des scores de vos RES est supérieur à ^1 (total : ^0) ! Veuillez corriger cela",
+  "CEL1922.Error11": "Le score d'au moins une de vos RES est inférieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error12": "La score d'au moins une de vos RES est supérieur à ^1 ! Veuillez corriger cela",
+
+  "CEL1922.Error13": "La somme des scores de vos Spécialités est inférieur à ^1 (total : ^0) ! Veuillez corriger cela",
+  "CEL1922.Error14": "La somme des scores de vos Spécialités est supérieur à ^1 (total : ^0) ! Veuillez corriger cela",
+  "CEL1922.Error15": "Le score d'au moins une de vos Spécialités est inférieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error16": "Le score d'au moins une de vos Spécialités est supérieur à ^1 ! Veuillez corriger cela",
+
+  "CEL1922.Souci17": "Votre personnage ne possède aucun Aspect ! Ajoutez au moins un Aspect à la liste",
+  "CEL1922.Souci18": "Votre personnage ne présente aucune Anomalie ! Ajoutez une Anomalie à la liste",
+
+  
+
 
   "CEL1922.OneDie": "dé",
   "CEL1922.ManyDice": "dés",

@@ -165,6 +165,22 @@
   border-radius: 4px;
 }
 
+.celestopol1922 .side-sheet .check-sheet-click {
+  text-align: center;
+  width: 27px;
+  height: 27px;
+  background-color: rgb(12, 76, 12);
+  border-color: orange;
+  border-radius: 4px;
+  font-size: 22px;
+  color: orange;
+}
+.celestopol1922 .side-sheet .check-sheet-click:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 6px #af010a);
+}
+
+
 .celestopol1922 .side-sheet .initiative .tromblon-click:hover {
   cursor: pointer;
   filter: drop-shadow(0px 0px 6px #af010a);
