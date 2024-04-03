@@ -721,7 +721,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     if (myPromptPresent === true) {
       let myResultDialog =  await _skillDiceRollDialog(
         myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-        mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
+        mySkill, myAnomaly, myAspect, myBonus, myMalus,
         myWounds, myDestiny, mySpleen, myTypeOfThrow
       );
 
@@ -733,7 +733,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       mySkill = parseInt(myResultDialog.skill);
       myAnomaly = parseInt(myResultDialog.anomaly);
       myAspect = parseInt(myResultDialog.aspect);
-      myAspect_value = parseInt(myResultDialog.aspectvalue);
       myBonus = parseInt(myResultDialog.bonus);
       myMalus = parseInt(myResultDialog.malus);
       myWounds = parseInt(myResultDialog.jaugewounds);
@@ -948,9 +947,10 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
 
 /* -------------------------------------------- */
 
+
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-  mySkill, myAnomaly, myAspect, myAspect_value, myBonus, myMalus,
+  mySkill, myAnomaly, myAspect, myBonus, myMalus,
   myWounds, myDestiny, mySpleen, myTypeOfThrow
 ) {
   // Render modal dialog
@@ -969,7 +969,6 @@ async function _skillDiceRollDialog(
     skill: mySkill.toString(),
     anomaly: myAnomaly.toString(),
     aspect: myAspect.toString(),
-    aspectvalue: myAspect_value,
     bonus: myBonus.toString(),
     malus: myMalus.toString(),
     jaugewounds: myWounds.toString(),
@@ -1020,7 +1019,6 @@ async function _skillDiceRollDialog(
     myDialogData.skill = myHtml.find("select[name='skill']").val();
     myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
     myDialogData.aspect = myHtml.find("select[name='aspect']").val();
-    myDialogData.aspect_value = myHtml.find("select[name='aspect_value']").val();
     myDialogData.bonus = myHtml.find("input[name='bonus']").val();
     myDialogData.malus = myHtml.find("input[name='malus']").val();
     myDialogData.jaugewounds = myHtml.find("input[name='jauge_wounds']").val();
@@ -1074,14 +1072,6 @@ async function _skillDiceRollDialog(
 
     console.log("mySkill", mySkill);
 
-    for (let i=0; i<sizeMenuAnomaly; i++) {
-      myAnomaly[i.toString()] = new myObject(i.toString(), menuAnomaly[i]);
-    };
-
-    for (let i=0; i<sizeMenuAspect; i++) {
-      myAspect[i.toString()] = new myObject(i.toString(), menuAspect[i]);
-    };
-
     for (let i=0; i<sizeMenuJaugeWounds; i++) {
       myJauge_Wounds[i.toString()] = new myObject(i.toString(), menuJaugeWounds[i]);
     };
@@ -1093,6 +1083,19 @@ async function _skillDiceRollDialog(
     for (let i=0; i<sizeMenuJaugeSpleen; i++) {
       myJauge_Spleen[i.toString()] = new myObject(i.toString(), menuJaugeSpleen[i]);
     };
+
+
+    // Create options for Aspects/Anomalies
+
+    myAnomaly["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
+      myAnomaly[anomaly.id.toString()] = new myObject(anomaly.id.toString(), anomaly.name.toString());
+    };
+    myAspect["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
+      myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
+    };
+
 
     const context = {
     skillchoices : mySkill,

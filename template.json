@@ -51,7 +51,7 @@
           "CEL1922.opt.leger", "CEL1922.opt.modere", "CEL1922.opt.grave", "CEL1922.opt.dramatique" 
         ],
         "woundsmalus": [
-          0, 0, 0, -1, -1, -2, -2, -3, 999 
+          0, 0, 0, -1, -1, -2, -2, -3, -999 
         ],
         "woundsrecup": [
           "CEL1922.opt.none",
@@ -142,82 +142,132 @@
       "blessures": {
         "lvl": 0,
         "blessure_1": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
+
         },
         "blessure_2": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "blessure_3": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -1
         },
         "blessure_4": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -1
         },
         "blessure_5": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -2
         },
         "blessure_6": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -2
+
         },
         "blessure_7": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -3
         },
         "blessure_8": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": -999
         }
       },
       "destin": {
         "lvl": 0,
         "destin_1": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_2": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_3": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_4": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_5": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_6": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_7": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "destin_8": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         }
       },
       "spleen": {
         "lvl": 0,
         "spleen_1": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_2": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_3": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_4": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_5": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_6": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_7": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         },
         "spleen_8": {
-          "check": false
+          "check": false,
+          "bonus": 0,
+          "malus": 0
         }
       }
     },
