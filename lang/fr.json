@@ -167,13 +167,17 @@
   "CEL1922.opt.dernierquartier": "Dernier Quartier",
   "CEL1922.opt.pleinelune": "Pleine Lune",
 
-
+  "CEL1922.NPC": "PNJ",
 
 
   "CEL1922.numberofdice": "Nbre de Dés",
   "CEL1922.anomaly": "Anomalie",
+  "CEL1922.anomalies": "Anomalies",
   "CEL1922.skill": "Spécialité",
+  "CEL1922.skills": "Spécialités",
   "CEL1922.aspect": "Aspect",
+  "CEL1922.aspects": "Aspects",
+
   "CEL1922.bonus": "Bonus",
   "CEL1922.malus": "Malus",
   "CEL1922.jaugewounds": "Jauge de Blessures",

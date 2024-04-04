@@ -23,8 +23,7 @@ export class CEL1922Actor extends Actor {
 
   prepareBaseData() {
     if (this.type === "npc") {
-      this.system.vitality.calcul = this.system.aptitudes.physical.value * 4;
-      this.system.hei.calcul = this.system.aptitudes.spiritual.value * 4;
+      this.system.initiative = this.system.skill.corps.res;
     }
     if (this.type === "character") {
       this.system.initiative = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;

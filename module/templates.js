@@ -12,6 +12,7 @@ export const preloadHandlebarsTemplates = async function() {
     "systems/celestopol1922/templates/actor/parts/character-anomalies.html",
     "systems/celestopol1922/templates/actor/parts/character-aspects.html",
 
+    "systems/celestopol1922/templates/actor/parts/npc-skills.html",
     "systems/celestopol1922/templates/actor/parts/npc-aspects.html",
     "systems/celestopol1922/templates/actor/parts/npc-anomalies.html",
     "systems/celestopol1922/templates/actor/parts/npc-items.html"

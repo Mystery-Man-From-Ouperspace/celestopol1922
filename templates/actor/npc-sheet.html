@@ -1,23 +1,23 @@
 <form class="flexcol {{cssClass}}" autocomplete="off">
-  {{log 'npc-sheet' this}}
-
+  {{log 'actor-sheet' this}} 
   {{!-- Sheet Header --}}
   <div class="sheet-display">
     {{!-- Side Sheet --}}
     <div class="side-sheet">
+      <div class="sheet-logo">
+      <img src="systems/celestopol1922/images/logo_jeu.png">
+      </div>
       <img class="logo-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
       <table>
         <tr>
-          <td>
-            <h1 class="charname">
-              <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'CEL1922.NPCName' }}" />
+          <td style="width: 5%">
+            <h1>
+              {{ localize "CEL1922.NPC" }}
             </h1>
           </td>
-        </tr>
-        </tr>
           <td>
             <h1 class="charname">
-              <input name="system.type" type="text" value="{{systemData.type}}" placeholder="{{ localize 'CEL1922.TypeOfCreature' }}" />
+              <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'CEL1922.PCName' }}" />
             </h1>
           </td>
         </tr>
@@ -25,37 +25,64 @@
       <table class="concept">
         <tr>
           <td>
-            <div class="threat">
-              <b>{{ localize "CEL1922.Threat" }}</b>
-              <!-- <select name="system.guardian" value="{{ systemData.guardian }}" > -->
-              <select name="system.threat">
-                <label><b>{{#select systemData.threat }}</b></label>
-                <option value="0">{{ localize "CEL1922.Profane" }}</option>
-                <option value="1">{{ localize "CEL1922.Apprentice" }}</option>
-                <option value="2">{{ localize "CEL1922.Initiate" }}</option>
-                <option value="3">{{ localize "CEL1922.Accomplished" }}</option>
-                <option value="4">{{ localize "CEL1922.Reknowned" }}</option>
-                {{/select}}
-              </select>
-            </div>
+            <label><b>{{ localize "CEL1922.Concept" }}</b></label>
+            <input type="text" name="system.concept" value="{{systemData.concept}}" placeholder="{{ localize 'CEL1922.Concept' }}" />
           </td>
         </tr>
         <tr>
           <td>
-            <div class="nuisance">
-              <label><b>{{ localize "CEL1922.Nuisance" }}</b></label>
-              <!-- <select name="system.guardian" value="{{ systemData.guardian }}" > -->
-              <select name="system.nuisance">
-                {{#select systemData.nuisance }}
-                <option value="0">{{ localize "CEL1922.Figurant" }}</option>
-                <option value="1">{{ localize "CEL1922.Minion" }}</option>
-                <option value="2">{{ localize "CEL1922.Adversary" }}</option>
-                <option value="3">{{ localize "CEL1922.Ally" }}</option>
-                <option value="4">{{ localize "CEL1922.Boss" }}</option>
-                <option value="5">{{ localize "CEL1922.Dininity" }}</option>
-                {{/select}}
-              </select>
-            </div>
+            <label><b>{{ localize "CEL1922.Anomaly" }}</b></label>
+            <select name="system.anomaly">
+              {{#select systemData.anomaly }}
+              <option value="1">{{ localize "CEL1922.Entropie" }}</option>
+              <option value="2">{{ localize "CEL1922.CommunicationAvecLesMorts" }}</option>
+              <option value="3">{{ localize "CEL1922.Illusion" }}</option>
+              <option value="4">{{ localize "CEL1922.Suggestion" }}</option>
+              <option value="5">{{ localize "CEL1922.TarotDivinatoire" }}</option>
+              <option value="6">{{ localize "CEL1922.Telekinesie" }}</option>
+              <option value="7">{{ localize "CEL1922.Telepathie" }}</option>
+              <option value="8">{{ localize "CEL1922.VoyageAstral" }}</option>
+              {{/select}}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number" name="system.anomalyval" value="{{systemData.anomalyval}}" placeholder="0" />
+            <span>/</span>
+            <select name="system.anomalymax">
+              {{#select systemData.anomalymax }}
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              {{/select}}
+            </select>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label><b>{{ localize "CEL1922.Initiative" }}</b></label>
+          </td>
+        </tr>
+        <tr>
+          <td class="initiative" title="{{ localize 'CEL1922.corps' }}">
+            -&nbsp;{{systemData.initiative}}&nbsp;-
+            <!--
+            <img
+            class="tromblon-click"
+            data-libel-id="FIGHT-BUTTON-0"
+            src="systems/celestopol1922/images/icons/blunderbuss-orange.png"
+            title="{{ localize 'CEL1922.Fight' }}"
+            alt="Die"
+            >
+            -->
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b><i class="fas fa-eye check-sheet-click" title="{{ localize 'CEL1922.Verify Sheet' }}"></i></b>
           </td>
         </tr>
       </table>
@@ -63,12 +90,12 @@
 
     {{!-- Body Sheet --}}
     <div class="body-sheet">
-
       {{!-- Sheet Tab Navigation --}}
       <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{ localize "CEL1922.Description" }}</a>
-        <a class="item" data-tab="aspects">{{ localize "CEL1922.Aspects" }}</a>
+        <a class="item" data-tab="skills">{{ localize "CEL1922.Skills" }}</a>
         <a class="item" data-tab="anomalies">{{ localize "CEL1922.Anomalies" }}</a>
+        <a class="item" data-tab="aspects">{{ localize "CEL1922.Aspects" }}</a>
         <a class="item" data-tab="items">{{ localize "CEL1922.Items" }}</a>
       </nav>
 
@@ -79,148 +106,18 @@
           {{editor descriptionHTML target="system.description" button=true editable=editable engine="prosemirror"}}
         </div>
 
-        {{!-- Aptitudes Tab --}}
-        <div class="tab aptitudes" data-group="primary" data-tab="aptitudes">
-          <table>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Physical" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input phys-apt" type="number" placeholder="0" name="system.aptitudes.physical.value" value="{{systemData.aptitudes.physical.value}}" />
-              </td>
-              <td class="specialities">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="{{ localize 'CEL1922.Specialities' }}"
-                  name="system.aptitudes.physical.speciality"
-                  value="{{systemData.aptitudes.physical.speciality}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Martial" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input" type="number" placeholder="0" name="system.aptitudes.martial.value" value="{{systemData.aptitudes.martial.value}}" />
-              </td>
-              <td class="specialities">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="{{ localize 'CEL1922.Specialities' }}"
-                  name="system.aptitudes.martial.speciality"
-                  value="{{systemData.aptitudes.martial.speciality}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Mental" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input" type="number" placeholder="0" name="system.aptitudes.mental.value" value="{{systemData.aptitudes.mental.value}}" />
-              </td>
-              <td class="specialities">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="{{ localize 'CEL1922.Specialities' }}"
-                  name="system.aptitudes.mental.speciality"
-                  value="{{systemData.aptitudes.mental.speciality}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Social" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input" type="number" placeholder="0" name="system.aptitudes.social.value" value="{{systemData.aptitudes.social.value}}" />
-              </td>
-              <td class="specialities">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="{{ localize 'CEL1922.Specialities' }}"
-                  name="system.aptitudes.social.speciality"
-                  value="{{systemData.aptitudes.social.speciality}}"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Spiritual" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input spir-apt" type="number" placeholder="0" name="system.aptitudes.spiritual.value" value="{{systemData.aptitudes.spiritual.value}}" />
-              </td>
-              <td class="specialities">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="{{ localize 'CEL1922.Specialities' }}"
-                  name="system.aptitudes.spiritual.speciality"
-                  value="{{systemData.aptitudes.spiritual.speciality}}"
-                />
-              </td>
-            </tr>
-          </table>
-          <table>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Vitality" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input" type="number" placeholder="0" name="system.vitality.value" value="{{systemData.vitality.value}}" />
-              </td>
-              <td class="image2">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <div>-{{systemData.vitality.calcul}}-</div>
-              </td>
-              <td class="specialities">
-                <input class="input" type="text" placeholder="{{ localize 'CEL1922.Notes' }}" name="system.vitality.note" value="{{systemData.vitality.note}}" />
-              </td>
-            </tr>
-            <tr>
-              <td class="label"><b>&nbsp;{{ localize "CEL1922.Hei" }}</b></td>
-              <td class="image">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <input class="input" type="number" placeholder="0" name="system.hei.value" value="{{systemData.hei.value}}" />
-              </td>
-              <td class="image2">
-                <img src="systems/celestopol1922/images/cercle.png" title="Cercle" alt="Cercle" />
-                <div class="stick">&nbsp;</div>
-                <div>-{{systemData.hei.calcul}}-</div>
-              </td>
-              <td class="specialities"><input class="input" type="text" placeholder="{{ localize 'CEL1922.Notes' }}" name="system.hei.note" value="{{systemData.hei.note}}" /></td>
-            </tr>
-          </table>
-          <div class="dragon">
-            <img
-              class="logo"
-              src="systems/celestopol1922/images/logo_dore.png"
-              title="奇闻异事 ● Hong Kong – Les Chroniques de l'&Eacute;trange ● R.d′Huissier & C.Lameire ● Antre Monde &Eacute;ditions"
-              alt="Logo"
-            />
-          </div>
-        </div>
+        {{!-- Skills Tab --}}
+        <div class="tab skills" data-group="primary" data-tab="skills">{{> "systems/celestopol1922/templates/actor/parts/npc-skills.html"}}</div>
 
+        {{!-- Owned Aspect Tab --}}
+        <div class="tab aspects" data-group="primary" data-tab="aspects">{{> "systems/celestopol1922/templates/actor/parts/character-aspects.html"}}</div>
 
-        {{!-- Aspects Tab --}}
-          <div class="tab aspects" data-group="primary" data-tab="aspects">{{> "systems/celestopol1922/templates/actor/parts/npc-aspects.html"}}</div>
+        {{!-- Owned Anomaly Tab --}}
+        <div class="tab anomalies" data-group="primary" data-tab="anomalies">{{> "systems/celestopol1922/templates/actor/parts/character-anomalies.html"}}</div>
 
-        {{!-- Anomalies Tab --}}
-          <div class="tab anomalies" data-group="primary" data-tab="anomalies">{{> "systems/celestopol1922/templates/actor/parts/npc-anomalies.html"}}</div>
-
-        {{!-- Items Tab --}}
-          <div class="tab items" data-group="primary" data-tab="items">{{> "systems/celestopol1922/templates/actor/parts/npc-items.html"}}</div>
-
+        {{!-- Owned Items Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">{{> "systems/celestopol1922/templates/actor/parts/character-items.html"}}</div>
       </section>
-    </div">
-
+    </div>
+  </div>
 </form>
