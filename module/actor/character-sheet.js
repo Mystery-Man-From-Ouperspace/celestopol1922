@@ -974,7 +974,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let mySpleen = myActor.system.spleen.lvl;
 
 
-    var mySkillData = await _getSkillData (myActor, mySkill);
+    var mySkillData = await _getSkillValueData (myActor, mySkill);
     let mySpecialityLibel = mySkillData.libel;
     let myValue = mySkillData.value;
     let myRESValue = mySkillData.rESvalue;
@@ -1006,7 +1006,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
 
 
-      mySkillData = await _getSkillData (myActor, mySkill);
+      mySkillData = await _getSkillValueData (myActor, mySkill);
       mySpecialityLibel = mySkillData.libel;
       myValue = mySkillData.value;
       myRESValue = mySkillData.rESvalue;
@@ -1023,12 +1023,18 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     console.log("myBonus = ", myBonus);
     console.log("myMalus = ", myMalus);
 
+    let myWoundsMalus = parseInt(await myActor.system.skill.woundsmalus[myWounds]);
+    if (myWounds == 8) {
+      myWoundsMalus = 0;
+      ui.notifications.warn(game.i18n.localize("CEL1922.YoureOutOfGame"));
+    };
+    console.log("myWoundsMalus = ", myWoundsMalus);
 
     let totalBoni = 0;
 
     console.log("totalBoni : ", totalBoni);
 
-    totalBoni += myValue + myBonus + myMalus;
+    totalBoni += myValue + myBonus + myMalus + myWoundsMalus;
 
     console.log("totalBoni : ", totalBoni);
 
@@ -1189,7 +1195,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
 /* -------------------------------------------- */
 
-async function _getSkillData (myActor, mySkillNbr) {
+async function _getSkillValueData (myActor, mySkillNbr) {
 
   const mySkill = parseInt(mySkillNbr);
   let myStringVal;
@@ -1440,9 +1446,9 @@ async function _skillDiceRollDialog(
     myDialogData.aspect_4 = myHtml.find("select[name='aspect_4']").val();
     myDialogData.bonus = myHtml.find("select[name='bonus']").val();
     myDialogData.malus = myHtml.find("select[name='malus']").val();
-    myDialogData.jaugewounds = myHtml.find("select[name='jauge_wounds']").val();
-    myDialogData.jaugedestiny = myHtml.find("select[name='jauge_destiny']").val();
-    myDialogData.jauge_spleen = myHtml.find("select[name='jauge_spleen']").val();
+    myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
+    myDialogData.jaugedestiny = myHtml.find("select[name='jaugedestiny']").val();
+    myDialogData.jauge_spleen = myHtml.find("select[name='jaugespleen']").val();
     myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
     // console.log("myDialogData après traitement et avant retour func = ", myDialogData);
     return myDialogData;
