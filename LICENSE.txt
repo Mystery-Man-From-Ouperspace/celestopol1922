@@ -1,53 +1,31 @@
 IMAGES
-- Exceptées les peties icônes N&B de d10 et celles de game-icon.org,
+- Exceptées les peties icônes de d8 et celles de game-icon.org,
 les images des fichiers du dossier images utilisées dans ce logiciel sont :
-Copyright © 2023-2024 Antre Monde Éditions ;
+Copyright © 2024 Antre Monde Éditions ;
 elles sont leurs propriétés (et celles de leurs auteurs respectifs)
 et elles ne peuvent ni être reproduites ni réutilisées en dehors de
 ce logiciel, sans leur autorisation.
-- les icônes rondes, blanches sur fond noir, sont issues du site game-icons.org
+- cetaines icônes sont issues du site game-icons.org
 et sont sous licence https://creativecommons.org/licenses/by/3.0/
 Vous pouvez retrouver le nom de leurs auteurs respectifs sur ce site.
-- 'carte_hk.jpg', d'après 'wahaha2005', est sous GNU Free Documentation License
-version 1.2 ou toute version ultérieure publiée par la Free Software Foundation,
-https://commons.wikimedia.org/wiki/File:Hong_Kong_18_Districts_Blank_Map.svg
-- 'loksyu_roue_d_initiative.jpg' est une création originale de 'Darkwin'.
-
-
-MUSIQUES / MUSICS: MODULE À PART À PARTIR DE LA v. 1.0.0
-- Les musiques de Mathieu Verdier, composées spécialement pour les CdE,
-à l'occasion du financement participatif de ce jeu de rôle,
-sont librement téléchargeables sur le site d'Antre Monde Éditions :
-https://antre-monde.com/les-chroniques-de-letrengae/
-
 
 CODE / CODING:
 - David R.D. 'Mystery Man From Outerspace' Bercovici
-- Christophe 'Kristov / Qaw' Laudon (il a grandement collaboré !)
+- Christophe 'Kristov / Qaw' Laudon (il m'a un petit peu aidé !)
 
-Avec l'aide précieuse de / with precious help from
-(sur / on "La Fonderie" Discord - Many thanks to them!):
-- LeRatierBretonnien
-- Maxime 
-(et d'autres / and others)
-
-
-COMPENDIUMS: MODULES À PART À PARTIR DE LA v. 1.0.0
+COMPENDIUMS: MODULES À VENIR À PARTIR DE LA v. 1.0.0
 Basés sur / based on:
-Antre Monde Éditions' 'Les Chroniques de l'étrange' RPG books by:
-- Romain 'Rom1' d'Huissier
-- Cédric 'JTR the Hobbit' Lameire
+Antre Monde Éditions' 'Célestopol 1922' RPG books by:
+- Emmanuel Chastellière 
+- Julien Arnaud
 
 Saisis par / Entered by:
 David R.D. 'Mystery Man From Outerspace' Bercovici
 
 
 MODULES: MODULES À PART À PARTIR DE LA v. 1.0.0
-Les Compendiums sont téléchargeables depuis deux sources :
-- Compendiums gratuits :
-https://antre-monde.com/les-chroniques-de-letrengae/
-- Compendiums payants :
-https://preview.drivethrurpg.com/fr/publisher/15811/antre-monde-editions
+Les Compendiums seront téléchargeables depuis cette source :
+- À venir
 
 
 
