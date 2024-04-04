@@ -28,6 +28,18 @@
         "ASSISTANT": "OWNER"
       },
       "flags": {}
+    },
+    {
+      "name": "scenes-de-base",
+      "label": "FR - Scènes de base",
+      "system": "celestopol1922",
+      "path": "packs/scenes-de-base",
+      "type": "Scene",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
     }
   ],
   "languages": [
