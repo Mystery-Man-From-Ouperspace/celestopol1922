@@ -80,6 +80,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     const minAspectScore = 1; // Score mini d'un Aspect
 
     let aspectNbr = 0; // Nbr d'Aspects cumulé
+    let myAspectNbr = 0; // Nbr d'Aspects pris en compte
     let aspectTotalScore = 0; // Somme totale des Aspects
     let aspectScoreTestMax = 0; // Maximum des valeurs d'Aspect 
     let aspectScoreTestMin = 0; // Minimum des valeurs d'Aspect
@@ -207,15 +208,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
           aspectScoreTestMin = parseInt(aspect.system.value);
         };
         aspectTotalScore += parseInt(aspect.system.value);
+        myAspectNbr++;
       };
       aspectNbr++;
     };
-    // console.log("aspectNbr : ", aspectNbr);
-    // console.log("aspectScoreTestMax : ", aspectScoreTestMax);
-    // console.log("aspectScoreTestMin : ", aspectScoreTestMin);
-    // console.log("aspectTotalScore : ", aspectTotalScore);
-
-
+    console.log("aspectNbr : ", aspectNbr);
+    console.log("aspectScoreTestMax : ", aspectScoreTestMax);
+    console.log("aspectScoreTestMin : ", aspectScoreTestMin);
+    console.log("aspectTotalScore : ", aspectTotalScore);
 
     if (!aspectNbr) { // Aucun Aspect
       ui.notifications.warn(game.i18n.localize("CEL1922.Souci17"));
@@ -225,10 +225,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       ui.notifications.warn((game.i18n.localize("CEL1922.Souci3")).replace("^1", maxAspectNbr.toString()).replace("^0", aspectNbr.toString()));
       souciNbr++;
     }
+    /*
     if (aspectTotalScore < maxAspectNbr) { // Score total des Aspects inférieur au min
       ui.notifications.error((game.i18n.localize("CEL1922.Error5")).replace("^2", maxAspectNbr.toString()));
       erreurNbr++;
     }
+    */
     if (aspectTotalScore > maxAspectTotalScore) { // Score Total des Aspects supérieur au max (nbre )
       ui.notifications.error((game.i18n.localize("CEL1922.Error4")).replace("^2", maxAspectNbr.toString()).replace("^1", maxAspectScore).replace("^0", aspectTotalScore.toString()));
       erreurNbr++;
@@ -284,9 +286,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     // Au moins un Souci
     if (souciNbr) ui.notifications.warn((game.i18n.localize("CEL1922.Souci2")).replace("^0", souciNbr.toString()));
     
-    // Au moins une
+    // Au moins une Erreur
     if (erreurNbr) ui.notifications.error((game.i18n.localize("CEL1922.Error1")).replace("^0", erreurNbr.toString()));
 
+    // Ni Erreur, ni souci
     if (!(erreurNbr || souciNbr)) ui.notifications.info(game.i18n.localize("CEL1922.Info2"));
 
     ui.notifications.info(game.i18n.localize("CEL1922.Info3"));
@@ -952,7 +955,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myPromptPresent = await myActor.system.prefs.typeofthrow.check;
     let myRoll;
     var msg;
-   
+
+    
     let template = "";
     let myTitle = game.i18n.localize("CEL1922.ThrowDice");
     let myDialogOptions = {};
@@ -968,6 +972,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myWounds = myActor.system.blessures.lvl;
     let myDestiny = myActor.system.destin.lvl;
     let mySpleen = myActor.system.spleen.lvl;
+
+
+    var mySkillData = await _getSkillData (myActor, mySkill);
+    let mySpecialityLibel = mySkillData.libel;
+    let myValue = mySkillData.value;
+    let myRESValue = mySkillData.rESvalue;
 
 
     if (myPromptPresent === true) {
@@ -995,13 +1005,51 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       mySpleen = parseInt(myResultDialog.jaugespleen);
       myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
 
+
+      mySkillData = await _getSkillData (myActor, mySkill);
+      mySpecialityLibel = mySkillData.libel;
+      myValue = mySkillData.value;
+      myRESValue = mySkillData.rESvalue;
+  
+
     } else {
       myTypeOfThrow = await _whichTypeOfThrow(myActor, myTypeOfThrow.toString());
      // console.log("myTypeOfThrow : ", myTypeOfThrow);
     };
 
-    myRoll = myNumberOfDice+"d8";
+    console.log("myValue = ", myValue);
+    console.log("myRESValue = ", myRESValue);
 
+    console.log("myBonus = ", myBonus);
+    console.log("myMalus = ", myMalus);
+
+
+    let totalBoni = 0;
+
+    console.log("totalBoni : ", totalBoni);
+
+    totalBoni += myValue + myBonus + myMalus;
+
+    console.log("totalBoni : ", totalBoni);
+
+    // Traiter ici les autres boni / mali
+
+
+    //
+
+    if (mySkill % 5 != 0) { // S'il ne s'agit pas d'un tirage de RES pur (càd : tirage d'une Spécialité)
+      totalBoni += myRESValue;
+    };
+
+    console.log("totalBoni : ", totalBoni);
+
+    if (totalBoni == 0) {
+      myRoll = myNumberOfDice+"d8";
+    } else if (totalBoni > 0) {
+      myRoll = myNumberOfDice+"d8+" + (totalBoni).toString();
+    } else {
+      myRoll = myNumberOfDice+"d8-" + Math.abs(totalBoni).toString();
+    };
     const r = new Roll(myRoll, this.actor.getRollData());
     await r.evaluate();
     // console.log(r);
@@ -1041,17 +1089,11 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     };
   
 
-    let specialityLibel = game.i18n.localize(myActor.system.skill.skilltypes[mySkill]);
-    let specialityTab = specialityLibel.split(' ');
-    if (specialityTab[0] == "⌞") {
-      specialityLibel = specialityLibel.substring(2);
-    }
-
     // Smart Message
     const smartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const smartData = {
       numberofdice: myNumberOfDice,
-      speciality: specialityLibel
+      speciality: mySpecialityLibel
     }
     // console.log("smartData avant retour func = ", smartData);
     const smartHtml = await renderTemplate(smartTemplate, smartData);
@@ -1143,6 +1185,122 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       default: console.log("C'est bizarre !");
     };
   }
+}
+
+/* -------------------------------------------- */
+
+async function _getSkillData (myActor, mySkillNbr) {
+
+  const mySkill = parseInt(mySkillNbr);
+  let myStringVal;
+  let myStringRES;
+
+  let specialityLibel = await game.i18n.localize(myActor.system.skill.skilltypes[mySkillNbr]);
+  let specialityTab = specialityLibel.split(' ');
+  if (specialityTab[0] == "⌞") {
+    specialityLibel = specialityLibel.substring(2);
+  }
+
+  switch (mySkill) {
+    case 0:
+      myStringVal = await myActor.system.skill.ame.res;
+      myStringRES = myStringVal;
+    break;
+    case 1:
+      myStringVal = await myActor.system.skill.ame.attraction.value;
+      myStringRES = await myActor.system.skill.ame.res;
+    break;
+    case 2:
+      myStringVal = await myActor.system.skill.ame.artifice.value;
+      myStringRES = await myActor.system.skill.ame.res;
+      break;
+    case 3:
+      myStringVal = await myActor.system.skill.ame.coercition.value;
+      myStringRES = await myActor.system.skill.ame.res;
+      break;
+    case 4:
+      myStringVal = await myActor.system.skill.ame.faveur.value;
+      myStringRES = await myActor.system.skill.ame.res;
+      break;
+
+    case 5:
+      myStringVal = await myActor.system.skill.corps.res;
+      myStringRES = myStringVal;
+    break;
+    case 6:
+      myStringVal = await myActor.system.skill.corps.echauffouree.value;
+      myStringRES = await myActor.system.skill.corps.res;
+    break;
+    case 7: 
+      myStringVal = await myActor.system.skill.corps.effacement.value;
+      myStringRES = await myActor.system.skill.corps.res;
+    break;
+    case 8: 
+      myStringVal = await myActor.system.skill.corps.prouesse.value;
+      myStringRES = await myActor.system.skill.corps.res;
+    break;
+    case 9:
+      myStringVal = await myActor.system.skill.corps.mobilite.value;
+      myStringRES = await myActor.system.skill.corps.res;
+    break;
+
+    case 10:
+      myStringVal = await myActor.system.skill.coeur.res;
+      myStringRES = myStringVal;
+    break;
+    case 11:
+      myStringVal = await myActor.system.skill.coeur.appreciation.value;
+      myStringRES = await myActor.system.skill.coeur.res;
+    break;
+    case 12:
+      myStringVal = await myActor.system.skill.coeur.arts.value;
+      myStringRES = await myActor.system.skill.coeur.res;
+    break;
+    case 13:
+      myStringVal = await myActor.system.skill.coeur.inspiration.value;
+      myStringRES = await myActor.system.skill.coeur.res;
+    break;
+    case 14:
+      myStringVal = await myActor.system.skill.coeur.traque.value;
+      myStringRES = await myActor.system.skill.coeur.res;
+    break;
+
+    case 15:
+      myStringVal = await myActor.system.skill.esprit.res;
+      myStringRES = myStringVal;
+    break;
+    case 16:
+      myStringVal = await myActor.system.skill.esprit.instruction.value;
+      myStringRES = await myActor.system.skill.esprit.res;
+    break;
+    case 17:
+      myStringVal = await myActor.system.skill.esprit.mtechnologique.value;
+      myStringRES = await myActor.system.skill.esprit.res;
+    break;
+    case 18:
+      myStringVal = await myActor.system.skill.esprit.raisonnement.value;
+      myStringRES = await myActor.system.skill.esprit.res;
+    break;
+    case 19:
+      myStringVal = await myActor.system.skill.esprit.traitement.value;
+      myStringRES = await myActor.system.skill.esprit.res;
+    break;
+  };
+
+  let myValue = parseInt(myStringVal);
+  if (myStringVal == null) myValue = 0;
+  let myRESValue = parseInt(myStringRES);
+  if (myStringRES == null) myRESValue = 0;
+
+  let myData = {
+    libel: specialityLibel,
+    value: myValue,
+    rESvalue: myRESValue
+  };
+
+console.log("myData = ", myData);
+
+  return myData;
 }
 
 /* -------------------------------------------- */
@@ -1280,11 +1438,11 @@ async function _skillDiceRollDialog(
     myDialogData.aspect_2 = myHtml.find("select[name='aspect_2']").val();
     myDialogData.aspect_3 = myHtml.find("select[name='aspect_3']").val();
     myDialogData.aspect_4 = myHtml.find("select[name='aspect_4']").val();
-    myDialogData.bonus = myHtml.find("input[name='bonus']").val();
-    myDialogData.malus = myHtml.find("input[name='malus']").val();
-    myDialogData.jaugewounds = myHtml.find("input[name='jauge_wounds']").val();
-    myDialogData.jaugedestiny = myHtml.find("input[name='jauge_destiny']").val();
-    myDialogData.jauge_spleen = myHtml.find("input[name='jauge_spleen']").val();
+    myDialogData.bonus = myHtml.find("select[name='bonus']").val();
+    myDialogData.malus = myHtml.find("select[name='malus']").val();
+    myDialogData.jaugewounds = myHtml.find("select[name='jauge_wounds']").val();
+    myDialogData.jaugedestiny = myHtml.find("select[name='jauge_destiny']").val();
+    myDialogData.jauge_spleen = myHtml.find("select[name='jauge_spleen']").val();
     myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
     // console.log("myDialogData après traitement et avant retour func = ", myDialogData);
     return myDialogData;
