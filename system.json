@@ -1,14 +1,14 @@
 {
   "id": "celestopol1922",
-  "version": "0.0.1bêta",
+  "version": "0.0.2bêta",
   "title": "Célestopol 1922 (Unofficial)",
-  "url": "https://chroniques-etrange-no.fr/blog/foundry-vtt/",
+  "url": "https://github.com/Mystery-Man-From-Ouperspace/celestopol1922",
   "description": "Unofficial game system for Célestopol 1922.",
   "license": "LICENSE.txt",
   "authors": [
     {
       "name": "Man From Outerspace",
-      "url": "https://chroniques-etrange-no.fr"
+      "url": ""
     },
     {
       "name": "with help from Kristov from La Fonderie"
@@ -55,8 +55,8 @@
   "background": "/systems/celestopol1922/images/background/celestopol_game_banniere.webp",
   "gridDistance": 5,
   "gridUnits": "m",
-  "primaryTokenAttribute": "threetreasures.heiyang",
-  "secondaryTokenAttribute": "threetreasures.heiyin",
-  "manifest": "https://chroniques-etrange-no.fr/download/foundry/system.json",
-  "download": "https://chroniques-etrange-no.fr/download/foundry/release-204.zip"
+  "primaryTokenAttribute": "skill.woundsmalus",
+  "secondaryTokenAttribute": "",
+  "manifest": "http://serveurdavid.fr/download/foundry/celestopol1922/system.json",
+  "download": "http://serveurdavid.fr/download/foundry/celestopol1922/release-002.zip"
 }
