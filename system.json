@@ -18,23 +18,11 @@
   "styles": ["css/celestopol1922.css"],
   "packs": [
     {
-      "name": "aides-pour-les-joueuses",
-      "label": "FR - Aides pour les Joueuses",
+      "name": "pre-tires-kit-dinitiation",
+      "label": "FR - Pré-tirés Kit d'initiation",
       "system": "celestopol1922",
-      "path": "packs/aides-pour-les-joueuses",
-      "type": "JournalEntry",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
-      "name": "telecharger-compendiums",
-      "label": "Télécharger Compendiums",
-      "system": "celestopol1922",
-      "path": "packs/telecharger-compendiums",
-      "type": "JournalEntry",
+      "path": "packs/pre-tires-kit-dinitiation",
+      "type": "Actor",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
