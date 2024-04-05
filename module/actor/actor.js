@@ -67,7 +67,10 @@ export class CEL1922Actor extends Actor {
     }
 
     if (this.type === "character") {
-      this.system.initiative = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;
+      const lvlBlessures = parseInt(this.system.blessures.lvl);
+      const malusBlessures = parseInt(this.system.skill.woundsmalus[lvlBlessures]);
+      let init = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value + malusBlessures;
+      this.system.initiative = init;
       /*
       if (this.system.blessures.blessure_1.check) {
         this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[1]);

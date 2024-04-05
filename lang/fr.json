@@ -197,8 +197,8 @@
   "CEL1922.opt.noneText": "— AUCUNE —",
 
 
-  "CEL1922.ThrowDice": "Jeter les dés",
-  "CEL1922.ThrowMoonDice": "Jeter un dé de Lune",
+  "CEL1922.ThrowDice": "Faire un test",
+  "CEL1922.ThrowMoonDice": "Faire un test de dé de la Lune",
 
 
   "CEL1922.Jauge de Blessures": "Jauge de Blessures",
@@ -227,8 +227,8 @@
 
   "CEL1922.Initiative": "Initiative",
 
-  "CEL1922.Die": "Cliquez ici pour jeter les dés pour ",
-  "CEL1922.MoonDieThrow": "Cliquez ici pour jeter un dé de la Lune",
+  "CEL1922.Die": "Cliquez ici pour effectuer un test pour ",
+  "CEL1922.MoonDieThrow": "Cliquez ici pour effectuer un test de dé de la Lune",
   "CEL1922.ame": "Âme",
   "CEL1922.corps": "Corps",
   "CEL1922.coeur": "Cœur",
@@ -265,7 +265,7 @@
 
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un lancer",
+  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un test",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Modifier la visibilité du jet ?",
@@ -316,10 +316,7 @@
   "TYPES": {
     "Actor": {
       "character": "Personnage",
-      "npc": "PNJ",
-
-      "tinji": "Tin Ji",
-      "loksyu": "Loksyu"
+      "npc": "PNJ"
     },
     "Item": {
       "anomaly": "Anomalie",
