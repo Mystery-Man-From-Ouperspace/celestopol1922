@@ -131,6 +131,10 @@
 
   "CEL1922.Recup": "Récupération : ",
 
+  "CEL1922.Now": "ACTUEL :",
+
+  "CEL1922.NotSimplifiedNPCSheet": "Activer la version non-simplifiée",
+
 
   "CEL1922.One": "Un",
   "CEL1922.Two": "Deux",
@@ -167,7 +171,9 @@
   "CEL1922.opt.dernierquartier": "Dernier Quartier",
   "CEL1922.opt.pleinelune": "Pleine Lune",
 
+  
   "CEL1922.NPC": "PNJ",
+  "CEL1922.N.P.C.": "P . N . J .",
 
 
   "CEL1922.numberofdice": "Nbre de Dés",

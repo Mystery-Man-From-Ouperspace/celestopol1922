@@ -346,6 +346,7 @@
           "CEL1922.opt.aspect1", "CEL1922.opt.aspect2", "CEL1922.opt.aspect3", "CEL1922.opt.aspect4",
           "CEL1922.opt.aspect5", "CEL1922.opt.aspect6", "CEL1922.opt.aspect7", "CEL1922.opt.aspect8"
         ],
+        "notsimplecheck": false,
         "ame": {
           "res": 0,
           "attraction": {
@@ -363,6 +364,7 @@
         },
         "corps": {
           "res": 0,
+          "actuel": 0,
           "echauffouree": {
             "value": 0
           },

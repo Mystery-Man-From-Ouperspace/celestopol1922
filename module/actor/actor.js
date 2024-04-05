@@ -24,9 +24,74 @@ export class CEL1922Actor extends Actor {
   prepareBaseData() {
     if (this.type === "npc") {
       this.system.initiative = this.system.skill.corps.res;
+      /*
+      if (this.system.blessures.blessure_1.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[1]);
+      } else {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[0]);
+      }
+      if (this.system.blessures.blessure_2.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[2]);
+      }
+      if (this.system.blessures.blessure_3.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[3]);
+      }
+      if (this.system.blessures.blessure_4.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[4]);
+      }
+      if (this.system.blessures.blessure_5.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[5]);
+      }
+      if (this.system.blessures.blessure_6.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[6]);
+      }
+      if (this.system.blessures.blessure_7.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[7]);
+      }
+      if (this.system.blessures.blessure_8.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[8]);
+      }
+      */
+      const lvlBlessures = parseInt(this.system.blessures.lvl);
+      const malusBlessures = parseInt(this.system.skill.woundsmalus[lvlBlessures]);
+      let corps = this.system.skill.corps.res;
+      let corpsVal = 0;
+      if (corps != null) {
+        corpsVal = parseInt(corps);
+      }
+      this.system.skill.corps.actuel = corpsVal + malusBlessures; 
     }
+
     if (this.type === "character") {
       this.system.initiative = 4 + this.system.skill.corps.mobilite.value + this.system.skill.coeur.inspiration.value;
+      /*
+      if (this.system.blessures.blessure_1.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[1]);
+      } else {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[0]);
+      }
+      if (this.system.blessures.blessure_2.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[2]);
+      }
+      if (this.system.blessures.blessure_3.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[3]);
+      }
+      if (this.system.blessures.blessure_4.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[4]);
+      }
+      if (this.system.blessures.blessure_5.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[5]);
+      }
+      if (this.system.blessures.blessure_6.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[6]);
+      }
+      if (this.system.blessures.blessure_7.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[7]);
+      }
+      if (this.system.blessures.blessure_8.check) {
+        this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[8]);
+      }
+      */
     }
   }
 

@@ -4,15 +4,19 @@
   <div class="sheet-display">
     {{!-- Side Sheet --}}
     <div class="side-sheet">
-      <div class="sheet-logo">
-      <img src="systems/celestopol1922/images/logo_jeu.png">
+        <div class="sheet-logo">
+        <img src="systems/celestopol1922/images/logo_jeu.png">
+        <br>
+        <div class="NPCtype">
+          {{ localize "CEL1922.N.P.C." }}
+        </div>
       </div>
       <img class="logo-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
       <table>
         <tr>
-          <td style="width: 5%">
+          <td style="width: 1%">
             <h1>
-              {{ localize "CEL1922.NPC" }}
+              <i class="click-prefs fas fa-gear"></i>
             </h1>
           </td>
           <td>
