@@ -23,7 +23,6 @@ export class CEL1922Actor extends Actor {
 
   prepareBaseData() {
     if (this.type === "npc") {
-      this.system.initiative = this.system.skill.corps.res;
       /*
       if (this.system.blessures.blessure_1.check) {
         this.system.blessures.lvl = parseInt(this.system.skill.woundsmalus[1]);
@@ -59,7 +58,12 @@ export class CEL1922Actor extends Actor {
       if (corps != null) {
         corpsVal = parseInt(corps);
       }
-      this.system.skill.corps.actuel = corpsVal + malusBlessures; 
+      this.system.skill.corps.actuel = corpsVal + malusBlessures;
+      if (corpsVal + malusBlessures > 0) {
+      this.system.initiative = corpsVal + malusBlessures;
+      } else {
+        this.system.initiative = 0;
+      }
     }
 
     if (this.type === "character") {

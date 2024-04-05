@@ -135,6 +135,8 @@
 
   "CEL1922.NotSimplifiedNPCSheet": "Activer la version non-simplifiée",
 
+  "CEL1922.corps actuel": "Domaine Corps (actuel)",
+
 
   "CEL1922.One": "Un",
   "CEL1922.Two": "Deux",
@@ -171,7 +173,7 @@
   "CEL1922.opt.dernierquartier": "Dernier Quartier",
   "CEL1922.opt.pleinelune": "Pleine Lune",
 
-  
+
   "CEL1922.NPC": "PNJ",
   "CEL1922.N.P.C.": "P . N . J .",
 
@@ -192,6 +194,7 @@
 
 
   "CEL1922.opt.none": "—",
+  "CEL1922.opt.noneText": "— AUCUNE —",
 
 
   "CEL1922.ThrowDice": "Jeter les dés",

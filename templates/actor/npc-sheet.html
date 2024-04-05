@@ -38,6 +38,7 @@
             <label><b>{{ localize "CEL1922.Anomaly" }}</b></label>
             <select name="system.anomaly">
               {{#select systemData.anomaly }}
+              <option value="0">{{ localize "CEL1922.opt.noneText" }}</option>
               <option value="1">{{ localize "CEL1922.Entropie" }}</option>
               <option value="2">{{ localize "CEL1922.CommunicationAvecLesMorts" }}</option>
               <option value="3">{{ localize "CEL1922.Illusion" }}</option>
@@ -56,6 +57,7 @@
             <span>/</span>
             <select name="system.anomalymax">
               {{#select systemData.anomalymax }}
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -71,7 +73,7 @@
           </td>
         </tr>
         <tr>
-          <td class="initiative" title="{{ localize 'CEL1922.corps' }}">
+          <td class="initiative" title="{{ localize 'CEL1922.corps actuel' }}">
             -&nbsp;{{systemData.initiative}}&nbsp;-
             <!--
             <img
