@@ -1045,6 +1045,11 @@ text-align: left;
 
 /* concerne l'interface de Foundry */
 
+h1, h2, h3, h4, h5, h6 {
+  border-bottom-color: rgb(12, 76, 12);
+  color: orange;
+}
+
 #logo {
   content: url("/systems/celestopol1922/images/logo_jeu.png");
   width: 80px;
