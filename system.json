@@ -30,18 +30,6 @@
       "flags": {}
     },
     {
-      "name": "pre-tires-kit-dinitiation",
-      "label": "FR - Pré-tirés Kit d'initiation",
-      "system": "celestopol1922",
-      "path": "packs/pre-tires-kit-dinitiation",
-      "type": "Actor",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
       "name": "scenes-de-base",
       "label": "FR - Scènes de base",
       "system": "celestopol1922",
