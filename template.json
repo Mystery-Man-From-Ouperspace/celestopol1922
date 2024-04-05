@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "npc", "tinji", "loksyu"],
+    "types": ["character", "npc"],
     "htmlFields": ["description"],
 
     "character": {

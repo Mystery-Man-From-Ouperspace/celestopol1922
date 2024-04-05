@@ -3,8 +3,6 @@ import { CEL1922Item } from "./item/item.js";
 
 import { CEL1922CharacterSheet } from "./actor/character-sheet.js";
 import { CEL1922PNJSheet } from "./actor/npc-sheet.js";
-import { CEL1922TinJiSheet } from "./actor/tinji-sheet.js";
-import { CEL1922LoksyuSheet } from "./actor/loksyu-sheet.js";
 import { CEL1922ItemSheet } from "./item/item-sheet.js";
 import { CEL1922AnomalySheet } from "./item/anomaly-sheet.js";
 import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
@@ -46,8 +44,6 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("celestopol1922", CEL1922CharacterSheet, { types: ["character"], makeDefault: true }); // ligne modifiée selon directives de LeRatierBretonnien
   Actors.registerSheet("celestopol1922", CEL1922PNJSheet, { types: ["npc"], makeDefault: true });
-  Actors.registerSheet("celestopol1922", CEL1922TinJiSheet, { types: ["tinji"], makeDefault: true });
-  Actors.registerSheet("celestopol1922", CEL1922LoksyuSheet, { types: ["loksyu"], makeDefault: true });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("celestopol1922", CEL1922ItemSheet, { types: ["item"], makeDefault: true });
