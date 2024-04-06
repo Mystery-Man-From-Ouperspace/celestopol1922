@@ -980,6 +980,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myRESValue = mySkillData.rESvalue;
 
 
+    if (parseInt(myWounds) == 8) {
+      ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
+      return;
+    }
+
+
     if (myPromptPresent === true) {
       let myResultDialog =  await _skillDiceRollDialog(
         myActor, template, myTitle, myDialogOptions, myNumberOfDice,
