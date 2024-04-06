@@ -8,6 +8,8 @@ ce logiciel, sans leur autorisation.
 - cetaines icônes sont issues du site game-icons.org
 et sont sous licence https://creativecommons.org/licenses/by/3.0/
 Vous pouvez retrouver le nom de leurs auteurs respectifs sur ce site.
+- Phases de la Lune :
+https://fr.freepik.com/vecteurs-libre/grandes-phases-lune-plat_1089413.htm#query=les%20phases%20de%20la%20lune&position=8&from_view=keyword&track=ais&uuid=eb102890-efec-4815-8e80-ff3f6a74562a
 
 CODE / CODING:
 - David R.D. 'Mystery Man From Outerspace' Bercovici
