@@ -40,260 +40,8 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
     html.find(".click-prefs").click(this._onClickPrefs.bind(this));
     html.find(".jauge-check").click(this._onClickJaugeCheck.bind(this));
     html.find(".tromblon-click").click(this._onClickInitiative.bind(this));
-    html.find(".check-sheet-click").click(this._onClickCheckSheet.bind(this));
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Listen for click on Eye.
-   * @param {MouseEvent} event    The originating left click event
-   */
-  async _onClickCheckSheet (event) {
-
-    const myActor = this.actor;
-
-    ui.notifications.info(game.i18n.localize("CEL1922.Info1"));
-
-    let erreurNbr = 0; // Nbr d'erreurs cumulé
-    let souciNbr = 0; // Nbr de soucis cumulé
-
-    const maxRESTotalScore = 99999; // Score maxi de la somme des RES
-    const minRESTotalScore = 0; // Score mini de la somme des RES
-    const maxRESScore = 4; // Score maxi d'une RES
-    const minRESScore = 0; // Score minji d'une RES
-    const maxSpecialTotalScore = 99999; // Score maxi de la somme des Speciality
-    const minSpecialTotalScore = 0; // Score mini de la somme des Speciality
-    const maxSpecialScore = 4; // Score maxi d'une Spéciality
-    const minSpecialScore = 0; // Score mini d'une Speciality
-
-    let rESTotalScore = 0; // Scores cumulés des RES
-    let rESScoreTestMax = 0; // Maximum des valeurs des RES
-    let rESScoreTestMin = 0; // Minimum des valeurs des RES
-    let specialTotalScore = 0; // Scores cumulés des Speciality
-    let specialScoreTestMax = 0; // Maximum des valeurs des Speciality
-    let specialScoreTestMin = 0; // Minimum des valeurs des Speciality
-
-    const maxAspectNbr = 4; // Nbr maxi d'Aspect
-    const maxAspectTotalScore = 4; // Score maxi de la somme des Aspects
-    const maxAspectScore = 4; // Score maxi d'un Aspect
-    const minAspectScore = 1; // Score mini d'un Aspect
-
-    let aspectNbr = 0; // Nbr d'Aspects cumulé
-    let myAspectNbr = 0; // Nbr d'Aspects pris en compte
-    let aspectTotalScore = 0; // Somme totale des Aspects
-    let aspectScoreTestMax = 0; // Maximum des valeurs d'Aspect 
-    let aspectScoreTestMin = 0; // Minimum des valeurs d'Aspect
-
-    const maxAnomalyNbr = 1; // Nbr maxi d'Anomaly
-    const maxAnomalyScore = 4; // Score maxi d'une Anomaly
-    const minAnomalyScore = 1; // Score mini d'une Anomaly
-
-    let anomalyNbr = 0; // Nbr d'Anomaly cumulé
-    let anomalyScoreTest = 0; // Score de l'unique Anomaly prise en compte
-
-    const menuSkill = myActor.system.skill.skilltypes;
-
-    const sizeMenuSkill = menuSkill.length;
-
-    // Skills (RES)/Specialities
-    let mySkill = {};
-    let myString;
-    let myValue = 0;
-
-    function myObject(id, label, value)
-    {
-      this.id = id;
-      this.label = label;
-      this.value = value;
-    };
-
-    for (let i=0; i<20; i++) {
-      switch (i) {
-        case 0: myString = myActor.system.skill.ame.res;
-        break;
-        case 1: myString = myActor.system.skill.ame.attraction.value;
-        break;
-        case 2: myString = myActor.system.skill.ame.artifice.value;
-        break;
-        case 3: myString = myActor.system.skill.ame.coercition.value;
-        break;
-        case 4: myString = myActor.system.skill.ame.faveur.value;
-        break;
-
-        case 5: myString = myActor.system.skill.corps.res;
-        break;
-        case 6: myString = myActor.system.skill.corps.echauffouree.value;
-        break;
-        case 7: myString = myActor.system.skill.corps.effacement.value;
-        break;
-        case 8: myString = myActor.system.skill.corps.prouesse.value;
-        break;
-        case 9: myString = myActor.system.skill.corps.mobilite.value;
-        break;
-
-        case 10: myString = myActor.system.skill.coeur.res;
-        break;
-        case 11: myString = myActor.system.skill.coeur.appreciation.value;
-        break;
-        case 12: myString = myActor.system.skill.coeur.arts.value;
-        break;
-        case 13: myString = myActor.system.skill.coeur.inspiration.value;
-        break;
-        case 14: myString = myActor.system.skill.coeur.traque.value;
-        break;
-
-        case 15: myString = myActor.system.skill.esprit.res;
-        break;
-        case 16: myString = myActor.system.skill.esprit.instruction.value;
-        break;
-        case 17: myString = myActor.system.skill.esprit.mtechnologique.value;
-        break;
-        case 18: myString = myActor.system.skill.esprit.raisonnement.value;
-        break;
-        case 19: myString = myActor.system.skill.esprit.traitement.value;
-        break;
-      };
-      myValue = parseInt(myString);
-      if (myString == null) myValue = 0;
-      mySkill[i.toString()] = new myObject(i.toString(), menuSkill[i], myValue);
-    }
-    console.log("mySkill : ", mySkill);
-    for (let skill=0; skill<20; skill++) {
-      if (skill % 5 == 0) {
-        rESTotalScore += parseInt(mySkill[skill.toString()].value);
-        if (parseInt(mySkill[skill.toString()].value) > rESScoreTestMax) {
-          rESScoreTestMax = parseInt(mySkill[skill.toString()].value);
-        };
-        if (parseInt(mySkill[skill.toString()].value) < rESScoreTestMin) {
-          rESScoreTestMin = parseInt(mySkill[skill.toString()].value);
-        };
-      } else {
-        specialTotalScore += parseInt(mySkill[skill.toString()].value);
-        if (parseInt(mySkill[skill.toString()].value) > specialScoreTestMax) {
-          specialScoreTestMax = parseInt(mySkill[skill.toString()].value);
-        };
-        if (parseInt(mySkill[skill.toString()].value) < specialScoreTestMin) {
-          specialScoreTestMin = parseInt(mySkill[skill.toString()].value);
-        };
-      };
-    }
-
-    // console.log ("rESTotalScore : ", rESTotalScore);
-    // console.log ("rESScoreTestMax : ", rESScoreTestMax);
-    // console.log ("specialScoreTestMax : ", specialScoreTestMax);
-
-    // console.log ("specialTotalScore : ", specialTotalScore);
-    // console.log ("specialScoreTestMax : ", specialScoreTestMax);
-    // console.log ("specialScoreTestMin : ", specialScoreTestMin);
-
-
-    // Aspects/Anomalies
-    for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
-      anomalyNbr++;
-      if (anomalyNbr == 1) {
-        anomalyScoreTest = parseInt(anomaly.system.value);
-      };
-    };
-    // console.log("anomalyNbr : ", anomalyNbr);
-    // console.log("anomalyScoreTest : ", anomalyScoreTest);
-
-
-    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
-      if (aspectNbr < 4) {
-        if (parseInt(aspect.system.value) > aspectScoreTestMax) {
-          aspectScoreTestMax = parseInt(aspect.system.value);
-        };
-        if (parseInt(aspect.system.value) < aspectScoreTestMin) {
-          aspectScoreTestMin = parseInt(aspect.system.value);
-        };
-        aspectTotalScore += parseInt(aspect.system.value);
-        myAspectNbr++;
-      };
-      aspectNbr++;
-    };
-    console.log("aspectNbr : ", aspectNbr);
-    console.log("aspectScoreTestMax : ", aspectScoreTestMax);
-    console.log("aspectScoreTestMin : ", aspectScoreTestMin);
-    console.log("aspectTotalScore : ", aspectTotalScore);
-
-    if (!aspectNbr) { // Aucun Aspect
-      ui.notifications.warn(game.i18n.localize("CEL1922.Souci17"));
-      souciNbr++;
-    }
-    if (aspectNbr > maxAspectNbr) { // Nbr d'Aspect supérieur au max
-      ui.notifications.warn((game.i18n.localize("CEL1922.Souci3")).replace("^1", maxAspectNbr.toString()).replace("^0", aspectNbr.toString()));
-      souciNbr++;
-    }
-    /*
-    if (aspectTotalScore < maxAspectNbr) { // Score total des Aspects inférieur au min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error5")).replace("^2", maxAspectNbr.toString()));
-      erreurNbr++;
-    }
-    */
-    if (aspectTotalScore > maxAspectTotalScore) { // Score Total des Aspects supérieur au max (nbre )
-      ui.notifications.error((game.i18n.localize("CEL1922.Error4")).replace("^2", maxAspectNbr.toString()).replace("^1", maxAspectScore).replace("^0", aspectTotalScore.toString()));
-      erreurNbr++;
-    }
-    if (!anomalyNbr) { // Aucune Anomaly
-      ui.notifications.warn(game.i18n.localize("CEL1922.Souci18"));
-      souciNbr++;
-    }
-    if (anomalyNbr > maxAnomalyNbr) { // Plus d'une Anomaly
-      ui.notifications.warn((game.i18n.localize("CEL1922.Souci6")).replace("^0", anomalyNbr.toString()));
-      souciNbr++;
-    }
-    if (anomalyScoreTest < minAnomalyScore) { // Un Score d'Anomaly au-dessous du min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error8")).replace("^1", minAnomalyScore.toString()).replace("^0", anomalyScoreTest.toString()));;
-      erreurNbr++;
-    }
-    if (anomalyScoreTest > maxAnomalyScore) { // Un Score d'Anomaly au-dessus du max
-      ui.notifications.error((game.i18n.localize("CEL1922.Error7")).replace("^1", maxAnomalyScore.toString()).replace("^0", anomalyScoreTest.toString()));
-      erreurNbr++;
-    }
-    if (rESTotalScore < minRESTotalScore) { // Score Total des RES au-dessous du min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error9")).replace("^1", minRESTotalScore.toString()).replace("^0", rESTotalScore.toString()));
-      erreurNbr++;
-    }
-    if (rESTotalScore > maxRESTotalScore) { // Score Total des RES au-dessus du max
-      ui.notifications.error((game.i18n.localize("CEL1922.Error10")).replace("^1", maxRESTotalScore.toString()).replace("^0", rESTotalScore.toString()));
-      erreurNbr++;
-    }
-    if (rESScoreTestMin < minRESScore) { // Un Score de RES au-dessous du min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error11")).replace("^1", minRESScore.toString()));
-      erreurNbr++;
-    }
-    if (rESScoreTestMax > maxRESScore) { // Un Score de RES au-dessus du max
-      ui.notifications.error((game.i18n.localize("CEL1922.Error12")).replace("^1", maxRESScore.toString()));
-      erreurNbr++;
-    }
-    if (specialTotalScore < minSpecialTotalScore) { // Score Total des Speciality au-dessous du min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error13")).replace("^1", minSpecialTotalScore.toString()).replace("^0", specialTotalScore.toString()));
-      erreurNbr++;
-    }
-    if (specialTotalScore > maxSpecialTotalScore) { // Score Total des Speciality au-dessus du max
-      ui.notifications.error((game.i18n.localize("CEL1922.Error14")).replace("^1", maxSpecialTotalScore.toString()).replace("^0", specialTotalScore.toString()));
-      erreurNbr++;
-    }
-    if (specialScoreTestMin < minSpecialScore) { // Un Score de Speciality au-dessous du min
-      ui.notifications.error((game.i18n.localize("CEL1922.Error15")).replace("^1", minSpecialScore.toString()));
-      erreurNbr++;
-    }
-    if (specialScoreTestMax > maxSpecialScore) { // Un Score de Speciality au-dessus du max
-      ui.notifications.error((game.i18n.localize("CEL1922.Error16")).replace("^1", maxSpecialScore.toString()));
-      erreurNbr++;
-    }
-    // Au moins un Souci
-    if (souciNbr) ui.notifications.warn((game.i18n.localize("CEL1922.Souci2")).replace("^0", souciNbr.toString()));
-    
-    // Au moins une Erreur
-    if (erreurNbr) ui.notifications.error((game.i18n.localize("CEL1922.Error1")).replace("^0", erreurNbr.toString()));
-
-    // Ni Erreur, ni souci
-    if (!(erreurNbr || souciNbr)) ui.notifications.info(game.i18n.localize("CEL1922.Info2"));
-
-    ui.notifications.info(game.i18n.localize("CEL1922.Info3"));
-  }
 
   /* -------------------------------------------- */
 
@@ -303,12 +51,11 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
    */
   async _onClickPrefs (event) {
     // Render modal dialog
-    const template = 'systems/celestopol1922/templates/form/prefs-prompt.html';
+    const template = 'systems/celestopol1922/templates/form/npc-prefs-prompt.html';
     const title = game.i18n.localize("CEL1922.Preferences");
     let dialogOptions = "";
     var dialogData = {
       choice: this.actor.system.prefs.typeofthrow.choice,
-      check: this.actor.system.prefs.typeofthrow.check
     };
     // console.log("Gear dialogData = ", dialogData);
     const html = await renderTemplate(template, dialogData);
@@ -335,16 +82,14 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 185
+        height: 155
       });
     });
     async function _computeResult(myActor, myHtml) {
       // console.log("I'm in _computeResult(myActor, myHtml)");
       const choice =  parseInt(myHtml.find("select[name='choice']").val());
       // console.log("choice = ", choice);
-      const isChecked = myHtml.find("input[name='check']").is(':checked');
-      // console.log("isChecked = ", isChecked);
-      await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString(), "system.prefs.typeofthrow.check": isChecked });
+      await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString() });
     }
   }
 

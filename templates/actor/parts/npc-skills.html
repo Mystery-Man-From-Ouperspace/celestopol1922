@@ -12,7 +12,6 @@
     </th>
      <th class="AME">
       {{ localize "CEL1922.AME" }}
-
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.ame.res" value="{{systemData.skill.ame.res}}" placeholder="0" />
     </th>
@@ -20,8 +19,6 @@
       {{ localize "CEL1922.CORPS" }}
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.corps.res" value="{{systemData.skill.corps.res}}" placeholder="0" />
-      <br>
-      {{ localize "CEL1922.Now" }}&nbsp;&#91;&nbsp;{{ systemData.skill.corps.actuel }}&nbsp;&#93;
     </th>
     <th class="COEUR">
       {{ localize "CEL1922.COEUR" }}
@@ -32,6 +29,22 @@
       {{ localize "CEL1922.ESPRIT" }}
       {{ localize "CEL1922.RES" }}
       <input type="number" name="system.skill.esprit.res" value="{{systemData.skill.esprit.res}}" placeholder="0" />
+    </th>
+  </tr>
+  <tr>
+    <th>
+    </th>
+     <th class="AME">
+      {{ localize "CEL1922.Now" }}&nbsp;&#91;&nbsp;{{ systemData.skill.ame.actuel }}&nbsp;&#93;
+    </th>
+    <th class="CORPS">
+      {{ localize "CEL1922.Now" }}&nbsp;&#91;&nbsp;{{ systemData.skill.corps.actuel }}&nbsp;&#93;
+    </th>
+    <th class="COEUR">
+      {{ localize "CEL1922.Now" }}&nbsp;&#91;&nbsp;{{ systemData.skill.coeur.actuel }}&nbsp;&#93;
+    </th>
+    <th class="ESPRIT">
+      {{ localize "CEL1922.Now" }}&nbsp;&#91;&nbsp;{{ systemData.skill.esprit.actuel }}&nbsp;&#93;
     </th>
   </tr>
 </table>

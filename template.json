@@ -348,6 +348,7 @@
         ],
         "ame": {
           "res": 0,
+          "actuel": 0,
           "attraction": {
             "value": 0
           },
@@ -379,6 +380,7 @@
         },
         "coeur": {
           "res": 0,
+          "actuel": 0,
           "appreciation": {
             "value": 0
           },
@@ -394,6 +396,7 @@
         },
         "esprit": {
           "res": 0,
+          "actuel": 0,
           "instruction": {
             "value": 0
           },
