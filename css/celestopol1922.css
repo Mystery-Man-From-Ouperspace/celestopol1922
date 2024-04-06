@@ -555,7 +555,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #pause > img {
-  content: url("/systems/celestopol1922/images/wheel.png");
+  content: url("/systems/celestopol1922/images/wheel.webp");
   height: 192px;
   width: 192px;
   top: -45px;
