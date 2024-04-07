@@ -1,0 +1,101 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    {{log 'item-sheet' this}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        <div class="header-fields">
+            <div class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+            </div>
+            <div class="value">
+                <label><b>{{ localize "CEL1922.AttributeValue" }}</b></label>
+                <select name="system.value">
+                {{#select systemData.value }}
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                {{/select}}
+                </select>
+            </div>
+            <div class="resource">
+				<label><b>{{localize "CEL1922.Reference"}}</b></label>
+				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Reference' }}" name="system.reference" value="{{systemData.reference}}" />
+            </div>
+        </div>
+    </header>
+	
+	{{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description-technique">{{localize "CEL1922.Technique"}}</a>
+        <a class="item" data-tab="description-narratif">{{localize "CEL1922.Narratif"}}</a>
+        <a class="item" data-tab="attributes">{{localize "CEL1922.Attributes"}}</a>
+        <a class="item" data-tab="notes">{{localize "CEL1922.Notes"}}</a>
+    </nav>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Technique Tab --}}
+        <div class="tab" data-group="primary" data-tab="description-technique">
+            {{editor techniqueHTML target="system.technique" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+
+		{{!-- Narratif  Tab --}}
+        <div class="tab" data-group="primary" data-tab="description-narratif">
+            {{editor narratifHTML target="system.narratif" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <div>
+                <table>
+                    <tr>
+                        <th class="libel-skills">
+                            {{localize "CEL1922.concerned skill"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.bonus"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.malus"}}
+                        </th>
+                    </tr>
+                    {{#each systemData.scores as |score key|}}
+                    <tr>
+                        <td>
+                            <label><b>{{localize score.label}}</b></label>
+                        </td>
+                        <td class="bonus">
+                            <input class="input" type="number" name="system.{{@key}}.bonus_malus.bonus" value="{{score.bonus_malus.bonus}}" />
+                        </td>
+                        <td class="malus">
+                            <input class="input" type="number" name="system.{{@key}}.bonus_malus.malus" value="{{score.bonus_malus.malus}}" />
+                        </td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <th>
+                            {{localize "CEL1922.concerned skill UP"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.bonus"}}
+                        </th>
+                        <th>
+                            {{localize "CEL1922.malus"}}
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+		
+		{{!-- Notes Tab --}}
+        <div class="tab" data-group="primary" data-tab="notes">
+            {{editor notesHTML target="system.notes" button=true editable=editable engine="prosemirror"}}
+        </div>
+
+    </section>
+</form>

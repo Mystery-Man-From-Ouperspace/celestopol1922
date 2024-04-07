@@ -22,6 +22,7 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.equipments = context.items.filter(item => item.type === "item");
+    context.attributes = context.items.filter(item => item.type === "attribute");
     context.aspects = context.items.filter(item => item.type === "aspect");
     context.anomalies = context.items.filter(item => item.type === "anomaly");
 

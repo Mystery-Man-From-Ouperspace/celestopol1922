@@ -547,7 +547,7 @@
   },
 
   "Item": {
-    "types": ["item", "anomaly", "aspect"],
+    "types": ["item", "anomaly", "aspect", "attribute"],
     "htmlFields": ["technique", "narratif", "notes"],
     "templates":{
       "myscores": {
@@ -741,6 +741,16 @@
     },
 
     "aspect": {
+      "value": 0,
+      "subtype": "",
+      "reference": "",
+      "technique": "",
+      "narratif": "",
+      "templates": ["myscores"],
+      "notes": ""
+    },
+
+    "attribute": {
       "value": 0,
       "subtype": "",
       "reference": "",

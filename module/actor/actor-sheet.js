@@ -36,7 +36,7 @@ export class CEL1922ActorSheet extends ActorSheet {
   }
 
   /**
-   * Handle click events for Item, Aspect, Anomaly control buttons within the Actor Sheet
+   * Handle click events for Item, Aspect, Anomaly, Attribute control buttons within the Actor Sheet
    * @param event
    * @private
    */
@@ -58,6 +58,7 @@ export class CEL1922ActorSheet extends ActorSheet {
         if (type === "item") name = game.i18n.localize("CEL1922.ItemNew");
         else if (type === "anomaly") name = game.i18n.localize("CEL1922.AnomalyNew");
         else if (type === "aspect") name = game.i18n.localize("CEL1922.AspectNew");
+        else if (type === "attribute") name = game.i18n.localize("CEL1922.AttributeNew");
         return cls.create({ name: name, type: type }, { parent: this.actor });
       case "edit":
         item = this.actor.items.get(li?.dataset.itemId);

@@ -36,6 +36,7 @@
   "CEL1922.Concept": "Concept",
   "CEL1922.Anomaly": "Anomalie",
   "CEL1922.Aspect": "Aspect",
+  "CEL1922.Attribute": "Attribut",
   "CEL1922.Item": "Équipement",
 
   "CEL1922.Libel": "Libellé",
@@ -43,6 +44,7 @@
   "CEL1922.Concepts": "Concepts",
   "CEL1922.Aspects": "Aspects",
   "CEL1922.Anomalies": "Anomalies",
+  "CEL1922.Attributes": "Attributs",
   "CEL1922.Items": "Équipements",
 
   "CEL1922.Entropie": "ENTROPIE",
@@ -55,7 +57,6 @@
   "CEL1922.VoyageAstral": "VOYAGE ASTRAL",
 
   "CEL1922.Description": "Description",
-  "CEL1922.Attributes": "Attributs",
   "CEL1922.Skills": "Statistiques",
 
   "CEL1922.AME": "ÂME",
@@ -214,6 +215,11 @@
   "CEL1922.Grave": "Grave",
   "CEL1922.Dramatique": "Dramatique",
   "CEL1922.Hors-fiction": "Hors-fiction",
+
+  "CEL1922.AttributeNew": "Nouvel Attribut",
+  "CEL1922.AttributeCreate": "Créer un Attribut",
+  "CEL1922.AttributeEdit":  "Visualiser/Modifier l′Attribut",
+  "CEL1922.AttributeDelete": "Supprimer l′Attribut",
 
   "CEL1922.AspectNew": "Nouvel Aspect",
   "CEL1922.AspectCreate": "Créer un Aspect",

@@ -12,7 +12,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       template: "systems/celestopol1922/templates/actor/character-sheet.html",
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       scrollY: [".biography", ".items", ".attributes", ".aspects", ".anomalies"],
-      dragDrop: [{dragSelector: ".item-list .item .aspect .anomaly", dropSelector: null}]
+      dragDrop: [{dragSelector: ".item-list .item .attribute .aspect .anomaly", dropSelector: null}]
     });
   }
 
@@ -22,6 +22,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.equipments = context.items.filter(item => item.type === "item");
+    context.attributes = context.items.filter(item => item.type === "attribute");
     context.aspects = context.items.filter(item => item.type === "aspect");
     context.anomalies = context.items.filter(item => item.type === "anomaly");
 

@@ -6,6 +6,7 @@ import { CEL1922PNJSheet } from "./actor/npc-sheet.js";
 import { CEL1922ItemSheet } from "./item/item-sheet.js";
 import { CEL1922AnomalySheet } from "./item/anomaly-sheet.js";
 import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
+import { CEL1922AttributeSheet } from "./item/attribute-sheet.js";
 
 import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
@@ -49,6 +50,7 @@ Hooks.once("init", async function () {
   Items.registerSheet("celestopol1922", CEL1922ItemSheet, { types: ["item"], makeDefault: true });
   Items.registerSheet("celestopol1922", CEL1922AnomalySheet, { types: ["anomaly"], makeDefault: true });
   Items.registerSheet("celestopol1922", CEL1922AspectSheet, { types: ["aspect"], makeDefault: true });
+  Items.registerSheet("celestopol1922", CEL1922AttributeSheet, { types: ["attribute"], makeDefault: true });
 
   // Preload template partials
   await preloadHandlebarsTemplates();

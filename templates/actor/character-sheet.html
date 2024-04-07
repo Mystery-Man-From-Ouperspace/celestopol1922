@@ -96,6 +96,7 @@
         <a class="item" data-tab="skills">{{ localize "CEL1922.Skills" }}</a>
         <a class="item" data-tab="anomalies">{{ localize "CEL1922.Anomalies" }}</a>
         <a class="item" data-tab="aspects">{{ localize "CEL1922.Aspects" }}</a>
+        <a class="item" data-tab="attributes">{{ localize "CEL1922.Attributes" }}</a>
         <a class="item" data-tab="items">{{ localize "CEL1922.Items" }}</a>
       </nav>
 
@@ -109,11 +110,14 @@
         {{!-- Skills Tab --}}
         <div class="tab skills" data-group="primary" data-tab="skills">{{> "systems/celestopol1922/templates/actor/parts/character-skills.html"}}</div>
 
+        {{!-- Owned Anomaly Tab --}}
+        <div class="tab anomalies" data-group="primary" data-tab="anomalies">{{> "systems/celestopol1922/templates/actor/parts/character-anomalies.html"}}</div>
+
         {{!-- Owned Aspect Tab --}}
         <div class="tab aspects" data-group="primary" data-tab="aspects">{{> "systems/celestopol1922/templates/actor/parts/character-aspects.html"}}</div>
 
-        {{!-- Owned Anomaly Tab --}}
-        <div class="tab anomalies" data-group="primary" data-tab="anomalies">{{> "systems/celestopol1922/templates/actor/parts/character-anomalies.html"}}</div>
+        {{!-- Owned Attribute Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">{{> "systems/celestopol1922/templates/actor/parts/character-attributes.html"}}</div>
 
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">{{> "systems/celestopol1922/templates/actor/parts/character-items.html"}}</div>
