@@ -297,6 +297,8 @@ text-align: left;
 }
 .celestopol1922 .item-list .item-name {
   margin: 0;
+  color: black;
+  font-weight: bold;
 }
 .celestopol1922 .item-list .item-controls {
   flex: 0 0 36px;

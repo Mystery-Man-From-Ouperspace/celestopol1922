@@ -333,7 +333,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 185
+        height: 215
       });
     });
     async function _computeResult(myActor, myHtml) {

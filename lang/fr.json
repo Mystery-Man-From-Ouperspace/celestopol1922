@@ -186,8 +186,8 @@
   "CEL1922.aspect": "Aspect",
   "CEL1922.aspects": "Aspects",
 
-  "CEL1922.bonus": "Bonus",
-  "CEL1922.malus": "Malus",
+  "CEL1922.bonus": "Bonus supplémentaires",
+  "CEL1922.malus": "Malus supplémentaires",
   "CEL1922.jaugewounds": "Jauge de Blessures",
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
@@ -307,7 +307,7 @@
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects et bonus et malus supplémentaires ne pourront plus être pris en compte.",
 
 
   "CEL1922.OneDie": "dé",
