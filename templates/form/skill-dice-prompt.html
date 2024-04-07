@@ -105,6 +105,32 @@
                 <tr style="background-color: transparent;">
                     <td>
                         <div>
+                            <span class="value"><b>{{ localize "CEL1922.attribute" }}</b></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="bonusattribute" data-type="String">
+                                {{#select bonusattribute }}
+                                <option value="0">&nbsp;+&nbsp;</option>
+                                <option value="0">&nbsp;–&nbsp;</option>
+                                {{/select}}
+                                </select>
+                                </div>
+                    </td>
+                    <td style="display: flex; align-items: content; justify-content: end;">
+                        <select name="attribute" data-type="String">
+                            {{selectOptions attributechoices selected=attribute labelAttr="label" localize=true}}
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+
+            <table style="border: 0px; background-color: transparent;" >
+                <tr style="background-color: transparent;">
+                    <td>
+                        <div>
                             <span class="value"><b>{{ localize "CEL1922.bonus" }}</b></span>
                         </div>
                     </td>

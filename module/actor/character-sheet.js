@@ -965,6 +965,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myBonusAnomaly = 1;
     let myAspect = 0;
     let myBonusAspect = 1;
+    let myAttribute = 0;
+    let myBonusAttribute = 1;
     let myBonus = 0;
     let myMalus = -0;
     let myWounds = myActor.system.blessures.lvl;
@@ -987,7 +989,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     if (myPromptPresent === true) {
       let myResultDialog =  await _skillDiceRollDialog(
         myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-        mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myBonus, myMalus,
+        mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myAttribute, myBonusAttribute, myBonus, myMalus,
         myWounds, myDestiny, mySpleen, myTypeOfThrow
       );
 
@@ -1001,6 +1003,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myBonusAnomaly = parseInt(myResultDialog.bonusanomaly);
       myAspect = parseInt(myResultDialog.aspect);
       myBonusAspect = parseInt(myResultDialog.bonusaspect);
+      myAttribute = parseInt(myResultDialog.attribute);
+      myBonusAttribute = parseInt(myResultDialog.bonusattribute);
       myBonus = parseInt(myResultDialog.bonus);
       myMalus = parseInt(myResultDialog.malus);
       myWounds = parseInt(myResultDialog.jaugewounds);
@@ -1372,7 +1376,7 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
 
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-  mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myBonus, myMalus,
+  mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myAttribute, myBonusAttribute, myBonus, myMalus,
   myWounds, myDestiny, mySpleen, myTypeOfThrow
 ) {
   // Render modal dialog
@@ -1391,6 +1395,10 @@ async function _skillDiceRollDialog(
     skill: mySkill.toString(),
     anomaly: myAnomaly.toString(),
     aspect: myAspect.toString(),
+    attribute: myAttribute.toString(),
+    bonusanomalybonus: myBonusAnomaly.toString(),
+    bonusaspect: myBonusAspect.toString(),
+    bonusattribute: myBonusAttribute.toString(),
     bonus: myBonus.toString(),
     malus: myMalus.toString(),
     jaugewounds: myWounds.toString(),
@@ -1425,7 +1433,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 568
+      height: 605
     });
   });
 
@@ -1443,6 +1451,8 @@ async function _skillDiceRollDialog(
     myDialogData.bonusanomaly = myHtml.find("select[name='bonusanomaly']").val();
     myDialogData.aspect = myHtml.find("select[name='aspect']").val();
     myDialogData.bonusaspect = myHtml.find("select[name='bonusaspect']").val();
+    myDialogData.attribute = myHtml.find("select[name='attribute']").val();
+    myDialogData.bonusattribute = myHtml.find("select[name='bonusttribute']").val();
     myDialogData.bonus = myHtml.find("select[name='bonus']").val();
     myDialogData.malus = myHtml.find("select[name='malus']").val();
     myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
@@ -1475,6 +1485,7 @@ async function _skillDiceRollDialog(
     let mySkill = {};
     let myAnomaly = {};
     let myAspect = {};
+    let myAttribute = {};
     let myJauge_Wounds = {};
     let myJauge_Destiny = {};
     let myJauge_Spleen = {};
@@ -1523,6 +1534,14 @@ async function _skillDiceRollDialog(
         myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
       };
     };
+    compt = 0;
+    myAttribute["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
+      compt++;
+      if (compt <= 4) {
+        myAttribute[attribute.id.toString()] = new myObject(attribute.id.toString(), attribute.name.toString());
+      };
+    };
 
     const context = {
     skillchoices: mySkill,
@@ -1530,6 +1549,8 @@ async function _skillDiceRollDialog(
     bonusanomaly: '1',
     aspectchoices: myAspect,
     bonusaspect: '1',
+    attributechoices: myAttribute,
+    bonusattribute: '1',
     jaugewoundschoices: myJauge_Wounds,
     jaugedestinychoices: myJauge_Destiny,
     jaugespleenchoices: myJauge_Spleen
