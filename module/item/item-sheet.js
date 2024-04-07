@@ -12,7 +12,7 @@ export class CEL1922ItemSheet extends ItemSheet {
       width: 450,
       height: 520,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description-technique" }],
-      scrollY: [".description-technique", ".description-narratif", ".attributes", ".notes"],
+      scrollY: [".description-technique", ".description-narratif", ".data", ".notes"],
     });
   }
 
