@@ -960,11 +960,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myDialogOptions = {};
     let myNumberOfDice = 2;
     let mySkill = parseInt(skillNumUsedLibel);
-    let myAnomaly = myActor.system.anomaly;
-    let myAspect_1 = 0;
-    let myAspect_2 = 0;
-    let myAspect_3 = 0;
-    let myAspect_4 = 0;
+    let myAnomaly = 0;
+    let myBonusAnomaly = 1;
+    let myAspect = 0;
+    let myBonusAspect = 1;
     let myBonus = 0;
     let myMalus = -0;
     let myWounds = myActor.system.blessures.lvl;
@@ -987,7 +986,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     if (myPromptPresent === true) {
       let myResultDialog =  await _skillDiceRollDialog(
         myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-        mySkill, myAnomaly, myAspect_1, myAspect_2, myAspect_3, myAspect_4, myBonus, myMalus,
+        mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myBonus, myMalus,
         myWounds, myDestiny, mySpleen, myTypeOfThrow
       );
 
@@ -998,10 +997,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myNumberOfDice = parseInt(myResultDialog.numberofdice);
       mySkill = parseInt(myResultDialog.skill);
       myAnomaly = parseInt(myResultDialog.anomaly);
-      myAspect_1 = parseInt(myResultDialog.aspect_1);
-      myAspect_2 = parseInt(myResultDialog.aspect_2);
-      myAspect_3 = parseInt(myResultDialog.aspect_3);
-      myAspect_4 = parseInt(myResultDialog.aspect_4);
+      myBonusAnomaly = parseInt(myResultDialog.bonusanomaly);
+      myAspect = parseInt(myResultDialog.aspect);
+      myBonusAspect = parseInt(myResultDialog.bonusaspect);
       myBonus = parseInt(myResultDialog.bonus);
       myMalus = parseInt(myResultDialog.malus);
       myWounds = parseInt(myResultDialog.jaugewounds);
@@ -1373,7 +1371,7 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
 
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-  mySkill, myAnomaly, myAspect, myBonus, myMalus,
+  mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myBonus, myMalus,
   myWounds, myDestiny, mySpleen, myTypeOfThrow
 ) {
   // Render modal dialog
@@ -1441,7 +1439,9 @@ async function _skillDiceRollDialog(
     myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
     myDialogData.skill = myHtml.find("select[name='skill']").val();
     myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
+    myDialogData.bonusanomaly = myHtml.find("select[name='bonusanomaly']").val();
     myDialogData.aspect = myHtml.find("select[name='aspect']").val();
+    myDialogData.bonusaspect = myHtml.find("select[name='bonusaspect']").val();
     myDialogData.bonus = myHtml.find("select[name='bonus']").val();
     myDialogData.malus = myHtml.find("select[name='malus']").val();
     myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
@@ -1524,9 +1524,11 @@ async function _skillDiceRollDialog(
     };
 
     const context = {
-    skillchoices : mySkill,
-    anomalychoices : myAnomaly,
+    skillchoices: mySkill,
+    anomalychoices: myAnomaly,
+    bonusanomaly: '1',
     aspectchoices: myAspect,
+    bonusaspect: '1',
     jaugewoundschoices: myJauge_Wounds,
     jaugedestinychoices: myJauge_Destiny,
     jaugespleenchoices: myJauge_Spleen

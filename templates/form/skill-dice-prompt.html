@@ -58,6 +58,16 @@
                             <span class="value"><b>{{ localize "CEL1922.anomaly" }}</b></span>
                         </div>
                     </td>
+                    <td>
+                        <div>
+                            <select name="bonusanomaly" data-type="String">
+                                {{#select bonusanomaly }}
+                                <option value="0">&nbsp;+&nbsp;</option>
+                                <option value="0">&nbsp;–&nbsp;</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </td>
                     <td style="display: flex; align-items: content; justify-content: end;">
                         <select name="anomaly" data-type="String">
                             {{selectOptions anomalychoices selected=anomaly labelAttr="label" localize=true}}
@@ -72,6 +82,16 @@
                         <div>
                             <span class="value"><b>{{ localize "CEL1922.aspect" }}</b></span>
                         </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="bonusaspect" data-type="String">
+                                {{#select bonusaspect }}
+                                <option value="0">&nbsp;+&nbsp;</option>
+                                <option value="0">&nbsp;–&nbsp;</option>
+                                {{/select}}
+                                </select>
+                                </div>
                     </td>
                     <td style="display: flex; align-items: content; justify-content: end;">
                         <select name="aspect" data-type="String">
