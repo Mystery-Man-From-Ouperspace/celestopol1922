@@ -64,7 +64,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     const minRESScore = 0; // Score minji d'une RES
     const maxSpecialTotalScore = 99999; // Score maxi de la somme des Speciality
     const minSpecialTotalScore = 0; // Score mini de la somme des Speciality
-    const maxSpecialScore = 4; // Score maxi d'une Spéciality
+    const maxSpecialScore = 8; // Score maxi d'une Spéciality
     const minSpecialScore = 0; // Score mini d'une Speciality
 
     let rESTotalScore = 0; // Scores cumulés des RES
@@ -93,8 +93,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let anomalyScoreTest = 0; // Score de l'unique Anomaly prise en compte
 
     const menuSkill = myActor.system.skill.skilltypes;
-
-    const sizeMenuSkill = menuSkill.length;
 
     // Skills (RES)/Specialities
     let mySkill = {};
@@ -1375,7 +1373,7 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
 
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-  mySkill, myAnomaly, myAspect_1, myAspect_2, myAspect_3, myAspect_4, myBonus, myMalus,
+  mySkill, myAnomaly, myAspect, myBonus, myMalus,
   myWounds, myDestiny, mySpleen, myTypeOfThrow
 ) {
   // Render modal dialog
@@ -1393,10 +1391,7 @@ async function _skillDiceRollDialog(
     numberofdice: myNumberOfDice.toString(),
     skill: mySkill.toString(),
     anomaly: myAnomaly.toString(),
-    aspect_1: myAspect_1.toString(),
-    aspect_2: myAspect_2.toString(),
-    aspect_3: myAspect_3.toString(),
-    aspect_4: myAspect_4.toString(),
+    aspect: myAspect.toString(),
     bonus: myBonus.toString(),
     malus: myMalus.toString(),
     jaugewounds: myWounds.toString(),
@@ -1431,7 +1426,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 598
+      height: 568
     });
   });
 
@@ -1446,10 +1441,7 @@ async function _skillDiceRollDialog(
     myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
     myDialogData.skill = myHtml.find("select[name='skill']").val();
     myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
-    myDialogData.aspect_1 = myHtml.find("select[name='aspect_1']").val();
-    myDialogData.aspect_2 = myHtml.find("select[name='aspect_2']").val();
-    myDialogData.aspect_3 = myHtml.find("select[name='aspect_3']").val();
-    myDialogData.aspect_4 = myHtml.find("select[name='aspect_4']").val();
+    myDialogData.aspect = myHtml.find("select[name='aspect']").val();
     myDialogData.bonus = myHtml.find("select[name='bonus']").val();
     myDialogData.malus = myHtml.find("select[name='malus']").val();
     myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
@@ -1481,10 +1473,7 @@ async function _skillDiceRollDialog(
 
     let mySkill = {};
     let myAnomaly = {};
-    let myAspect_1 = {};
-    let myAspect_2 = {};
-    let myAspect_3 = {};
-    let myAspect_4 = {};
+    let myAspect = {};
     let myJauge_Wounds = {};
     let myJauge_Destiny = {};
     let myJauge_Spleen = {};
@@ -1517,42 +1506,27 @@ async function _skillDiceRollDialog(
 
     // Create options for Aspects/Anomalies
 
+    let compt = 0;
     myAnomaly["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
+      compt++;
+      if (compt <= 1) {
       myAnomaly[anomaly.id.toString()] = new myObject(anomaly.id.toString(), anomaly.name.toString());
-    };
-    let i = 0;
-    myAspect_1["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-    myAspect_2["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-    myAspect_3["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-    myAspect_4["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
-      i++;
-      switch (i) {
-        case 1:
-          myAspect_1[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-        break;
-        case 2:
-          myAspect_2[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-        break;
-        case 3:
-          myAspect_3[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-        break;
-        case 4:
-          myAspect_4[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-        default: console.log("Et un aspect surnuméraire n°", i);
-        break;
       };
     };
-
+    compt = 0;
+    myAspect["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
+      compt++;
+      if (compt <= 4) {
+        myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
+      };
+    };
 
     const context = {
     skillchoices : mySkill,
     anomalychoices : myAnomaly,
-    aspectchoices_1: myAspect_1,
-    aspectchoices_2: myAspect_2,
-    aspectchoices_3: myAspect_3,
-    aspectchoices_4: myAspect_4,
+    aspectchoices: myAspect,
     jaugewoundschoices: myJauge_Wounds,
     jaugedestinychoices: myJauge_Destiny,
     jaugespleenchoices: myJauge_Spleen
