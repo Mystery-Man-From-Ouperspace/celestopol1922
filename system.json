@@ -20,9 +20,21 @@
     {
       "name": "resume-des-regles",
       "label": "FR - Résumé des règles",
-      "system": "chroniquesdeletrange",
+      "system": "celestopol1922",
       "path": "packs/resume-des-regles",
       "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "musiques",
+      "label": "FR - Musiques",
+      "system": "celestopol1922",
+      "path": "packs/musiques",
+      "type": "Playlist",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"

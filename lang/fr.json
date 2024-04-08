@@ -1,6 +1,6 @@
 {
   "CEL1922.ItemCreate": "Créer un Équipement",
-  "CEL1922.ItemEdit": "Visualiser/Modifier l′Équipement",
+  "CEL1922.ItemEdit": "Consulter/Modifier l′Équipement",
   "CEL1922.ItemDelete": "Supprimer l′Équipement",
   "CEL1922.ItemNew": "Nouvel Équipement",
 
@@ -223,17 +223,17 @@
 
   "CEL1922.AttributeNew": "Nouvel Attribut",
   "CEL1922.AttributeCreate": "Créer un Attribut",
-  "CEL1922.AttributeEdit":  "Visualiser/Modifier l′Attribut",
+  "CEL1922.AttributeEdit":  "Consulter/Modifier l′Attribut",
   "CEL1922.AttributeDelete": "Supprimer l′Attribut",
 
   "CEL1922.AspectNew": "Nouvel Aspect",
   "CEL1922.AspectCreate": "Créer un Aspect",
-  "CEL1922.AspectEdit":  "Visualiser/Modifier l′Aspect",
+  "CEL1922.AspectEdit":  "Consulter/Modifier l′Aspect",
   "CEL1922.AspectDelete": "Supprimer l′Aspect",
 
   "CEL1922.AnomalyNew": "Nouvelle Anomalie",
   "CEL1922.AnomalyCreate": "Créer une Anomalie",
-  "CEL1922.AnomalyEdit":  "Visualiser/Modifier l′Anomalie",
+  "CEL1922.AnomalyEdit":  "Consulter/Modifier l′Anomalie",
   "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
 
   "CEL1922.Initiative": "Initiative",
