@@ -1,6 +1,11 @@
 {
+  "CEL1922.Autoriser les joueuses à modifer les items": "Autoriser les joueuses à modifer les items",
+  "CEL1922.Cocher cette option autorisera les joueuses": 
+  "Cocher cette option autorisera les joueuses à modifier les données des items tels que : Anomalies, Aspects et Attributs.",
+
   "CEL1922.ItemCreate": "Créer un Équipement",
-  "CEL1922.ItemEdit": "Consulter/Modifier l′Équipement",
+  "CEL1922.ItemRead": "Consulter l′Équipement",
+  "CEL1922.ItemEdit": "Modifier l′Équipement",
   "CEL1922.ItemDelete": "Supprimer l′Équipement",
   "CEL1922.ItemNew": "Nouvel Équipement",
 
@@ -223,17 +228,20 @@
 
   "CEL1922.AttributeNew": "Nouvel Attribut",
   "CEL1922.AttributeCreate": "Créer un Attribut",
-  "CEL1922.AttributeEdit":  "Consulter/Modifier l′Attribut",
+  "CEL1922.AttributeRead": "Consulter l′Attribut",
+  "CEL1922.AttributeEdit": "Modifier l′Attribut",
   "CEL1922.AttributeDelete": "Supprimer l′Attribut",
 
   "CEL1922.AspectNew": "Nouvel Aspect",
   "CEL1922.AspectCreate": "Créer un Aspect",
-  "CEL1922.AspectEdit":  "Consulter/Modifier l′Aspect",
+  "CEL1922.AspectRead": "Consulter l′Aspect",
+  "CEL1922.AspectEdit": "Modifier l′Aspect",
   "CEL1922.AspectDelete": "Supprimer l′Aspect",
 
   "CEL1922.AnomalyNew": "Nouvelle Anomalie",
   "CEL1922.AnomalyCreate": "Créer une Anomalie",
-  "CEL1922.AnomalyEdit":  "Consulter/Modifier l′Anomalie",
+  "CEL1922.AnomalyRead": "Consulter l′Anomalie",
+  "CEL1922.AnomalyEdit": "Modifier l′Anomalie",
   "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
 
   "CEL1922.Initiative": "Initiative",

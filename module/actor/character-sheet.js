@@ -26,6 +26,11 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     context.aspects = context.items.filter(item => item.type === "aspect");
     context.anomalies = context.items.filter(item => item.type === "anomaly");
 
+    context.playersEditItems = game.settings.get("celestopol1922", "playersEditItems");
+
+    // context.isGM = game.user.isGM;
+    context.isGM = false;
+
     context.CEL1922 = CEL1922;
     return context;
   }

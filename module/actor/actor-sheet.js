@@ -60,6 +60,9 @@ export class CEL1922ActorSheet extends ActorSheet {
         else if (type === "aspect") name = game.i18n.localize("CEL1922.AspectNew");
         else if (type === "attribute") name = game.i18n.localize("CEL1922.AttributeNew");
         return cls.create({ name: name, type: type }, { parent: this.actor });
+      case "read":
+        item = this.actor.items.get(li?.dataset.itemId);
+        return item.sheet.render(true);
       case "edit":
         item = this.actor.items.get(li?.dataset.itemId);
         return item.sheet.render(true);

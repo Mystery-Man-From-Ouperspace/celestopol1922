@@ -13,6 +13,7 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 // import { registerHandlebarsHelpers } from "./helpers.js";
 
 
+
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
@@ -22,6 +23,21 @@ import { preloadHandlebarsTemplates } from "./templates.js";
  */
 Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initializing`);
+
+
+
+  // Game Settings
+  function delayedReload() {window.setTimeout(() => location.reload(), 500)}
+
+  game.settings.register("celestopol1922", "playersEditItems", {
+    name: game.i18n.localize("CEL1922.Autoriser les joueuses à modifer les items"),
+    hint: game.i18n.localize("CEL1922.Cocher cette option autorisera les joueuses"),
+    scope: "world",
+    config: true,
+    default: false,
+    type: Boolean,
+    onChange: delayedReload
+  });
 
 
    /**

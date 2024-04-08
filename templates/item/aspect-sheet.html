@@ -6,21 +6,33 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
+            {{#if (or playersEditItems isGM)}}
             <div class="value">
-                <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
-                <select name="system.value">
-                {{#select systemData.value }}
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                {{/select}}
-                </select>
-            </div>
-            <div class="resource">
-				<label><b>{{localize "CEL1922.Reference"}}</b></label>
-				<input class="input" type="text" placeholder="{{ localize 'CEL1922.Reference' }}" name="system.reference" value="{{systemData.reference}}" />
-            </div>
+                    <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
+                    <select name="system.value">
+                    {{#select systemData.value }}
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    {{/select}}
+                    </select>
+                </div>
+                <div class="resource">
+                    <label><b>{{localize "CEL1922.Reference"}}</b></label>
+                    <input class="input" type="text" placeholder="{{ localize 'CEL1922.Reference' }}" name="system.reference" value="{{systemData.reference}}" />
+                </div>
+            {{else}}
+                <div class="value">
+                    <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
+                    {{systemData.value }}
+                </div>
+                <div class="resource">
+                    <label><b>{{localize "CEL1922.Reference"}}</b></label>
+                    {{systemData.reference}}
+                </div>
+            {{/if}}
+
         </div>
     </header>
 	
@@ -28,13 +40,13 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description-technique">{{localize "CEL1922.Technique"}}</a>
         <a class="item" data-tab="description-narratif">{{localize "CEL1922.Narratif"}}</a>
-        <a class="item" data-tab="dara">{{localize "CEL1922.Data"}}</a>
+        <a class="item" data-tab="data">{{localize "CEL1922.Data"}}</a>
         <a class="item" data-tab="notes">{{localize "CEL1922.Notes"}}</a>
     </nav>
 	
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-
+        {{#if (or playersEditItems isGM)}}
         {{!-- Technique Tab --}}
         <div class="tab" data-group="primary" data-tab="description-technique">
             {{editor techniqueHTML target="system.technique" button=true editable=editable engine="prosemirror"}}
@@ -45,7 +57,6 @@
         <div class="tab" data-group="primary" data-tab="description-narratif">
             {{editor narratifHTML target="system.narratif" button=true editable=editable engine="prosemirror"}}
         </div>
-
 
 
         {{!-- Data Tab --}}
@@ -90,8 +101,63 @@
                 </table>
             </div>
         </div>
+        {{else}}
+        {{!-- Technique Tab --}}
+            <div class="tab" data-group="primary" data-tab="description-technique">
+                {{{systemData.technique}}}
+            </div>
 
-		
+
+            {{!-- Narratif  Tab --}}
+            <div class="tab" data-group="primary" data-tab="description-narratif">
+                {{{systemData.narratif}}}
+            </div>
+
+
+            {{!-- Data Tab --}}
+            <div class="tab data" data-group="primary" data-tab="data">
+                <div>
+                    <table>
+                        <tr>
+                            <th class="libel-skills">
+                                {{localize "CEL1922.concerned skill"}}
+                            </th>
+                            <th>
+                                {{localize "CEL1922.bonus"}}
+                            </th>
+                            <th>
+                                {{localize "CEL1922.malus"}}
+                            </th>
+                        </tr>
+                        {{#each systemData.scores as |score key|}}
+                        <tr>
+                            <td>
+                                <label><b>{{localize score.label}}</b></label>
+                            </td>
+                            <td class="bonus">
+                                {{score.bonus_malus.bonus}}
+                            </td>
+                            <td class="malus">
+                                {{score.bonus_malus.malus}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                        <tr>
+                            <th>
+                                {{localize "CEL1922.concerned skill UP"}}
+                            </th>
+                            <th>
+                                {{localize "CEL1922.bonus"}}
+                            </th>
+                            <th>
+                                {{localize "CEL1922.malus"}}
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+		{{/if}}
+
 		{{!-- Notes Tab --}}
         <div class="tab" data-group="primary" data-tab="notes">
             {{editor notesHTML target="system.notes" button=true editable=editable engine="prosemirror"}}
