@@ -29,7 +29,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     context.playersEditItems = game.settings.get("celestopol1922", "playersEditItems");
 
     context.isGM = game.user.isGM;
-    // context.isGM = false;
+    // context.isGM = false; // Pour tester la fonction
 
     context.CEL1922 = CEL1922;
     return context;

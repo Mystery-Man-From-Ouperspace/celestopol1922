@@ -7,7 +7,7 @@
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
             {{#if (or playersEditItems isGM)}}
-            <div class="value">
+                <div class="value">
                     <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
                     <select name="system.value">
                     {{#select systemData.value }}

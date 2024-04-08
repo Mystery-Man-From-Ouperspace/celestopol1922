@@ -34,6 +34,12 @@ export class CEL1922AnomalySheet extends ItemSheet {
       secrets: this.document.isOwner,
       async: true,
     });
+
+    context.playersEditItems = game.settings.get("celestopol1922", "playersEditItems");
+
+    context.isGM = game.user.isGM;
+    // context.isGM = false;
+
     return context;
   }
 
