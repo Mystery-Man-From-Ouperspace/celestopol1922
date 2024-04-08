@@ -8,7 +8,7 @@
             </h1>
             {{#if (or playersEditItems isGM)}}
                 <div class="value">
-                    <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
+                    <label><b>{{ localize "CEL1922.AnomalyValue" }}</b></label>
                     <select name="system.value">
                     {{#select systemData.value }}
                     <option value="1">1</option>
@@ -24,7 +24,7 @@
                 </div>
             {{else}}
                 <div class="value">
-                    <label><b>{{ localize "CEL1922.AspectValue" }}</b></label>
+                    <label><b>{{ localize "CEL1922.AnomalyValue" }}</b></label>
                     {{systemData.value }}
                 </div>
                 <div class="resource">
