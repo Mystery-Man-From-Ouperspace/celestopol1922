@@ -443,6 +443,14 @@ text-align: left;
 }
 
 
+.celestopol1922 .data tr td.bonus,
+.celestopol1922 .data tr td.malus {
+  text-align: center;
+}
+
+
+
+
 
 
 .celestopol1922.sheet.character {
