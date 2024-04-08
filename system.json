@@ -30,18 +30,6 @@
       "flags": {}
     },
     {
-      "name": "musiques",
-      "label": "FR - Musiques",
-      "system": "celestopol1922",
-      "path": "packs/musiques",
-      "type": "Playlist",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {}
-    },
-    {
       "name": "scenes-de-base",
       "label": "FR - Scènes de base",
       "system": "celestopol1922",
