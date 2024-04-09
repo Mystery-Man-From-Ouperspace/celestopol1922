@@ -29,6 +29,16 @@ Hooks.once("init", async function () {
   // Game Settings
   function delayedReload() {window.setTimeout(() => location.reload(), 500)}
 
+  game.settings.register("celestopol1922", "autoWoundsNPC", {
+    name: game.i18n.localize("CEL1922.Tenir automatiquement le décompte des blessures"),
+    hint: game.i18n.localize("CEL1922.Cocher cette option auto"),
+    scope: "world",
+    config: true,
+    default: true,
+    type: Boolean,
+    onChange: delayedReload
+  });
+  
   game.settings.register("celestopol1922", "playersEditItems", {
     name: game.i18n.localize("CEL1922.Autoriser les joueuses à modifer les items"),
     hint: game.i18n.localize("CEL1922.Cocher cette option autorisera les joueuses"),
