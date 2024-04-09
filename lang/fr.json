@@ -327,7 +327,7 @@
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects et bonus et malus supplémentaires ne pourront plus être pris en compte.",
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects, Attributs et bonus et malus supplémentaires ne pourront plus être pris en compte.",
 
 
   "CEL1922.OneDie": "dé",
@@ -342,6 +342,7 @@
     "Item": {
       "anomaly": "Anomalie",
       "aspect": "Aspect",
+      "attribute": "Attribut",
       "item": "Équipement"
     }
   }

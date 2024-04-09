@@ -66,6 +66,18 @@
       "flags": {}
     },
     {
+      "name": "attributs",
+      "label": "FR - Attributs",
+      "system": "celestopol1922",
+      "path": "packs/attributs",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
       "name": "equipements",
       "label": "FR - Équipements",
       "system": "celestopol1922",

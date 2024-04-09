@@ -1,6 +1,11 @@
 {
+  "CEL1922.Autoriser les joueuses à modifer les items": "Autoriser les joueuses à modifer les items",
+  "CEL1922.Cocher cette option autorisera les joueuses": 
+  "Cocher cette option autorisera les joueuses à modifier les données des items tels que : Anomalies, Aspects et Attributs.",
+
   "CEL1922.ItemCreate": "Créer un Équipement",
-  "CEL1922.ItemEdit": "Visualiser/Modifier l′Équipement",
+  "CEL1922.ItemRead": "Consulter l′Équipement",
+  "CEL1922.ItemEdit": "Modifier l′Équipement",
   "CEL1922.ItemDelete": "Supprimer l′Équipement",
   "CEL1922.ItemNew": "Nouvel Équipement",
 
@@ -36,6 +41,7 @@
   "CEL1922.Concept": "Concept",
   "CEL1922.Anomaly": "Anomalie",
   "CEL1922.Aspect": "Aspect",
+  "CEL1922.Attribute": "Attribut",
   "CEL1922.Item": "Équipement",
 
   "CEL1922.Libel": "Libellé",
@@ -43,6 +49,7 @@
   "CEL1922.Concepts": "Concepts",
   "CEL1922.Aspects": "Aspects",
   "CEL1922.Anomalies": "Anomalies",
+  "CEL1922.Attributes": "Attributs",
   "CEL1922.Items": "Équipements",
 
   "CEL1922.Entropie": "ENTROPIE",
@@ -55,7 +62,6 @@
   "CEL1922.VoyageAstral": "VOYAGE ASTRAL",
 
   "CEL1922.Description": "Description",
-  "CEL1922.Attributes": "Attributs",
   "CEL1922.Skills": "Statistiques",
 
   "CEL1922.AME": "ÂME",
@@ -131,7 +137,12 @@
 
   "CEL1922.Recup": "Récupération : ",
 
-  "CEL1922.Now": "NOW:",
+  "CEL1922.Now": "ACTUEL :",
+
+  "CEL1922.NotSimplifiedNPCSheet": "Activer la version non-simplifiée",
+
+  "CEL1922.corps actuel": "Domaine Corps (actuel)",
+
 
   "CEL1922.One": "Un",
   "CEL1922.Two": "Deux",
@@ -168,7 +179,9 @@
   "CEL1922.opt.dernierquartier": "Dernier Quartier",
   "CEL1922.opt.pleinelune": "Pleine Lune",
 
+
   "CEL1922.NPC": "PNJ",
+  "CEL1922.N.P.C.": "P . N . J .",
 
 
   "CEL1922.numberofdice": "Nbre de Dés",
@@ -178,6 +191,11 @@
   "CEL1922.skills": "Spécialités",
   "CEL1922.aspect": "Aspect",
   "CEL1922.aspects": "Aspects",
+  "CEL1922.attribute": "Attribut",
+  "CEL1922.attributes": "Attributs",
+
+  "CEL1922.Data": "Données",
+
 
   "CEL1922.bonus": "Bonus supplémentaires",
   "CEL1922.malus": "Malus supplémentaires",
@@ -187,6 +205,7 @@
 
 
   "CEL1922.opt.none": "—",
+  "CEL1922.opt.noneText": "— AUCUNE —",
 
 
   "CEL1922.ThrowDice": "Faire un test",
@@ -207,14 +226,22 @@
   "CEL1922.Dramatique": "Dramatique",
   "CEL1922.Hors-fiction": "Hors-fiction",
 
+  "CEL1922.AttributeNew": "Nouvel Attribut",
+  "CEL1922.AttributeCreate": "Créer un Attribut",
+  "CEL1922.AttributeRead": "Consulter l′Attribut",
+  "CEL1922.AttributeEdit": "Modifier l′Attribut",
+  "CEL1922.AttributeDelete": "Supprimer l′Attribut",
+
   "CEL1922.AspectNew": "Nouvel Aspect",
   "CEL1922.AspectCreate": "Créer un Aspect",
-  "CEL1922.AspectEdit":  "Modifier l′Aspect",
+  "CEL1922.AspectRead": "Consulter l′Aspect",
+  "CEL1922.AspectEdit": "Modifier l′Aspect",
   "CEL1922.AspectDelete": "Supprimer l′Aspect",
 
   "CEL1922.AnomalyNew": "Nouvelle Anomalie",
   "CEL1922.AnomalyCreate": "Créer une Anomalie",
-  "CEL1922.AnomalyEdit":  "Modifier l′Anomalie",
+  "CEL1922.AnomalyRead": "Consulter l′Anomalie",
+  "CEL1922.AnomalyEdit": "Modifier l′Anomalie",
   "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
 
   "CEL1922.Initiative": "Initiative",
@@ -246,6 +273,7 @@
   "CEL1922.Narratif": "Narratif",
 
   "CEL1922.Value": "Valeur",
+  "CEL1922.AttributeValue": "Valeur d′Attribut",
   "CEL1922.AspectValue": "Valeur d′Aspect",
   "CEL1922.AnomalyValue": "Valeur d′Anomalie",
 
@@ -297,9 +325,9 @@
   "CEL1922.Souci18": "Votre personnage ne présente aucune Anomalie ! Ajoutez une Anomalie à la liste",
 
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
+  "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects et bonus et malus supplémentaires ne pourront plus être pris en compte.",
-
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects, Attributs et bonus et malus supplémentaires ne pourront plus être pris en compte.",
 
 
   "CEL1922.OneDie": "dé",
@@ -314,6 +342,7 @@
     "Item": {
       "anomaly": "Anomalie",
       "aspect": "Aspect",
+      "attribute": "Attribut",
       "item": "Équipement"
     }
   }

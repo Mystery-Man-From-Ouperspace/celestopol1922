@@ -52,7 +52,7 @@
             </table>
 
             <table style="border: 0px; background-color: transparent; width: 100%;" >
-                <tr style="background-color: transparent; width:100%;">
+                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
                         <div>
                             <span class="value"><b>{{ localize "CEL1922.anomaly" }}</b></span>
@@ -66,18 +66,16 @@
                                 <option value="0"><b>&nbsp;–&nbsp;</b></option>
                                 {{/select}}
                             </select>
-                        </div>
-                    </td>
-                    <td style="display: flex; align-items: content; justify-content: end;">
-                        <select name="anomaly" data-type="String">
-                            {{selectOptions anomalychoices selected=anomaly labelAttr="label" localize=true}}
-                        </select>
+                            <select name="anomaly" data-type="String">
+                                {{selectOptions anomalychoices selected=anomaly labelAttr="label" localize=true}}
+                            </select>
+                    </div>
                     </td>
                 </tr>
             </table>
 
             <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent;">
+                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
                         <div>
                             <span class="value"><b>{{ localize "CEL1922.aspect" }}</b></span>
@@ -90,19 +88,17 @@
                                 <option value="0">&nbsp;+&nbsp;</option>
                                 <option value="0">&nbsp;–&nbsp;</option>
                                 {{/select}}
-                                </select>
-                                </div>
-                    </td>
-                    <td style="display: flex; align-items: content; justify-content: end;">
-                        <select name="aspect" data-type="String">
-                            {{selectOptions aspectchoices selected=aspect labelAttr="label" localize=true}}
-                        </select>
+                            </select>
+                            <select name="aspect" data-type="String">
+                                {{selectOptions aspectchoices selected=aspect labelAttr="label" localize=true}}
+                            </select>
+                    </div>
                     </td>
                 </tr>
             </table>
 
             <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent;">
+                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
                         <div>
                             <span class="value"><b>{{ localize "CEL1922.attribute" }}</b></span>
@@ -115,13 +111,11 @@
                                 <option value="0">&nbsp;+&nbsp;</option>
                                 <option value="0">&nbsp;–&nbsp;</option>
                                 {{/select}}
-                                </select>
-                                </div>
-                    </td>
-                    <td style="display: flex; align-items: content; justify-content: end;">
-                        <select name="attribute" data-type="String">
-                            {{selectOptions attributechoices selected=attribute labelAttr="label" localize=true}}
-                        </select>
+                            </select>
+                            <select name="attribute" data-type="String">
+                                {{selectOptions attributechoices selected=attribute labelAttr="label" localize=true}}
+                            </select>
+                        </div>
                     </td>
                 </tr>
             </table>
