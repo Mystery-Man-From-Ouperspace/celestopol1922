@@ -288,10 +288,10 @@
   "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un test",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
-  "CEL1922.TypeOfThrowTitle": "Modifier la visibilité du jet ?",
+  "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
   "CEL1922.CancelChanges": "Annuler les modifications",
 
-  "CEL1922.NextTimeGoToTheSettings": "Tout ceci est réglable dans les Préférences",
+  "CEL1922.NextTimeGoToTheSettings": "Cela est réglable dans les Préférences",
 
   "CEL1922.Verify Sheet": "Vérifier la cohérence de la fiche",
 
@@ -327,11 +327,17 @@
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects, Attributs et bonus et malus supplémentaires ne pourront plus être pris en compte.",
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects et bonus et malus supplémentaires ne pourront plus être pris en compte.",
 
 
   "CEL1922.OneDie": "dé",
   "CEL1922.ManyDice": "dés",
+
+  "CEL1922.MoonDiceAs": "Dé de la Lune utilisé comme",
+  "CEL1922.Standard Moon Dice": "Dé de la Lune standard",
+  "CEL1922.Luck Dice Element of Fiction": "Dé de chance – déterminer un élément de la fiction",
+  "CEL1922.Luck Dice Influence Narration": "Dé de chance – influer sur la narration de manière mineure",
+  "CEL1922.Luck Dice Determine Quantity": "Dé de chance – déterminer une quantité",
 
 
   "TYPES": {

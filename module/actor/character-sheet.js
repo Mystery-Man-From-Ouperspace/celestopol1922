@@ -1356,8 +1356,8 @@ async function _whichTypeOfThrow (myActor, myTypeOfThrow) {
       },
       dialogOptions
     ).render(true, {
-      width: 480,
-      height: 180
+      width: 630,
+      height: 220
     });
   });
 
@@ -1438,7 +1438,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 618
+      height: 612
     });
   });
 

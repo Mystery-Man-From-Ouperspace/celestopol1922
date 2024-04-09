@@ -12,14 +12,35 @@
         {{!-- Frame --}}
         <div class="frame">
             <div style="border-radius: 5px 5px 0px 0px; display: flex; align-items: center; height: 25px; color: orange; background-color: rgb(12, 76, 12);">
-                <i style="margin-left: 3px;" class="fas fa-users"></i>
+                <img
+                style="border: 0; margin-left: 3px; width: 25px"
+                src="systems/celestopol1922/images/wheel.webp"
+                alt="Moon"        
+                >
             </div>
             <div style="height: 5px;">
 
             </div>
 
             <div>
-                <b>{{ localize "CEL1922.TypeOfThrow4ThisTime" }}</b>
+                <b>{{ localize "CEL1922.MoonDiceAs" }}</b>&nbsp;
+                <select name="moon">
+                {{#select moon }}
+                    <option value="0">{{ localize "CEL1922.Standard Moon Dice" }}</option>
+                    <option value="1">{{ localize "CEL1922.Luck Dice Element of Fiction" }}</option>
+                    <option value="2">{{ localize "CEL1922.Luck Dice Influence Narration" }}</option>
+                    <option value="3">{{ localize "CEL1922.Luck Dice Determine Quantity" }}</option>
+                {{/select}}
+                </select>
+            </div>
+
+            <div style="border-bottom: solid 1px grey; height: 5px; width:100%;"></div>
+            <div style="height: 5px;">
+
+            </div>
+
+            <div>
+                <b>{{ localize "CEL1922.TypeOfThrow4ThisTime" }}</b>&nbsp;
                 <select name="choice">
                 {{#select choice }}
                     <option value="0">{{ localize "CEL1922.Everybody" }}</option>
