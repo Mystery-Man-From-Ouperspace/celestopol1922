@@ -1,0 +1,81 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <div class="name">
+            <label><b>{{ localize "CEL1922.SkillPromptName" }}</b></label>
+        </div>
+    </header>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body" style="background-image: url('/systems/celestopol1922/images/wheel_transp.png')";
+    >
+
+        {{!-- Frame --}}
+        <div class="frame">
+            <div style="border-radius: 5px 5px 0px 0px; display: flex; align-items: center; height: 25px; color: orange; background-color: rgb(12, 76, 12);">
+                <img
+                style="border: 0; margin-left: 3px; width: 25px"
+                src="systems/celestopol1922/images/icons/weapons/firearm.png"
+                alt="Firearm"        
+                >
+            </div>
+            <div style="height: 5px;">
+
+            </div>
+
+            <div class="form-group">
+            <table class="form-fields" style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <b>{{ localize "CEL1922.choosewhichinventory" }}</b>
+                    <td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <input type="radio" id="inventory" name="system.inventory" value="systemData.inventory" checked />
+                        <label for="inventory">{{ localize "CEL1922.frominventory" }}</label>
+                    </td>
+                </tr>
+                <tr style="background-color: transparent;">
+                    <td>
+                        <input type="radio" id="improvised" name="system.improvised" value="{{systemData.improvised}}" />
+                        <label for="improvised">{{ localize "CEL1922.improvisedweapon" }}</label>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div>
+            <table class="form-group" style="border: 0px; background-color: transparent;">
+                <tr class="form-fields" style="background-color: transparent;">
+                    <td>
+                        <span class="value"><b>{{ localize "CEL1922.chooseininventory" }}</b>&nbsp;</span>
+                        <select name="chooseininventory" data-type="String">
+                        </select>
+                    </td>
+                    <td>
+                        <span class="value"><b>{{ localize "CEL1922.choosedamage" }}</b>&nbsp;</span>
+                        <select name="damage">
+                            {{#select damage}}
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                            {{/select}}
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            </div>
+    	</div>	
+    </section>
+</form>

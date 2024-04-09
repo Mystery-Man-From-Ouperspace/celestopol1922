@@ -788,10 +788,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   let myActor = this.actor;
   let myMoon = 0;
   let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
-  let myData = await _whichMoonTypeOfThrow(myActor, myMoon.toString(), myTypeOfThrow.toString());
+  let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
   // console.log("myTypeOfThrow : ", myTypeOfThrow);
-  myMoon = myData.moon;
-  myTypeOfThrow = myData.choice;
+  myMoon = parseInt(myData.moon);
+  myTypeOfThrow = parseInt(myData.choice);
   let myRoll;
   var msg;
 
@@ -1029,6 +1029,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
 
 
+    if (mySkill == 6) {
+      var myDamageData = await _whichTypeOfDamage (myActor, myTypeOfThrow);
+    }
+
 
 
     console.log("myValue = ", myValue);
@@ -1204,8 +1208,73 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       break;
       default: console.log("C'est bizarre !");
     };
+
   }
 }
+
+
+/* -------------------------------------------- */
+
+async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
+  // Render modal dialog
+  const template = 'systems/celestopol1922/templates/form/type-weapon-prompt.html';
+  const title = game.i18n.localize("CEL1922.TypeOfWeaponTitle");
+  let dialogOptions = "";
+  var dialogData = {
+    whichinventory: "inventory",
+    chooseininventory: "0",
+    damage: "1",
+  };
+  // dialogData = null;
+
+  // console.log(dialogData);
+  const html = await renderTemplate(template, dialogData);
+
+  // Create the Dialog window
+  let prompt = await new Promise((resolve) => {
+    new Dialog(
+      {
+        title: title,
+        content: html,
+        buttons: {
+          validateBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
+            callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
+          },
+          cancelBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            callback: (html) => resolve(null)
+          }
+        },
+        default: 'validateBtn',
+        close: () => resolve(null)
+      },
+      dialogOptions
+    ).render(true, {
+      width: 730,
+      height: 258
+    });
+  });
+
+  return dialogData;
+
+  async function _computeResult(myActor, myHtml) {
+    // console.log("I'm in _computeResult(myActor, myHtml)");
+    const editedData = {
+      whichinventory: "inventory",
+      chooseininventory: "0",
+      damage: "1",
+  
+      whichinventory:  parseInt(myHtml.find("fieldset[name='whichinventory']").val()),
+      chooseininventory:  parseInt(myHtml.find("select[name='chooseininventory']").val()),
+      damage:  parseInt(myHtml.find("select[name='damage']").val())
+
+    };
+    // console.log("choice = ", choice);
+    return editedData;
+  }
+}
+
 
 /* -------------------------------------------- */
 
@@ -1327,12 +1396,12 @@ console.log("myData = ", myData);
 
 async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
   // Render modal dialog
-  const template = 'systems/celestopol1922/templates/form/type-throw-prompt.html';
+  const template = 'systems/celestopol1922/templates/form/type-moon-throw-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfThrowTitle");
   let dialogOptions = "";
   var dialogData = {
-    moon: myMoon,
-    choice: myTypeOfThrow,
+    moon: myMoon.toString(),
+    choice: myTypeOfThrow.toString(),
   };
   // console.log(dialogData);
   const html = await renderTemplate(template, dialogData);
