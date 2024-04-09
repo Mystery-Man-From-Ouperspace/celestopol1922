@@ -1438,7 +1438,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 605
+      height: 618
     });
   });
 
