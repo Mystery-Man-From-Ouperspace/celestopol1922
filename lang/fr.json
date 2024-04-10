@@ -188,7 +188,7 @@
   "CEL1922.N.P.C.": "P . N . J .",
 
 
-  "CEL1922.numberofdice": "Nbre de Dés",
+  "CEL1922.numberofdice": "Nombre de Dés",
   "CEL1922.anomaly": "Anomalie",
   "CEL1922.anomalies": "Anomalies",
   "CEL1922.skill": "Spécialité",
@@ -328,6 +328,8 @@
   "CEL1922.Souci17": "Votre personnage ne possède aucun Aspect ! Ajoutez au moins un Aspect à la liste",
   "CEL1922.Souci18": "Votre personnage ne présente aucune Anomalie ! Ajoutez une Anomalie à la liste",
 
+  "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l'entre-temps !",
+
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
@@ -345,10 +347,34 @@
 
   "CEL1922.TypeOfWeaponTitle": "Quel type d′arme ?",
   "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
-  "CEL1922.frominventory": "Inventaire : sélectionnez une de vos propres armes dans le menu à gauche",
-  "CEL1922.improvisedweapon": "Arme improvisée : sélectionnez les dégâts que vous pourriez infliger dans le menu à droite",
+  "CEL1922.frominventory": "Inventaire",
+  "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu à gauche",
+  "CEL1922.improvisedweapon": "Arme improvisée",
+  "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu à droite",
   "CEL1922.chooseininventory": "Choisissez dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables",
+
+
+  "CEL1922.TypeOfTestTitle": "Quel type de test ?",
+  "CEL1922.choosewhichtest": "Sélectionnez le type de test à effectuer.",
+  "CEL1922.simpletest": "Test simple",
+  "CEL1922.developedsimpletest": "Vous faites un test simple et vous devez atteindre ou dépasser un seuil",
+  "CEL1922.knownopposition": "Test en opposition (connue)",
+  "CEL1922.developedknownopposition": "Vous faites un test en opposition et vous connaissez l'opposition",
+  "CEL1922.blindopposition": "Test en opposition (en aveugle)",
+  "CEL1922.developedblindopposition": "Vous faites un test en opposition mais vous ne connaissez pas l'opposition",
+
+  "CEL1922.opposition": "Seuil ou Opposition",
+  "CEL1922.modifier": "Modificateur",
+
+  "CEL1922.Modifier999": "Évident",
+  "CEL1922.Modifier0": "Malaisé",
+  "CEL1922.Modifier-2": "Difficile",
+  "CEL1922.Modifier-4": "Très difficile",
+  "CEL1922.Modifier-6": "Extrêmement difficile",
+  "CEL1922.Modifier-8": "Incroyablement difficile",
+
+  "CEL1922.barehands": "Mains nues [0]",
 
 
   "TYPES": {

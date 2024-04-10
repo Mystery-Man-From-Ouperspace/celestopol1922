@@ -1033,6 +1033,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       var myDamageData = await _whichTypeOfDamage (myActor, myTypeOfThrow);
     }
 
+    var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow);
+
 
 
     console.log("myValue = ", myValue);
@@ -1220,10 +1222,32 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
   const template = 'systems/celestopol1922/templates/form/type-weapon-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfWeaponTitle");
   let dialogOptions = "";
+
+
+
+  let myItemWeapon = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemWeapon["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("CEL1922.barehands"));
+  for (let item of myActor.items.filter(item => item.type === 'item')) {
+    if (item.system.subtype == "weapon") {
+    myItemWeapon[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.damage.toString()+"]");
+    };
+  };
+
+
+
   var dialogData = {
-    whichinventory: "inventory",
-    chooseininventory: "0",
-    damage: "1",
+    // whichinventory: "inventory",
+    inventorychoices: myItemWeapon,
+    selectedinventory: "-1",
+    damage: "0",
   };
   // dialogData = null;
 
@@ -1251,8 +1275,8 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
       },
       dialogOptions
     ).render(true, {
-      width: 730,
-      height: 258
+      width: 600,
+      height: 268
     });
   });
 
@@ -1261,12 +1285,12 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      whichinventory: "inventory",
-      chooseininventory: "0",
+      // whichinventory: "inventory",
+      selectedinventory: "-1",
       damage: "1",
   
-      whichinventory:  parseInt(myHtml.find("fieldset[name='whichinventory']").val()),
-      chooseininventory:  parseInt(myHtml.find("select[name='chooseininventory']").val()),
+      // whichinventory:  parseInt(myHtml.find("fieldset[name='whichinventory']").val()),
+      selectedinventory:  parseInt(myHtml.find("select[name='selectedinventory']").val()),
       damage:  parseInt(myHtml.find("select[name='damage']").val())
 
     };
@@ -1274,6 +1298,65 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
     return editedData;
   }
 }
+
+
+/* -------------------------------------------- */
+
+async function _whichTypeOfTest (myActor, myTypeOfThrow) {
+  // Render modal dialog
+  const template = 'systems/celestopol1922/templates/form/type-test-prompt.html';
+  const title = game.i18n.localize("CEL1922.TypeOfTestTitle");
+  let dialogOptions = "";
+  var dialogData = {
+    testchoice: "simpletest",
+    opposition: "13",
+    modifier: "0",
+  };
+  // dialogData = null;
+
+  // console.log(dialogData);
+  const html = await renderTemplate(template, dialogData);
+
+  // Create the Dialog window
+  let prompt = await new Promise((resolve) => {
+    new Dialog(
+      {
+        title: title,
+        content: html,
+        buttons: {
+          validateBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
+            callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
+          },
+          cancelBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            callback: (html) => resolve(null)
+          }
+        },
+        default: 'validateBtn',
+        close: () => resolve(null)
+      },
+      dialogOptions
+    ).render(true, {
+      width: 650,
+      height: 309
+    });
+  });
+
+  return dialogData;
+
+  async function _computeResult(myActor, myHtml) {
+    // console.log("I'm in _computeResult(myActor, myHtml)");
+    const editedData = {
+      testchoice:  parseInt(myHtml.find("input[name='testchoice']").val()),
+      opposition:  parseInt(myHtml.find("select[name='opposition']").val()),
+      modifier:  parseInt(myHtml.find("select[name='modifier']").val()),
+    };
+    // console.log("choice = ", choice);
+    return editedData;
+  }
+}
+
 
 
 /* -------------------------------------------- */
