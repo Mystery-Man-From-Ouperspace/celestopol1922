@@ -12,11 +12,7 @@
         {{!-- Frame --}}
         <div class="frame">
             <div style="border-radius: 5px 5px 0px 0px; display: flex; align-items: center; height: 25px; color: orange; background-color: rgb(12, 76, 12);">
-                <img
-                style="border: 0; margin-left: 3px; width: 25px"
-                src="systems/celestopol1922/images/icons/weapons/firearm.png"
-                alt="Firearm"        
-                >
+                <i style="margin-left: 3px;" class="fas fa-dice-d8"></i>
             </div>
             <div style="height: 5px;">
 
@@ -55,7 +51,7 @@
             <div>
                 <table class="form-group" style="width: 100%; border: 0px; background-color: transparent;">
                     <tr class="form-fields" style="background-color: transparent;">
-                        <td style="width: 35%;">
+                        <td>
                             <span class="value"><b>{{ localize "CEL1922.opposition" }}</b>&nbsp;</span>
                             <select name="opposition">
                                 {{#select opposition}}
@@ -82,9 +78,7 @@
                                 <option value="20">20</option>
                             {{/select}}
                             </select>
-                        </td>
-                        <td style="width: 65%;">
-                            <span class="value"><b>{{ localize "CEL1922.modifier" }}</b>&nbsp;</span>
+                            <span class="value">&nbsp;&nbsp;&nbsp;<b>{{ localize "CEL1922.modifier" }}</b>&nbsp;</span>
                             <select name="modifier">
                                 {{#select modifier}}
                                     <option value="999">{{ localize "CEL1922.Modifier999" }}</option>

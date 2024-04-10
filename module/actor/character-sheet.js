@@ -1340,7 +1340,7 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow) {
       },
       dialogOptions
     ).render(true, {
-      width: 650,
+      width: 550,
       height: 309
     });
   });

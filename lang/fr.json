@@ -352,7 +352,7 @@
   "CEL1922.improvisedweapon": "Arme improvisée",
   "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
   "CEL1922.chooseininventory": "Choisissez dans votre inventaire",
-  "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables",
+  "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
 
 
   "CEL1922.TypeOfTestTitle": "Quel type de test ?",
