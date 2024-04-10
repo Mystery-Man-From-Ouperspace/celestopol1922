@@ -1,5 +1,6 @@
 import { CEL1922ActorSheet } from "./actor-sheet.js";
 import { CEL1922 } from "../config.js";
+import { InventoryChoose } from "../inventory-choose.js";
 /**
  * @extends {CEL1922ActorSheet}
  */
@@ -1256,7 +1257,8 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
 
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
-    new Dialog(
+    new InventoryChoose(
+    // new Dialog(
       {
         title: title,
         content: html,

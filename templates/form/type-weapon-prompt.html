@@ -48,15 +48,13 @@
             <div>
                 <table class="form-group" style="border: 0px; background-color: transparent;">
                     <tr class="form-fields" style="background-color: transparent;">
-                        {{#if (eq myinventory.value inventory)}}
-                        <td>
+                        <td name="chooseinventory">
                             <span class="value"><b>{{ localize "CEL1922.chooseininventory" }}</b>&nbsp;</span>
                             <select name="inventorychoices" data-type="String">
                                 {{selectOptions inventorychoices selected=selectedinventory labelAttr="label" localize=true}}
                             </select>
                         </td>
-                        {{else}}
-                        <td>
+                        <td name="choosedamage" style="display: none;">
                             <span class="value"><b>{{ localize "CEL1922.choosedamage" }}</b>&nbsp;</span>
                             <select name="damage">
                                 {{#select damage}}
@@ -74,7 +72,6 @@
                                 {{/select}}
                             </select>
                         </td>
-                        {{/if}}
                     </tr>
                 </table>
             </div>

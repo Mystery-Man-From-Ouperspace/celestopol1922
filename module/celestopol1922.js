@@ -13,7 +13,6 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 // import { registerHandlebarsHelpers } from "./helpers.js";
 
 
-
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */

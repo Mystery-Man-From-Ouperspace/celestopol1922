@@ -348,9 +348,9 @@
   "CEL1922.TypeOfWeaponTitle": "Quel type d′arme ?",
   "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
   "CEL1922.frominventory": "Inventaire",
-  "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu à gauche",
+  "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
   "CEL1922.improvisedweapon": "Arme improvisée",
-  "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu à droite",
+  "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
   "CEL1922.chooseininventory": "Choisissez dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables",
 
