@@ -925,19 +925,18 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     if (myPromptPresent && myData.mySkill == 6) {
       var myDamageData = await _whichTypeOfDamage (myActor, myTypeOfThrow);
    
-    const myInventory = myDamageData.inventorychoices;
-    const myDamage = myDamageData.damage;
-    const mySelectedInventory = myDamageData.selectedinventory;
-    // const mySelectedInventoryDamage = 
-    }
+      const myInventory = myDamageData.inventorychoices;
+      const myDamage = myDamageData.damage;
+      const mySelectedInventory = myDamageData.selectedinventory;
+      if (myInventory == "inventory") {
+        // const mySelectedInventoryDamage =
+        // myDamage = mySelectedInventoryDamage; 
+      };
+    };
 
     if (myPromptPresent) {
-    var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow);
-    
-    const myTest = myTestData.test;
-    const myOpposition = myTestData.opposition;
-    const myModifier = myTestData.modifier;
-    }
+      var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow);
+    };
 
     console.log("myValue = ", myData.myValue);
     console.log("myRESValue = ", myData.myRESValue);
@@ -959,9 +958,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       // Traiter ici les autres boni / mali et paramètres
 
       // test, opposition, modifier, myinventory, selectedinventory, damage
-
-      // smartR = 
-
 
       if (numberOfErrors) {
         ui.notifications.error(game.i18n.localize("CEL1922.Error999"));
@@ -994,6 +990,32 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       numberofdice: myData.myNumberOfDice,
       speciality: myData.mySpecialityLibel
     }
+
+    if (myPromptPresent) {
+      let oppositionText = " ≽ ?";
+      const myResult = r.total;
+      const myTest = myTestData.test;
+      console.log("myTest = ", myTest);
+      const myOpposition = myTestData.opposition;
+
+      if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
+      const myModifier = myTestData.modifier;
+  
+      if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.Opposition en aveugle");
+      if (myTest == "knownopposition" &&  myResult >= myOpposition) {
+        oppositionText += game.i18n.localize("CEL1922.Opposition surpassée");
+      } else if (myTest == "knownopposition" &&  myResult < myOpposition) {
+        oppositionText += game.i18n.localize("CEL1922.Opposition insurpassée");
+      };
+      if (myTest == "simpletest" &&  myResult >= myOpposition) {
+        oppositionText += game.i18n.localize("CEL1922.Seuil atteint");
+      } else if (myTest == "simpletest" &&  myResult < myOpposition) {
+        oppositionText += game.i18n.localize("CEL1922.Seuil non-atteint");
+      };
+
+      smartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+    };
+
 
     await _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTemplate, mySmartData);
 
@@ -1126,10 +1148,15 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow) {
 
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
+    let myTest = "toto";
+    if (myHtml.find("input[value='simpletest']").is(':checked')) myTest = "simpletest";
+    if (myHtml.find("input[value='knownopposition']").is(':checked')) myTest = "knownopposition";
+    if (myHtml.find("input[value='blindopposition']").is(':checked')) myTest = "blindopposition";
+    console.log("myTest = ", myTest)
     const editedData = {
-      test: parseInt(myHtml.find("input[name='test']").val()),
+      test: myTest,
       opposition: parseInt(myHtml.find("select[name='opposition']").val()),
-      modifier: parseInt(myHtml.find("select[name='modifier']").val()),
+      modifier: parseInt(myHtml.find("select[name='modifier']").val())
     };
     // console.log("test = ", test);
     return editedData;

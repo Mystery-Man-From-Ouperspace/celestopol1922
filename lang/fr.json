@@ -381,6 +381,16 @@
   "CEL1922.AutomatizationBlocked": "…a débrayé l'automatisation ; ce qui est affiché est le résultat d'un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 
 
+  "CEL1922.Test": "Test : ",
+
+  "CEL1922.Opposition": " [Opposition]",
+  "CEL1922.Opposition surpassée": " [Opposition surpassée]",
+  "CEL1922.Opposition insurpassée": " [Opposition insurpassée]",
+  "CEL1922.Opposition en aveugle": " [Opposition en aveugle]",
+  "CEL1922.Seuil": " [Seuil]",
+  "CEL1922.Seuil atteint": " [Seuil atteint]",
+  "CEL1922.Seuil non-atteint": " [Seuil non-atteint]",
+
   "TYPES": {
     "Actor": {
       "character": "Personnage",
