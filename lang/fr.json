@@ -289,7 +289,7 @@
 
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un test",
+  "CEL1922.TypeOfThrowCheck": "Toujours utiliser les prompts d'automatisation côté joueuse",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
@@ -333,7 +333,7 @@
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects et bonus et malus supplémentaires ne pourront plus être pris en compte.",
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
 
 
   "CEL1922.OneDie": "dé",
@@ -351,7 +351,7 @@
   "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
   "CEL1922.improvisedweapon": "Arme improvisée",
   "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
-  "CEL1922.chooseininventory": "Choisissez dans votre inventaire",
+  "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
 
 
@@ -375,6 +375,10 @@
   "CEL1922.Modifier-8": "Incroyablement difficile",
 
   "CEL1922.barehands": "Mains nues [0]",
+
+  "CEL1922.TotalBonusMalus": "Total scores / bonus / malus :",
+
+  "CEL1922.AutomatizationBlocked": "…a débrayé l'automatisation ; ce qui est affiché est le résultat d'un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 
 
   "TYPES": {

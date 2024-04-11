@@ -14,7 +14,9 @@
         "typeofthrow": {
           "check": true,
           "choice": "0"
-        }
+        },
+        "lastweaponusedid": "-1",
+        "improviseddamage": "0"
       },
       "prompt": {
         "typeofthrow": {
