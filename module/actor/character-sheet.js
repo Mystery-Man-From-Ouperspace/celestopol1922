@@ -935,7 +935,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     };
 
     if (myPromptPresent) {
-      var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow);
+      var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow, myData.mySkill);
     };
 
     console.log("myValue = ", myData.myValue);
@@ -1103,13 +1103,15 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
 
 /* -------------------------------------------- */
 
-async function _whichTypeOfTest (myActor, myTypeOfThrow) {
+async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
   // Render modal dialog
   const template = 'systems/celestopol1922/templates/form/type-test-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfTestTitle");
   let dialogOptions = "";
+  let myTest = "simpletest";
+  if (parseInt(mySkill) == 6) myTest = "knownopposition";
   var dialogData = {
-    test: "simpletest",
+    test: myTest,
     opposition: "13",
     modifier: "0",
   };
