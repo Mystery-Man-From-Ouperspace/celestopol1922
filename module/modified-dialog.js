@@ -20,6 +20,7 @@ export class ModifiedDialog extends Dialog {
     html.find('select[name="attribute"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="bonus"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="malus"]').change(this._onSkillDicePrompt.bind(this));
+    html.find('select[name="armor"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="jaugewounds"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="jaugedestiny"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="jaugespleen"]').change(this._onSkillDicePrompt.bind(this));

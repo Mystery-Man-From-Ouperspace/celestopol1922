@@ -17,16 +17,7 @@
 
             </div>
             <div>
-                <span class="value"><b>{{ localize "CEL1922.activatedarmor" }}</b>&nbsp;</span>
-                <select name="armor" data-type="String">
-                    {{selectOptions armorchoices selected=armor labelAttr="label" localize=true}}
-                </select>
-            </div>
-            <br>
-            <div style="border-top: solid 1px grey; height: 5px; width:100%;"></div>
-
-            <div>
-                <b>{{ localize "CEL1922.TypeOfThrow" }}</b>&nbsp;
+                <b>{{ localize "CEL1922.TypeOfThrow" }}</b>
                 <select name="choice">
                 {{#select choice }}
                     <option value="0">{{ localize "CEL1922.Everybody" }}</option>
@@ -36,15 +27,19 @@
                 {{/select}}
                 </select>
             </div>
-            <br>
-            <div style="border-top: solid 1px grey; height: 5px; width:100%;"></div>
-
+            <div>
+                <span class="value"><b>{{ localize "CEL1922.activatedarmor" }}</b></span>
+                <select name="armor" data-type="String">
+                    {{selectOptions armorchoices selected=armor labelAttr="label" localize=true}}
+                </select>
+            </div>
             <div class="check">
                 <input type="checkbox" name="check" {{ checked check }} title="" /><b>{{ localize "CEL1922.TypeOfThrowCheck" }}</b>
-                <br>
-                <small><i class="fas fa-triangle-exclamation"></i>&nbsp;{{ localize "CEL1922.TakeCareIfUnchecked" }}</small>
-                <br><br>
             </div>
+            <div>
+                <small><i class="fas fa-triangle-exclamation"></i>&nbsp;{{ localize "CEL1922.TakeCareIfUnchecked" }}</small>
+            </div>
+            <br>
 		</div>	
     </section>
 </form>

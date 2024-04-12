@@ -16,7 +16,8 @@
           "choice": "0"
         },
         "lastweaponusedid": "-1",
-        "improviseddamage": "0"
+        "improviseddamage": "0",
+        "lastarmorusedid": "0"
       },
       "prompt": {
         "typeofthrow": {
@@ -62,23 +63,18 @@
         ],
         "destinytypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
-          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
+          "CEL1922.opt.LevelDestiny1", "CEL1922.opt.LevelDestiny2","CEL1922.opt.LevelDestiny3","CEL1922.opt.LevelDestiny4",
+          "CEL1922.opt.LevelDestiny5","CEL1922.opt.LevelDestiny6","CEL1922.opt.LevelDestiny7","CEL1922.opt.LevelDestiny8"
         ],
         "spleentypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
-          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
+          "CEL1922.opt.LevelSpleen1", "CEL1922.opt.LevelSpleen2","CEL1922.opt.LevelSpleen3","CEL1922.opt.LevelSpleen4",
+          "CEL1922.opt.LevelSpleen5","CEL1922.opt.LevelSpleen6","CEL1922.opt.LevelSpleen7","CEL1922.opt.LevelSpleen8"
         ],
         "anomalytypes": [
           "CEL1922.opt.none",
           "CEL1922.opt.entropie", "CEL1922.opt.communicationaveclesmorts", "CEL1922.opt.illusion", "CEL1922.opt.suggestion",
           "CEL1922.opt.tarotdivinatoire", "CEL1922.opt.telekinesie", "CEL1922.opt.telepathie", "CEL1922.opt.voyageastral"
-        ],
-        "aspecttypes": [
-          "CEL1922.opt.none",
-          "CEL1922.opt.aspect1", "CEL1922.opt.aspect2", "CEL1922.opt.aspect3", "CEL1922.opt.aspect4",
-          "CEL1922.opt.aspect5", "CEL1922.opt.aspect6", "CEL1922.opt.aspect7", "CEL1922.opt.aspect8"
         ],
         "ame": {
           "res": 0,
@@ -330,23 +326,18 @@
         ],
         "destinytypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
-          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
+          "CEL1922.opt.LevelDestiny1", "CEL1922.opt.LevelDestiny2", "CEL1922.opt.LevelDestiny3", "CEL1922.opt.LevelDestiny4",
+          "CEL1922.opt.LevelDestiny5", "CEL1922.opt.LevelDestiny6", "CCEL1922.opt.LevelDestiny7", "CEL1922.opt.LevelDestiny8"
         ],
         "spleentypes": [
           "CEL1922.opt.none",
-          "CEL1922.opt.libel1", "CEL1922.opt.libel2","CEL1922.opt.libel3","CEL1922.opt.libel4",
-          "CEL1922.opt.libel5","CEL1922.opt.libel6","CEL1922.opt.libel7","CEL1922.opt.libel8"
+          "CEL1922.opt.LevelSpleen1", "CEL1922.opt.LevelSpleen2", "CEL1922.opt.LevelSpleen3", "CEL1922.opt.LevelSpleen4",
+          "CEL1922.opt.LevelSpleen5", "CEL1922.opt.LevelSpleen6", "CEL1922.opt.LevelSpleen7", "CEL1922.opt.LevelSpleen8"
         ],
         "anomalytypes": [
           "CEL1922.opt.none",
           "CEL1922.opt.entropie", "CEL1922.opt.communicationaveclesmorts", "CEL1922.opt.illusion", "CEL1922.opt.suggestion",
           "CEL1922.opt.tarotdivinatoire", "CEL1922.opt.telekinesie", "CEL1922.opt.telepathie", "CEL1922.opt.voyageastral"
-        ],
-        "aspecttypes": [
-          "CEL1922.opt.none",
-          "CEL1922.opt.aspect1", "CEL1922.opt.aspect2", "CEL1922.opt.aspect3", "CEL1922.opt.aspect4",
-          "CEL1922.opt.aspect5", "CEL1922.opt.aspect6", "CEL1922.opt.aspect7", "CEL1922.opt.aspect8"
         ],
         "ame": {
           "res": 0,

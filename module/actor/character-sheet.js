@@ -312,14 +312,32 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
    */
   async _onClickPrefs (event) {
     // Render modal dialog
+    const myActor = this.actor;
     const template = 'systems/celestopol1922/templates/form/prefs-prompt.html';
     const title = game.i18n.localize("CEL1922.Preferences");
     let dialogOptions = "";
-    var dialogData = {
-      choice: this.actor.system.prefs.typeofthrow.choice,
-      check: this.actor.system.prefs.typeofthrow.check
+    let myArmor = {};
+
+    function myObject(id, label)
+    {
+      this.id = id;
+      this.label = label;
     };
-    // console.log("Gear dialogData = ", dialogData);
+
+    myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let item of myActor.items.filter(item => item.type === 'item')) {
+      if (item.system.subtype == "armor") {
+        myArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+      };
+    };
+    var dialogData = {
+      choice: myActor.system.prefs.typeofthrow.choice,
+      armorchoices: myArmor,
+      armor: myActor.system.prefs.lastarmorusedid,
+      check: myActor.system.prefs.typeofthrow.check
+    };
+    console.log("dialogData : ", dialogData);
+
     const html = await renderTemplate(template, dialogData);
 
     // Create the Dialog window
@@ -331,7 +349,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
           buttons: {
             validateBtn: {
               icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
-              callback: (html) => resolve(_computeResult(this.actor, html))
+              callback: (html) => resolve(_computeResult(myActor, html))
             },
             cancelBtn: {
               icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
@@ -344,13 +362,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 233
+        height: 303
       });
     });
     async function _computeResult(myActor, myHtml) {
       // console.log("I'm in _computeResult(myActor, myHtml)");
       const choice =  parseInt(myHtml.find("select[name='choice']").val());
       // console.log("choice = ", choice);
+      await myActor.update({ "system.prefs.lastarmorusedid": myHtml.find("select[name='armor']").val() });
       const isChecked = myHtml.find("input[name='check']").is(':checked');
       // console.log("isChecked = ", isChecked);
       await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString(), "system.prefs.typeofthrow.check": isChecked });
@@ -865,6 +884,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myWoundsMalus: 0,
       myDestiny : myActor.system.destin.lvl,
       mySpleen : myActor.system.spleen.lvl,
+      myArmor : myActor.system.prefs.lastarmorusedid,
 
       totalBoni : 0,
 
@@ -890,7 +910,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
         myData.mySkill, myData.myAnomaly, myData.myBonusAnomaly, myData.myAspect, myData.myBonusAspect,
         myData.myAttribute, myData.myBonusAttribute, myData.myBonus, myData.myMalus,
-        myData.myWounds, myData.myDestiny, myData.mySpleen, myTypeOfThrow, myData.totalBoni
+        myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmor, myTypeOfThrow, myData.totalBoni
       );
 
       if (myResultDialog === null) { // On a cliqué sur Annuler
@@ -910,6 +930,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myData.myWounds = parseInt(myResultDialog.jaugewounds);
       myData.myDestiny = parseInt(myResultDialog.jaugedestiny);
       myData.mySpleen = parseInt(myResultDialog.jaugespleen);
+      myData.myArmor = parseInt(myResultDialog.armor);
       myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
 
       // myData.myWoundsMalus = ???????
@@ -1342,7 +1363,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
   mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myAttribute, myBonusAttribute, myBonus, myMalus,
-  myWounds, myDestiny, mySpleen, myTypeOfThrow, myTotalScoresBonusMalus
+  myWounds, myDestiny, mySpleen, myArmor, myTypeOfThrow, myTotalScoresBonusMalus
 ) {
   // Render modal dialog
   template = template || 'systems/celestopol1922/templates/form/skill-dice-prompt.html';
@@ -1369,6 +1390,7 @@ async function _skillDiceRollDialog(
     jaugewounds: myWounds.toString(),
     jaugedestiny: myDestiny.toString(),
     jaugespleen: mySpleen.toString(),
+    armor: myArmor.toString(),
     typeofthrow: myTypeOfThrow.toString(),
     totalscoresbonusmalus: myTotalScoresBonusMalus.toString()
   };
@@ -1398,7 +1420,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 610
+      height: 660
     });
   });
 
@@ -1408,7 +1430,7 @@ async function _skillDiceRollDialog(
 
   return dialogData;
 
-  function _computeResult(myDialogData, myHtml) {
+  async function _computeResult(myDialogData, myHtml) {
     // console.log("J'exécute bien _computeResult()");
     myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
     myDialogData.skill = myHtml.find("select[name='skill']").val();
@@ -1423,6 +1445,7 @@ async function _skillDiceRollDialog(
     myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
     myDialogData.jaugedestiny = myHtml.find("select[name='jaugedestiny']").val();
     myDialogData.jauge_spleen = myHtml.find("select[name='jaugespleen']").val();
+    myDialogData.armor = myHtml.find("select[name='armor']").val();
     myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
     // console.log("myDialogData après traitement et avant retour func = ", myDialogData);
     return myDialogData;
@@ -1455,6 +1478,7 @@ async function _skillDiceRollDialog(
     let myJauge_Wounds = {};
     let myJauge_Destiny = {};
     let myJauge_Spleen = {};
+    let myArmor = {};
 
     function myObject(id, label)
     {
@@ -1464,21 +1488,21 @@ async function _skillDiceRollDialog(
 
 
     for (let i=0; i<sizeMenuSkill; i++) {
-      mySkill[i.toString()] = new myObject(i.toString(), menuSkill[i]);
+      mySkill[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuSkill[i]));
     };
 
     // console.log("mySkill", mySkill);
 
     for (let i=0; i<sizeMenuJaugeWounds; i++) {
-      myJauge_Wounds[i.toString()] = new myObject(i.toString(), menuJaugeWounds[i]);
+      myJauge_Wounds[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeWounds[i]));
     };
 
     for (let i=0; i<sizeMenuJaugeDestiny; i++) {
-      myJauge_Destiny[i.toString()] = new myObject(i.toString(), menuJaugeDestiny[i]);
+      myJauge_Destiny[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeDestiny[i]));
     };
 
     for (let i=0; i<sizeMenuJaugeSpleen; i++) {
-      myJauge_Spleen[i.toString()] = new myObject(i.toString(), menuJaugeSpleen[i]);
+      myJauge_Spleen[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeSpleen[i]));
     };
 
     // Create options for Aspects/Anomalies
@@ -1508,6 +1532,15 @@ async function _skillDiceRollDialog(
       };
     };
 
+    compt = 0;
+    myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    for (let item of myActor.items.filter(item => item.type === 'item')) {
+      if (item.system.subtype == "armor") {
+        myArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+      };
+    };
+
+
     const context = {
     skillchoices: mySkill,
     anomalychoices: myAnomaly,
@@ -1516,6 +1549,7 @@ async function _skillDiceRollDialog(
     bonusaspect: '1',
     attributechoices: myAttribute,
     bonusattribute: '1',
+    armorchoices: myArmor,
     jaugewoundschoices: myJauge_Wounds,
     jaugedestinychoices: myJauge_Destiny,
     jaugespleenchoices: myJauge_Spleen

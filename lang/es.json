@@ -1,7 +1,11 @@
 {
-  "CEL1922.Autoriser les joueuses à modifer les items": "Autoriser les joueuses à modifer les items",
+  "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 
-  "Cocher cette option autorisera les joueuses à modifier les données des items tels que : Anomalies, Aspects et Attributs.",
+  "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Anomalies, Aspects et Attributs.",
+
+  "CEL1922.Tenir automatiquement le décompte des blessures": "Décompte auto. des Blessures",
+  "CEL1922.Cocher cette option auto":
+  "Cocher cette option autorisera le décompte automatisé des blessures infligées aux PNJ par les Joueuses. Le MJ pourra ainsi se consacrer entièrement à la narration.",
 
   "CEL1922.ItemCreate": "Créer un Équipement",
   "CEL1922.ItemRead": "Consulter l′Équipement",
@@ -44,7 +48,8 @@
   "CEL1922.Attribute": "Attribut",
   "CEL1922.Item": "Équipement",
 
-  "CEL1922.Libel": "Libellé",
+  "CEL1922.Level": "Niveau",
+
 
   "CEL1922.Concepts": "Concepts",
   "CEL1922.Aspects": "Aspects",
@@ -151,14 +156,23 @@
   "CEL1922.Five": "Cinq",
   "CEL1922.Six": "Six",
 
-  "CEL1922.opt.libel1": "Libellé 1",
-  "CEL1922.opt.libel2": "Libellé 2",
-  "CEL1922.opt.libel3": "Libellé 3",
-  "CEL1922.opt.libel4": "Libellé 4",
-  "CEL1922.opt.libel5": "Libellé 5",
-  "CEL1922.opt.libel6": "Libellé 6",
-  "CEL1922.opt.libel7": "Libellé 7",
-  "CEL1922.opt.libel8": "Libellé 8",
+  "CEL1922.opt.LevelDestiny1": "Niveau de Destin 1",
+  "CEL1922.opt.LevelDestiny2": "Niveau de Destin 2",
+  "CEL1922.opt.LevelDestiny3": "Niveau de Destin 3",
+  "CEL1922.opt.LevelDestiny4": "Niveau de Destin 4",
+  "CEL1922.opt.LevelDestiny5": "Niveau de Destin 5",
+  "CEL1922.opt.LevelDestiny6": "Niveau de Destin 6",
+  "CEL1922.opt.LevelDestiny7": "Niveau de Destin 7",
+  "CEL1922.opt.LevelDestiny8": "Niveau de Destin 8",
+
+  "CEL1922.opt.LevelSpleen1": "Niveau de Spleen 1",
+  "CEL1922.opt.LevelSpleen2": "Niveau de Spleen 2",
+  "CEL1922.opt.LevelSpleen3": "Niveau de Spleen 3",
+  "CEL1922.opt.LevelSpleen4": "Niveau de Spleen 4",
+  "CEL1922.opt.LevelSpleen5": "Niveau de Spleen 5",
+  "CEL1922.opt.LevelSpleen6": "Niveau de Spleen 6",
+  "CEL1922.opt.LevelSpleen7": "Niveau de Spleen 7",
+  "CEL1922.opt.LevelSpleen8": "Niveau de Spleen 8",
 
   "CEL1922.opt.aspect1": "Aspect 1",
   "CEL1922.opt.aspect2": "Aspect 2",
@@ -184,7 +198,7 @@
   "CEL1922.N.P.C.": "P . N . J .",
 
 
-  "CEL1922.numberofdice": "Nbre de Dés",
+  "CEL1922.numberofdice": "Nombre de Dés",
   "CEL1922.anomaly": "Anomalie",
   "CEL1922.anomalies": "Anomalies",
   "CEL1922.skill": "Spécialité",
@@ -194,7 +208,7 @@
   "CEL1922.attribute": "Attribut",
   "CEL1922.attributes": "Attributs",
 
-  "CEL1922.Data": "Données",
+  "CEL1922.Data": "Paramètres",
 
 
   "CEL1922.bonus": "Bonus supplémentaires",
@@ -208,7 +222,7 @@
   "CEL1922.opt.noneText": "— AUCUNE —",
 
 
-  "CEL1922.ThrowDice": "Faire un test",
+  "CEL1922.ThrowDice": "Test de Spécialité",
   "CEL1922.ThrowMoonDice": "Faire un test de dé de la Lune",
 
 
@@ -285,10 +299,10 @@
 
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours afficher le prompt complet avant d'effectuer un test",
+  "CEL1922.TypeOfThrowCheck": "Toujours utiliser les prompts d'automatisation côté joueuse",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
-  "CEL1922.TypeOfThrowTitle": "Modifier la visibilité du jet ?",
+  "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
   "CEL1922.CancelChanges": "Annuler les modifications",
 
   "CEL1922.NextTimeGoToTheSettings": "Cela est réglable dans les Préférences",
@@ -324,15 +338,68 @@
   "CEL1922.Souci17": "Votre personnage ne possède aucun Aspect ! Ajoutez au moins un Aspect à la liste",
   "CEL1922.Souci18": "Votre personnage ne présente aucune Anomalie ! Ajoutez une Anomalie à la liste",
 
+  "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l'entre-temps !",
+
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, vos Anomalie, Aspects, Attributs et bonus et malus supplémentaires ne pourront plus être pris en compte.",
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
 
 
   "CEL1922.OneDie": "dé",
   "CEL1922.ManyDice": "dés",
 
+  "CEL1922.MoonDiceAs": "Dé de la Lune utilisé comme",
+  "CEL1922.Standard Moon Dice": "Dé de la Lune standard",
+  "CEL1922.Luck Dice Element of Fiction": "Dé de chance – déterminer un élément de la fiction",
+  "CEL1922.Luck Dice Influence Narration": "Dé de chance – influer sur la narration de manière mineure",
+  "CEL1922.Luck Dice Determine Quantity": "Dé de chance – déterminer une quantité",
+
+  "CEL1922.TypeOfWeaponTitle": "Quel type d′arme ?",
+  "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
+  "CEL1922.frominventory": "Inventaire",
+  "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
+  "CEL1922.improvisedweapon": "Arme improvisée ou trouvée",
+  "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
+  "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
+  "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
+
+
+  "CEL1922.TypeOfTestTitle": "Quel type de test ?",
+  "CEL1922.choosewhichtest": "Sélectionnez le type de test à effectuer.",
+  "CEL1922.simpletest": "Test simple",
+  "CEL1922.developedsimpletest": "Vous faites un test simple et vous devez atteindre ou dépasser un seuil",
+  "CEL1922.knownopposition": "Test en opposition (connue)",
+  "CEL1922.developedknownopposition": "Vous faites un test en opposition et vous connaissez l'opposition",
+  "CEL1922.blindopposition": "Test en opposition (en aveugle)",
+  "CEL1922.developedblindopposition": "Vous faites un test en opposition mais vous ne connaissez pas l'opposition",
+
+  "CEL1922.opposition": "Seuil ou Opposition",
+  "CEL1922.modifier": "Modificateur",
+
+  "CEL1922.Modifier999": "Évident",
+  "CEL1922.Modifier0": "Malaisé",
+  "CEL1922.Modifier-2": "Difficile",
+  "CEL1922.Modifier-4": "Très difficile",
+  "CEL1922.Modifier-6": "Extrêmement difficile",
+  "CEL1922.Modifier-8": "Incroyablement difficile",
+
+  "CEL1922.barehands": "Mains nues [0]",
+
+  "CEL1922.TotalBonusMalus": "Cumul scores / bonus / malus :",
+
+  "CEL1922.AutomatizationBlocked": "…a débrayé l'automatisation ; ce qui est affiché est le résultat d'un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
+
+
+  "CEL1922.Test": "Test : ",
+
+  "CEL1922.Opposition": " [Opposition]",
+  "CEL1922.Opposition surpassée": " [Opposition surpassée]",
+  "CEL1922.Opposition insurpassée": " [Opposition insurpassée]",
+  "CEL1922.Opposition en aveugle": " [Opposition en aveugle]",
+  "CEL1922.Seuil": " [Seuil]",
+  "CEL1922.Seuil atteint": " [Seuil atteint]",
+  "CEL1922.Seuil non-atteint": " [Seuil non-atteint]",
 
   "TYPES": {
     "Actor": {

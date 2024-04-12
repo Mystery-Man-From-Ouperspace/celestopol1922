@@ -19,6 +19,8 @@
   "CEL1922.Vehicle": "Véhicule",
   "CEL1922.Other": "Autre",
 
+  "CEL1922.activatedarmor": "Armure active",
+
   "CEL1922.ResourceMin": "Min",
   "CEL1922.ResourceValue": "Valeur",
   "CEL1922.ResourceMax": "Max",
@@ -30,6 +32,7 @@
   "CEL1922.Quantity": "Quantité",
   "CEL1922.Weight": "Poids",
   "CEL1922.Damage": "Dégâts",
+  "CEL1922.Protection": "Protection",
   "CEL1922.Range": "Portée",
   "CEL1922.Speed": "Vitesse",
   "CEL1922.Crew": "Équipage",
@@ -48,7 +51,8 @@
   "CEL1922.Attribute": "Attribut",
   "CEL1922.Item": "Équipement",
 
-  "CEL1922.Libel": "Libellé",
+  "CEL1922.Level": "Niveau",
+
 
   "CEL1922.Concepts": "Concepts",
   "CEL1922.Aspects": "Aspects",
@@ -155,14 +159,23 @@
   "CEL1922.Five": "Cinq",
   "CEL1922.Six": "Six",
 
-  "CEL1922.opt.libel1": "Libellé 1",
-  "CEL1922.opt.libel2": "Libellé 2",
-  "CEL1922.opt.libel3": "Libellé 3",
-  "CEL1922.opt.libel4": "Libellé 4",
-  "CEL1922.opt.libel5": "Libellé 5",
-  "CEL1922.opt.libel6": "Libellé 6",
-  "CEL1922.opt.libel7": "Libellé 7",
-  "CEL1922.opt.libel8": "Libellé 8",
+  "CEL1922.opt.LevelDestiny1": "Niveau de Destin 1",
+  "CEL1922.opt.LevelDestiny2": "Niveau de Destin 2",
+  "CEL1922.opt.LevelDestiny3": "Niveau de Destin 3",
+  "CEL1922.opt.LevelDestiny4": "Niveau de Destin 4",
+  "CEL1922.opt.LevelDestiny5": "Niveau de Destin 5",
+  "CEL1922.opt.LevelDestiny6": "Niveau de Destin 6",
+  "CEL1922.opt.LevelDestiny7": "Niveau de Destin 7",
+  "CEL1922.opt.LevelDestiny8": "Niveau de Destin 8",
+
+  "CEL1922.opt.LevelSpleen1": "Niveau de Spleen 1",
+  "CEL1922.opt.LevelSpleen2": "Niveau de Spleen 2",
+  "CEL1922.opt.LevelSpleen3": "Niveau de Spleen 3",
+  "CEL1922.opt.LevelSpleen4": "Niveau de Spleen 4",
+  "CEL1922.opt.LevelSpleen5": "Niveau de Spleen 5",
+  "CEL1922.opt.LevelSpleen6": "Niveau de Spleen 6",
+  "CEL1922.opt.LevelSpleen7": "Niveau de Spleen 7",
+  "CEL1922.opt.LevelSpleen8": "Niveau de Spleen 8",
 
   "CEL1922.opt.aspect1": "Aspect 1",
   "CEL1922.opt.aspect2": "Aspect 2",
@@ -333,7 +346,7 @@
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
 
-  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
+  "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
 
 
   "CEL1922.OneDie": "dé",
@@ -349,7 +362,7 @@
   "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
   "CEL1922.frominventory": "Inventaire",
   "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
-  "CEL1922.improvisedweapon": "Arme improvisée",
+  "CEL1922.improvisedweapon": "Arme improvisée ou trouvée",
   "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
   "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
@@ -376,7 +389,7 @@
 
   "CEL1922.barehands": "Mains nues [0]",
 
-  "CEL1922.TotalBonusMalus": "Total scores / bonus / malus :",
+  "CEL1922.TotalBonusMalus": "Cumul scores / bonus / malus :",
 
   "CEL1922.AutomatizationBlocked": "…a débrayé l'automatisation ; ce qui est affiché est le résultat d'un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 
