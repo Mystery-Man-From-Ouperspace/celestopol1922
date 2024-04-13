@@ -823,7 +823,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   const rMoon = new Roll(myRoll, this.actor.getRollData());
   await rMoon.evaluate();
   // console.log(rMoon);
-  const smartRMoon = "Joli message à venir";
+ 
   const mySmartMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-moon.html';
   const mySmartMoonData =
   {
@@ -831,7 +831,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     theresult: rMoon._total
   };
 
-  await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, smartRMoon, mySmartMoonTemplate, mySmartMoonData);
+  const titleSmartRMoon = "Joli message à venir";
+  const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
+  const mySmartRMoonData = {
+    title: titleSmartRMoon
+    //
+  }
+
+  await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
 
   }
 
@@ -1012,6 +1019,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       speciality: myData.mySpecialityLibel
     }
 
+    let mySmartRTemplate;
+    let mySmartRData;
+
     if (myPromptPresent) {
       let oppositionText = " ≽ ?";
       const myResult = r.total;
@@ -1034,11 +1044,46 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         oppositionText += game.i18n.localize("CEL1922.Seuil non-atteint");
       };
 
-      smartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+      let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+      mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
+      mySmartRData = {
+        title: titleSmartR,
+        titleNbrDice: "",
+        dataNbrDice: "",
+        titleDomain: "",
+        dataDomain: "",
+        titleSpeciality: "",
+        dataSpeciality: "",
+        titleAnomaly: "",
+        dataAnomaly: "",
+        titleAspect: "",
+        dataAspect: "",
+        titleAttribute: "",
+        dataSpeciality: "",
+        titleBonus: "",
+        dataBonus: "",
+        titleMalus: "",
+        dataMalus: "",
+        stitleArmor: "",
+        dataArmor: "",
+        titleWounds: "",
+        dataWounds: "",
+        titleDestiny: "",
+        dataDestiny: "",
+        titleSpleen: "",
+        dataSpleen: ""
+      }
+  
+    } else {
+      let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;
+      mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
+      mySmartRData = {
+        title: titleSmartR,
+      };
     };
 
 
-    await _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTemplate, mySmartData);
+    await _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData);
 
   }
 }
@@ -1562,7 +1607,7 @@ async function _skillDiceRollDialog(
 }
 
 
-async function _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTemplate, mySmartData) {
+async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
 
   let msg = "";
 
@@ -1652,13 +1697,18 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTe
   };
 
 
+    // SmartR Message
+    const smartRTemplate = mySmartRTemplate;
+    const smartRData = mySmartRData;
+    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
+ 
   switch ( typeOfThrow ) {
     case 0:
       ChatMessage.create({
         user: game.user.id,
         // speaker: ChatMessage.getSpeaker({ token: this.actor }),
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartR,
+        content: smartRHtml,
         rollMode: 'roll'                          // Public Roll
       });
 
@@ -1668,7 +1718,7 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTe
         user: game.user.id,
         // speaker: ChatMessage.getSpeaker({ token: this.actor }),
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartR,
+        content: smartRHtml,
         rollMode: 'gmroll'                        // Private Roll
       });
 
@@ -1678,7 +1728,7 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTe
         user: game.user.id,
         // speaker: ChatMessage.getSpeaker({ token: this.actor }),
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartR,
+        content: smartRHtml,
         rollMode: 'blindroll'                       // Blind GM Roll
       });
     break;
@@ -1687,7 +1737,7 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, smartR, mySmartTe
         user: game.user.id,
         // speaker: ChatMessage.getSpeaker({ token: this.actor }),
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartR,
+        content: smartRHtml,
         rollMode: 'selfroll'                        // Self Roll
       });
 

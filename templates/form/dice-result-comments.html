@@ -1,0 +1,131 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+
+    </header>
+	
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Frame --}}
+        <div class="cel1922-result-window">
+
+            <table hidden style="border: 0px; background-color: transparent;">
+                <tr style="background-color: transparent;">
+                    <td>
+                        <span>{{ title }}</span>
+                    </td>
+                </tr>
+            </table>
+            <details>
+                <summary><small>{{ localize "CEL1922.BonusMalusDetail" }}</small></summary>
+                <small>
+                <table>
+                    <tr>
+                        <th>
+                            {{ titleNbrDice }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataNbrDice }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleDomain }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataDomain }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleSpeciality }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataSpeciality }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleAnomaly }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataAnomaly }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleAspect }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataAspect }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleAttribute }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataSpeciality }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleBonus }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataBonus }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleMalus }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataMalus }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleArmor }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataArmor }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleWounds }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataWounds }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleDestiny }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataDestiny }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ titleSpleen }}
+                        </th>
+                        <td style="text-align: center;">
+                            {{ dataSpleen }}
+                        </td>
+                    </tr>
+                </table>
+                </small>
+            </details>
+            <br>
+            <div class="green-buttons">
+                <p><span class="smart-green-button moon-click">Dé de la Lune</span></p><br/>
+                <p><span class="smart-green-button reroll-click" >Relancer les Dés</span></p><br/>
+                <p><span class="smart-green-button wounds-claculate-click">Calculer les Blessures</span></p><br/>
+            </div>
+
+        </div>	
+    </section>
+</form>

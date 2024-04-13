@@ -510,9 +510,11 @@ text-align: left;
   border: 0;
 }
 
+
 .celestopol1922 .sheet-body table tr td input {
   margin-top: -30;
 }
+
 
 .celestopol1922 .sheet-body .frame table tr:nth-child(odd) {
   background-color: transparent;
@@ -521,6 +523,106 @@ text-align: left;
 .celestopol1922 .sheet-body .frame table tr:nth-child(even) {
   background-color: transparent;
 }
+
+/* SMART BLUE (for the moment) BUTTON */
+
+.cel1922-result-window .green-buttons {
+  text-align: center;
+}
+
+.cel1922-result-window .smart-green-button {
+  background-color:rgb(75,216,37);
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	text-decoration:none;
+	color:orange;
+	position:relative;
+	padding:10px 20px;
+	padding-right:50px;
+	background-image: linear-gradient(bottom, rgb(52,172,20) 0%, rgb(76,206,41) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(52,172,20) 0%, rgb(76,206,41) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(52,172,20) 0%, rgb(76,206,41) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(52,172,20) 0%, rgb(76,206,41) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(52,172,20) 0%, rgb(76,206,41) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(52,172,20)),
+	color-stop(1, rgb(61,196,25)),
+	);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 5px 0px 0px rgb(12,76,12), 0px 10px 5px #999;
+	-moz-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 5px 0px 0px rgb(12,76,12), 0px 10px 5px #999;
+	-o-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 5px 0px 0px rgb(12,76,12), 0px 10px 5px #999;
+	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 5px 0px 0px rgb(12,76,12), 0px 10px 5px #999;
+}
+
+.cel1922-result-window .smart-green-button:active {
+	top:3px;
+	background-image: linear-gradient(bottom, rgb(76,206,41) 0%, rgb(52,172,20) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(76,206,41) 0%, rgb(52,172,20) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(76,206,41) 0%, rgb(52,172,20) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(76,206,41) 0%, rgb(52,172,20) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(76,206,41) 0%, rgb(52,172,20) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(61,196,25)),
+	color-stop(1, rgb(52,172,20))
+	);
+	-webkit-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 2px 0px 0px rgb(12,76,12), 0px 5px 3px #999;
+	-moz-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 2px 0px 0px rgb(12,76,12), 0px 5px 3px #999;
+	-o-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 2px 0px 0px rgb(12,76,12), 0px 5px 3px #999;
+	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 2px 0px 0px rgb(12,76,12), 0px 5px 3px #999;
+}
+
+.cel1922-result-window .smart-green-button::before {
+	background-color:rgb(49,157,20);
+	background-image:url(/systems/celestopol1922/images/right_arrow.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	content:"";
+	width:20px;
+	height:20px;
+	position:absolute;
+	right:15px;
+	top:50%;
+	margin-top:-9px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 0px 1px 0px rgb(12,45,4), 0px 1px 0px rgb(92,246,51);
+	-moz-box-shadow: inset 0px 1px 0px rgb(12,45,4), 0px 1px 0px rgb(92,246,51);
+	-o-box-shadow: inset 0px 1px 0px rgb(12,45,4), 0px 1px 0px rgb(92,246,51);
+	box-shadow: inset 0px 1px 0px rgb(12,45,4), 0px 1px 0px rgb(92,246,51);
+}
+
+.cel1922-result-window .smart-green-button:active::before {
+	top:50%;
+	margin-top:-12px;
+	-webkit-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
+	-moz-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
+	-o-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
+	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .celestopol1922 .side-sheet h1.charname {
   font-family: "Copasetic-Bold";
@@ -548,6 +650,7 @@ text-align: left;
   font-family: "Copasetic";
   font-size: 16px;
 }
+
 
 
 /* concerne l'interface de Foundry */
