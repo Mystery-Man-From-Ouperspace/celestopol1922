@@ -19,7 +19,7 @@
   "CEL1922.Vehicle": "Véhicule",
   "CEL1922.Other": "Autre",
 
-  "CEL1922.activatedarmor": "Armure active",
+  "CEL1922.armorencumbrance": "Armure (encombr.)",
 
   "CEL1922.ResourceMin": "Min",
   "CEL1922.ResourceValue": "Valeur",
@@ -297,12 +297,8 @@
   "CEL1922.concerned skill": "▾ Spécialités affectées ▾",
   "CEL1922.concerned skill UP": "▴ Spécialités affectées ▴",
 
-  "CEL1922.Fight": "Combattre !",
-
-
-
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours utiliser les prompts d'automatisation côté joueuse",
+  "CEL1922.TypeOfThrowCheck": "Toujours utiliser les prompts d’automatisation côté joueuse",
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
@@ -314,15 +310,15 @@
 
   "CEL1922.Info1": "Je commence à vérifier votre fiche…",
   "CEL1922.Info2": "Tout me paraît normal",
-  "CEL1922.Info3": "J'ai fini de vérifier votre fiche !",
+  "CEL1922.Info3": "J’ai fini de vérifier votre fiche !",
 
-  "CEL1922.Error0": "Impossible de poursuivre : la gestion de l'Inititiative n'a pas été encore programmée.",
-  "CEL1922.Error1": "J'ai trouvé au moins ^0 erreur(s) !",
-  "CEL1922.Souci2": "J'ai trouvé ^0 souci(s) !",
+  "CEL1922.Error0": "Impossible de poursuivre : la gestion de l’Inititiative n’a pas été encore programmée.",
+  "CEL1922.Error1": "J’ai trouvé au moins ^0 erreur(s) !",
+  "CEL1922.Souci2": "J’ai trouvé ^0 souci(s) !",
 
   "CEL1922.Souci3": "Votre personnage possède plus de ^1 Aspect(s) (^0 au total) ! Seuls les 4 premiers de la liste seront pris en compte ; supprimez des Aspects de la liste si nécessaire",
   "CEL1922.Error4": "La somme des scores de vos Aspects (du moins les ^2 premier(s) de la liste) est supérieure à ^1 (^0 au total) ! Veuillez corriger cela",
-  "CEL1922.Error5": "La somme des scores de vos Aspects (du moins les ^2 premier(s) de la liste) est inférieure au nombre d'Aspects ! Veuillez corriger cela",
+  "CEL1922.Error5": "La somme des scores de vos Aspects (du moins les ^2 premier(s) de la liste) est inférieure au nombre d’Aspects ! Veuillez corriger cela",
 
   "CEL1922.Souci6": "Votre personnage possède plus de 1 Anomalie (^0 au total) ! Seule la première de la liste sera prise en compte ; supprimez des Anomalies de la liste si nécessaire",
   "CEL1922.Error7": "Le score de votre Anomalie (du moins la première de la liste) est supérieur à ^1 (score : ^0) ! Veuillez corriger cela",
@@ -330,21 +326,21 @@
 
   "CEL1922.Error9": "La somme des scores de vos RES est inférieur à ^1 (total : ^0) ! Veuillez corriger cela",
   "CEL1922.Error10": "La somme des scores de vos RES est supérieur à ^1 (total : ^0) ! Veuillez corriger cela",
-  "CEL1922.Error11": "Le score d'au moins une de vos RES est inférieur à ^1 ! Veuillez corriger cela",
-  "CEL1922.Error12": "La score d'au moins une de vos RES est supérieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error11": "Le score d’au moins une de vos RES est inférieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error12": "La score d’au moins une de vos RES est supérieur à ^1 ! Veuillez corriger cela",
 
   "CEL1922.Error13": "La somme des scores de vos Spécialités est inférieur à ^1 (total : ^0) ! Veuillez corriger cela",
   "CEL1922.Error14": "La somme des scores de vos Spécialités est supérieur à ^1 (total : ^0) ! Veuillez corriger cela",
-  "CEL1922.Error15": "Le score d'au moins une de vos Spécialités est inférieur à ^1 ! Veuillez corriger cela",
-  "CEL1922.Error16": "Le score d'au moins une de vos Spécialités est supérieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error15": "Le score d’au moins une de vos Spécialités est inférieur à ^1 ! Veuillez corriger cela",
+  "CEL1922.Error16": "Le score d’au moins une de vos Spécialités est supérieur à ^1 ! Veuillez corriger cela",
 
   "CEL1922.Souci17": "Votre personnage ne possède aucun Aspect ! Ajoutez au moins un Aspect à la liste",
   "CEL1922.Souci18": "Votre personnage ne présente aucune Anomalie ! Ajoutez une Anomalie à la liste",
 
-  "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l'entre-temps !",
+  "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l’entre-temps !",
 
-  "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-Fiction !",
-  "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-Fiction !",
+  "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-fiction !",
+  "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-fiction !",
 
   "CEL1922.TakeCareIfUnchecked": "Attention ! Si vous décochez cette case, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
 
@@ -358,7 +354,7 @@
   "CEL1922.Luck Dice Influence Narration": "Dé de chance – influer sur la narration de manière mineure",
   "CEL1922.Luck Dice Determine Quantity": "Dé de chance – déterminer une quantité",
 
-  "CEL1922.TypeOfWeaponTitle": "Quel type d′arme ?",
+  "CEL1922.TypeOfWeaponTitle": "Quels types d′arme / d′armure ?",
   "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
   "CEL1922.frominventory": "Inventaire",
   "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
@@ -366,6 +362,7 @@
   "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
   "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
+  "CEL1922.choosearmor": "Sélectionnez l’armure qui vous protège",
 
 
   "CEL1922.TypeOfTestTitle": "Quel type de test ?",
@@ -373,9 +370,9 @@
   "CEL1922.simpletest": "Test simple",
   "CEL1922.developedsimpletest": "Vous faites un test simple et vous devez atteindre ou dépasser un seuil",
   "CEL1922.knownopposition": "Test en opposition (connue)",
-  "CEL1922.developedknownopposition": "Vous faites un test en opposition et vous connaissez l'opposition",
+  "CEL1922.developedknownopposition": "Vous faites un test en opposition et vous connaissez l’opposition",
   "CEL1922.blindopposition": "Test en opposition (en aveugle)",
-  "CEL1922.developedblindopposition": "Vous faites un test en opposition mais vous ne connaissez pas l'opposition",
+  "CEL1922.developedblindopposition": "Vous faites un test en opposition mais vous ne connaissez pas l’opposition",
 
   "CEL1922.opposition": "Seuil ou Opposition",
   "CEL1922.modifier": "Modificateur",
@@ -391,12 +388,12 @@
 
   "CEL1922.TotalBonusMalus": "Cumul scores / bonus / malus :",
 
-  "CEL1922.AutomatizationBlocked": "…a débrayé l'automatisation ; ce qui est affiché est le résultat d'un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
+  "CEL1922.AutomatizationBlocked": "…a débrayé l’automatisation ; ce qui est affiché est le résultat d’un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 
 
   "CEL1922.Test": "Test : ",
 
-  "CEL1922.BonusMalusDetail": "Détail des Bonus / Malus",
+  "CEL1922.BonusMalusDetail": "Détail des bonus / malus",
 
   "CEL1922.Opposition": " [Opposition]",
   "CEL1922.Opposition surpassée": " [Opposition surpassée]",

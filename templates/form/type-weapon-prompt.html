@@ -6,7 +6,7 @@
     </header>
 	
     {{!-- Sheet Body --}}
-    <section class="sheet-body" style="background-image: url('/systems/celestopol1922/images/wheel_transp.png')";
+    <section class="sheet-body" style="background-image: url('/systems/celestopol1922/images/ui/wheel_transp.png')";
     >
 
         {{!-- Frame --}}
@@ -70,6 +70,19 @@
                                     <option value="9">9</option>
                                     <option value="10">10</option>
                                 {{/select}}
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border-top: solid 1px grey; height: 5px; width:100%;"></div>
+            <div>
+                <table class="form-group" style="border: 0px; background-color: transparent;">
+                    <tr class="form-fields" style="background-color: transparent;">
+                        <td name="choosearmor">
+                            <span class="value"><b>{{ localize "CEL1922.choosearmor" }}</b>&nbsp;</span>
+                            <select name="armor" data-type="String">
+                                {{selectOptions armorchoices selected=armor labelAttr="label" localize=true}}
                             </select>
                         </td>
                     </tr>

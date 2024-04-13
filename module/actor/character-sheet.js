@@ -891,7 +891,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myWoundsMalus: 0,
       myDestiny : myActor.system.destin.lvl,
       mySpleen : myActor.system.spleen.lvl,
-      myArmor : myActor.system.prefs.lastarmorusedid,
+      myArmorEncumbrance : myActor.system.prefs.lastarmorusedid,
+      myArmorProtection : myActor.system.prefs.lastarmorusedid,
 
       totalBoni : 0,
 
@@ -917,7 +918,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
         myData.mySkill, myData.myAnomaly, myData.myBonusAnomaly, myData.myAspect, myData.myBonusAspect,
         myData.myAttribute, myData.myBonusAttribute, myData.myBonus, myData.myMalus,
-        myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmor, myTypeOfThrow, myData.totalBoni
+        myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myTypeOfThrow, myData.totalBoni
       );
 
       if (myResultDialog === null) { // On a cliqué sur Annuler
@@ -937,7 +938,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myData.myWounds = parseInt(myResultDialog.jaugewounds);
       myData.myDestiny = parseInt(myResultDialog.jaugedestiny);
       myData.mySpleen = parseInt(myResultDialog.jaugespleen);
-      myData.myArmor = parseInt(myResultDialog.armor);
+      myData.myArmorEncumbrance = parseInt(myResultDialog.armor);
       myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
 
       // myData.myWoundsMalus = ???????
@@ -956,6 +957,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       const myInventory = myDamageData.inventorychoices;
       const myDamage = myDamageData.damage;
       const mySelectedInventory = myDamageData.selectedinventory;
+      myData.myArmorProtection = myDamageData.armor;
+      ;
+
       if (myInventory == "inventory") {
         // const mySelectedInventoryDamage =
         // myDamage = mySelectedInventoryDamage; 
@@ -1016,7 +1020,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const mySmartData = {
       numberofdice: myData.myNumberOfDice,
-      speciality: myData.mySpecialityLibel
+      speciality: myData.mySpecialityLibel,
     }
 
     let mySmartRTemplate;
@@ -1064,14 +1068,15 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dataBonus: "",
         titleMalus: "",
         dataMalus: "",
-        stitleArmor: "",
+        titleArmor: "",
         dataArmor: "",
         titleWounds: "",
         dataWounds: "",
         titleDestiny: "",
         dataDestiny: "",
         titleSpleen: "",
-        dataSpleen: ""
+        dataSpleen: "",
+        numspeciality: myData.mySkill
       }
   
     } else {
@@ -1079,6 +1084,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
       mySmartRData = {
         title: titleSmartR,
+        numspeciality: myData.mySkill
       };
     };
 
@@ -1098,6 +1104,7 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
   let dialogOptions = "";
 
   let myItemWeapon = {};
+  let myItemArmor = {};
 
   function myObject(id, label)
   {
@@ -1113,11 +1120,21 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
     };
   };
 
+  myItemArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  for (let item of myActor.items.filter(item => item.type === 'item')) {
+    if (item.system.subtype == "armor") {
+      myItemArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+    };
+  };
+
+
   var dialogData = {
     myinventory: "inventory",
     inventorychoices: myItemWeapon,
     selectedinventory: myActor.system.prefs.lastweaponusedid,
     damage: myActor.system.prefs.improviseddamage,
+    armorchoices: myItemArmor,
+    armor: myActor.system.prefs.lastarmorusedid,
   };
   // dialogData = null;
 
@@ -1147,7 +1164,7 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
       dialogOptions
     ).render(true, {
       width: 600,
-      height: 268
+      height: 313
     });
   });
 
@@ -1158,7 +1175,9 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
     const editedData = {
       myinventory:  parseInt(myHtml.find("input[name='myinventory']").val()),
       selectedinventory:  myHtml.find("select[name='inventorychoice']").val(),
-      damage: parseInt(myHtml.find("select[name='damage']").val())
+      damage: parseInt(myHtml.find("select[name='damage']").val()),
+      armor: myHtml.find("select[name='armor']").val()
+
     };
     myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
     // console.log("myinventory = ", myinventory);
@@ -1464,7 +1483,7 @@ async function _skillDiceRollDialog(
     },
     dialogOptions
     ).render(true, {
-      width: 375,
+      width: 415,
       height: 660
     });
   });

@@ -30,7 +30,7 @@
   height: 100%;
   overflow-y: clip;
   
-  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-image: url("/systems/celestopol1922/images/ui/fond_cadrille.jpg");
   background-position: top right; 
 }
 
@@ -92,7 +92,7 @@
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
   overflow-y: clip;
-  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-image: url("/systems/celestopol1922/images/ui/fond_cadrille.jpg");
   background-position: top right; 
 }
 
@@ -110,7 +110,7 @@
   height: 870px;
   padding: 2px;
   /* overflow-y: auto; */
-  background-image: url("/systems/celestopol1922/images/fond_cadrille.jpg");
+  background-image: url("/systems/celestopol1922/images/ui/fond_cadrille.jpg");
   background-position: bottom left; 
 }
 
@@ -499,7 +499,7 @@ text-align: left;
 /* Concerne les prompts */
 
 .celestopol1922 .sheet-body .frame {
-  background-image: url("/systems/celestopol1922/images/cde_fond_transp.png");
+  background-image: url("/systems/celestopol1922/images/ui/cde_fond_transp.png");
 }
 
 .celestopol1922 .sheet-body .frame .input {
@@ -524,10 +524,14 @@ text-align: left;
   background-color: transparent;
 }
 
-/* SMART BLUE (for the moment) BUTTON */
+/* SMART GREEN BUTTON */
 
 .cel1922-result-window .green-buttons {
   text-align: center;
+}
+
+.cel1922-result-window .smart-green-button:hover {
+cursor: pointer;
 }
 
 .cel1922-result-window .smart-green-button {
@@ -583,7 +587,7 @@ text-align: left;
 
 .cel1922-result-window .smart-green-button::before {
 	background-color:rgb(49,157,20);
-	background-image:url(/systems/celestopol1922/images/right_arrow.png);
+	background-image:url(/systems/celestopol1922/images/ui/right_arrow.png);
 	background-repeat:no-repeat;
 	background-position:center center;
 	content:"";
@@ -606,10 +610,10 @@ text-align: left;
 .cel1922-result-window .smart-green-button:active::before {
 	top:50%;
 	margin-top:-12px;
-	-webkit-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
-	-moz-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
-	-o-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
-	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12, 76, 12), 0px 6px 3px #999;
+	-webkit-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12,76,12), 0px 6px 3px #999;
+	-moz-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12,76,12), 0px 6px 3px #999;
+	-o-box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12,76,12), 0px 6px 3px #999;
+	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12,76,12), 0px 6px 3px #999;
 }
 
 
@@ -661,7 +665,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #logo {
-  content: url("/systems/celestopol1922/images/logo_jeu.png");
+  content: url("/systems/celestopol1922/images/ui/logo_jeu.png");
   width: 80px;
   height: 40px;
   margin-left: 22px;
@@ -669,7 +673,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #pause > img {
-  content: url("/systems/celestopol1922/images/wheel.webp");
+  content: url("/systems/celestopol1922/images/ui/wheel.webp");
   height: 192px;
   width: 192px;
   top: -45px;
