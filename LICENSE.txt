@@ -19,6 +19,10 @@ CODE / CODING:
 - David R.D. 'Mystery Man From Outerspace' Bercovici
 - Christophe 'Kristov / Qaw' Laudon (il m'a un petit peu aidé !)
 
+ANIMATIONS CSS / CSS ANIMATIONS
+- utilisation libre pour un usage gratuit :
+https://www.outils-web.com/page-script-html-css-bouton.asp
+
 COMPENDIUMS: MODULES À VENIR À PARTIR DE LA v. 1.0.0
 Basés sur / based on:
 Antre Monde Éditions' 'Célestopol 1922' RPG books by:
