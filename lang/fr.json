@@ -363,6 +363,14 @@
   "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
   "CEL1922.choosearmor": "Sélectionnez l’armure qui vous protège",
+  "CEL1922.choosewhichinventoryopponent": "Sélectionnez une arme dans l’inventaire de votre opposant ou bien une arme improvisée.",
+  "CEL1922.frominventoryopponent": "Inventaire",
+  "CEL1922.developedfrominventoryopponent": "Sélectionnez une des armes de votre opposant dans le menu qui est apparu ci-dessous",
+  "CEL1922.improvisedweaponopponent": "Arme improvisée ou trouvée",
+  "CEL1922.developedimprovisedweaponopponent": "Sélectionnez les dégâts que votre opposant pourrait infliger dans le menu qui est apparu ci-dessous",
+  "CEL1922.chooseininventoryopponent": "Choisissez-la dans son inventaire",
+  "CEL1922.choosedamageopponent": "Demandez à votre MJ les dégâts infligeables par cette arme",
+  "CEL1922.choosearmoropponent": "Sélectionnez l’armure qui protège votre opposant",
 
 
   "CEL1922.TypeOfTestTitle": "Quel type de test ?",
@@ -402,6 +410,10 @@
   "CEL1922.Seuil": " [Seuil]",
   "CEL1922.Seuil atteint": " [Seuil atteint]",
   "CEL1922.Seuil non-atteint": " [Seuil non-atteint]",
+
+  "CEL1922.Relance des Dés": "Relance des Dés",
+  "CEL1922.Dé de la Lune": "Dé de la Lune",
+  "CEL1922.Calcul des Blessures": "Calcul des Blessures",
 
   "TYPES": {
     "Actor": {

@@ -832,7 +832,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   };
 
   const titleSmartRMoon = "Joli message à venir";
-  const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
+  const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title-moon.html';
   const mySmartRMoonData = {
     title: titleSmartRMoon
     //
@@ -877,28 +877,31 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let mySkillData = await _getSkillValueData (myActor, Skill);
 
     let myData = {
-      myNumberOfDice : 2,
-      mySkill : Skill,
-      myAnomaly : 0,
-      myBonusAnomaly : 1, // +
-      myAspect : 0,
-      myBonusAspect : 1, // +
-      myAttribute : 0,
-      myBonusAttribute : 1, // +
-      myBonus : 0,
-      myMalus : -0,
-      myWounds : myActor.system.blessures.lvl,
+      myUserID: game.user.Id,
+      myTypeOfThrow: myTypeOfThrow,
+      myPromptPresent: myPromptPresent,
+      myNumberOfDice: 2,
+      mySkill: Skill,
+      myAnomaly: 0,
+      myBonusAnomaly: 1, // +
+      myAspect: 0,
+      myBonusAspect: 1, // +
+      myAttribute: 0,
+      myBonusAttribute: 1, // +
+      myBonus: 0,
+      myMalus: -0,
+      myWounds: myActor.system.blessures.lvl,
       myWoundsMalus: 0,
-      myDestiny : myActor.system.destin.lvl,
-      mySpleen : myActor.system.spleen.lvl,
-      myArmorEncumbrance : myActor.system.prefs.lastarmorusedid,
-      myArmorProtection : myActor.system.prefs.lastarmorusedid,
+      myDestiny: myActor.system.destin.lvl,
+      mySpleen: myActor.system.spleen.lvl,
+      myArmorEncumbrance: myActor.system.prefs.lastarmorusedid,
+      myArmorProtection: myActor.system.prefs.lastarmorusedid,
 
-      totalBoni : 0,
+      totalBoni: 0,
 
-      mySpecialityLibel : mySkillData.libel,
-      myValue : mySkillData.value,
-      myRESValue : mySkillData.rESvalue,
+      mySpecialityLibel: mySkillData.libel,
+      myValue: mySkillData.value,
+      myRESValue: mySkillData.rESvalue,
     }
 
 
@@ -918,7 +921,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
         myData.mySkill, myData.myAnomaly, myData.myBonusAnomaly, myData.myAspect, myData.myBonusAspect,
         myData.myAttribute, myData.myBonusAttribute, myData.myBonus, myData.myMalus,
-        myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myTypeOfThrow, myData.totalBoni
+        myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myData.myTypeOfThrow, myData.totalBoni
       );
 
       if (myResultDialog === null) { // On a cliqué sur Annuler
@@ -939,7 +942,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myData.myDestiny = parseInt(myResultDialog.jaugedestiny);
       myData.mySpleen = parseInt(myResultDialog.jaugespleen);
       myData.myArmorEncumbrance = parseInt(myResultDialog.armor);
-      myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
+      myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
 
       // myData.myWoundsMalus = ???????
 
@@ -949,10 +952,21 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myData.myValue = mySkillData.value;
       myData.myRESValue = mySkillData.rESvalue;
     };
+
+
+    if (myPromptPresent) {
+      var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySkill);
+    };
+
+    console.log("myValue = ", myData.myValue);
+    console.log("myRESValue = ", myData.myRESValue);
+
+    console.log("myBonus = ", myData.myBonus);
+    console.log("myMalus = ", myData.myMalus);
     
 
     if (myPromptPresent && myData.mySkill == 6) {
-      var myDamageData = await _whichTypeOfDamage (myActor, myTypeOfThrow);
+      var myDamageData = await _whichTypeOfDamage (myActor, myData.myTypeOfThrow);
    
       const myInventory = myDamageData.inventorychoices;
       const myDamage = myDamageData.damage;
@@ -966,15 +980,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       };
     };
 
-    if (myPromptPresent) {
-      var myTestData = await _whichTypeOfTest (myActor, myTypeOfThrow, myData.mySkill);
-    };
-
-    console.log("myValue = ", myData.myValue);
-    console.log("myRESValue = ", myData.myRESValue);
-
-    console.log("myBonus = ", myData.myBonus);
-    console.log("myMalus = ", myData.myMalus);
 
     let smartR = "Joli message à venir";
 
@@ -1076,7 +1081,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dataDestiny: "",
         titleSpleen: "",
         dataSpleen: "",
-        numspeciality: myData.mySkill
+        numSpeciality: myData.mySkill
       }
   
     } else {
@@ -1084,12 +1089,12 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
       mySmartRData = {
         title: titleSmartR,
-        numspeciality: myData.mySkill
+        numSpeciality: myData.mySkill
       };
     };
 
 
-    await _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData);
+    await _showMessagesInChat (myActor, myData.myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData);
 
   }
 }
@@ -1164,7 +1169,7 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
       dialogOptions
     ).render(true, {
       width: 600,
-      height: 313
+      height: 526
     });
   });
 

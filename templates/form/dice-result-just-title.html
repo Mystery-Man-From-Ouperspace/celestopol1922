@@ -16,16 +16,14 @@
                     </td>
                 </tr>
             </table>
-            <div hidden>
-                {{ numSpeciality }}
-            </div>
             <br>
             <div class="green-buttons">
-                <p><span class="smart-green-button reroll-click" >Relancer les Dés</span></p><br/>
-                <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">Dé de la Lune</span></p><br/>
-                <p><span class="smart-green-button wounds-calculate-click">Calculer les Blessures</span></p><br/>
+                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.Relance des Dés" }}</span></p><br/>
+                <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.Dé de la Lune" }}</span></p><br/>
+                {{#if (eq numSpeciality 6)}}
+                <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.Calcul des Blessures" }}</span></p><br/>
+                {{/if}}
             </div>
-
         </div>	
     </section>
 </form>

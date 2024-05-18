@@ -1,0 +1,21 @@
+{
+    "celestopol1922": {
+      "system": "celestopol1922",
+      "topology": "standard",
+      "quantity" : "quantity",
+      "aliases": {},
+      "sources": {
+        "Lampe torche": {
+          "name": "Lampe torche",
+          "type": "equipment",
+          "consumable": false,
+          "states": 2,
+          "light": [
+            { 
+              "bright": 30, "dim": 300, "angle": 20, "color": "#c2fffb", "alpha": 0.5, "attenuation": 0.8
+            }
+          ]    
+        }
+      }
+    }
+  }
