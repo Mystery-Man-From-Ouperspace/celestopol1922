@@ -52,7 +52,8 @@
                 <table class="form-group" style="width: 100%; border: 0px; background-color: transparent;">
                     <tr class="form-fields" style="background-color: transparent;">
                         <td>
-                            <span class="value"><b>{{ localize "CEL1922.opposition" }}</b>&nbsp;</span>
+                            <span class="value seuil-value" style="display: none;"><b>{{ localize "CEL1922.seuil" }}</b>&nbsp;</span>
+                            <span class="value opposition-value"><b>{{ localize "CEL1922.opposition" }}</b>&nbsp;</span>
                             <select name="opposition">
                                 {{#select opposition}}
                                 <option value="0">0</option>

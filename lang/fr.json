@@ -391,7 +391,8 @@
   "CEL1922.blindopposition": "Test en opposition (en aveugle)",
   "CEL1922.developedblindopposition": "Vous faites un test en opposition mais vous ne connaissez pas l’opposition",
 
-  "CEL1922.opposition": "Seuil ou Opposition",
+  "CEL1922.opposition": "Opposition",
+  "CEL1922.seuil": "Seuil",
   "CEL1922.modifier": "Modificateur",
 
   "CEL1922.Modifier999": "Évident",

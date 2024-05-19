@@ -1165,7 +1165,7 @@ async function _whichTarget (myActor) {
       },
       dialogOptions
     ).render(true, {
-      width: 480,
+      width: 530,
       height: 371
     });
   });
@@ -1300,7 +1300,7 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
 
   // Create the Dialog window
   let prompt = await new Promise((resolve) => {
-    new Dialog(
+    new ModifiedDialog(
       {
         title: title,
         content: html,
