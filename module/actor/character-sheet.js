@@ -954,6 +954,15 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     };
 
 
+    var myTarget = null;
+    if (myPromptPresent  && myData.mySkill == 6) {
+      myTarget = await _whichTarget (myActor);
+
+      if (myTarget == null) {return};
+    };
+    
+
+
     if (myPromptPresent) {
       var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySkill);
     };
@@ -972,7 +981,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       const myDamage = myDamageData.damage;
       const mySelectedInventory = myDamageData.selectedinventory;
       myData.myArmorProtection = myDamageData.armor;
-      ;
 
       if (myInventory == "inventory") {
         // const mySelectedInventoryDamage =
@@ -1100,6 +1108,86 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 }
 
 
+
+/* -------------------------------------------- */
+
+async function _whichTarget (myActor) {
+  var whichTarget = null;
+  // Render modal dialog
+  const template = 'systems/celestopol1922/templates/form/target-prompt.html';
+  const title = game.i18n.localize("CEL1922.WhichTarget");
+  let dialogOptions = "";
+
+  let myItemTarget = {};
+
+  function myObject(id, label)
+  {
+    this.id = id;
+    this.label = label;
+  };
+
+  myItemTarget["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  console.log('game.user.targets.size = ', game.user.targets.size);
+  if (game.user.targets.size != 0) {
+    for (let targetedtoken of game.user.targets) {
+      myItemTarget[targetedtoken.id.toString()] = new myObject(targetedtoken.id.toString(), targetedtoken.name.toString());
+    };
+  };
+
+  var dialogData = {
+    you: myActor.name,
+    youimg: myActor.img,
+    targetchoices: myItemTarget,
+    selectedtarget: 0,
+    tokenimg: "",
+  };
+  const html = await renderTemplate(template, dialogData);
+
+  // Create the Dialog window
+  let prompt = await new Promise((resolve) => {
+    new ModifiedDialog(
+    // new Dialog(
+      {
+        title: title,
+        content: html,
+        buttons: {
+          validateBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
+            callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
+          },
+          cancelBtn: {
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
+            callback: (html) => resolve(null)
+          }
+        },
+        default: 'validateBtn',
+        close: () => resolve(null)
+      },
+      dialogOptions
+    ).render(true, {
+      width: 480,
+      height: 371
+    });
+  });
+
+  if (prompt == null) {
+    return prompt
+  } else {
+  return dialogData;
+  }
+
+  async function _computeResult(myActor, myHtml) {
+    // console.log("I'm in _computeResult(myActor, myHtml)");
+    const editedData = {
+      whichTarget: parseInt(myHtml.find("select[name='target']").val()),
+    };
+    return editedData;
+  }
+
+}
+
+
+
 /* -------------------------------------------- */
 
 async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
@@ -1168,8 +1256,8 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
       },
       dialogOptions
     ).render(true, {
-      width: 600,
-      height: 526
+      width: 630,
+      height: 548
     });
   });
 

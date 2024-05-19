@@ -372,6 +372,15 @@
   "CEL1922.choosedamageopponent": "Demandez à votre MJ les dégâts infligeables par cette arme",
   "CEL1922.choosearmoropponent": "Sélectionnez l’armure qui protège votre opposant",
 
+  "CEL1922.WhichTarget": "Quelle cible ?",
+ 
+  "CEL1922.vous": "Vous",
+  "CEL1922.votreopposant": "Votre opposant",
+
+  "CEL1922.you": "Vous : ",
+  "CEL1922.chooseopponent": "Choisissez votre opposant :",
+
+
 
   "CEL1922.TypeOfTestTitle": "Quel type de test ?",
   "CEL1922.choosewhichtest": "Sélectionnez le type de test à effectuer.",
