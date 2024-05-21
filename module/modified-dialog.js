@@ -11,6 +11,10 @@ export class ModifiedDialog extends Dialog {
     html.find('input[value="inventory"]').click(this._onInventoryClick.bind(this));
     html.find('input[value="improvised"]').click(this._onDamageClick.bind(this));
 
+    html.find('input[value="inventoryopponent"]').click(this._onInventoryOpponentClick.bind(this));
+    html.find('input[value="improvisedopponent"]').click(this._onDamageOpponentClick.bind(this));
+
+
     html.find('input[value="knownopposition"]').click(this._onKnownOppositionClick.bind(this));
     html.find('input[value="blindopposition"]').click(this._onBlindOppositionClick.bind(this));
     html.find('input[value="simpletest"]').click(this._onSimpleTestClick.bind(this));
@@ -101,12 +105,40 @@ export class ModifiedDialog extends Dialog {
     choosedamage.hide();
   }
 
+  _onInventoryOpponentClick(event) {
+    // console.log("J'exécute _onInventoryOpponentClick()")
+    let checkbox = this.element.find('input[value="inventoryoOpponent"]');
+    let othercheckbox = this.element.find('input[value="improvisedopponent"]');
+    let chooseinventory = this.element.find('td[name="chooseinventoryopponent"]');
+    let choosedamage = this.element.find('td[name="choosedamageopponent"]');
+
+    checkbox.checked = true;
+    othercheckbox.checked = false;
+    // console.log("inventory is checked");
+    chooseinventory.show();
+    choosedamage.hide();
+  }
+
   _onDamageClick(event) {
     console.log("J'exécute _onDamageClick()")
     let checkbox = this.element.find('input[value="improvised"]');
     let othercheckbox = this.element.find('input[value="inventory"]');
     let chooseinventory = this.element.find('td[name="chooseinventory"]');
     let choosedamage = this.element.find('td[name="choosedamage"]');
+
+    checkbox.checked = true;
+    othercheckbox.checked = false;
+    // console.log("improvised is checked");
+    chooseinventory.hide();
+    choosedamage.show();
+  }
+
+  _onDamageOpponentClick(event) {
+    console.log("J'exécute _onDamageClick()")
+    let checkbox = this.element.find('input[value="improvisedopponent"]');
+    let othercheckbox = this.element.find('input[value="inventoryopponent"]');
+    let chooseinventory = this.element.find('td[name="chooseinventoryopponent"]');
+    let choosedamage = this.element.find('td[name="choosedamageopponent"]');
 
     checkbox.checked = true;
     othercheckbox.checked = false;

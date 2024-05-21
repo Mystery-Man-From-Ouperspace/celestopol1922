@@ -954,14 +954,24 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     };
 
 
-    var myTarget = null;
+    var opponentActor = null;
     if (myPromptPresent  && myData.mySkill == 6) {
-      myTarget = await _whichTarget (myActor);
+      var myTarget = await _whichTarget (myActor);
 
       if (myTarget == null) {return};
-    };
-    
 
+      if (game.user.targets.size != 0) {
+        for (let targetedtoken of game.user.targets) {
+          if (parseInt(targetedtoken.id) == myTarget.selectedtarget) {
+            opponentActor = targetedtoken.actor;
+          };
+        };
+      };
+    };
+
+
+    console.log("opponentActor = ", opponentActor);
+    
 
     if (myPromptPresent) {
       var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySkill);
@@ -975,13 +985,18 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     
 
     if (myPromptPresent && myData.mySkill == 6) {
-      var myDamageData = await _whichTypeOfDamage (myActor, myData.myTypeOfThrow);
+      var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
    
-      const myInventory = myDamageData.inventorychoices;
+      const myInventory = myDamageData.inventory;
       const myDamage = myDamageData.damage;
       const mySelectedInventory = myDamageData.selectedinventory;
       myData.myArmorProtection = myDamageData.armor;
-
+      if (opponentActor) {
+        const inventoryOpponent = myDamageData.inventoryopponent;
+        const damageOpponent = myDamageData.damageopponent;
+        const selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
+        const armorProtectionOpponent = myDamageData.armoropponent;
+      }
       if (myInventory == "inventory") {
         // const mySelectedInventoryDamage =
         // myDamage = mySelectedInventoryDamage; 
@@ -1112,7 +1127,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 /* -------------------------------------------- */
 
 async function _whichTarget (myActor) {
-  var whichTarget = null;
   // Render modal dialog
   const template = 'systems/celestopol1922/templates/form/target-prompt.html';
   const title = game.i18n.localize("CEL1922.WhichTarget");
@@ -1179,7 +1193,11 @@ async function _whichTarget (myActor) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      whichTarget: parseInt(myHtml.find("select[name='target']").val()),
+      you: "",
+      youimg: "",
+      targetchoices: {},
+      selectedtarget: parseInt(myHtml.find("select[name='target']").val()),
+      tokenimg: "",
     };
     return editedData;
   }
@@ -1190,7 +1208,7 @@ async function _whichTarget (myActor) {
 
 /* -------------------------------------------- */
 
-async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
+async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
   // Render modal dialog
   const template = 'systems/celestopol1922/templates/form/type-weapon-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfWeaponTitle");
@@ -1199,11 +1217,15 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
   let myItemWeapon = {};
   let myItemArmor = {};
 
+  let myItemWeaponOpponent = {};
+  let myItemArmorOpponent = {};
+
   function myObject(id, label)
   {
     this.id = id;
     this.label = label;
   };
+
 
   myItemWeapon["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
   myItemWeapon["-1"] = new myObject("-1", game.i18n.localize("CEL1922.barehands"));
@@ -1220,14 +1242,44 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
     };
   };
 
+  const testOpponentActor = (opponentActor != null);
+
+  myItemWeaponOpponent["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  myItemWeaponOpponent["-1"] = new myObject("-1", game.i18n.localize("CEL1922.barehands"));
+  if (testOpponentActor) {
+    for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+      if (item.system.subtype == "weapon") {
+      myItemWeaponOpponent[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.damage.toString()+"]");
+      };
+    };
+  }
+
+  myItemArmorOpponent["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  if (testOpponentActor) {
+    for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+      if (item.system.subtype == "armor") {
+        myItemArmorOpponent[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+      };
+    };
+  }
+
 
   var dialogData = {
+    testopponentactor: testOpponentActor,
+
     myinventory: "inventory",
     inventorychoices: myItemWeapon,
     selectedinventory: myActor.system.prefs.lastweaponusedid,
     damage: myActor.system.prefs.improviseddamage,
     armorchoices: myItemArmor,
     armor: myActor.system.prefs.lastarmorusedid,
+
+    inventoryopponent: "inventoryopponent",
+    inventoryopponentchoices: myItemWeaponOpponent,
+    selectedinventoryopponent: 0,
+    damageopponent: 0,
+    armoropponentchoices: myItemArmorOpponent,
+    armoropponent: 0,
   };
   // dialogData = null;
 
@@ -1266,11 +1318,17 @@ async function _whichTypeOfDamage (myActor, myTypeOfThrow) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      myinventory:  parseInt(myHtml.find("input[name='myinventory']").val()),
-      selectedinventory:  myHtml.find("select[name='inventorychoice']").val(),
-      damage: parseInt(myHtml.find("select[name='damage']").val()),
-      armor: myHtml.find("select[name='armor']").val()
+      testopponentactor: true,
 
+      myinventory: parseInt(myHtml.find("input[name='myinventory']").val()),
+      selectedinventory: myHtml.find("select[name='inventorychoice']").val(),
+      damage: parseInt(myHtml.find("select[name='damage']").val()),
+      armor: myHtml.find("select[name='armor']").val(),
+
+      inventoryopponent: parseInt(myHtml.find("input[name='inventoryopponent']").val()),
+      selectedinventoryopponent: myHtml.find("select[name='inventoryopponentchoice']").val(),
+      damageopponent: parseInt(myHtml.find("select[name='damageopponent']").val()),
+      armoropponent: myHtml.find("select[name='armoropponent']").val()
     };
     myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
     // console.log("myinventory = ", myinventory);
@@ -1286,8 +1344,7 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
   const template = 'systems/celestopol1922/templates/form/type-test-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfTestTitle");
   let dialogOptions = "";
-  let myTest = "simpletest";
-  if (parseInt(mySkill) == 6) myTest = "knownopposition";
+  let myTest = "knownopposition";
   var dialogData = {
     test: myTest,
     opposition: "13",

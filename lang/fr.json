@@ -360,7 +360,7 @@
   "CEL1922.developedfrominventory": "Sélectionnez une de vos propres armes dans le menu qui est apparu ci-dessous",
   "CEL1922.improvisedweapon": "Arme improvisée ou trouvée",
   "CEL1922.developedimprovisedweapon": "Sélectionnez les dégâts que vous pourriez infliger dans le menu qui est apparu ci-dessous",
-  "CEL1922.chooseininventory": "Choisissez-la dans votre inventaire",
+  "CEL1922.choosefrominventory": "Choisissez-la dans votre inventaire",
   "CEL1922.choosedamage": "Demandez à votre MJ les dégâts infligeables par cette arme",
   "CEL1922.choosearmor": "Sélectionnez l’armure qui vous protège",
   "CEL1922.choosewhichinventoryopponent": "Sélectionnez une arme dans l’inventaire de votre opposant ou bien une arme improvisée.",
@@ -368,7 +368,7 @@
   "CEL1922.developedfrominventoryopponent": "Sélectionnez une des armes de votre opposant dans le menu qui est apparu ci-dessous",
   "CEL1922.improvisedweaponopponent": "Arme improvisée ou trouvée",
   "CEL1922.developedimprovisedweaponopponent": "Sélectionnez les dégâts que votre opposant pourrait infliger dans le menu qui est apparu ci-dessous",
-  "CEL1922.chooseininventoryopponent": "Choisissez-la dans son inventaire",
+  "CEL1922.choosefrominventoryopponent": "Choisissez-la dans son inventaire",
   "CEL1922.choosedamageopponent": "Demandez à votre MJ les dégâts infligeables par cette arme",
   "CEL1922.choosearmoropponent": "Sélectionnez l’armure qui protège votre opposant",
 
