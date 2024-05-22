@@ -298,7 +298,11 @@
   "CEL1922.concerned skill UP": "▴ Spécialités affectées ▴",
 
   "CEL1922.Preferences": "Préférences pour cet acteur",
-  "CEL1922.TypeOfThrowCheck": "Toujours utiliser les prompts d’automatisation côté joueuse",
+  "CEL1922.activatedarmor": "Armure activée",
+
+  "CEL1922.AutoPrompt": "Toujours utiliser les prompts d’automatisation côté Joueuses",
+  "CEL1922.TakeCareIfAutoPromptUnchecked": "Attention ! Si vous décochez cette option, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
+
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
@@ -401,6 +405,12 @@
   "CEL1922.Modifier-4": "Très difficile",
   "CEL1922.Modifier-6": "Extrêmement difficile",
   "CEL1922.Modifier-8": "Incroyablement difficile",
+
+  "CEL1922.Evident": "Le test est évident : pas besoin de jeter les dés (il est automatiquement réussi)",
+  "CEL1922.Test évident": "Test évident",
+  "CEL1922.Réussite automatique": "Réussite automatique",
+
+  "CEL1922.Missing": "[Absent]",
 
   "CEL1922.barehands": "Mains nues [0]",
 

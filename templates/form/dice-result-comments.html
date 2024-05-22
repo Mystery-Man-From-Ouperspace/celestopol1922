@@ -8,7 +8,9 @@
 
         {{!-- Frame --}}
         <div class="cel1922-result-window">
-
+            {{#if (eq mymodifier 999)}}
+            <div style="text-align: center;">{{ localize "CEL1922.Réussite automatique" }}</div>
+            {{else}}
             <table hidden style="border: 0px; background-color: transparent;">
                 <tr style="background-color: transparent;">
                     <td>
@@ -119,9 +121,13 @@
                 </table>
                 </small>
             </details>
+            {{/if}}
             <br>
             <div class="green-buttons">
+                {{#if (eq mymodifier 999)}}
+                {{else}}
                 <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.Relance des Dés" }}</span></p><br/>
+                {{/if}}
                 <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.Dé de la Lune" }}</span></p><br/>
                 {{#if (eq numSpeciality 6)}}
                 <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.Calcul des Blessures" }}</span></p><br/>

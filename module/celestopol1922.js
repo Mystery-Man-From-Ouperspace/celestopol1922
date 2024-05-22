@@ -37,6 +37,16 @@ Hooks.once("init", async function () {
     type: Boolean,
     onChange: delayedReload
   });
+
+  game.settings.register("celestopol1922", "usePromptsForAutomatization", {
+    name: game.i18n.localize("CEL1922.AutoPrompt"),
+    hint: game.i18n.localize("CEL1922.TakeCareIfAutoPromptUnchecked"),
+    scope: "world",
+    config: true,
+    default: true,
+    type: Boolean,
+    onChange: delayedReload
+  });
   
   game.settings.register("celestopol1922", "playersEditItems", {
     name: game.i18n.localize("CEL1922.Autoriser les joueuses à modifer les items"),

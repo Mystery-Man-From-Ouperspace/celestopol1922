@@ -30,6 +30,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     context.playersEditItems = game.settings.get("celestopol1922", "playersEditItems");
 
+    context.usePromptsForAutomatization = game.settings.get("celestopol1922", "usePromptsForAutomatization");
+
+    context.autoWoundsNPC = game.settings.get("celestopol1922", "autoWoundsNPC");
+
     context.isGM = game.user.isGM;
     // context.isGM = false; // Pour tester la fonction
 
@@ -334,7 +338,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       choice: myActor.system.prefs.typeofthrow.choice,
       armorchoices: myArmor,
       armor: myActor.system.prefs.lastarmorusedid,
-      check: myActor.system.prefs.typeofthrow.check
     };
     console.log("dialogData : ", dialogData);
 
@@ -362,7 +365,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 303
+        height: 203
       });
     });
     async function _computeResult(myActor, myHtml) {
@@ -370,9 +373,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       const choice =  parseInt(myHtml.find("select[name='choice']").val());
       // console.log("choice = ", choice);
       await myActor.update({ "system.prefs.lastarmorusedid": myHtml.find("select[name='armor']").val() });
-      const isChecked = myHtml.find("input[name='check']").is(':checked');
-      // console.log("isChecked = ", isChecked);
-      await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString(), "system.prefs.typeofthrow.check": isChecked });
     }
   }
 
@@ -864,7 +864,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     let myActor = this.actor;
     let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
-    let myPromptPresent = await myActor.system.prefs.typeofthrow.check;
+    let myPromptPresent = await game.settings.get("celestopol1922", "usePromptsForAutomatization");
     let myRoll;
     var msg;
 
@@ -962,7 +962,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
       if (game.user.targets.size != 0) {
         for (let targetedtoken of game.user.targets) {
-          if (parseInt(targetedtoken.id) == myTarget.selectedtarget) {
+          if (targetedtoken.id == myTarget.selectedtarget) {
             opponentActor = targetedtoken.actor;
           };
         };
@@ -973,8 +973,18 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     console.log("opponentActor = ", opponentActor);
     
 
+    let myTest;
+    let myOpposition;
+    let myModifier;
+
     if (myPromptPresent) {
       var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySkill);
+
+      myTest = myTestData.test;
+      myOpposition = parseInt(myTestData.opposition);
+      console.log('myOpposition = ', myOpposition);
+      myModifier = parseInt(myTestData.modifier);
+      console.log('myModifier = ', myModifier);
     };
 
     console.log("myValue = ", myData.myValue);
@@ -982,22 +992,24 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     console.log("myBonus = ", myData.myBonus);
     console.log("myMalus = ", myData.myMalus);
+
+
     
 
     if (myPromptPresent && myData.mySkill == 6) {
       var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
    
-      const myInventory = myDamageData.inventory;
+      const isInventory = myDamageData.isinventory;
       const myDamage = myDamageData.damage;
       const mySelectedInventory = myDamageData.selectedinventory;
-      myData.myArmorProtection = myDamageData.armor;
+      myData.myArmorProtection = myDamageData.selectedarmor;
       if (opponentActor) {
-        const inventoryOpponent = myDamageData.inventoryopponent;
+        const isInventoryOpponent = myDamageData.isinventoryopponent;
         const damageOpponent = myDamageData.damageopponent;
         const selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
-        const armorProtectionOpponent = myDamageData.armoropponent;
-      }
-      if (myInventory == "inventory") {
+        const armorProtectionOpponent = myDamageData.selectedarmoropponent;
+      };
+      if (isInventory) {
         // const mySelectedInventoryDamage =
         // myDamage = mySelectedInventoryDamage; 
       };
@@ -1011,9 +1023,10 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       myData.totalBoni = myData.myValue + myData.myWoundsMalus; // Si on a décoché l'automatisation, seules les blessures sont décomptées
       smartR = game.i18n.localize("CEL1922.AutomatizationBlocked");
     } else {
-      myData.totalBoni = myData.myValue + myData.myBonus + myData.myMalus + myData.myWoundsMalus; // Plus d'autres trucs à venir !
+      myData.totalBoni = myData.myValue + myData.myBonus + myData.myMalus + myData.myWoundsMalus + myModifier; // Plus d'autres trucs à venir !
     
       let numberOfErrors = 0;
+
 
       // Traiter ici les autres boni / mali et paramètres
 
@@ -1042,11 +1055,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     } else {
       myRoll = myData.myNumberOfDice+"d8-" + Math.abs(myData.totalBoni).toString();
     };
-    const r = new Roll(myRoll, this.actor.getRollData());
-    await r.evaluate();
-    // console.log(r);
+    let r;
+    if (myModifier != 999) {
+      r = new Roll(myRoll, this.actor.getRollData());
+      await r.evaluate();
+    }
     const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const mySmartData = {
+      mymodifier: myModifier, 
       numberofdice: myData.myNumberOfDice,
       speciality: myData.mySpecialityLibel,
     }
@@ -1056,13 +1072,17 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     if (myPromptPresent) {
       let oppositionText = " ≽ ?";
-      const myResult = r.total;
+      let myResult;
+      if (myModifier == 999) {
+        myResult = -999;
+    } else {
+      myResult = r.total;
+    }
       const myTest = myTestData.test;
       console.log("myTest = ", myTest);
       const myOpposition = myTestData.opposition;
 
       if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
-      const myModifier = myTestData.modifier;
   
       if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.Opposition en aveugle");
       if (myTest == "knownopposition" &&  myResult >= myOpposition) {
@@ -1079,6 +1099,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
       mySmartRData = {
+        mymodifier: myModifier, 
         title: titleSmartR,
         titleNbrDice: "",
         dataNbrDice: "",
@@ -1111,6 +1132,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
       mySmartRData = {
+        mymodifier: myModifier, 
         title: titleSmartR,
         numSpeciality: myData.mySkill
       };
@@ -1152,8 +1174,8 @@ async function _whichTarget (myActor) {
     you: myActor.name,
     youimg: myActor.img,
     targetchoices: myItemTarget,
-    selectedtarget: 0,
-    tokenimg: "",
+    selectedtarget: "0",
+    tokenimg: ""
   };
   const html = await renderTemplate(template, dialogData);
 
@@ -1196,8 +1218,8 @@ async function _whichTarget (myActor) {
       you: "",
       youimg: "",
       targetchoices: {},
-      selectedtarget: parseInt(myHtml.find("select[name='target']").val()),
-      tokenimg: "",
+      selectedtarget: myHtml.find("select[name='target']").val(),
+      tokenimg: ""
     };
     return editedData;
   }
@@ -1244,6 +1266,13 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
 
   const testOpponentActor = (opponentActor != null);
 
+let opponentName = "";
+  if (testOpponentActor) {
+     opponentName = opponentActor.name;
+  } else {
+    opponentName = game.i18n.localize("CEL1922.Missing");
+  };
+
   myItemWeaponOpponent["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
   myItemWeaponOpponent["-1"] = new myObject("-1", game.i18n.localize("CEL1922.barehands"));
   if (testOpponentActor) {
@@ -1267,19 +1296,20 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
   var dialogData = {
     testopponentactor: testOpponentActor,
 
-    myinventory: "inventory",
+    isinventory: true,
     inventorychoices: myItemWeapon,
     selectedinventory: myActor.system.prefs.lastweaponusedid,
     damage: myActor.system.prefs.improviseddamage,
     armorchoices: myItemArmor,
-    armor: myActor.system.prefs.lastarmorusedid,
+    selectedarmor: myActor.system.prefs.lastarmorusedid,
 
-    inventoryopponent: "inventoryopponent",
+    opponentname: opponentName,
+    isinventoryopponent: true,
     inventoryopponentchoices: myItemWeaponOpponent,
-    selectedinventoryopponent: 0,
+    selectedinventoryopponent: "0",
     damageopponent: 0,
     armoropponentchoices: myItemArmorOpponent,
-    armoropponent: 0,
+    selectedarmoropponent: "0",
   };
   // dialogData = null;
 
@@ -1318,17 +1348,18 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
-      testopponentactor: true,
+      testopponentactor: false,
 
-      myinventory: parseInt(myHtml.find("input[name='myinventory']").val()),
-      selectedinventory: myHtml.find("select[name='inventorychoice']").val(),
+      isinventory: myHtml.find("input[value='isinventory']").is(':checked'),
+      selectedinventory: myHtml.find("select[name='inventory']").val(),
       damage: parseInt(myHtml.find("select[name='damage']").val()),
-      armor: myHtml.find("select[name='armor']").val(),
+      selectedarmor: myHtml.find("select[name='armor']").val(),
 
-      inventoryopponent: parseInt(myHtml.find("input[name='inventoryopponent']").val()),
-      selectedinventoryopponent: myHtml.find("select[name='inventoryopponentchoice']").val(),
+      opponentname: "",
+      isinventoryopponent: myHtml.find("input[value='isinventoryopponent']").is(':checked'),
+      selectedinventoryopponent: myHtml.find("select[name='inventoryopponent']").val(),
       damageopponent: parseInt(myHtml.find("select[name='damageopponent']").val()),
-      armoropponent: myHtml.find("select[name='armoropponent']").val()
+      selectedarmoropponent: myHtml.find("select[name='armoropponent']").val()
     };
     myActor.update({ "system.prefs.lastweaponusedid": editedData.selectedinventory, "system.prefs.improviseddamage": editedData.damage.toString() });
     // console.log("myinventory = ", myinventory);
@@ -1386,16 +1417,16 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     let myTest = "toto";
-    if (myHtml.find("input[value='simpletest']").is(':checked')) myTest = "simpletest";
     if (myHtml.find("input[value='knownopposition']").is(':checked')) myTest = "knownopposition";
+    if (myHtml.find("input[value='simpletest']").is(':checked')) myTest = "simpletest";
     if (myHtml.find("input[value='blindopposition']").is(':checked')) myTest = "blindopposition";
     console.log("myTest = ", myTest)
     const editedData = {
       test: myTest,
-      opposition: parseInt(myHtml.find("select[name='opposition']").val()),
-      modifier: parseInt(myHtml.find("select[name='modifier']").val())
+      opposition: myHtml.find("select[name='opposition']").val(),
+      modifier: myHtml.find("select[name='modifier']").val()
     };
-    // console.log("test = ", test);
+    console.log("editedData = ", editedData);
     return editedData;
   }
 }
@@ -1782,40 +1813,41 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
 
   const typeOfThrow = myTypeOfThrow;
 
-  switch ( typeOfThrow ) {
-    case 0: msg = await r.toMessage({
-      user: game.user.id,
-      speaker: ChatMessage.getSpeaker({ actor: myActor }),
-      rollMode: 'roll'                      // Public Roll
+  if (mySmartRData.mymodifier != 999) {
+    switch ( typeOfThrow ) {
+      case 0: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'roll'                      // Public Roll
+        });
+      break;
+      case 1: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'gmroll'                    // Private Roll
+        });
+      break;
+      case 2: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'blindroll'                 // Blind GM Roll
       });
-    break;
-    case 1: msg = await r.toMessage({
-      user: game.user.id,
-      speaker: ChatMessage.getSpeaker({ actor: myActor }),
-      rollMode: 'gmroll'                    // Private Roll
+      break;
+      case 3: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'selfroll'                      // Self Roll
       });
-    break;
-    case 2: msg = await r.toMessage({
-      user: game.user.id,
-      speaker: ChatMessage.getSpeaker({ actor: myActor }),
-      rollMode: 'blindroll'                 // Blind GM Roll
-    });
-    break;
-    case 3: msg = await r.toMessage({
-      user: game.user.id,
-      speaker: ChatMessage.getSpeaker({ actor: myActor }),
-      rollMode: 'selfroll'                      // Self Roll
-    });
-    break;
-    default: console.log("C'est bizarre !");
-  };
+      break;
+      default: console.log("C'est bizarre !");
+    };
 
 
-  if (game.modules.get("dice-so-nice")?.active) {
-    await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
-  };
+    if (game.modules.get("dice-so-nice")?.active) {
+      await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
+    };
 
-
+  }
   // Smart Message
   const smartTemplate = mySmartTemplate;
   const smartData = mySmartData;

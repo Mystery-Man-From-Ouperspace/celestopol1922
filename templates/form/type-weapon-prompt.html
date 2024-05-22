@@ -32,7 +32,7 @@
                     </tr>
                     <tr style="background-color: transparent;">
                         <td>
-                            <input type="radio" name="myinventory" value="inventory" checked>{{ localize "CEL1922.frominventory" }}
+                            <input type="radio" name="myinventory" value="isinventory" checked>{{ localize "CEL1922.frominventory" }}
                             <br>
                             <small>{{ localize "CEL1922.developedfrominventory" }}</small>
 
@@ -40,7 +40,7 @@
                     </tr>
                     <tr style="background-color: transparent;">
                         <td>
-                            <input type="radio" name="myinventory" value="improvised">{{ localize "CEL1922.improvisedweapon" }}
+                            <input type="radio" name="myinventory" value="isimprovised">{{ localize "CEL1922.improvisedweapon" }}
                             <br>
                             <small>{{ localize "CEL1922.developedimprovisedweapon" }}</small>
                         </td>
@@ -52,7 +52,7 @@
                     <tr class="form-fields" style="background-color: transparent;">
                         <td name="chooseinventory">
                             <span class="value"><b>{{ localize "CEL1922.choosefrominventory" }}</b>&nbsp;</span>
-                            <select name="inventorychoice" data-type="String">
+                            <select name="inventory" data-type="String">
                                 {{selectOptions inventorychoices selected=selectedinventory labelAttr="label" localize=true}}
                             </select>
                         </td>
@@ -84,7 +84,7 @@
                         <td name="choosearmor">
                             <span class="value"><b>{{ localize "CEL1922.choosearmor" }}</b>&nbsp;</span>
                             <select name="armor" data-type="String">
-                                {{selectOptions armorchoices selected=armor labelAttr="label" localize=true}}
+                                {{selectOptions armorchoices selected=selectedarmor labelAttr="label" localize=true}}
                             </select>
                         </td>
                     </tr>
@@ -97,7 +97,7 @@
                 style="border: 0; margin-left: 3px; width: 25px"
                 src="systems/celestopol1922/images/icons/weapons/firearm.png"
                 alt="Firearm"        
-                >&nbsp;{{ localize "CEL1922.votreopposant" }}
+                >&nbsp;{{ localize "CEL1922.votreopposant" }}&nbsp;({{opponentname}})
             </div>
             <div style="height: 5px;">
 
@@ -113,7 +113,7 @@
                     </tr>
                     <tr style="background-color: transparent;">
                         <td>
-                            <input type="radio" name="inventoryopponent" value="inventoryopponent" checked>{{ localize "CEL1922.frominventoryopponent" }}
+                            <input type="radio" name="myinventoryopponent" value="isinventoryopponent" checked>{{ localize "CEL1922.frominventoryopponent" }}
                             <br>
                             <small>{{ localize "CEL1922.developedfrominventoryopponent" }}</small>
 
@@ -121,7 +121,7 @@
                     </tr>
                     <tr style="background-color: transparent;">
                         <td>
-                            <input type="radio" name="inventoryopponent" value="improvisedopponent">{{ localize "CEL1922.improvisedweaponopponent" }}
+                            <input type="radio" name="myinventoryopponent" value="isimprovisedopponent">{{ localize "CEL1922.improvisedweaponopponent" }}
                             <br>
                             <small>{{ localize "CEL1922.developedimprovisedweaponopponent" }}</small>
                         </td>
@@ -133,7 +133,7 @@
                     <tr class="form-fields" style="background-color: transparent;">
                         <td name="chooseinventoryopponent">
                             <span class="value"><b>{{ localize "CEL1922.choosefrominventoryopponent" }}</b>&nbsp;</span>
-                            <select name="inventoryopponentchoice" data-type="String">
+                            <select name="inventoryopponent" data-type="String">
                                 {{selectOptions inventoryopponentchoices selected=selectedinventoryopponent labelAttr="label" localize=true}}
                             </select>
                         </td>
@@ -165,7 +165,7 @@
                         <td name="choosearmoroppoent">
                             <span class="value"><b>{{ localize "CEL1922.choosearmoropponent" }}</b>&nbsp;</span>
                             <select name="armoropponent" data-type="String">
-                                {{selectOptions armoropponentchoices selected=armoropponent labelAttr="label" localize=true}}
+                                {{selectOptions armoropponentchoices selected=selectedarmoropponent labelAttr="label" localize=true}}
                             </select>
                         </td>
                     </tr>

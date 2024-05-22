@@ -8,11 +8,11 @@ export class ModifiedDialog extends Dialog {
   activateListeners(html) {
     super.activateListeners(html);
     // console.log("Listeners activés")
-    html.find('input[value="inventory"]').click(this._onInventoryClick.bind(this));
-    html.find('input[value="improvised"]').click(this._onDamageClick.bind(this));
+    html.find('input[value="isinventory"]').click(this._onInventoryClick.bind(this));
+    html.find('input[value="isimprovised"]').click(this._onDamageClick.bind(this));
 
-    html.find('input[value="inventoryopponent"]').click(this._onInventoryOpponentClick.bind(this));
-    html.find('input[value="improvisedopponent"]').click(this._onDamageOpponentClick.bind(this));
+    html.find('input[value="isinventoryopponent"]').click(this._onInventoryOpponentClick.bind(this));
+    html.find('input[value="isimprovisedopponent"]').click(this._onDamageOpponentClick.bind(this));
 
 
     html.find('input[value="knownopposition"]').click(this._onKnownOppositionClick.bind(this));
@@ -93,8 +93,8 @@ export class ModifiedDialog extends Dialog {
   
   _onInventoryClick(event) {
     // console.log("J'exécute _onInventoryClick()")
-    let checkbox = this.element.find('input[value="inventory"]');
-    let othercheckbox = this.element.find('input[value="improvised"]');
+    let checkbox = this.element.find('input[value="isinventory"]');
+    let othercheckbox = this.element.find('input[value="isimprovised"]');
     let chooseinventory = this.element.find('td[name="chooseinventory"]');
     let choosedamage = this.element.find('td[name="choosedamage"]');
 
@@ -107,8 +107,8 @@ export class ModifiedDialog extends Dialog {
 
   _onInventoryOpponentClick(event) {
     // console.log("J'exécute _onInventoryOpponentClick()")
-    let checkbox = this.element.find('input[value="inventoryoOpponent"]');
-    let othercheckbox = this.element.find('input[value="improvisedopponent"]');
+    let checkbox = this.element.find('input[value="isinventoryoOpponent"]');
+    let othercheckbox = this.element.find('input[value="isimprovisedopponent"]');
     let chooseinventory = this.element.find('td[name="chooseinventoryopponent"]');
     let choosedamage = this.element.find('td[name="choosedamageopponent"]');
 
