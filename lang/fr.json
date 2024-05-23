@@ -7,6 +7,28 @@
   "CEL1922.Cocher cette option auto":
   "Cocher cette option autorisera le décompte automatisé des blessures infligées aux PNJ par les Joueuses. Le MJ pourra ainsi se consacrer entièrement à la narration.",
 
+  "CEL1922.AutoPrompt": "Utiliser les prompts d’automatisation côté Joueuses",
+  "CEL1922.TakeCareIfAutoPromptUnchecked":
+  "Attention ! Si vous décochez cette option, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
+
+  "CEL1922.AttributeNew": "Nouvel Attribut",
+  "CEL1922.AttributeCreate": "Créer un Attribut",
+  "CEL1922.AttributeRead": "Consulter l′Attribut",
+  "CEL1922.AttributeEdit": "Modifier l′Attribut",
+  "CEL1922.AttributeDelete": "Supprimer l′Attribut",
+
+  "CEL1922.AspectNew": "Nouvel Aspect",
+  "CEL1922.AspectCreate": "Créer un Aspect",
+  "CEL1922.AspectRead": "Consulter l′Aspect",
+  "CEL1922.AspectEdit": "Modifier l′Aspect",
+  "CEL1922.AspectDelete": "Supprimer l′Aspect",
+
+  "CEL1922.AnomalyNew": "Nouvelle Anomalie",
+  "CEL1922.AnomalyCreate": "Créer une Anomalie",
+  "CEL1922.AnomalyRead": "Consulter l′Anomalie",
+  "CEL1922.AnomalyEdit": "Modifier l′Anomalie",
+  "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
+
   "CEL1922.ItemCreate": "Créer un Équipement",
   "CEL1922.ItemRead": "Consulter l′Équipement",
   "CEL1922.ItemEdit": "Modifier l′Équipement",
@@ -229,10 +251,6 @@
   "CEL1922.ThrowMoonDice": "Faire un test de dé de la Lune",
 
 
-  "CEL1922.Jauge de Blessures": "Jauge de Blessures",
-  "CEL1922.Jauge de Destin": "Jauge de Destin",
-  "CEL1922.Jauge de Spleen": "Jauge de Spleen",
-
   "CEL1922.Anodin": "Anodin",
   "CEL1922.Derisoire": "Dérisoire",
   "CEL1922.Negligeable": "Négligea.",
@@ -243,23 +261,6 @@
   "CEL1922.Dramatique": "Dramatique",
   "CEL1922.Hors-fiction": "Hors-fiction",
 
-  "CEL1922.AttributeNew": "Nouvel Attribut",
-  "CEL1922.AttributeCreate": "Créer un Attribut",
-  "CEL1922.AttributeRead": "Consulter l′Attribut",
-  "CEL1922.AttributeEdit": "Modifier l′Attribut",
-  "CEL1922.AttributeDelete": "Supprimer l′Attribut",
-
-  "CEL1922.AspectNew": "Nouvel Aspect",
-  "CEL1922.AspectCreate": "Créer un Aspect",
-  "CEL1922.AspectRead": "Consulter l′Aspect",
-  "CEL1922.AspectEdit": "Modifier l′Aspect",
-  "CEL1922.AspectDelete": "Supprimer l′Aspect",
-
-  "CEL1922.AnomalyNew": "Nouvelle Anomalie",
-  "CEL1922.AnomalyCreate": "Créer une Anomalie",
-  "CEL1922.AnomalyRead": "Consulter l′Anomalie",
-  "CEL1922.AnomalyEdit": "Modifier l′Anomalie",
-  "CEL1922.AnomalyDelete": "Supprimer l′Anomalie",
 
   "CEL1922.Initiative": "Initiative",
 
@@ -300,9 +301,6 @@
   "CEL1922.Preferences": "Préférences pour cet acteur",
   "CEL1922.activatedarmor": "Armure activée",
 
-  "CEL1922.AutoPrompt": "Toujours utiliser les prompts d’automatisation côté Joueuses",
-  "CEL1922.TakeCareIfAutoPromptUnchecked": "Attention ! Si vous décochez cette option, seuil, modificateur, arme, Anomalie, Aspects et Attributs ainsi que bonus et malus supplémentaires, armure et jauges ne pourront plus être pris en compte automatiquement. Seuls les malus de blessures seront décomptés.",
-
 
   "CEL1922.TypeOfThrow4ThisTime": "Type de jet pour cette fois : visible pour…",
   "CEL1922.TypeOfThrowTitle": "Dé de la Lune – type et visibilité",
@@ -310,7 +308,7 @@
 
   "CEL1922.NextTimeGoToTheSettings": "Cela est réglable dans les Préférences",
 
-  "CEL1922.Verify Sheet": "Vérifier la cohérence de la fiche",
+  "CEL1922.VerifySheet": "Vérifier la cohérence de la fiche",
 
   "CEL1922.Info1": "Je commence à vérifier votre fiche…",
   "CEL1922.Info2": "Tout me paraît normal",
@@ -353,10 +351,10 @@
   "CEL1922.ManyDice": "dés",
 
   "CEL1922.MoonDiceAs": "Dé de la Lune utilisé comme",
-  "CEL1922.Standard Moon Dice": "Dé de la Lune standard",
-  "CEL1922.Luck Dice Element of Fiction": "Dé de chance – déterminer un élément de la fiction",
-  "CEL1922.Luck Dice Influence Narration": "Dé de chance – influer sur la narration de manière mineure",
-  "CEL1922.Luck Dice Determine Quantity": "Dé de chance – déterminer une quantité",
+  "CEL1922.StandardMoonDice": "Dé de la Lune standard",
+  "CEL1922.LuckDiceElementofFiction": "Dé de chance – déterminer un élément de la fiction",
+  "CEL1922.LuckDiceInfluenceNarration": "Dé de chance – influer sur la narration de manière mineure",
+  "CEL1922.LuckDiceDetermineQuantity": "Dé de chance – déterminer une quantité",
 
   "CEL1922.TypeOfWeaponTitle": "Quels types d′arme / d′armure ?",
   "CEL1922.choosewhichinventory": "Sélectionnez une arme dans votre inventaire ou bien utilisez une arme improvisée.",
@@ -407,8 +405,8 @@
   "CEL1922.Modifier-8": "Incroyablement difficile",
 
   "CEL1922.Evident": "Le test est évident : pas besoin de jeter les dés (il est automatiquement réussi)",
-  "CEL1922.Test évident": "Test évident",
-  "CEL1922.Réussite automatique": "[Réussite automatique]",
+  "CEL1922.TestEvident": "Test évident",
+  "CEL1922.ReussiteAutomatique": "[Réussite automatique]",
 
   "CEL1922.Missing": "[Manquant]",
 
@@ -424,23 +422,25 @@
   "CEL1922.BonusMalusDetail": "Détail des bonus / malus",
 
   "CEL1922.Opposition": " [Opposition]",
-  "CEL1922.Opposition surpassée": " [Opposition surpassée]",
-  "CEL1922.Opposition insurpassée": " [Opposition insurpassée]",
-  "CEL1922.Opposition en aveugle": " [Opposition en aveugle]",
+  "CEL1922.OppositionSurpassee": " [Opposition surpassée]",
+  "CEL1922.OppositionInsurpassee": " [Opposition insurpassée]",
+  "CEL1922.OppositionEnAveugle": " [Opposition en aveugle]",
   "CEL1922.Seuil": " [Seuil]",
-  "CEL1922.Seuil atteint": " [Seuil atteint]",
-  "CEL1922.Seuil non-atteint": " [Seuil non-atteint]",
+  "CEL1922.SeuilAtteint": " [Seuil atteint]",
+  "CEL1922.SeuilNon-atteint": " [Seuil non-atteint]",
 
-  "CEL1922.Relance des Dés": "Relance des Dés",
-  "CEL1922.Dé de la Lune": "Dé de la Lune",
-  "CEL1922.Calcul des Blessures": "Calcul des Blessures",
-  "CEL1922.Application des Blessures PNJ": "Applicat. Blessures [MJ]",
-  "CEL1922.Application des Blessures PJ": "Applicat. Blessures [PJ]",
+  "CEL1922.RerollDice": "Relance des Dés",
+  "CEL1922.DeDeLaLune": "Dé de la Lune",
+  "CEL1922.CalculateWounds": "Calcul des Blessures",
+  "CEL1922.ApplyWoundsNPC": "Applicat. Blessures [MJ]",
+  "CEL1922.ApplyWoundsPC": "Applicat. Blessures [PJ]",
 
   "CEL1922.NPCWounded": "Le PJ touche son adversaire",
   "CEL1922.PCWounded": "Le PNJ touche le PJ",
-  "CEL1922.NPCWoundedDeveloped": "Le PJ touche son adversaire et lui inflige un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel s’ajoutent, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ permet d’ôter des points à ce niveau de blessure.",
-  "CEL1922.PCWoundedDeveloped": "Le PNJ touche le PJ et lui inflige un niveau de blessure auquel s’ajoutent, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ permet d’ôter des points à ce niveau de blessure.",
+  "CEL1922.NPCWoundedDeveloped":
+  "Le PJ touche son adversaire et lui inflige un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel s’ajoutent, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ permet d’ôter des points à ce niveau de blessure.",
+  "CEL1922.PCWoundedDeveloped":
+  "Le PNJ touche le PJ et lui inflige un niveau de blessure auquel s’ajoutent, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ permet d’ôter des points à ce niveau de blessure.",
 
   "TYPES": {
     "Actor": {

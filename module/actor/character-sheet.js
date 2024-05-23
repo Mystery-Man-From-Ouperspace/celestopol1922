@@ -1102,16 +1102,16 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
       if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
   
-      if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.Opposition en aveugle");
+      if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.OppositionEnAveugle");
       if (myTest == "knownopposition" &&  myResult >= myOpposition) {
-        oppositionText += game.i18n.localize("CEL1922.Opposition surpassée");
+        oppositionText += game.i18n.localize("CEL1922.OppositionSurpassee");
       } else if (myTest == "knownopposition" &&  myResult < myOpposition) {
-        oppositionText += game.i18n.localize("CEL1922.Opposition insurpassée");
+        oppositionText += game.i18n.localize("CEL1922.OppositionInsurpassee");
       };
       if (myTest == "simpletest" &&  myResult >= myOpposition) {
-        oppositionText += game.i18n.localize("CEL1922.Seuil atteint");
+        oppositionText += game.i18n.localize("CEL1922.SeuilAtteint");
       } else if (myTest == "simpletest" &&  myResult < myOpposition) {
-        oppositionText += game.i18n.localize("CEL1922.Seuil non-atteint");
+        oppositionText += game.i18n.localize("CEL1922.SeuilNon-atteint");
       };
 
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;

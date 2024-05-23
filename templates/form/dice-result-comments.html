@@ -51,7 +51,7 @@
             </div>
             
             {{#if (eq mymodifier 999)}}
-            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.Réussite automatique" }}</div>
+            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.ReussiteAutomatique" }}</div>
             {{else}}
             <table class="cel1922-no-rich">
                 <tr class="cel1922-no-rich">
@@ -169,11 +169,11 @@
             <div class="green-buttons">
                 {{#if (eq mymodifier 999)}}
                 {{else}}
-                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.Relance des Dés" }}</span></p><br/>
+                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.RerollDice" }}</span></p><br/>
                 {{/if}}
-                <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.Dé de la Lune" }}</span></p><br/>
+                <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.DeDeLaLune" }}</span></p><br/>
                 {{#if (eq numSpeciality 6)}}
-                <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.Calcul des Blessures" }}</span></p><br/>
+                <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.CalculateWounds" }}</span></p><br/>
                 {{/if}}
             </div>
         </div>	
