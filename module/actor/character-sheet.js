@@ -789,54 +789,54 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   };
 
 
-  /* -------------------------------------------- */
+/* -------------------------------------------- */
 
-  /**
-   * Listen for roll buttons on Moon-die.
-   * @param {MouseEvent} event    The originating left click event
-   */
-  async _onClickMoonDieRoll(event) {
+/**
+ * Listen for roll buttons on Moon-die.
+ * @param {MouseEvent} event    The originating left click event
+ */
+async _onClickMoonDieRoll(event) {
 
-/*
-  const element = event.currentTarget;                        // On récupère le clic
-  const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
-  console.log("whatIsIt = ", whatIsIt)
-  const whatIsItTab = whatIsIt.split('-');
-  const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
-  console.log("specialityUsedLibel = "+specialityUsedLibel)
-  const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
-  console.log("skillUsedLibel = ", skillUsedLibel)
-  const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
-  console.log("skillNumUsedLibel = ", skillNumUsedLibel)
-*/
-  let myActor = this.actor;
-  let myMoon = 0;
-  let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
-  let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
-  // console.log("myTypeOfThrow : ", myTypeOfThrow);
-  myMoon = parseInt(myData.moon);
-  myTypeOfThrow = parseInt(myData.choice);
-  let myRoll;
-  var msg;
-
-  myRoll = "1d8";
-  const rMoon = new Roll(myRoll, this.actor.getRollData());
-  await rMoon.evaluate();
-  // console.log(rMoon);
- 
-  const mySmartMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-moon.html';
-  const mySmartMoonData =
-  {
-    moonname: game.i18n.localize(myActor.system.skill.moondicetypes[rMoon._total - 1]),
-    theresult: rMoon._total
-  };
-
-  const titleSmartRMoon = "Joli message à venir";
-  const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title-moon.html';
-  const mySmartRMoonData = {
-    title: titleSmartRMoon
-    //
-  }
+  /*
+    const element = event.currentTarget;                        // On récupère le clic
+    const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
+    console.log("whatIsIt = ", whatIsIt)
+    const whatIsItTab = whatIsIt.split('-');
+    const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
+    console.log("specialityUsedLibel = "+specialityUsedLibel)
+    const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
+    console.log("skillUsedLibel = ", skillUsedLibel)
+    const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
+    console.log("skillNumUsedLibel = ", skillNumUsedLibel)
+  */
+    let myActor = this.actor;
+    let myMoon = 0;
+    let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
+    let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
+    // console.log("myTypeOfThrow : ", myTypeOfThrow);
+    myMoon = parseInt(myData.moon);
+    myTypeOfThrow = parseInt(myData.choice);
+    let myRoll;
+    var msg;
+  
+    myRoll = "1d8";
+    const rMoon = new Roll(myRoll, this.actor.getRollData());
+    await rMoon.evaluate();
+    // console.log(rMoon);
+    
+    const mySmartMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-moon.html';
+    const mySmartMoonData =
+    {
+      moonname: game.i18n.localize(myActor.system.skill.moondicetypes[rMoon._total - 1]),
+      theresult: rMoon._total
+    };
+  
+    const titleSmartRMoon = "Joli message à venir";
+    const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title-moon.html';
+    const mySmartRMoonData = {
+      title: titleSmartRMoon
+      //
+    }
 
   await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
 
@@ -1079,6 +1079,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       r = new Roll(myRoll, this.actor.getRollData());
       await r.evaluate();
     }
+
     const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const mySmartData = {
       mymodifier: myModifier, 
@@ -1135,8 +1136,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       console.log("game.user.id = ", game.user.id);
 
       mySmartRData = {
+        typeofthrow: myData.myTypeOfThrow,
         numberofdice: myData.myNumberOfDice,
-        aspect: myData.mySkill,
+        skill: myData.mySkill,
         bonus: myData.totalBoni,
         rolldifficulty: parseInt(myOpposition),
 
@@ -1180,6 +1182,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dataSpleen: "",
         numSpeciality: myData.mySkill
       }
+
+      console.log("mySmartRData = ", mySmartRData);
   
     } else {
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;

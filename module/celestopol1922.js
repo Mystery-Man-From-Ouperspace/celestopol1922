@@ -178,7 +178,7 @@ function preLocalizeConfig() {
 /* -------------------------------------------- */
 
 // Hooks for Green Buttons in Chat
-Hooks.on("renderChatMessage", (app, html, data) => {
+Hooks.on("renderChatMessage", (app, html, data,) => {
 
   let rerollButton = html[0].querySelector("[class='smart-green-button reroll-click']");
   let moonrollButton = html[0].querySelector("[class='smart-green-button moon-click']");
@@ -222,8 +222,107 @@ Hooks.on("renderChatMessage", (app, html, data) => {
 
     console.log('Je suis dans woundscalculateButton')
 
+    const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
 
-    })
+
+    const numberofdice = html[0].querySelector("div[class='numberofdice']").textContent;
+    const skill = html[0].querySelector("div[class='skill']").textContent;
+    const bonus = html[0].querySelector("div[class='bonus']").textContent;
+    const rolldifficulty = html[0].querySelector("div[class='rolldifficulty']").textContent;
+
+    const youwin = html[0].querySelector("div[class='youwin']").textContent;
+    const yourplayerid = html[0].querySelector("div[class='yourplayerid']").textContent;
+    const youractorid = html[0].querySelector("div[class='youractorid']").textContent;
+    const yourdamage = html[0].querySelector("div[class='yourdamage']").textContent;
+    const yourprotection = html[0].querySelector("div[class='yourprotection']").textContent;
+    const youropponent = html[0].querySelector("div[class='youropponent']").textContent;
+    const youropponentid = html[0].querySelector("div[class='youropponentid']").textContent;
+    const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
+    const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
+
+    let NPCwoundedtotal = 1+yourdamage-youropponentprotection;
+    if (NPCwoundedtotal < 0) {NPCwoundedtotal = 0};
+    let PCwoundedtotal = 1+youropponentdamage-yourprotection;
+    if (PCwoundedtotal < 0) {PCwoundedtotal = 0};
+    let autoWoundsNPC = game.settings.get("celestopol1922", "autoWoundsNPC");
+
+    const myUser = game.user;
+    console.log("game.user.id = ", game.user.id);
+    console.log("yourplayerid = ", yourplayerid);
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;};
+
+    const myActor = game.actors.get(youractorid);
+
+    const myTypeOfThrow = parseInt(typeofthrow);
+
+    // Smart Message
+    const smartTemplate = 'systems/celestopol1922/templates/form/dice-result-wounds.html';
+    const smartData = 
+    {
+      typeofthrow: myTypeOfThrow,
+
+      youwin: youwin,
+      yourplayerid: yourplayerid,
+      youractorid: youractorid,
+      yourdamage: yourdamage,
+      yourprotection: yourprotection,
+      youropponent: youropponent,
+      youropponentid: youropponentid,
+      youropponentdamage: youropponentdamage,
+      youropponentprotection: youropponentprotection,
+
+      NPCwoundedtotal: NPCwoundedtotal,
+      PCwoundedtotal: PCwoundedtotal,
+      autoWoundsNPC: autoWoundsNPC
+    };
+
+    const smartHtml = renderTemplate(smartTemplate, smartData);
+
+    switch ( myTypeOfThrow ) {
+      case 0:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartHtml,
+          rollMode: 'roll'                          // Public Roll
+        });
+
+      break;
+      case 1:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content:smartHtml,
+          rollMode: 'gmroll'                        // Private Roll
+        });
+
+      break;
+      case 2:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartHtml,
+          rollMode: 'blindroll'                       // Blind GM Roll
+        });
+
+      break;
+      case 3:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartHtml,
+          rollMode: 'selfroll'                        // Self Roll
+        });
+
+      break;
+      default: console.log("C'est bizarre !");
+    };
+
+  })
   }
 
   if (moonrollButton != undefined && moonrollButton != null) {
@@ -235,6 +334,42 @@ Hooks.on("renderChatMessage", (app, html, data) => {
 
     console.log('Je suis dans moonrollButton')
 
+    const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
+
+    const yourplayerid = html[0].querySelector("div[class='yourplayerid']").textContent;
+    const youractorid = html[0].querySelector("div[class='youractorid']").textContent;
+
+    const myUser = game.user;
+    console.log("game.user.id = ", game.user.id);
+    console.log("yourplayerid = ", yourplayerid);
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;};
+
+    console.log("youractorid = ", youractorid);
+    let myActor = game.actors.get(youractorid);
+
+    let myTypeOfThrow = parseInt(typeofthrow);
+    
+    let rMoon = new Roll('1d8');
+    rMoon.roll({async: false});
+
+    const theResult = rMoon.result;
+    console.log("rMoon.result = ", rMoon.result);
+
+    const mySmartMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-moon.html';
+    const mySmartMoonData =
+    {
+      moonname: game.i18n.localize(myActor.system.skill.moondicetypes[theResult - 1]),
+      theresult: parseInt(theResult)
+    };
+  
+    const titleSmartRMoon = "Joli message à venir";
+    const mySmartRMoonTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title-moon.html';
+    const mySmartRMoonData = {
+      title: titleSmartRMoon
+      //
+    }
+  
+    _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
 
     })
   }
@@ -326,3 +461,146 @@ Hooks.on("renderChatMessage", (app, html, data) => {
   }
 
 */
+
+/* -------------------------------------------- */
+
+async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
+
+  let msg = "";
+
+  const typeOfThrow = myTypeOfThrow;
+
+  if (mySmartRData.mymodifier != 999) {
+    switch ( typeOfThrow ) {
+      case 0: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'roll'                      // Public Roll
+        });
+      break;
+      case 1: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'gmroll'                    // Private Roll
+        });
+      break;
+      case 2: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'blindroll'                 // Blind GM Roll
+      });
+      break;
+      case 3: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'selfroll'                      // Self Roll
+      });
+      break;
+      default: console.log("C'est bizarre !");
+    };
+
+
+    if (game.modules.get("dice-so-nice")?.active) {
+      await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
+    };
+
+  }
+  // Smart Message
+  const smartTemplate = mySmartTemplate;
+  const smartData = mySmartData;
+  const smartHtml = await renderTemplate(smartTemplate, smartData);
+
+  switch ( typeOfThrow ) {
+    case 0:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'roll'                          // Public Roll
+      });
+
+    break;
+    case 1:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content:smartHtml,
+        rollMode: 'gmroll'                        // Private Roll
+      });
+
+    break;
+    case 2:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'blindroll'                       // Blind GM Roll
+      });
+
+    break;
+    case 3:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'selfroll'                        // Self Roll
+      });
+
+    break;
+    default: console.log("C'est bizarre !");
+  };
+
+
+    // SmartR Message
+    const smartRTemplate = mySmartRTemplate;
+    const smartRData = mySmartRData;
+    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
+ 
+  switch ( typeOfThrow ) {
+    case 0:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'roll'                          // Public Roll
+      });
+
+    break;
+    case 1:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'gmroll'                        // Private Roll
+      });
+
+    break;
+    case 2:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'blindroll'                       // Blind GM Roll
+      });
+    break;
+    case 3:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'selfroll'                        // Self Roll
+      });
+
+    break;
+    default: console.log("C'est bizarre !");
+  };
+
+}
