@@ -8,7 +8,7 @@
 
         {{!-- Frame --}}
         <div class="cel1922-result-window">
-
+            
             <div class="numberofdice" style="display: none;">
                 {{numberofdice}}
             </div>
@@ -49,10 +49,7 @@
             <div class="youropponentprotection" style="display: none;">
                 {{youropponentprotection}}
             </div>
-
-            {{#if (eq mymodifier 999)}}
-            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.Réussite automatique" }}</div>
-            {{else}}
+            
             <table class="cel1922-no-rich">
                 <tr class="cel1922-no-rich">
                     <td>
@@ -60,12 +57,16 @@
                     </td>
                 </tr>
             </table>
-            {{/if}}
             <br>
+
             <div class="green-buttons">
-                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.Relance des Dés" }}</span></p><br/>
                 <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.Dé de la Lune" }}</span></p><br/>
+                {{#if (eq numSpeciality 6)}}
+                <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.Calcul des Blessures" }}</span></p><br/>
+                {{/if}}
             </div>
-        </div>	
+
+        </div>
+
     </section>
 </form>

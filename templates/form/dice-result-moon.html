@@ -9,107 +9,108 @@
         {{!-- Frame --}}
         <div class="cel1922-result-window">
 
-            <table hidden style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
-                    <td>
-                        <span class="text" style="font-size: 1px;" type="text" name="{{ theresult }}" value="{{ theresult }}"></span>
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
+                    <td style="height: 10px;">
+
                     </td>
                 </tr>
             </table>
-            <table style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
+
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
                     <td style="text-align: center;">
                         <b>{{ moonname }}</b>
                     </td>
                 </tr>
             </table>
 
-            <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent;">
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
                     <td>
                         {{#if (eq theresult 1)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
-                            src="systems/celestopol1922/images/ui/1_NOUVELLE_lUNE.png"
-                            alt="Die"
+                            class="cel1922-moon"
+                            src="systems/celestopol1922/images/ui/1_NOUVELLE_LUNE.png"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 2)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/2_PREMIER_CROISSANT.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 3)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/3_PREMIER_QUARTIER.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 4)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/4_LUNE_GIBBEUSE.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 5)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/5_LUNE_VOUTEE.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 6)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/6_DERNIER_CROISSANT.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 7)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/7_DERNIER_QUARTIER.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
                     </td>
                     <td>
                         {{#if (eq theresult 8)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-moon">
                             <img
-                            style="width: 75px; border-width: 0; filter: drop-shadow(0px 0px 20px rgb(12, 76, 12))"
+                            class="cel1922-moon"
                             src="systems/celestopol1922/images/ui/8_PLEINE_LUNE.png"
-                            alt="Die"
+                            alt="Moon"
                             >
                         </div>
                         {{/if}}
@@ -117,6 +118,7 @@
                 </tr>
             </table>
 
-        </div>	
+        </div>
+
     </section>
 </form>

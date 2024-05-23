@@ -9,19 +9,6 @@
         {{!-- Frame --}}
         <div class="cel1922-result-window">
 
-            <div class="numberofdice" style="display: none;">
-                {{numberofdice}}
-            </div>
-            <div class="aspect" style="display: none;">
-                {{aspect}}
-            </div>
-            <div class="bonus" style="display: none;">
-                {{bonus}}
-            </div>
-            <div class="rolldifficulty" style="display: none;">
-                {{rolldifficulty}}
-            </div>
-
             <div class="youwin" style="display: none;">
                 {{youwin}}
             </div>
@@ -50,22 +37,45 @@
                 {{youropponentprotection}}
             </div>
 
-            {{#if (eq mymodifier 999)}}
-            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.Réussite automatique" }}</div>
-            {{else}}
             <table class="cel1922-no-rich">
                 <tr class="cel1922-no-rich">
-                    <td>
-                        <span>{{ title }}</span>
+                    <td style="text-align: center;">
+                        <b>{{ woundscomputing }}</b>
                     </td>
                 </tr>
             </table>
-            {{/if}}
+            {{#if youwin}}
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
+                    <th title="{{ localize 'CEL1922.NPCWoundedDeveloped' }}">
+                        {{ localize "CEL1922.NPCWounded" }}
+                    </th>
+                    <td style="text-align: center; width: 10%">
+                        {{ NPCwoundedtotal }}
+                    </td>
+                </tr>
+                {{else}}
+                <tr class="cel1922-no-rich">
+                    <th title="{{ localize 'CEL1922.PCWoundedDeveloped' }}">
+                        {{ localize "CEL1922.PCWounded" }}
+                    </th>
+                    <td style="text-align: center;">
+                        {{ PCwoundedtotal }}
+                    </td>
+                </tr>
+                {{/if}}
+            </table>
             <br>
             <div class="green-buttons">
-                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.Relance des Dés" }}</span></p><br/>
-                <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.Dé de la Lune" }}</span></p><br/>
+                {{#if autoWoundsNPC}}
+                    {{#if youwin}}
+                    <p><span class="smart-green-button wounds-apply-to-NPC-click">{{ localize "CEL1922.Application des Blessures PNJ" }}</span></p><br/>
+                    {{else}}
+                    <p><span class="smart-green-button wounds-apply-to-PC-click">{{ localize "CEL1922.Application des Blessures PJ" }}</span></p><br/>
+                    {{/if}}
+                {{/if}}
             </div>
+
         </div>	
     </section>
 </form>

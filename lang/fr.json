@@ -408,9 +408,9 @@
 
   "CEL1922.Evident": "Le test est évident : pas besoin de jeter les dés (il est automatiquement réussi)",
   "CEL1922.Test évident": "Test évident",
-  "CEL1922.Réussite automatique": "Réussite automatique",
+  "CEL1922.Réussite automatique": "[Réussite automatique]",
 
-  "CEL1922.Missing": "[Absent]",
+  "CEL1922.Missing": "[Manquant]",
 
   "CEL1922.barehands": "Mains nues [0]",
 
@@ -434,6 +434,13 @@
   "CEL1922.Relance des Dés": "Relance des Dés",
   "CEL1922.Dé de la Lune": "Dé de la Lune",
   "CEL1922.Calcul des Blessures": "Calcul des Blessures",
+  "CEL1922.Application des Blessures PNJ": "Applicat. Blessures [MJ]",
+  "CEL1922.Application des Blessures PJ": "Applicat. Blessures [PJ]",
+
+  "CEL1922.NPCWounded": "Le PJ touche son adversaire",
+  "CEL1922.PCWounded": "Le PNJ touche le PJ",
+  "CEL1922.NPCWoundedDeveloped": "Le PJ touche son adversaire et lui inflige un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel s’ajoutent, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ permet d’ôter des points à ce niveau de blessure.",
+  "CEL1922.PCWoundedDeveloped": "Le PNJ touche le PJ et lui inflige un niveau de blessure auquel s’ajoutent, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ permet d’ôter des points à ce niveau de blessure.",
 
   "TYPES": {
     "Actor": {

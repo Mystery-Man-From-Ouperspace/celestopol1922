@@ -8,16 +8,59 @@
 
         {{!-- Frame --}}
         <div class="cel1922-result-window">
+
+            <div class="numberofdice" style="display: none;">
+                {{numberofdice}}
+            </div>
+            <div class="aspect" style="display: none;">
+                {{aspect}}
+            </div>
+            <div class="bonus" style="display: none;">
+                {{bonus}}
+            </div>
+            <div class="rolldifficulty" style="display: none;">
+                {{rolldifficulty}}
+            </div>
+
+            <div class="youwin" style="display: none;">
+                {{youwin}}
+            </div>
+            <div class="yourplayerid" style="display: none;">
+                {{yourplayerid}}
+            </div>
+            <div class="youractorid" style="display: none;">
+                {{youractorid}}
+            </div>
+            <div class="yourdamage" style="display: none;">
+                {{yourdamage}}
+            </div>
+            <div class="yourprotection" style="display: none;">
+                {{yourprotection}}
+            </div>
+            <div class="youropponent" style="display: none;">
+                {{youropponent}}
+            </div>
+            <div class="youropponentid" style="display: none;">
+                {{youropponentid}}
+            </div>
+            <div class="youropponentdamage" style="display: none;">
+                {{youropponentdamage}}
+            </div>
+            <div class="youropponentprotection" style="display: none;">
+                {{youropponentprotection}}
+            </div>
+            
             {{#if (eq mymodifier 999)}}
-            <div style="text-align: center;">{{ localize "CEL1922.Réussite automatique" }}</div>
+            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.Réussite automatique" }}</div>
             {{else}}
-            <table hidden style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
                     <td>
                         <span>{{ title }}</span>
                     </td>
                 </tr>
             </table>
+
             <details>
                 <summary><small>{{ localize "CEL1922.BonusMalusDetail" }}</small></summary>
                 <small>

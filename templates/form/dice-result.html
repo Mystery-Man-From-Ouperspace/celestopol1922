@@ -9,32 +9,32 @@
         {{!-- Frame --}}
         <div class="cel1922-result-window">
 
-            <table hidden style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
-                    <td>
-                        <span class="text" style="font-size: 1px;" type="text" name="{{ numberofdice }}" value="{{ numberofdice }}"></span>
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
+                    <td style="height: 10px;">
+
                     </td>
                 </tr>
             </table>
-            <table style="border: 0px; background-color: transparent;">
-                <tr style="background-color: transparent;">
+
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
                     <td style="text-align: center;">
                         <b>{{ speciality }}</b>
                     </td>
                 </tr>
             </table>
 
-
             {{#if (eq mymodifier 999)}}
-            <div style="text-align: center;">{{ localize "CEL1922.Test évident" }}</div>
+            <div style="text-align: center;" title="{{ localize 'CEL1922.Evident' }}">{{ localize "CEL1922.Test évident" }}</div>
             {{else}}
-            <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent;">
+            <table class="cel1922-no-rich">
+                <tr class="cel1922-no-rich">
                     <td>
                         {{#if (gt numberofdice 0)}}
-                        <div style="border-width: 0; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -43,9 +43,9 @@
                     </td>
                     <td>
                         {{#if (gt numberofdice 1)}}
-                        <div style="border-width: 0px; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -54,9 +54,9 @@
                     </td>
                     <td>
                         {{#if (gt numberofdice 2)}}
-                        <div style="border-width: 0px; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -65,9 +65,9 @@
                     </td>
                     <td>
                         {{#if (gt numberofdice 3)}}
-                        <div style="border-width: 0px; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -76,9 +76,9 @@
                     </td>
                     <td>
                         {{#if (gt numberofdice 4)}}
-                        <div style="border-width: 0px; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -87,9 +87,9 @@
                     </td>
                     <td>
                         {{#if (gt numberofdice 5)}}
-                        <div style="border-width: 0px; display: flex; justify-content: center; align-items: center;">
+                        <div class="cel1922-die">
                             <img
-                            style="width: 40px; border-width: 0; filter: drop-shadow(0px 0px 15px rgb(12, 76, 12))"
+                            class="cel1922-die"
                             src="systems/celestopol1922/images/ui/d8_fond_transp.png"
                             alt="Die"
                             >
@@ -99,6 +99,7 @@
                 </tr>
             </table>
             {{/if}}
+
         </div>	
     </section>
 </form>

@@ -877,7 +877,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let mySkillData = await _getSkillValueData (myActor, Skill);
 
     let myData = {
-      myUserID: game.user.Id,
+      myUserID: game.user.id,
+      myActorID: myActor.id,
       myTypeOfThrow: myTypeOfThrow,
       myPromptPresent: myPromptPresent,
       myNumberOfDice: 2,
@@ -902,6 +903,14 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       mySpecialityLibel: mySkillData.libel,
       myValue: mySkillData.value,
       myRESValue: mySkillData.rESvalue,
+
+      myWeaponVal: 0,
+      myArmorVal: 0,
+
+      opponentName: "",
+      opponentID: "0",
+      weaponOpponentVal: 0,
+      armorOpponentVal: 0,
     }
 
 
@@ -947,7 +956,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       // myData.myWoundsMalus = ???????
 
 
-      myData.mySkillData = await _getSkillValueData (myActor, myData.mySkill);
+      let mySkillData = await _getSkillValueData (myActor, myData.mySkill);
       myData.mySpecialityLibel = mySkillData.libel;
       myData.myValue = mySkillData.value;
       myData.myRESValue = mySkillData.rESvalue;
@@ -956,7 +965,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
     var opponentActor = null;
     if (myPromptPresent  && myData.mySkill == 6) {
-      var myTarget = await _whichTarget (myActor);
+      var myTarget = await _whichTarget (myActor, myData.mySpecialityLibel);
 
       if (myTarget == null) {return};
 
@@ -978,7 +987,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     let myModifier;
 
     if (myPromptPresent) {
-      var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySkill);
+      var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySpecialityLibel);
 
       myTest = myTestData.test;
       myOpposition = parseInt(myTestData.opposition);
@@ -993,26 +1002,36 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     console.log("myBonus = ", myData.myBonus);
     console.log("myMalus = ", myData.myMalus);
 
+    let isInventory = true;
+    let mySelectedInventory = null;
 
-    
+    let isInventoryOpponent = true;
+    let selectedInventoryOpponent = null;
+    let armorProtectionOpponent = null;
 
     if (myPromptPresent && myData.mySkill == 6) {
       var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
-   
-      const isInventory = myDamageData.isinventory;
-      const myDamage = myDamageData.damage;
-      const mySelectedInventory = myDamageData.selectedinventory;
+      isInventory = myDamageData.isinventory;
+      myData.myWeaponVal = myDamageData.damage;
+      mySelectedInventory = myDamageData.selectedinventory;
       myData.myArmorProtection = myDamageData.selectedarmor;
       if (opponentActor) {
-        const isInventoryOpponent = myDamageData.isinventoryopponent;
-        const damageOpponent = myDamageData.damageopponent;
-        const selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
-        const armorProtectionOpponent = myDamageData.selectedarmoropponent;
+        isInventoryOpponent = myDamageData.isinventoryopponent;
+        myData.weaponOpponentVal = myDamageData.damageopponent;
+        selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
+        armorProtectionOpponent = myDamageData.selectedarmoropponent;
       };
       if (isInventory) {
-        // const mySelectedInventoryDamage =
-        // myDamage = mySelectedInventoryDamage; 
+        // myData.myWeaponVal = à récupérer dans les items de la fiche de PJ; 
       };
+      if (isInventoryOpponent) {
+        // myData.weaponOpponentVal = à récupérer dans les items de la fiche de PJ; 
+      };
+
+      // myData.myArmorVal = à récupérer dans les items de la fiche de PNJ;
+
+      // myData.armorOpponentVal = à récupérer dans les items de la fiche de PNJ;
+
     };
 
 
@@ -1075,12 +1094,11 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       let myResult;
       if (myModifier == 999) {
         myResult = -999;
-    } else {
-      myResult = r.total;
-    }
+      } else {
+        myResult = r.total;
+      }
       const myTest = myTestData.test;
       console.log("myTest = ", myTest);
-      const myOpposition = myTestData.opposition;
 
       if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
   
@@ -1098,7 +1116,42 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
+      let youWin = false;
+      if (myPromptPresent) {
+        if (myModifier == 999) {
+          youWin = true;
+        } else if (myResult >= parseInt(myOpposition)) {
+            youWin = true;
+        };
+      };
+      if (opponentActor) {
+        myData.opponentName = opponentActor.name;
+        myData.opponentID = opponentActor.id;
+      } else {
+        myData.opponentName = game.i18n.localize("CEL1922.Missing");
+      };
+
+      console.log("game.user = ", game.user);
+      console.log("game.user.id = ", game.user.id);
+
       mySmartRData = {
+        numberofdice: myData.myNumberOfDice,
+        aspect: myData.mySkill,
+        bonus: myData.totalBoni,
+        rolldifficulty: parseInt(myOpposition),
+
+        youwin: youWin,
+
+        yourplayerid: myData.myUserID,
+        youractorid: myData.myActorID,
+        yourdamage: myData.myWeaponVal,
+        yourprotection: myData.myArmorVal,
+
+        youropponent: myData.opponentName,
+        youropponentid: myData.opponentID,
+        youropponentdamage: myData.weaponOpponentVal,
+        youropponentprotection: myData.armorOpponentVal,
+
         mymodifier: myModifier, 
         title: titleSmartR,
         titleNbrDice: "",
@@ -1148,7 +1201,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
 /* -------------------------------------------- */
 
-async function _whichTarget (myActor) {
+async function _whichTarget (myActor, mySkill) {
   // Render modal dialog
   const template = 'systems/celestopol1922/templates/form/target-prompt.html';
   const title = game.i18n.localize("CEL1922.WhichTarget");
@@ -1171,6 +1224,7 @@ async function _whichTarget (myActor) {
   };
 
   var dialogData = {
+    skill: mySkill,
     you: myActor.name,
     youimg: myActor.img,
     targetchoices: myItemTarget,
@@ -1215,6 +1269,7 @@ async function _whichTarget (myActor) {
   async function _computeResult(myActor, myHtml) {
     // console.log("I'm in _computeResult(myActor, myHtml)");
     const editedData = {
+      skill: "",
       you: "",
       youimg: "",
       targetchoices: {},
@@ -1266,7 +1321,7 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
 
   const testOpponentActor = (opponentActor != null);
 
-let opponentName = "";
+  let opponentName = "";
   if (testOpponentActor) {
      opponentName = opponentActor.name;
   } else {
@@ -1291,7 +1346,6 @@ let opponentName = "";
       };
     };
   }
-
 
   var dialogData = {
     testopponentactor: testOpponentActor,
@@ -1377,6 +1431,7 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
   let dialogOptions = "";
   let myTest = "knownopposition";
   var dialogData = {
+    skill: mySkill,
     test: myTest,
     opposition: "13",
     modifier: "0",
@@ -1806,6 +1861,7 @@ async function _skillDiceRollDialog(
 
 }
 
+/* -------------------------------------------- */
 
 async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
 

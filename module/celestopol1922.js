@@ -171,3 +171,158 @@ function preLocalizeConfig() {
 
   localizeConfigObject(CEL1922.SUBTYPES, ["label"]);
 }
+
+
+/* -------------------------------------------- */
+/*  Chat Message Hooks                          */
+/* -------------------------------------------- */
+
+// Hooks for Green Buttons in Chat
+Hooks.on("renderChatMessage", (app, html, data) => {
+
+  let rerollButton = html[0].querySelector("[class='smart-green-button reroll-click']");
+  let moonrollButton = html[0].querySelector("[class='smart-green-button moon-click']");
+  let woundscalculateButton = html[0].querySelector("[class='smart-green-button wounds-calculate-click']");
+  let woundsapplytoNPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-NPC-click']");
+  let woundsapplytoPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-PC-click']");
+
+
+  if (woundsapplytoPCButton != undefined && woundsapplytoPCButton != null) {
+    woundsapplytoPCButton.addEventListener('click', () => {
+
+    // La joueuse applique depuis le Tchat les blessures infiligées à son PJ par le PNJ
+
+    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+
+    console.log('Je suis dans woundsapplytoPCButton')
+
+
+    })
+  }
+
+  if (woundsapplytoNPCButton != undefined && woundsapplytoNPCButton != null) {
+    woundsapplytoNPCButton.addEventListener('click', () => {
+
+    // Le MJ applique depuis le Tchat les blessures infligées à son PNJ par le PJ
+
+    // On vérifie que c'est bien le MJ, sinon on ne fait rien
+
+    console.log('Je suis dans woundsapplytoNPCButton')
+
+
+    })
+  }
+  
+  if (woundscalculateButton != undefined && woundscalculateButton != null) {
+    woundscalculateButton.addEventListener('click', () => {
+
+    // La joueuse effectue depuis le Tchat le calcul des blessures infligées
+
+    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+
+    console.log('Je suis dans woundscalculateButton')
+
+
+    })
+  }
+
+  if (moonrollButton != undefined && moonrollButton != null) {
+    moonrollButton.addEventListener('click', () => {
+
+    // La joueuse lance un dé de Lune depuis le Tchat
+
+    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+
+    console.log('Je suis dans moonrollButton')
+
+
+    })
+  }
+
+
+  if (rerollButton != undefined && rerollButton != null) {
+    rerollButton.addEventListener('click', () => {
+
+    // La joueuse relance les dés depuis le Tchat
+
+    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+
+    console.log('Je suis dans rerollButton')
+
+
+    })
+  }
+})
+
+/*
+  let chatButton = html[0].querySelector("[data-roll='roll-again']")
+
+  if (chatButton != undefined && chatButton != null) {
+      chatButton.addEventListener('click', () => {
+          let ruleTag = ''
+
+          if (html[0].querySelector("[data-roll='dice-result']").textContent == 10) {ruleTag = game.i18n.localize("CONX.Rule of Ten Re-Roll")}
+          if (html[0].querySelector("[data-roll='dice-result']").textContent == 1)  {ruleTag = game.i18n.localize("CONX.Rule of One Re-Roll")}
+
+          let roll = new Roll('1d10')
+          roll.roll({async: false})
+
+          // Grab and Set Values from Previous Roll
+          let attributeLabel = html[0].querySelector('h2').outerHTML
+          let diceTotal = Number(html[0].querySelector("[data-roll='dice-total']").textContent)
+          let rollMod = Number(html[0].querySelector("[data-roll='modifier']").textContent)
+          let ruleOfMod = ruleTag === game.i18n.localize("CONX.Rule of Ten Re-Roll") ? Number(roll.result) > 5 ? Number(roll.result) - 5 : 0 : Number(roll.result) > 5 ? 0 : Number(roll.result) - 5
+          let ruleOfDiv = ''
+
+          if (roll.result == 10) {
+              ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize(`CONX.Rule of 10!`)`</h2>
+                          <button type="button" data-roll="roll-again" class="rule-of-ten">`+game.i18n.localize(`CONX.Roll Again`)`</button>`
+              ruleOfMod = 5
+          }
+          if (roll.result == 1) {
+              ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize(`CONX.Rule of 1!`)`</h2>
+                          <button type="button" data-roll="roll-again" class="rule-of-one">`+game.i18n.localize(`CONX.Roll Again`)`</button>`
+              ruleOfMod = -5
+          }
+
+          // Create Chat Content
+          let tags = [`<div>${ruleTag}</div>`]
+          let chatContent = `<form>
+                                  ${attributeLabel}
+
+                                  <table class="conspiracyx-chat-roll-table">
+                                      <thead>
+                                          <tr>
+                                              <th>`+game.i18n.localize(`CONX.Roll`)+`</th>
+                                              <th>`+game.i18n.localize(`CONX.Modifier`)+`</th>
+                                              <th>+</th>
+                                              <th>`+game.i18n.localize(`CONX.Result`)+`</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr>
+                                              <td data-roll="dice-result">[[${roll.result}]]</td>
+                                              <td data-roll="modifier">${rollMod}</td>
+                                              <td>+</td>
+                                              <td data-roll="dice-total">${diceTotal + ruleOfMod}</td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+
+                                  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
+                                      ${ruleOfDiv}
+                                  </div>
+                              </form>`
+
+          ChatMessage.create({
+              type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+              user: game.user.id,
+              speaker: ChatMessage.getSpeaker(),
+              flavor: `<div class="conspiracyx-tags-flex-container">${tags.join('')}</div>`,
+              content: chatContent,
+              roll: roll
+          })
+      })
+  }
+
+*/

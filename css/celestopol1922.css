@@ -524,7 +524,7 @@ text-align: left;
   background-color: transparent;
 }
 
-/* SMART GREEN BUTTON */
+/* SMART GREEN BUTTON dans le tchat */
 
 .cel1922-result-window .green-buttons {
   text-align: center;
@@ -616,17 +616,44 @@ cursor: pointer;
 	box-shadow: inset 0px 1px 0px rgb(92,246,51), 0px 3px 0px rgb(12,76,12), 0px 6px 3px #999;
 }
 
+/* concerne le tchat */
 
+.cel1922-result-window table.cel1922-no-rich {
+  border: 0px;
+  background-color: transparent;
+}
 
+.cel1922-result-window tr.cel1922-no-rich {
+background-color: transparent;
+}
 
+.cel1922-result-window div.cel1922-moon {
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.cel1922-result-window img.cel1922-moon {
+  width: 75px;
+  border-width: 0px;
+  filter: drop-shadow(0px 0px 20px rgb(12, 76, 12));
+}
 
+.cel1922-result-window div.cel1922-die {
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.cel1922-result-window img.cel1922-die {
+  width: 40px;
+  border-width: 0px;
+  filter: drop-shadow(0px 0px 15px rgb(12, 76, 12));
+}
 
-
-
-
-
+/*  */
 
 .celestopol1922 .side-sheet h1.charname {
   font-family: "Copasetic-Bold";
@@ -654,8 +681,6 @@ cursor: pointer;
   font-family: "Copasetic";
   font-size: 16px;
 }
-
-
 
 /* concerne l'interface de Foundry */
 
