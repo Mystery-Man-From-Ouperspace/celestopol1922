@@ -176,16 +176,15 @@ function preLocalizeConfig() {
 /* -------------------------------------------- */
 /*  Chat Message Hooks                          */
 /* -------------------------------------------- */
-
 // Hooks for Green Buttons in Chat
+
 Hooks.on("renderChatMessage", (app, html, data,) => {
 
-  let rerollButton = html[0].querySelector("[class='smart-green-button reroll-click']");
-  let moonrollButton = html[0].querySelector("[class='smart-green-button moon-click']");
-  let woundscalculateButton = html[0].querySelector("[class='smart-green-button wounds-calculate-click']");
-  let woundsapplytoNPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-NPC-click']");
-  let woundsapplytoPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-PC-click']");
-
+  const rerollButton = html[0].querySelector("[class='smart-green-button reroll-click']");
+  const moonrollButton = html[0].querySelector("[class='smart-green-button moon-click']");
+  const woundscalculateButton = html[0].querySelector("[class='smart-green-button wounds-calculate-click']");
+  const woundsapplytoNPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-NPC-click']");
+  const woundsapplytoPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-PC-click']");
 
   if (woundsapplytoPCButton != undefined && woundsapplytoPCButton != null) {
     woundsapplytoPCButton.addEventListener('click', () => {
@@ -224,7 +223,6 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
     const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
 
-
     const numberofdice = html[0].querySelector("div[class='numberofdice']").textContent;
     const skill = html[0].querySelector("div[class='skill']").textContent;
     const bonus = html[0].querySelector("div[class='bonus']").textContent;
@@ -240,9 +238,9 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
     const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
 
-    let NPCwoundedtotal = 1+yourdamage-youropponentprotection;
+    let NPCwoundedtotal = 1+parseInt(yourdamage)-parseInt(youropponentprotection);
     if (NPCwoundedtotal < 0) {NPCwoundedtotal = 0};
-    let PCwoundedtotal = 1+youropponentdamage-yourprotection;
+    let PCwoundedtotal = 1+parseInt(youropponentdamage)-parseInt(yourprotection);
     if (PCwoundedtotal < 0) {PCwoundedtotal = 0};
     let autoWoundsNPC = game.settings.get("celestopol1922", "autoWoundsNPC");
 
@@ -261,7 +259,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     {
       typeofthrow: myTypeOfThrow,
 
-      youwin: youwin,
+      youwin: (youwin == 'true'),
       yourplayerid: yourplayerid,
       youractorid: youractorid,
       yourdamage: yourdamage,
@@ -276,51 +274,9 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       autoWoundsNPC: autoWoundsNPC
     };
 
-    const smartHtml = renderTemplate(smartTemplate, smartData);
+    // console.log("smartData = ", smartData);
 
-    switch ( myTypeOfThrow ) {
-      case 0:
-        ChatMessage.create({
-          user: game.user.id,
-          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-          speaker: ChatMessage.getSpeaker({ actor: myActor }),
-          content: smartHtml,
-          rollMode: 'roll'                          // Public Roll
-        });
-
-      break;
-      case 1:
-        ChatMessage.create({
-          user: game.user.id,
-          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-          speaker: ChatMessage.getSpeaker({ actor: myActor }),
-          content:smartHtml,
-          rollMode: 'gmroll'                        // Private Roll
-        });
-
-      break;
-      case 2:
-        ChatMessage.create({
-          user: game.user.id,
-          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-          speaker: ChatMessage.getSpeaker({ actor: myActor }),
-          content: smartHtml,
-          rollMode: 'blindroll'                       // Blind GM Roll
-        });
-
-      break;
-      case 3:
-        ChatMessage.create({
-          user: game.user.id,
-          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-          speaker: ChatMessage.getSpeaker({ actor: myActor }),
-          content: smartHtml,
-          rollMode: 'selfroll'                        // Self Roll
-        });
-
-      break;
-      default: console.log("C'est bizarre !");
-    };
+    _showCalculateWoundsInChat (myActor, myTypeOfThrow, smartTemplate, smartData);
 
   })
   }
@@ -345,9 +301,9 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;};
 
     console.log("youractorid = ", youractorid);
-    let myActor = game.actors.get(youractorid);
+    const myActor = game.actors.get(youractorid);
 
-    let myTypeOfThrow = parseInt(typeofthrow);
+    const myTypeOfThrow = parseInt(typeofthrow);
     
     let rMoon = new Roll('1d8');
     rMoon.roll({async: false});
@@ -368,12 +324,11 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       title: titleSmartRMoon
       //
     }
-  
+
     _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
-
-    })
+  
+  })
   }
-
 
   if (rerollButton != undefined && rerollButton != null) {
     rerollButton.addEventListener('click', () => {
@@ -385,82 +340,62 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     console.log('Je suis dans rerollButton')
 
 
-    })
-  }
+  })
+ }
+
 })
 
-/*
-  let chatButton = html[0].querySelector("[data-roll='roll-again']")
 
-  if (chatButton != undefined && chatButton != null) {
-      chatButton.addEventListener('click', () => {
-          let ruleTag = ''
+/* -------------------------------------------- */
 
-          if (html[0].querySelector("[data-roll='dice-result']").textContent == 10) {ruleTag = game.i18n.localize("CONX.Rule of Ten Re-Roll")}
-          if (html[0].querySelector("[data-roll='dice-result']").textContent == 1)  {ruleTag = game.i18n.localize("CONX.Rule of One Re-Roll")}
+async function _showCalculateWoundsInChat (myActor, myTypeOfThrow, smartTemplate, smartData) {
+  
+  const smartHtml = await renderTemplate(smartTemplate, smartData);
 
-          let roll = new Roll('1d10')
-          roll.roll({async: false})
+  switch ( myTypeOfThrow ) {
+    case 0:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'roll'                          // Public Roll
+      });
 
-          // Grab and Set Values from Previous Roll
-          let attributeLabel = html[0].querySelector('h2').outerHTML
-          let diceTotal = Number(html[0].querySelector("[data-roll='dice-total']").textContent)
-          let rollMod = Number(html[0].querySelector("[data-roll='modifier']").textContent)
-          let ruleOfMod = ruleTag === game.i18n.localize("CONX.Rule of Ten Re-Roll") ? Number(roll.result) > 5 ? Number(roll.result) - 5 : 0 : Number(roll.result) > 5 ? 0 : Number(roll.result) - 5
-          let ruleOfDiv = ''
+    break;
+    case 1:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'gmroll'                        // Private Roll
+      });
 
-          if (roll.result == 10) {
-              ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize(`CONX.Rule of 10!`)`</h2>
-                          <button type="button" data-roll="roll-again" class="rule-of-ten">`+game.i18n.localize(`CONX.Roll Again`)`</button>`
-              ruleOfMod = 5
-          }
-          if (roll.result == 1) {
-              ruleOfDiv = `<h2 class="rule-of-chat-text">`+game.i18n.localize(`CONX.Rule of 1!`)`</h2>
-                          <button type="button" data-roll="roll-again" class="rule-of-one">`+game.i18n.localize(`CONX.Roll Again`)`</button>`
-              ruleOfMod = -5
-          }
+    break;
+    case 2:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'blindroll'                       // Blind GM Roll
+      });
 
-          // Create Chat Content
-          let tags = [`<div>${ruleTag}</div>`]
-          let chatContent = `<form>
-                                  ${attributeLabel}
+    break;
+    case 3:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'selfroll'                        // Self Roll
+      });
 
-                                  <table class="conspiracyx-chat-roll-table">
-                                      <thead>
-                                          <tr>
-                                              <th>`+game.i18n.localize(`CONX.Roll`)+`</th>
-                                              <th>`+game.i18n.localize(`CONX.Modifier`)+`</th>
-                                              <th>+</th>
-                                              <th>`+game.i18n.localize(`CONX.Result`)+`</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr>
-                                              <td data-roll="dice-result">[[${roll.result}]]</td>
-                                              <td data-roll="modifier">${rollMod}</td>
-                                              <td>+</td>
-                                              <td data-roll="dice-total">${diceTotal + ruleOfMod}</td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-
-                                  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
-                                      ${ruleOfDiv}
-                                  </div>
-                              </form>`
-
-          ChatMessage.create({
-              type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-              user: game.user.id,
-              speaker: ChatMessage.getSpeaker(),
-              flavor: `<div class="conspiracyx-tags-flex-container">${tags.join('')}</div>`,
-              content: chatContent,
-              roll: roll
-          })
-      })
-  }
-
-*/
+    break;
+    default: console.log("C'est bizarre !");
+  };
+}
 
 /* -------------------------------------------- */
 
@@ -470,34 +405,32 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
 
   const typeOfThrow = myTypeOfThrow;
 
-  if (mySmartRData.mymodifier != 999) {
-    switch ( typeOfThrow ) {
-      case 0: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'roll'                      // Public Roll
-        });
-      break;
-      case 1: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'gmroll'                    // Private Roll
-        });
-      break;
-      case 2: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'blindroll'                 // Blind GM Roll
+  switch ( typeOfThrow ) {
+    case 0: msg = await r.toMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: myActor }),
+      rollMode: 'roll'                      // Public Roll
       });
-      break;
-      case 3: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'selfroll'                      // Self Roll
+    break;
+    case 1: msg = await r.toMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: myActor }),
+      rollMode: 'gmroll'                    // Private Roll
       });
-      break;
-      default: console.log("C'est bizarre !");
-    };
+    break;
+    case 2: msg = await r.toMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: myActor }),
+      rollMode: 'blindroll'                 // Blind GM Roll
+    });
+    break;
+    case 3: msg = await r.toMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: myActor }),
+      rollMode: 'selfroll'                      // Self Roll
+    });
+    break;
+    default: console.log("C'est bizarre !");
 
 
     if (game.modules.get("dice-so-nice")?.active) {
@@ -526,7 +459,7 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
         user: game.user.id,
         // speaker: ChatMessage.getSpeaker({ token: this.actor }),
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content:smartHtml,
+        content: smartHtml,
         rollMode: 'gmroll'                        // Private Roll
       });
 

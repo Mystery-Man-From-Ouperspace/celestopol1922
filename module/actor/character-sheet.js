@@ -1602,7 +1602,7 @@ async function _getSkillValueData (myActor, mySkillNbr) {
     rESvalue: myRESValue
   };
 
-console.log("myData = ", myData);
+  // console.log("myData = ", myData);
 
   return myData;
 }

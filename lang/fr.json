@@ -435,12 +435,17 @@
   "CEL1922.ApplyWoundsNPC": "Applicat. Blessures [MJ]",
   "CEL1922.ApplyWoundsPC": "Applicat. Blessures [PJ]",
 
-  "CEL1922.NPCWounded": "Le PJ touche son adversaire",
-  "CEL1922.PCWounded": "Le PNJ touche le PJ",
+  "CEL1922.woundscomputing": "Calcul des Blessures",
+
+  "CEL1922.YouWin": "Vous l’emportez sur votre opposant !",
+  "CEL1922.YouLoose": "Votre opposant l’emporte !",
+
+  "CEL1922.NPCWounded": "Le PJ touche le PNJ ; blessures infligées",
+  "CEL1922.PCWounded":  "Le PNJ touche le PJ ; blessures infligées",
   "CEL1922.NPCWoundedDeveloped":
-  "Le PJ touche son adversaire et lui inflige un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel s’ajoutent, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ permet d’ôter des points à ce niveau de blessure.",
+  "Le PJ a touché son adversaire et infligé un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel se s’ont ajoutés, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ a permis d’ôter des points à ce niveau de blessure.",
   "CEL1922.PCWoundedDeveloped":
-  "Le PNJ touche le PJ et lui inflige un niveau de blessure auquel s’ajoutent, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ permet d’ôter des points à ce niveau de blessure.",
+  "Le PNJ a touché le PJ et infligé un niveau de blessure auquel se s’ont ajoutés, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ a permis d’ôter des points à ce niveau de blessure.",
 
   "TYPES": {
     "Actor": {

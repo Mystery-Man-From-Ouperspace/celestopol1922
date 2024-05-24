@@ -10,7 +10,7 @@
         <div class="cel1922-result-window">
 
             <div class="typeofthrow" style="display: none;">{{typeofthrow}}</div>
-            
+
             <div class="youwin" style="display: none;">{{youwin}}</div>
             <div class="yourplayerid" style="display: none;">{{yourplayerid}}</div>
             <div class="youractorid" style="display: none;">{{youractorid}}</div>
@@ -23,42 +23,40 @@
 
             <table class="cel1922-no-rich">
                 <tr class="cel1922-no-rich">
-                    <td style="text-align: center;">
-                        <b>{{ woundscomputing }}</b>
-                    </td>
+                    <th  style="text-align: center;">
+                        {{ localize "CEL1922.woundscomputing" }}
+                    </th>
                 </tr>
             </table>
-            {{#if youwin}}
+
             <table class="cel1922-no-rich">
+                {{#if youwin}}
                 <tr class="cel1922-no-rich">
                     <th title="{{ localize 'CEL1922.NPCWoundedDeveloped' }}">
-                        {{ localize "CEL1922.NPCWounded" }}
+                        {{ localize "CEL1922.YouWin" }}<br>{{ localize "CEL1922.NPCWounded" }}
                     </th>
-                    <td style="text-align: center; width: 10%">
-                        {{ NPCwoundedtotal }}
-                    </td>
+                    <th style="text-align: center; font-size: 18px; width: 10%;">{{ NPCwoundedtotal }}</th>
                 </tr>
                 {{else}}
                 <tr class="cel1922-no-rich">
                     <th title="{{ localize 'CEL1922.PCWoundedDeveloped' }}">
-                        {{ localize "CEL1922.PCWounded" }}
+                        {{ localize "CEL1922.YouLoose" }}<br>{{ localize "CEL1922.PCWounded" }}
                     </th>
-                    <td style="text-align: center;">
-                        {{ PCwoundedtotal }}
-                    </td>
+                    <th style="text-align: center; font-size: 18px; width: 10%;">{{ PCwoundedtotal }}</th>
                 </tr>
                 {{/if}}
             </table>
             <br>
+
+            {{#if autoWoundsNPC}}
             <div class="green-buttons">
-                {{#if autoWoundsNPC}}
                     {{#if youwin}}
                     <p><span class="smart-green-button wounds-apply-to-NPC-click">{{ localize "CEL1922.ApplyWoundsNPC" }}</span></p><br/>
                     {{else}}
                     <p><span class="smart-green-button wounds-apply-to-PC-click">{{ localize "CEL1922.ApplyWoundsPC" }}</span></p><br/>
                     {{/if}}
-                {{/if}}
             </div>
+            {{/if}}
 
         </div>	
     </section>
