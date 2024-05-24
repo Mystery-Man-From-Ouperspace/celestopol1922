@@ -16,6 +16,7 @@
             <div class="rolldifficulty" style="display: none;">{{rolldifficulty}}</div>
 
             <div class="youwin" style="display: none;">{{youwin}}</div>
+            <div class="egality" style="display: none;">{{egality}}</div>
             <div class="yourplayerid" style="display: none;">{{yourplayerid}}</div>
             <div class="youractorid" style="display: none;">{{youractorid}}</div>
             <div class="yourdamage" style="display: none;">{{yourdamage}}</div>
@@ -154,11 +155,16 @@
                     {{/if}}
                 </span>
                 {{else}}
-                <span>
-                    {{#if (eq numSpeciality 6)}}
-                    <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.CalculateWounds" }}</span></p><br/>
-                    {{/if}}
-                </span>
+                    <span>
+                        {{#if egality}}
+                        {{else}}
+                        <span>
+                            {{#if (eq numSpeciality 6)}}
+                            <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.CalculateWounds" }}</span></p><br/>
+                            {{/if}}
+                        </span>
+                        {{/if}}
+                    </span>
                 {{/if}}
             </div>
         </div>	

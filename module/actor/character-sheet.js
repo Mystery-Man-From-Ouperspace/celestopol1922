@@ -1139,8 +1139,12 @@ async _onClickMoonDieRoll(event) {
       if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
   
       if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.OppositionEnAveugle");
-      if (myTest == "knownopposition" &&  myResult >= myOpposition) {
+      if (myTest == "knownopposition" &&  myResult > myOpposition) {
         oppositionText += game.i18n.localize("CEL1922.OppositionSurpassee");
+      } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill != 6) {
+        oppositionText += game.i18n.localize("CEL1922.OppositionEgalite");
+      } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill == 6) {
+        oppositionText += game.i18n.localize("CEL1922.PersonneNestBlesse");
       } else if (myTest == "knownopposition" &&  myResult < myOpposition) {
         oppositionText += game.i18n.localize("CEL1922.OppositionInsurpassee");
       };
@@ -1153,11 +1157,15 @@ async _onClickMoonDieRoll(event) {
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
       let youWin = false;
+      let thereisEgality = false;
       if (myPromptPresent) {
         if (myModifier == 999) {
           youWin = true;
         } else if (myResult >= parseInt(myOpposition)) {
             youWin = true;
+            if (myResult == parseInt(myOpposition) && myData.mySkill == 6) {
+              thereisEgality = true;
+            };
         };
       };
       if (opponentActor) {
@@ -1178,6 +1186,7 @@ async _onClickMoonDieRoll(event) {
         rolldifficulty: parseInt(myOpposition),
 
         youwin: youWin,
+        egality: thereisEgality,
 
         yourplayerid: myData.myUserID,
         youractorid: myData.myActorID,
