@@ -1002,35 +1002,70 @@ async _onClickMoonDieRoll(event) {
     console.log("myBonus = ", myData.myBonus);
     console.log("myMalus = ", myData.myMalus);
 
-    let isInventory = true;
-    let mySelectedInventory = null;
+    let isInventory;
+    let mySelectedInventory;
 
-    let isInventoryOpponent = true;
-    let selectedInventoryOpponent = null;
-    let armorProtectionOpponent = null;
+    let isInventoryOpponent;
+    let selectedInventoryOpponent;
+    let armorProtectionOpponent;
 
     if (myPromptPresent && myData.mySkill == 6) {
       var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
       isInventory = myDamageData.isinventory;
-      myData.myWeaponVal = myDamageData.damage;
+      myData.myWeaponVal = parseInt(myDamageData.damage);
       mySelectedInventory = myDamageData.selectedinventory;
       myData.myArmorProtection = myDamageData.selectedarmor;
       if (opponentActor) {
         isInventoryOpponent = myDamageData.isinventoryopponent;
-        myData.weaponOpponentVal = myDamageData.damageopponent;
+        myData.weaponOpponentVal = parseInt(myDamageData.damageopponent);
         selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
         armorProtectionOpponent = myDamageData.selectedarmoropponent;
       };
+
+      console.log("myDamageData = ", myDamageData);
+      console.log("isInventory = ", isInventory);
+
       if (isInventory) {
-        // myData.myWeaponVal = à récupérer dans les items de la fiche de PJ; 
-      };
-      if (isInventoryOpponent) {
-        // myData.weaponOpponentVal = à récupérer dans les items de la fiche de PJ; 
+        myData.myWeaponVal = 0;
+        // myData.myWeaponVal = à récupérer dans les items de la fiche de PJ;
+        for (let item of myActor.items.filter(item => item.type === 'item')) {
+          if (item.system.subtype == "weapon" && item.id == mySelectedInventory) {
+            myData.myWeaponVal = parseInt(item.system.damage);
+          };
+        };
       };
 
-      // myData.myArmorVal = à récupérer dans les items de la fiche de PNJ;
+      if (isInventoryOpponent) {
+      // myData.weaponOpponentVal = à récupérer dans les items de la fiche de PNJ;
+        if (opponentActor) {
+          myData.weaponOpponentVal = 0;
+          for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+            if (item.system.subtype == "weapon" && item.id == selectedInventoryOpponent) {
+              myData.weaponOpponentVal = parseInt(item.system.damage);
+            };
+          };
+        };
+      };
+
+      // myData.myArmorVal = à récupérer dans les items de la fiche de PJ;
+      myData.myArmorVal = 0;
+      for (let item of myActor.items.filter(item => item.type === 'item')) {
+        if (item.system.subtype == "armor" && item.id == myData.myArmorProtection) {
+          myData.myArmorVal = parseInt(item.system.protection);
+        };
+      };
 
       // myData.armorOpponentVal = à récupérer dans les items de la fiche de PNJ;
+      if (opponentActor) {
+        myData.armorOpponentVal = 0;
+        for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+          if (item.system.subtype == "armor" && item.id == armorProtectionOpponent) {
+            myData.armorOpponentVal = parseInt(item.system.protection);
+          };
+        };
+      };
+
+      console.log(myData.myWeaponVal, " ", myData.myArmorVal, " ", myData.weaponOpponentVal, " ", myData.armorOpponentVal);
 
     };
 

@@ -308,7 +308,7 @@
 
   "CEL1922.NextTimeGoToTheSettings": "Cela est réglable dans les Préférences",
 
-  "CEL1922.VerifySheet": "Vérifier la cohérence de la fiche",
+  "CEL1922.VerifySheet": "Vérifier la cohérence de la fiche (fonction en bêta)",
 
   "CEL1922.Info1": "Je commence à vérifier votre fiche…",
   "CEL1922.Info2": "Tout me paraît normal",
@@ -435,6 +435,8 @@
   "CEL1922.ApplyWoundsNPC": "Applicat. Blessures [MJ]",
   "CEL1922.ApplyWoundsPC": "Applicat. Blessures [PJ]",
 
+  "CEL1922.LOpposantEstManquant": "Pas d’Opposant sélectionné",
+
   "CEL1922.woundscomputing": "Calcul des Blessures",
 
   "CEL1922.YouWin": "Vous l’emportez sur votre opposant !",
@@ -446,6 +448,11 @@
   "Le PJ a touché son adversaire et infligé un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel se s’ont ajoutés, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ a permis d’ôter des points à ce niveau de blessure.",
   "CEL1922.PCWoundedDeveloped":
   "Le PNJ a touché le PJ et infligé un niveau de blessure auquel se s’ont ajoutés, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ a permis d’ôter des points à ce niveau de blessure.",
+
+  "CEL1922.OnlyCanDM": "Applicable uniquement par le MJ",
+  "CEL1922.OnlyCanOWner": "Applicable uniquement par la propriétaire de la fiche",
+
+  "CEL1922.ButYouOnly": "Malheureusement, vous avez rendu cet affichage invisible au MJ",
 
   "TYPES": {
     "Actor": {

@@ -147,8 +147,18 @@
                 <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.RerollDice" }}</span></p><br/>
                 {{/if}}
                 <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.DeDeLaLune" }}</span></p><br/>
-                {{#if (eq numSpeciality 6)}}
-                <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.CalculateWounds" }}</span></p><br/>
+                {{#if (eq youropponentid '0')}}
+                <span>
+                    {{#if (eq numSpeciality 6)}}
+                    <span class="tooltip" style="text-align: center"><i class="fas fa-cancel"></i>&nbsp;{{ localize "CEL1922.LOpposantEstManquant" }}</span>
+                    {{/if}}
+                </span>
+                {{else}}
+                <span>
+                    {{#if (eq numSpeciality 6)}}
+                    <p><span class="smart-green-button wounds-calculate-click">{{ localize "CEL1922.CalculateWounds" }}</span></p><br/>
+                    {{/if}}
+                </span>
                 {{/if}}
             </div>
         </div>	

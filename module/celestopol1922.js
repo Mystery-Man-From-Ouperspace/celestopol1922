@@ -186,38 +186,66 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
   const woundsapplytoNPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-NPC-click']");
   const woundsapplytoPCButton = html[0].querySelector("[class='smart-green-button wounds-apply-to-PC-click']");
 
+  
   if (woundsapplytoPCButton != undefined && woundsapplytoPCButton != null) {
     woundsapplytoPCButton.addEventListener('click', () => {
 
     // La joueuse applique depuis le Tchat les blessures infiligées à son PJ par le PNJ
-
-    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+    // On vérifie d'abord que c'est la bonne joueuse, sinon on ne fait rien
 
     console.log('Je suis dans woundsapplytoPCButton')
+
+    const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
+
+    const youwin = html[0].querySelector("div[class='youwin']").textContent;
+    const yourplayerid = html[0].querySelector("div[class='yourplayerid']").textContent;
+    const youractorid = html[0].querySelector("div[class='youractorid']").textContent;
+    const yourdamage = html[0].querySelector("div[class='yourdamage']").textContent;
+    const yourprotection = html[0].querySelector("div[class='yourprotection']").textContent;
+    const youropponent = html[0].querySelector("div[class='youropponent']").textContent;
+    const youropponentid = html[0].querySelector("div[class='youropponentid']").textContent;
+    const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
+    const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
+
+    const myUser = game.user;
+    console.log("game.user.id = ", game.user.id);
+    console.log("yourplayerid = ", yourplayerid);
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
 
 
     })
   }
+
 
   if (woundsapplytoNPCButton != undefined && woundsapplytoNPCButton != null) {
     woundsapplytoNPCButton.addEventListener('click', () => {
 
     // Le MJ applique depuis le Tchat les blessures infligées à son PNJ par le PJ
-
-    // On vérifie que c'est bien le MJ, sinon on ne fait rien
+    // On vérifie d'abord que c'est bien le MJ, sinon on ne fait rien
 
     console.log('Je suis dans woundsapplytoNPCButton')
 
+    const youwin = html[0].querySelector("div[class='youwin']").textContent;
+    const yourdamage = html[0].querySelector("div[class='yourdamage']").textContent;
+    const yourprotection = html[0].querySelector("div[class='yourprotection']").textContent;
+    const youropponent = html[0].querySelector("div[class='youropponent']").textContent;
+    const youropponentid = html[0].querySelector("div[class='youropponentid']").textContent;
+    const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
+    const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
 
-    })
+    if (!(game.user.isGM)) {console.log("TADAM !") ;return}; // Pas le bon utilisateur !
+
+
+
+  })
   }
   
+
   if (woundscalculateButton != undefined && woundscalculateButton != null) {
     woundscalculateButton.addEventListener('click', () => {
 
     // La joueuse effectue depuis le Tchat le calcul des blessures infligées
-
-    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+    // On vérifie d'abord que c'est la bonne joueuse, sinon on ne fait rien
 
     console.log('Je suis dans woundscalculateButton')
 
@@ -244,12 +272,15 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     if (PCwoundedtotal < 0) {PCwoundedtotal = 0};
     let autoWoundsNPC = game.settings.get("celestopol1922", "autoWoundsNPC");
 
+    console.log("autoWoundsNPC = ", autoWoundsNPC);
+
     const myUser = game.user;
     console.log("game.user.id = ", game.user.id);
     console.log("yourplayerid = ", yourplayerid);
-    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;};
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
 
     const myActor = game.actors.get(youractorid);
+    if (myActor == null) {console.log("TADAM !") ;return;};
 
     const myTypeOfThrow = parseInt(typeofthrow);
 
@@ -281,12 +312,12 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
   })
   }
 
+
   if (moonrollButton != undefined && moonrollButton != null) {
     moonrollButton.addEventListener('click', () => {
 
     // La joueuse lance un dé de Lune depuis le Tchat
-
-    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+    // On vérifie d'abord que c'est la bonne joueuse, sinon on ne fait rien
 
     console.log('Je suis dans moonrollButton')
 
@@ -298,10 +329,11 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const myUser = game.user;
     console.log("game.user.id = ", game.user.id);
     console.log("yourplayerid = ", yourplayerid);
-    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;};
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
 
     console.log("youractorid = ", youractorid);
     const myActor = game.actors.get(youractorid);
+    if (myActor == null) {console.log("TADAM !") ;return;};
 
     const myTypeOfThrow = parseInt(typeofthrow);
     
@@ -330,18 +362,45 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
   })
   }
 
+
   if (rerollButton != undefined && rerollButton != null) {
     rerollButton.addEventListener('click', () => {
 
     // La joueuse relance les dés depuis le Tchat
-
-    // On vérifie que c'est la bonne joueuse, sinon on ne fait rien
+    // On vérifie d'abord que c'est la bonne joueuse, sinon on ne fait rien
 
     console.log('Je suis dans rerollButton')
 
+    const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
+
+    const numberofdice = html[0].querySelector("div[class='numberofdice']").textContent;
+    const skill = html[0].querySelector("div[class='skill']").textContent;
+    const bonus = html[0].querySelector("div[class='bonus']").textContent;
+    const rolldifficulty = html[0].querySelector("div[class='rolldifficulty']").textContent;
+
+    const youwin = html[0].querySelector("div[class='youwin']").textContent;
+    const yourplayerid = html[0].querySelector("div[class='yourplayerid']").textContent;
+    const youractorid = html[0].querySelector("div[class='youractorid']").textContent;
+    const yourdamage = html[0].querySelector("div[class='yourdamage']").textContent;
+    const yourprotection = html[0].querySelector("div[class='yourprotection']").textContent;
+    const youropponent = html[0].querySelector("div[class='youropponent']").textContent;
+    const youropponentid = html[0].querySelector("div[class='youropponentid']").textContent;
+    const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
+    const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
+
+    const myUser = game.user;
+    console.log("game.user.id = ", game.user.id);
+    console.log("yourplayerid = ", yourplayerid);
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
+
+
+
+
+
 
   })
- }
+  }
+
 
 })
 
@@ -438,6 +497,7 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     };
 
   }
+
   // Smart Message
   const smartTemplate = mySmartTemplate;
   const smartData = mySmartData;
@@ -487,11 +547,10 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     default: console.log("C'est bizarre !");
   };
 
-
-    // SmartR Message
-    const smartRTemplate = mySmartRTemplate;
-    const smartRData = mySmartRData;
-    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
+  // SmartR Message
+  const smartRTemplate = mySmartRTemplate;
+  const smartRData = mySmartRData;
+  const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
  
   switch ( typeOfThrow ) {
     case 0:
@@ -521,7 +580,8 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
         speaker: ChatMessage.getSpeaker({ actor: myActor }),
         content: smartRHtml,
         rollMode: 'blindroll'                       // Blind GM Roll
-      });
+      })
+
     break;
     case 3:
       ChatMessage.create({
