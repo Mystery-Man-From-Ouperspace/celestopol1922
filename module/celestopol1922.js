@@ -212,7 +212,25 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     console.log("yourplayerid = ", yourplayerid);
     if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
 
+    const myActor = game.actors.get(youractorid);
 
+    let wounds = 0;
+    if (myActor != null) {
+      wounds = 1 + parseInt(youropponentdamage) - parseInt(yourprotection);
+      if (wounds < 0) {
+        wounds = 0;
+      };
+      _updateActorSheetWoundsJauge (myActor, wounds);
+
+      let typeOfThrow = parseInt(typeofthrow);
+;
+      let smartTemplate = 'systems/celestopol1922/templates/form/dice-result-apply-wounds.html'
+
+      let smartData = {};
+
+      _showCalculateWoundsInChat (myActor, typeOfThrow, smartTemplate, smartData);
+    };
+  
     })
   }
 
@@ -225,6 +243,8 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
     console.log('Je suis dans woundsapplytoNPCButton')
 
+    const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
+
     const youwin = html[0].querySelector("div[class='youwin']").textContent;
     const yourdamage = html[0].querySelector("div[class='yourdamage']").textContent;
     const yourprotection = html[0].querySelector("div[class='yourprotection']").textContent;
@@ -236,6 +256,25 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     if (!(game.user.isGM)) {console.log("TADAM !") ;return}; // Pas le bon utilisateur !
 
 
+  const myActor = game.actors.get(youropponentid);
+
+  let wounds = 0;
+  if (myActor != null) {
+    wounds = 1 + parseInt(yourdamage) - parseInt(youropponentprotection);
+    if (wounds < 0) {
+      wounds = 0;
+    };
+    _updateActorSheetWoundsJauge (myActor, wounds);
+
+    let typeOfThrow = 3; // juste pour le MJ utilisateur
+
+    let smartTemplate = 'systems/celestopol1922/templates/form/dice-result-apply-wounds.html'
+
+    let smartData = {};
+
+    _showCalculateWoundsInChat (myActor, typeOfThrow, smartTemplate, smartData);
+
+  };
 
   })
   }
@@ -595,5 +634,51 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     break;
     default: console.log("C'est bizarre !");
   };
+
+}
+
+/* -------------------------------------------- */
+
+async function _updateActorSheetWoundsJauge (myActor, wounds) {
+
+  const oldLevelBlessures = await myActor.system.blessures.lvl;
+
+  console.log("oldLevelBlessures = ", oldLevelBlessures);
+
+  let newLevelBlessures = oldLevelBlessures + wounds;
+
+  if (newLevelBlessures > 8) {
+    newLevelBlessures = 8;
+  };
+
+  console.log("newLevelBlessures = ", newLevelBlessures);
+
+  if (oldLevelBlessures < 1 && newLevelBlessures >= 1) {
+    myActor.update({ "system.blessures.blessure_1.check": true });
+  };
+  if (oldLevelBlessures < 2 && newLevelBlessures >= 2) {
+    myActor.update({ "system.blessures.blessure_2.check": true });
+  };
+  if (oldLevelBlessures < 3 && newLevelBlessures >= 3) {
+    myActor.update({ "system.blessures.blessure_3.check": true });
+  };
+  if (oldLevelBlessures < 4 && newLevelBlessures >= 4) {
+    myActor.update({ "system.blessures.blessure_4.check": true });
+  };
+  if (oldLevelBlessures < 5 && newLevelBlessures >= 5) {
+    myActor.update({ "system.blessures.blessure_5.check": true });
+  };
+  if (oldLevelBlessures < 6 && newLevelBlessures >= 6) {
+    myActor.update({ "system.blessures.blessure_6.check": true });
+  };
+  if (oldLevelBlessures < 7 && newLevelBlessures >= 7) {
+    myActor.update({ "system.blessures.blessure_7.check": true });
+  };
+  if (oldLevelBlessures < 8 && newLevelBlessures >= 8) {
+    myActor.update({ "system.blessures.blessure_8.check": true });
+  };
+
+
+  myActor.update({ "system.blessures.lvl": newLevelBlessures });
 
 }

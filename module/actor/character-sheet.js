@@ -494,8 +494,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
       switch (jaugeType) {
         case "blessure":
-          let oldLevelBlessures = parseInt(myActor.system.blessures.lvl);
-          let newLevelBlessures = jaugeNumber;
+          let oldLevelBlessures = myActor.system.blessures.lvl;
+          let newLevelBlessures = parseInt(jaugeNumber);
           if (whichCheckBox) {
             newLevelBlessures--;
           }
@@ -582,8 +582,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
           }
           break;
         case "destin":
-          let oldLevelDestin = parseInt(myActor.system.destin.lvl);
-          let newLevelDestin = jaugeNumber;
+          let oldLevelDestin = myActor.system.destin.lvl;
+          let newLevelDestin = parseInt(jaugeNumber);
           if (whichCheckBox) {
             newLevelDestin--;
           }
@@ -671,8 +671,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
           break;
 
         case "spleen":
-          let oldLevelSpleen = parseInt(myActor.system.spleen.lvl);
-          let newLevelSpleen = jaugeNumber;
+          let oldLevelSpleen = myActor.system.spleen.lvl;
+          let newLevelSpleen = parseInt(jaugeNumber);
           if (whichCheckBox) {
             newLevelSpleen--;
           }
@@ -983,11 +983,17 @@ async _onClickMoonDieRoll(event) {
     
 
     let myTest;
-    let myOpposition;
+    let myOpposition = 13;
     let myModifier;
 
+    if (opponentActor && myData.mySkill == 6) {
+      myOpposition = parseInt(opponentActor.system.skill.corps.actuel);
+    };
+
+    console.log ("myOpposition = ", myOpposition);
+
     if (myPromptPresent) {
-      var myTestData = await _whichTypeOfTest (myActor, myData.myTypeOfThrow, myData.mySpecialityLibel);
+      var myTestData = await _whichTypeOfTest (myActor, myOpposition, myData.myTypeOfThrow, myData.mySpecialityLibel);
 
       myTest = myTestData.test;
       myOpposition = parseInt(myTestData.opposition);
@@ -1472,7 +1478,7 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
 
 /* -------------------------------------------- */
 
-async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
+async function _whichTypeOfTest (myActor, myOpposition, myTypeOfThrow, mySkill) {
   // Render modal dialog
   const template = 'systems/celestopol1922/templates/form/type-test-prompt.html';
   const title = game.i18n.localize("CEL1922.TypeOfTestTitle");
@@ -1481,7 +1487,7 @@ async function _whichTypeOfTest (myActor, myTypeOfThrow, mySkill) {
   var dialogData = {
     skill: mySkill,
     test: myTest,
-    opposition: "13",
+    opposition: myOpposition.toString(),
     modifier: "0",
   };
   // dialogData = null;

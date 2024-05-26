@@ -456,6 +456,8 @@
 
   "CEL1922.ButYouOnly": "Malheureusement, vous avez rendu cet affichage invisible au MJ",
 
+  "CEL1922.woundsapplyed": "Niveau de blessures appliqué à l’Acteur (fiche de base)",
+
   "TYPES": {
     "Actor": {
       "character": "Personnage",
