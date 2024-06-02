@@ -109,12 +109,12 @@
   ],
   "compatibility": {
     "minimum": "11",
-    "verified": "11"
+    "verified": "12"
   },
   "initiative": "@initiative",
   "background": "/systems/celestopol1922/images/background/celestopol_game_banniere.webp",
-  "gridDistance": 5,
-  "gridUnits": "m",
+  "grid.distance": 5,
+  "grid.units": "m",
   "primaryTokenAttribute": "skill.woundsmalus",
   "secondaryTokenAttribute": "",
   "manifest": "http://serveurdavid.fr/download/foundry/celestopol1922/system.json",
