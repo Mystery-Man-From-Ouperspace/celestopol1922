@@ -113,8 +113,10 @@
   },
   "initiative": "@initiative",
   "background": "/systems/celestopol1922/images/background/celestopol_game_banniere.webp",
-  "grid.distance": 5,
-  "grid.units": "m",
+  "grid": {
+    "distance": 5,
+    "units": "m"
+  },
   "primaryTokenAttribute": "skill.woundsmalus",
   "secondaryTokenAttribute": "",
   "manifest": "http://serveurdavid.fr/download/foundry/celestopol1922/system.json",

@@ -159,28 +159,6 @@
   "CEL1922.opt.grave": "Grave (-3) — 1 journée",
   "CEL1922.opt.dramatique": "Dramatique — Hors-fiction",
 
-  "CEL1922.1 minute": "1 minute",
-  "CEL1922.10 minutes": "10 minutes",
-  "CEL1922.30 minutes": "30 minutes",
-  "CEL1922.1 day": "1 journée",
-  "CEL1922.Out of Fiction": "Hors-fiction",
-
-  "CEL1922.Recup": "Récupération : ",
-
-  "CEL1922.Now": "ACTUEL :",
-
-  "CEL1922.NotSimplifiedNPCSheet": "Activer la version non-simplifiée",
-
-  "CEL1922.corps actuel": "Domaine Corps (actuel)",
-
-
-  "CEL1922.One": "Un",
-  "CEL1922.Two": "Deux",
-  "CEL1922.Three": "Trois",
-  "CEL1922.Four": "Quatre",
-  "CEL1922.Five": "Cinq",
-  "CEL1922.Six": "Six",
-
   "CEL1922.opt.LevelDestiny1": "Niveau de Destin 1",
   "CEL1922.opt.LevelDestiny2": "Niveau de Destin 2",
   "CEL1922.opt.LevelDestiny3": "Niveau de Destin 3",
@@ -208,7 +186,6 @@
   "CEL1922.opt.aspect7": "Aspect 7",
   "CEL1922.opt.aspect8": "Aspect 8",
 
-
   "CEL1922.opt.nouvellelune": "Nouvelle Lune",
   "CEL1922.opt.premiercroissant": "Premier Croissant",
   "CEL1922.opt.premierquartier": "Premier Quartier",
@@ -217,6 +194,29 @@
   "CEL1922.opt.derniercroissant": "Dernier Croissant",
   "CEL1922.opt.dernierquartier": "Dernier Quartier",
   "CEL1922.opt.pleinelune": "Pleine Lune",
+
+
+  "CEL1922.1 minute": "1 minute",
+  "CEL1922.10 minutes": "10 minutes",
+  "CEL1922.30 minutes": "30 minutes",
+  "CEL1922.1 day": "1 journée",
+  "CEL1922.Out of Fiction": "Hors-fiction",
+
+  "CEL1922.Recup": "Récupération : ",
+
+  "CEL1922.Now": "ACTUEL :",
+
+  "CEL1922.NotSimplifiedNPCSheet": "Activer la version non-simplifiée",
+
+  "CEL1922.corps actuel": "Domaine Corps (actuel)",
+
+
+  "CEL1922.One": "Un",
+  "CEL1922.Two": "Deux",
+  "CEL1922.Three": "Trois",
+  "CEL1922.Four": "Quatre",
+  "CEL1922.Five": "Cinq",
+  "CEL1922.Six": "Six",
 
 
   "CEL1922.NPC": "PNJ",
@@ -308,7 +308,7 @@
 
   "CEL1922.NextTimeGoToTheSettings": "Cela est réglable dans les Préférences",
 
-  "CEL1922.VerifySheet": "Vérifier la cohérence de la fiche",
+  "CEL1922.VerifySheet": "Vérifier la cohérence de la fiche (fonction en bêta)",
 
   "CEL1922.Info1": "Je commence à vérifier votre fiche…",
   "CEL1922.Info2": "Tout me paraît normal",
@@ -425,6 +425,8 @@
   "CEL1922.OppositionSurpassee": " [Opposition surpassée]",
   "CEL1922.OppositionInsurpassee": " [Opposition insurpassée]",
   "CEL1922.OppositionEnAveugle": " [Opposition en aveugle]",
+  "CEL1922.OppositionEgalite": " [Égalité: Opposition insurpassée]",
+  "CEL1922.PersonneNestBlesse": " [Égalité: Personne n'est blessé]",
   "CEL1922.Seuil": " [Seuil]",
   "CEL1922.SeuilAtteint": " [Seuil atteint]",
   "CEL1922.SeuilNon-atteint": " [Seuil non-atteint]",
@@ -435,12 +437,26 @@
   "CEL1922.ApplyWoundsNPC": "Applicat. Blessures [MJ]",
   "CEL1922.ApplyWoundsPC": "Applicat. Blessures [PJ]",
 
-  "CEL1922.NPCWounded": "Le PJ touche son adversaire",
-  "CEL1922.PCWounded": "Le PNJ touche le PJ",
+  "CEL1922.LOpposantEstManquant": "Pas d’Opposant sélectionné",
+
+  "CEL1922.woundscomputing": "Calcul des Blessures",
+
+  "CEL1922.YouWin": "Vous l’emportez sur votre opposant !",
+  "CEL1922.YouLoose": "Votre opposant l’emporte !",
+
+  "CEL1922.NPCWounded": "Le PJ touche le PNJ ; blessures infligées",
+  "CEL1922.PCWounded":  "Le PNJ touche le PJ ; blessures infligées",
   "CEL1922.NPCWoundedDeveloped":
-  "Le PJ touche son adversaire et lui inflige un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel s’ajoutent, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ permet d’ôter des points à ce niveau de blessure.",
+  "Le PJ a touché son adversaire et infligé un niveau de blessure (le MJ coche une case de blessure pour le PNJ) auquel se s’ont ajoutés, si nécessaire, les dégâts de son arme (pas de dégâts supplémentaires à mains nues). L’armure du PNJ a permis d’ôter des points à ce niveau de blessure.",
   "CEL1922.PCWoundedDeveloped":
-  "Le PNJ touche le PJ et lui inflige un niveau de blessure auquel s’ajoutent, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ permet d’ôter des points à ce niveau de blessure.",
+  "Le PNJ a touché le PJ et infligé un niveau de blessure auquel se s’ont ajoutés, si nécessaire, les dégâts de l’arme du PNJ (pas de dégâts supplémentaires à mains nues). L’armure du PJ a permis d’ôter des points à ce niveau de blessure.",
+
+  "CEL1922.OnlyCanDM": "Applicable uniquement par le MJ",
+  "CEL1922.OnlyCanOWner": "Applicable uniquement par la propriétaire de la fiche",
+
+  "CEL1922.ButYouOnly": "Malheureusement, vous avez rendu cet affichage invisible au MJ",
+
+  "CEL1922.woundsapplyed": "Niveaux de blessure appliqués à l’Acteur (fiche de base)",
 
   "TYPES": {
     "Actor": {
