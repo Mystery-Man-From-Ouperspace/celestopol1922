@@ -713,7 +713,9 @@ h1, h2, h3, h4, h5, h6 {
   filter: drop-shadow(0px 0px 6px #af010a);
 }
 
-.journal-header input,
+
+/* concerne les pages de journaux */
+
 .journal-entry-page h1,
 .journal-entry-page h2,
 .journal-entry-page h3,
@@ -721,5 +723,6 @@ h1, h2, h3, h4, h5, h6 {
 .journal-entry-page h5,
 .journal-entry-page h6 {
   font-family: "Copasetic";
+  text-transform: uppercase;
   color:rgb(12, 76, 12);
 }
