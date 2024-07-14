@@ -353,7 +353,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
 
   if (moonrollButton != undefined && moonrollButton != null) {
-    moonrollButton.addEventListener('click', () => {
+    moonrollButton.addEventListener('click', async () => {
 
     // La joueuse lance un dé de Lune depuis le Tchat
     // On vérifie d'abord que c'est la bonne joueuse, sinon on ne fait rien
@@ -377,7 +377,8 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const myTypeOfThrow = parseInt(typeofthrow);
     
     let rMoon = new Roll('1d8');
-    rMoon.roll({async: false});
+    await rMoon.roll();
+
 
     const theResult = rMoon.result;
     console.log("rMoon.result = ", rMoon.result);
@@ -396,7 +397,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       //
     }
 
-    _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
+    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
   
   })
   }

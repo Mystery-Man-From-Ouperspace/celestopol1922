@@ -838,7 +838,7 @@ async _onClickMoonDieRoll(event) {
       //
     }
 
-  await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
+    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
 
   }
 
@@ -1270,6 +1270,7 @@ async function _whichTarget (myActor, mySkill) {
   };
 
   myItemTarget["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+  console.log('game.user.targets = ', game.user.targets);
   console.log('game.user.targets.size = ', game.user.targets.size);
   if (game.user.targets.size != 0) {
     for (let targetedtoken of game.user.targets) {
