@@ -734,3 +734,15 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color:rgb(12, 76, 12);
 }
+
+
+.celestopol1922 .editor-content h1,
+.celestopol1922 .editor-content h2,
+.celestopol1922 .editor-content h3,
+.celestopol1922 .editor-content h4,
+.celestopol1922 .editor-content h5,
+.celestopol1922 .editor-content h6 {
+  font-family: "Copasetic";
+  text-transform: uppercase;
+  color:rgb(12, 76, 12);
+}
