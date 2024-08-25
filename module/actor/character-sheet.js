@@ -876,6 +876,17 @@ async _onClickMoonDieRoll(event) {
     let Skill = parseInt(skillNumUsedLibel);
     let mySkillData = await _getSkillValueData (myActor, Skill);
 
+    let myArmor = myActor.system.prefs.lastarmorusedid;
+
+    let armorVal = 0;
+    for (let item of myActor.items.filter(item => item.type === 'item')) {
+      // if (item.system.subtype == "armor") {
+        if (item.id === myArmor) {
+          armorVal = item.system.protection;
+        };
+      // };
+    };
+
     let myData = {
       myUserID: game.user.id,
       myActorID: myActor.id,
@@ -905,7 +916,7 @@ async _onClickMoonDieRoll(event) {
       myRESValue: mySkillData.rESvalue,
 
       myWeaponVal: 0,
-      myArmorVal: 0,
+      myArmorVal: armorVal,
 
       opponentName: "",
       opponentID: "0",
@@ -923,7 +934,12 @@ async _onClickMoonDieRoll(event) {
     console.log("myWoundsMalus = ", myData.myWoundsMalus);
 
 
-    myData.totalBoni = myData.myValue + myData.myRESValue + myData.myWoundsMalus;
+    myData.totalBoni = myData.myValue + myData.myRESValue + myData.myWoundsMalus - myData.myArmorVal;
+
+
+
+
+
 
     if (myPromptPresent) {
       let myResultDialog =  await _skillDiceRollDialog(
@@ -1729,7 +1745,9 @@ async function _skillDiceRollDialog(
   const dialogOptions = await _getDataSkill(myActor);
   // console.log("dialogOptions = ", dialogOptions)
   ///////////////////////////////////////////////////////////////
-  
+
+  console.log("myActor.id = ", myActor.id);
+  let myActorID = myActor.id;
   
   var dialogData = {
     numberofdice: myNumberOfDice.toString(),
@@ -1747,8 +1765,10 @@ async function _skillDiceRollDialog(
     jaugespleen: mySpleen.toString(),
     armor: myArmor.toString(),
     typeofthrow: myTypeOfThrow.toString(),
-    totalscoresbonusmalus: myTotalScoresBonusMalus.toString()
+    totalscoresbonusmalus: myTotalScoresBonusMalus.toString(),
+    actorID: myActorID.toString()
   };
+  console.log("actorID = ", dialogData.actorID);
   // console.log("dialogData avant retour func = ", dialogData);
   const templateData = foundry.utils.mergeObject(dialogData, dialogOptions);
   const html = await renderTemplate(template, templateData);
