@@ -46,7 +46,7 @@ export class ModifiedDialog extends Dialog {
    */
 
   _onKnownOppositionClick(event) {
-    console.log(1);
+    // console.log(1);
     let knownopposition = this.element.find('input[value="knownopposition"]');
     let blindopposition = this.element.find('input[value="blindopposition"]');
     let simpletest = this.element.find('input[value="simpletest"]');
@@ -62,7 +62,7 @@ export class ModifiedDialog extends Dialog {
   }
 
   _onBlindOppositionClick(event) {
-    console.log(2);
+    // console.log(2);
     let knownopposition = this.element.find('input[value="knownopposition"]');
     let blindopposition = this.element.find('input[value="blindopposition"]');
     let simpletest = this.element.find('input[value="simpletest"]');
@@ -78,7 +78,7 @@ export class ModifiedDialog extends Dialog {
   }
 
   _onSimpleTestClick(event) {
-    console.log(3);
+    // console.log(3);
     let knownopposition = this.element.find('input[value="knownopposition"]');
     let blindopposition = this.element.find('input[value="blindopposition"]');
     let simpletest = this.element.find('input[value="simpletest"]');
@@ -122,7 +122,7 @@ export class ModifiedDialog extends Dialog {
   }
 
   _onDamageClick(event) {
-    console.log("J'exécute _onDamageClick()")
+    // console.log("J'exécute _onDamageClick()")
     let checkbox = this.element.find('input[value="improvised"]');
     let othercheckbox = this.element.find('input[value="inventory"]');
     let chooseinventory = this.element.find('td[name="chooseinventory"]');
@@ -136,7 +136,7 @@ export class ModifiedDialog extends Dialog {
   }
 
   _onDamageOpponentClick(event) {
-    console.log("J'exécute _onDamageClick()")
+    // console.log("J'exécute _onDamageClick()")
     let checkbox = this.element.find('input[value="improvisedopponent"]');
     let othercheckbox = this.element.find('input[value="inventoryopponent"]');
     let chooseinventory = this.element.find('td[name="chooseinventoryopponent"]');
@@ -178,11 +178,11 @@ export class ModifiedDialog extends Dialog {
   }
 
   async _onSkillDicePrompt(event) {
-    console.log("Menu modifié");
+    // console.log("Menu modifié");
 
     let skill = await this.element.find('select[name="skill"]').val();
 
-    console.log("skill = ", skill);
+    // console.log("skill = ", skill);
 
     let bonusanomaly = await this.element.find('select[name="bonusanomaly"]').val();
     let anomaly = await this.element.find('select[name="anomaly"]').val();
@@ -198,11 +198,11 @@ export class ModifiedDialog extends Dialog {
     let jaugespleen = await this.element.find('select[name="jaugespleen"]').val();
     let actorID = await this.element.find('td[class="actor"]').text();
 
-    console.log("actorID = ", actorID);
+    // console.log("actorID = ", actorID);
 
     let myActor = game.actors.get(actorID);
 
-    console.log("myActor = ", myActor);
+    // console.log("myActor = ", myActor);
 
     let totalscoresbonusmalus = 0;
 

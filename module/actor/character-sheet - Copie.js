@@ -968,7 +968,9 @@ async _onClickMoonDieRoll(event) {
       myData.mySpleen = parseInt(myResultDialog.jaugespleen);
       myData.myArmorEncumbrance = parseInt(myResultDialog.armor);
       myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
-      myData.totalBoni = parseInt(myResultDialog.totalscoresbonusmalus);
+
+      // myData.myWoundsMalus = ???????
+
 
       let mySkillData = await _getSkillValueData (myActor, myData.mySkill);
       myData.mySpecialityLibel = mySkillData.libel;
@@ -1097,6 +1099,7 @@ async _onClickMoonDieRoll(event) {
       myData.totalBoni = myData.myValue + myData.myWoundsMalus; // Si on a décoché l'automatisation, seules les blessures sont décomptées
       smartR = game.i18n.localize("CEL1922.AutomatizationBlocked");
     } else {
+      myData.totalBoni = myData.myValue + myData.myBonus + myData.myMalus + myData.myWoundsMalus + myModifier; // Plus d'autres trucs à venir !
     
       let numberOfErrors = 0;
 
@@ -1115,6 +1118,11 @@ async _onClickMoonDieRoll(event) {
     console.log("totalBoni : ", myData.totalBoni);
 
 
+    if (myData.mySkill % 5 != 0) { // S'il ne s'agit pas d'un test de RES pur (càd : c'est un test d'une Spécialité)
+      myData.totalBoni += myData.myRESValue;
+    };
+
+    console.log("totalBoni : ", myData.totalBoni);
 
     if (myData.totalBoni == 0) {
       myRoll = myData.myNumberOfDice+"d8";
@@ -1774,7 +1782,7 @@ async function _skillDiceRollDialog(
         buttons: {
           validateBtn: {
             icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
-            callback: (html) => resolve( dialogData = _computeResult(myActorID, dialogData, html) )
+            callback: (html) => resolve( dialogData = _computeResult(dialogData, html) )
           },
           cancelBtn: {
             icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
@@ -1797,78 +1805,80 @@ async function _skillDiceRollDialog(
 
   return dialogData;
 
-  async function _computeResult(myActorID, myDialogData, myHtml) {
+  async function _computeResult(myDialogData, myHtml) {
     // console.log("J'exécute bien _computeResult()");
 
-    // console.log("J'exécute bien _computeResult()");
-    myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
-    myDialogData.skill = myHtml.find("select[name='skill']").val();
-    myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
-    myDialogData.bonusanomaly = myHtml.find("select[name='bonusanomaly']").val();
-    myDialogData.aspect = myHtml.find("select[name='aspect']").val();
-    myDialogData.bonusaspect = myHtml.find("select[name='bonusaspect']").val();
-    myDialogData.attribute = myHtml.find("select[name='attribute']").val();
-    myDialogData.bonusattribute = myHtml.find("select[name='bonusttribute']").val();
-    myDialogData.bonus = myHtml.find("select[name='bonus']").val();
-    myDialogData.malus = myHtml.find("select[name='malus']").val();
-    myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
-    myDialogData.jaugedestiny = myHtml.find("select[name='jaugedestiny']").val();
-    myDialogData.jaugespleen = myHtml.find("select[name='jaugespleen']").val();
-    myDialogData.armor = myHtml.find("select[name='armor']").val();
-    myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
+  // console.log("J'exécute bien _computeResult()");
+  myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
+  myDialogData.skill = myHtml.find("select[name='skill']").val();
+  myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
+  myDialogData.bonusanomaly = myHtml.find("select[name='bonusanomaly']").val();
+  myDialogData.aspect = myHtml.find("select[name='aspect']").val();
+  myDialogData.bonusaspect = myHtml.find("select[name='bonusaspect']").val();
+  myDialogData.attribute = myHtml.find("select[name='attribute']").val();
+  myDialogData.bonusattribute = myHtml.find("select[name='bonusttribute']").val();
+  myDialogData.bonus = myHtml.find("select[name='bonus']").val();
+  myDialogData.malus = myHtml.find("select[name='malus']").val();
+  myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
+  myDialogData.jaugedestiny = myHtml.find("select[name='jaugedestiny']").val();
+  myDialogData.jaugespleen = myHtml.find("select[name='jaugespleen']").val();
+  myDialogData.armor = myHtml.find("select[name='armor']").val();
+  myDialogData.typeofthrow = myHtml.find("select[name='typeofthrow']").val();
+  myDialogData.actorID = this.element.find('td[class="actor"]').text();
 
-    let myActor = game.actors.get(myActorID);
 
-    let totalscoresbonusmalus = 0;
+  let myActor = game.actors.get(actorID);
 
-    let skill_score = await _getSkillValueData (myActor, myDialogData.skill);
-    totalscoresbonusmalus += skill_score;
+  let totalscoresbonusmalus = 0;
 
-    let bonusanomaly_score = parseInt(myDialogData.bonusanomaly) ? -1 : 1 ;
-    let anomaly_score = 0;
-    if (myDialogData.anomaly != 0) {
-      anomaly_score = await _getAnomalyValueData (myActor, myDialogData.anomaly);
-    };
-    anomaly_score = anomaly_score * parseInt(bonusanomaly_score);
-    totalscoresbonusmalus += anomaly_score;
+  let skill_score = await _getSkillValueData (myActor, myDialogData.skill);
+  totalscoresbonusmalus += skill_score;
 
-    let bonusaspect_score = parseInt(myDialogData.bonusaspect) ? -1 : 1 ;
-    let aspect_score = 0;
-    if (myDialogData.aspect != 0) {
-      aspect_score = await _getAspectValueData (myActor, myDialogData.aspect);
-    };
-    aspect_score = aspect_score * parseInt(bonusaspect_score);
-    totalscoresbonusmalus += aspect_score;
+  let bonusanomaly_score = parseInt(myDialogData.bonusanomaly) ? -1 : 1 ;
+  let anomaly_score = 0;
+  if (anomaly != 0) {
+    anomaly_score = await _getAnomalyValueData (myActor, myDialogData.anomaly);
+  };
+  anomaly_score = anomaly_score * parseInt(bonusanomaly_score);
+  totalscoresbonusmalus += anomaly_score;
 
-    let bonusattribute_score = parseInt(myDialogData.bonusattribute) ? -1 : 1 ;
-    let attribute_score = 0;
-    if (myDialogData.attribute_score != 0) {
-      attribute_score = await _getAttributeValueData (myActor, myDialogData.attribute);
-    };
-    attribute_score = attribute_score * parseInt(bonusattribute_score);
-    totalscoresbonusmalus += attribute_score;
+  let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
+  let aspect_score = 0;
+  if (aspect != 0) {
+    aspect_score = await _getAspectValueData (myActor, myDialogData.aspect);
+  };
+  aspect_score = aspect_score * parseInt(bonusaspect_score);
+  totalscoresbonusmalus += aspect_score;
 
-    totalscoresbonusmalus += (parseInt(myDialogData.bonus) + parseInt(myDialogData.malus));
+  let bonusattribute_score = parseInt(myDialogData.bonusattribute) ? -1 : 1 ;
+  let attribute_score = 0;
+  if (attribute_score != 0) {
+    attribute_score = await _getAttributeValueData (myActor, myDialogData.attribute);
+  };
+  attribute_score = attribute_score * parseInt(bonusattribute_score);
+  totalscoresbonusmalus += attribute_score;
 
-    let armor_score = 0;
-    if (myDialogData.armor != 0) {
-      armor_score = await _getArmorValueData (myActor, myDialogData.armor);
-    };
-    totalscoresbonusmalus += -(armor_score);
+  totalscoresbonusmalus += (parseInt(myDialogData.bonus) + parseInt(myDialogData.malus));
 
-    let jaugewounds_score = 0;
-    jaugewounds_score = await _getJaugeWoundsValueData (myActor, myDialogData.jaugewounds);
-    totalscoresbonusmalus += jaugewounds_score;
-    let jaugedestiny_score = 0;
-    jaugedestiny_score = await _getJaugeDestinyValueData (myActor, myDialogData.jaugedestiny);
-    totalscoresbonusmalus += jaugedestiny_score
-    let jaugespleen_score = 0;
-    jaugespleen_score = await _getJaugeSpleenValueData (myActor, myDialogData.jaugespleen);
-    totalscoresbonusmalus += jaugespleen_score;
+  let armor_score = 0;
+  if (armor != 0) {
+    armor_score = await _getArmorValueData (myActor, myDialogData.armor);
+  };
+  totalscoresbonusmalus += -(armor_score);
 
-    myDialogData.totalscoresbonusmalus = totalscoresbonusmalus;
+  let jaugewounds_score = 0;
+  jaugewounds_score = await _getJaugeWoundsValueData (myActor, myDialogData.jaugewounds);
+  totalscoresbonusmalus += jaugewounds_score;
+  let jaugedestiny_score = 0;
+  jaugedestiny_score = await _getJaugeDestinyValueData (myActor, myDialogData.jaugedestiny);
+  totalscoresbonusmalus += jaugedestiny_score
+  let jaugespleen_score = 0;
+  jaugespleen_score = await _getJaugeSpleenValueData (myActor, myDialogData.jaugespleen);
+  totalscoresbonusmalus += jaugespleen_score;
 
-    return myDialogData;
+  myDialogData.totalscoresbonusmalus = totalscoresbonusmalus;
+
+  return myDialogData;
   };
 
 
@@ -1978,6 +1988,151 @@ async function _skillDiceRollDialog(
     // console.log("context = ", context)
     return context;
   }
+
+}
+
+/* -------------------------------------------- */
+
+async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
+
+  let msg = "";
+
+  const typeOfThrow = myTypeOfThrow;
+
+  if (mySmartRData.mymodifier != 999) {
+    switch ( typeOfThrow ) {
+      case 0: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'roll'                      // Public Roll
+        });
+      break;
+      case 1: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'gmroll'                    // Private Roll
+        });
+      break;
+      case 2: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'blindroll'                 // Blind GM Roll
+      });
+      break;
+      case 3: msg = await r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        rollMode: 'selfroll'                      // Self Roll
+      });
+      break;
+      default: console.log("C'est bizarre !");
+    };
+
+
+    if (game.modules.get("dice-so-nice")?.active) {
+      await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
+    };
+
+  }
+  // Smart Message
+  const smartTemplate = mySmartTemplate;
+  const smartData = mySmartData;
+  const smartHtml = await renderTemplate(smartTemplate, smartData);
+
+  switch ( typeOfThrow ) {
+    case 0:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'roll'                          // Public Roll
+      });
+
+    break;
+    case 1:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content:smartHtml,
+        rollMode: 'gmroll'                        // Private Roll
+      });
+
+    break;
+    case 2:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'blindroll'                       // Blind GM Roll
+      });
+
+    break;
+    case 3:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartHtml,
+        rollMode: 'selfroll'                        // Self Roll
+      });
+
+    break;
+    default: console.log("C'est bizarre !");
+  };
+
+
+    // SmartR Message
+    const smartRTemplate = mySmartRTemplate;
+    const smartRData = mySmartRData;
+    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
+ 
+  switch ( typeOfThrow ) {
+    case 0:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'roll'                          // Public Roll
+      });
+
+    break;
+    case 1:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'gmroll'                        // Private Roll
+      });
+
+    break;
+    case 2:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'blindroll'                       // Blind GM Roll
+      });
+    break;
+    case 3:
+      ChatMessage.create({
+        user: game.user.id,
+        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+        speaker: ChatMessage.getSpeaker({ actor: myActor }),
+        content: smartRHtml,
+        rollMode: 'selfroll'                        // Self Roll
+      });
+
+    break;
+    default: console.log("C'est bizarre !");
+  };
+
+}
 
   /* -------------------------------------------- */
 
@@ -2157,153 +2312,3 @@ async function _skillDiceRollDialog(
 
     return myjaugeSpleenVal;
   }
-
-
-
-
-
-}
-
-/* -------------------------------------------- */
-
-async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
-
-  let msg = "";
-
-  const typeOfThrow = myTypeOfThrow;
-
-  if (mySmartRData.mymodifier != 999) {
-    switch ( typeOfThrow ) {
-      case 0: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'roll'                      // Public Roll
-        });
-      break;
-      case 1: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'gmroll'                    // Private Roll
-        });
-      break;
-      case 2: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'blindroll'                 // Blind GM Roll
-      });
-      break;
-      case 3: msg = await r.toMessage({
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        rollMode: 'selfroll'                      // Self Roll
-      });
-      break;
-      default: console.log("C'est bizarre !");
-    };
-
-
-    if (game.modules.get("dice-so-nice")?.active) {
-      await game.dice3d.waitFor3DAnimationByMessageID(msg.id);
-    };
-
-  }
-  // Smart Message
-  const smartTemplate = mySmartTemplate;
-  const smartData = mySmartData;
-  const smartHtml = await renderTemplate(smartTemplate, smartData);
-
-  switch ( typeOfThrow ) {
-    case 0:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartHtml,
-        rollMode: 'roll'                          // Public Roll
-      });
-
-    break;
-    case 1:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content:smartHtml,
-        rollMode: 'gmroll'                        // Private Roll
-      });
-
-    break;
-    case 2:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartHtml,
-        rollMode: 'blindroll'                       // Blind GM Roll
-      });
-
-    break;
-    case 3:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartHtml,
-        rollMode: 'selfroll'                        // Self Roll
-      });
-
-    break;
-    default: console.log("C'est bizarre !");
-  };
-
-
-    // SmartR Message
-    const smartRTemplate = mySmartRTemplate;
-    const smartRData = mySmartRData;
-    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
- 
-  switch ( typeOfThrow ) {
-    case 0:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'roll'                          // Public Roll
-      });
-
-    break;
-    case 1:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'gmroll'                        // Private Roll
-      });
-
-    break;
-    case 2:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'blindroll'                       // Blind GM Roll
-      });
-    break;
-    case 3:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'selfroll'                        // Self Roll
-      });
-
-    break;
-    default: console.log("C'est bizarre !");
-  };
-
-}
-
