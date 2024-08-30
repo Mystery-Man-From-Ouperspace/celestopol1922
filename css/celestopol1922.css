@@ -539,7 +539,8 @@ cursor: pointer;
 	font-family: 'Open Sans', sans-serif;
 	font-size:12px;
 	text-decoration:none;
-	color:orange;
+	/* color:orange; */
+  color:black;
 	position:relative;
 	padding:10px 20px;
 	padding-right:50px;
