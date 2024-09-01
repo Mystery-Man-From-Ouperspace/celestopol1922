@@ -1127,7 +1127,9 @@ async _onClickMoonDieRoll(event) {
     if (myModifier != 999) {
       r = new Roll(myRoll, this.actor.getRollData());
       await r.evaluate();
-    }
+    } else {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Evident"));
+    };
 
     const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
     const mySmartData = {
