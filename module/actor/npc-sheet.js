@@ -12,7 +12,7 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
       template: "systems/celestopol1922/templates/actor/npc-sheet.html",
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       scrollY: [".biography", ".items", ".attributes", ".aspects", ".anomalies"],
-      dragDrop: [{dragSelector: ".item-list .item .aspect .anomaly", dropSelector: null}]
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
   }
 
