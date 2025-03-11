@@ -8,7 +8,7 @@ export class CEL1922ActorSheet extends ActorSheet {
       classes: ["celestopol1922", "sheet", "actor"],
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }],
       width: 920,
-      height: 750
+      height: "auto"
     });
   }
 

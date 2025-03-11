@@ -83,7 +83,7 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 155
+        height: "auto"
       });
     });
     async function _computeResult(myActor, myHtml) {
@@ -1094,7 +1094,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
       dialogOptions
     ).render(true, {
       width: 630,
-      height: 214
+      height: "auto"
     });
   });
 
@@ -1172,7 +1172,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 375,
-      height: 598
+      height: "auto"
     });
   });
 

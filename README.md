@@ -1,3 +1,3 @@
 # Célestopol 1922
 
-A rudimentary implementation of Celestopol 1922 for Foundry VTT.
+This is a base game system with functionnal character sheets for the game Celestopol 1922, partially inspired by the Engrenages system.

@@ -365,7 +365,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         dialogOptions
       ).render(true, {
         width: 480,
-        height: 203
+        height: "auto"
       });
     });
     async function _computeResult(myActor, myHtml) {
@@ -1321,7 +1321,7 @@ async function _whichTarget (myActor, mySkill) {
       dialogOptions
     ).render(true, {
       width: 530,
-      height: 371
+      height: "auto"
     });
   });
 
@@ -1458,7 +1458,7 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
       dialogOptions
     ).render(true, {
       width: 630,
-      height: 548
+      height: "auto"
     });
   });
 
@@ -1528,7 +1528,7 @@ async function _whichTypeOfTest (myActor, myOpposition, myTypeOfThrow, mySkill) 
       dialogOptions
     ).render(true, {
       width: 550,
-      height: 309
+      height: "auto"
     });
   });
 
@@ -1705,7 +1705,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
       dialogOptions
     ).render(true, {
       width: 630,
-      height: 214
+      height: "auto"
     });
   });
 
@@ -1789,7 +1789,7 @@ async function _skillDiceRollDialog(
     dialogOptions
     ).render(true, {
       width: 415,
-      height: 660
+      height: "auto"
     });
   });
 

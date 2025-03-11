@@ -1,6 +1,6 @@
 {
   "id": "celestopol1922",
-  "version": "0.1.1bêta",
+  "version": "0.1.2bêta",
   "title": "Célestopol 1922 (Unofficial)",
   "url": "https://github.com/Mystery-Man-From-Ouperspace/celestopol1922",
   "description": "Unofficial game system for Célestopol 1922.",
@@ -119,6 +119,6 @@
   },
   "primaryTokenAttribute": "skill.woundsmalus",
   "secondaryTokenAttribute": "",
-  "manifest": "http://serveurdavid.fr/download/foundry/celestopol1922/system.json",
-  "download": "http://serveurdavid.fr/download/foundry/celestopol1922/release-011.zip"
+  "manifest": "https://serveurdavid.fr/download/foundry/celestopol1922/system.json",
+  "download": "https://serveurdavid.fr/download/foundry/celestopol1922/release-012.zip"
 }
