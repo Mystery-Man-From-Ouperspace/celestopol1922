@@ -1,6 +1,6 @@
 {
   "id": "celestopol1922",
-  "version": "0.1.2bêta",
+  "version": "0.1.1bêta",
   "title": "Célestopol 1922 (Unofficial)",
   "url": "https://github.com/Mystery-Man-From-Ouperspace/celestopol1922",
   "description": "Unofficial game system for Célestopol 1922.",
@@ -16,6 +16,23 @@
   ],
   "esmodules": ["module/celestopol1922.js"],
   "styles": ["css/celestopol1922.css"],
+  "packFolders": [
+    {
+      "name": "Système",
+      "sorting": "a",
+      "color": "#0c4c0c",
+      "packs": [
+        "resume-des-regles",
+        "scenes-de-base",
+        "tables",
+        "anomalies",
+        "aspects",
+        "attributs",
+        "equipements"
+      ],
+      "folders": []
+    }
+  ],
   "packs": [
     {
       "name": "resume-des-regles",
@@ -35,6 +52,18 @@
       "system": "celestopol1922",
       "path": "packs/scenes-de-base",
       "type": "Scene",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "tables",
+      "label": "FR - Tables",
+      "system": "devastra",
+      "path": "packs/tables",
+      "type": "RollTable",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -120,5 +149,5 @@
   "primaryTokenAttribute": "skill.woundsmalus",
   "secondaryTokenAttribute": "",
   "manifest": "https://serveurdavid.fr/download/foundry/celestopol1922/system.json",
-  "download": "https://serveurdavid.fr/download/foundry/celestopol1922/release-012.zip"
+  "download": "https://serveurdavid.fr/download/foundry/celestopol1922/release-011.zip"
 }
