@@ -1,7 +1,7 @@
-2024/04/04-18:29:19.846 3dac Recovering log #1118
-2024/04/04-18:29:19.857 3dac Delete type=0 #1118
-2024/04/04-18:29:19.857 3dac Delete type=3 #1116
-2024/04/04-18:30:42.520 2790 Level-0 table #1123: started
-2024/04/04-18:30:42.520 2790 Level-0 table #1123: 0 bytes OK
-2024/04/04-18:30:42.523 2790 Delete type=0 #1121
-2024/04/04-18:30:42.528 2790 Manual compaction at level-0 from 'undefined' @ 72057594037927935 : 1 .. 'undefined' @ 0 : 0; will stop at (end)
+2025/03/20-13:52:44.983 5354 Recovering log #1890
+2025/03/20-13:52:45.000 5354 Delete type=0 #1890
+2025/03/20-13:52:45.002 5354 Delete type=3 #1888
+2025/03/20-14:13:21.467 6b5c Level-0 table #1895: started
+2025/03/20-14:13:21.467 6b5c Level-0 table #1895: 0 bytes OK
+2025/03/20-14:13:21.470 6b5c Delete type=0 #1893
+2025/03/20-14:13:21.491 6b5c Manual compaction at level-0 from 'undefined' @ 72057594037927935 : 1 .. 'undefined' @ 0 : 0; will stop at (end)

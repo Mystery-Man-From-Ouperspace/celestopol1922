@@ -397,8 +397,70 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       //
     }
 
-    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData);
+    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData, 1);
   
+
+
+    // concerne le tirage de la Lune sur la Table de la Lune
+    const myResolvedUUIDMoonRollTableCompend = await parseUuid("Compendium.celestopol1922.tables.RollTable.lAwtswfdDSflSBTk", {});
+    // const myResolvedUUIDMoonRollTableChanceCompend = await parseUuid("Compendium.celestopol1922.tables.RollTable.7evwGjQ0GWgb8pBc", {});
+    console.log("myResolvedUUIDMoonRollTableCompend = ", myResolvedUUIDMoonRollTableCompend);
+    console.log("game = ", game);
+    
+    const moonRollCompendiumName = "celestopol1922.tables";
+    // C'est le nom du compendium à récupérer
+  
+    const moonRollCompendium = await game.packs.get(moonRollCompendiumName);
+    // On récupère le compendium
+    console.log("moonRollCompendium = ", moonRollCompendium);
+  
+  
+    const moonRollTable = await moonRollCompendium.getDocument(myResolvedUUIDMoonRollTableCompend.id);
+    // On récupère ce doc précis du compendium
+    // console.log("myMoonRollTable = ", myMoonRollTable);
+  
+    // const myMoonRollTableCompend = await game.collections.fromCompendium(myMoonRollTable, { addFlags: false, clearSort: false, clearOwnership: false, keepId: true });
+    // Comme on veut récupérer le doc du compendium pour le mettre dans le Monde (avec le même Id), on le prépare
+    // si on passait par importFromCompendium(), on n'aurait pas la main sur les paramètres
+  
+    // context.moonRollTable = await new RollTable(myMoonRollTableCompend, {});
+    // On crée une nouvelle table dans le Monde à partir du doc récupéré du compendium
+  
+  
+    // const moonRollTableChance = await moonRollCompendium.getDocument(myResolvedUUIDMoonRollTableChanceCompend.id);
+  
+    // const myMoonRollTableChanceCompend = await game.collections["RollTable"].fromCompendium(myMoonRollTableChance, { addFlags: false, clearSort: false, clearOwnership: false, keepId: true });
+  
+    // context.moonRollTableChance = await new RollTable(myMoonRollTableChanceCompend, {});
+  
+  
+
+
+    let rollModeTable = "";
+
+    switch ( myTypeOfThrow ) {
+      case 0: rollModeTable = 'roll';                     // Public Roll
+      break;
+      case 1: rollModeTable = 'gmroll'                    // Private Roll
+      break;
+      case 2: rollModeTable = 'blindroll'                 // Blind GM Roll
+      break;
+      case 3: rollModeTable = 'selfroll'                  // Self Roll
+      break;
+      default: console.log("C'est bizarre !");
+    };
+
+    const rMoonTotalOnTable = rMoon._total.toString();
+
+    const myRollOnTable = new Roll(rMoonTotalOnTable, myActor.getRollData());
+                                                          // Force le tirage de la table à la valeur tirée précédemment au d8
+                                                          // Tirage de Lune normal
+    const customResults = await moonRollTable.roll({myRollOnTable});
+                                                          // Fait le tirage sur la table
+    const drawTable = moonRollTable.draw({roll: myRollOnTable, recursive: false, results: customResults, displayChat: true, rollMode : rollModeTable});
+                                                          // Affiche le résultat du tirage dans le Tchat
+
+
   })
   }
 
@@ -498,7 +560,7 @@ async function _showCalculateWoundsInChat (myActor, myTypeOfThrow, smartTemplate
 
 /* -------------------------------------------- */
 
-async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData) {
+async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData, myMoon) {
 
   let msg = "";
 
@@ -587,54 +649,57 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     default: console.log("C'est bizarre !");
   };
 
-  // SmartR Message
-  const smartRTemplate = mySmartRTemplate;
-  const smartRData = mySmartRData;
-  const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
- 
-  switch ( typeOfThrow ) {
-    case 0:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'roll'                          // Public Roll
-      });
+  if (!myMoon) {
+    // SmartR Message
+    const smartRTemplate = mySmartRTemplate;
+    const smartRData = mySmartRData;
+    const smartRHtml = await renderTemplate(smartRTemplate, smartRData);
+  
+    switch ( typeOfThrow ) {
+      case 0:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartRHtml,
+          rollMode: 'roll'                          // Public Roll
+        });
 
-    break;
-    case 1:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'gmroll'                        // Private Roll
-      });
+      break;
+      case 1:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartRHtml,
+          rollMode: 'gmroll'                        // Private Roll
+        });
 
-    break;
-    case 2:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'blindroll'                       // Blind GM Roll
-      })
+      break;
+      case 2:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartRHtml,
+          rollMode: 'blindroll'                       // Blind GM Roll
+        })
 
-    break;
-    case 3:
-      ChatMessage.create({
-        user: game.user.id,
-        // speaker: ChatMessage.getSpeaker({ token: this.actor }),
-        speaker: ChatMessage.getSpeaker({ actor: myActor }),
-        content: smartRHtml,
-        rollMode: 'selfroll'                        // Self Roll
-      });
+      break;
+      case 3:
+        ChatMessage.create({
+          user: game.user.id,
+          // speaker: ChatMessage.getSpeaker({ token: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: myActor }),
+          content: smartRHtml,
+          rollMode: 'selfroll'                        // Self Roll
+        });
 
-    break;
-    default: console.log("C'est bizarre !");
-  };
+      break;
+      default: console.log("C'est bizarre !");
+    };
+
+  }
 
 }
 
