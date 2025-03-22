@@ -238,7 +238,7 @@
 
   "CEL1922.bonus": "Bonus supplémentaires",
   "CEL1922.malus": "Malus supplémentaires",
-  "CEL1922.malusRetirage": "Malus supplémentaires (re-tirage)",
+  "CEL1922.malusRetirage": "Malus supplémentaires (relance)",
 
   "CEL1922.jaugewounds": "Jauge de Blessures",
   "CEL1922.jaugedestiny": "Jauge de Destin",
@@ -423,6 +423,7 @@
 
 
   "CEL1922.Test": "Test : ",
+  "CEL1922.ReTirageTest": "Relance-Test : ",
 
   "CEL1922.BonusMalusDetail": "Détail des bonus / malus",
 

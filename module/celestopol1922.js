@@ -635,7 +635,9 @@ async function _MoreBonusMalusDialog(
     titleDestiny: titleDestiny,
     dataDestiny: dataDestiny,
     titleSpleen: titleSpleen,
-    dataSpleen: dataSpleen
+    dataSpleen: dataSpleen,
+
+    numSpeciality: parseInt(skill)
   }
 
   let myRoll;
@@ -688,7 +690,7 @@ async function _MoreBonusMalusDialog(
     oppositionText += game.i18n.localize("CEL1922.SeuilNon-atteint");
   };
 
-  let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+  let titleSmartR = game.i18n.localize("CEL1922.ReTirageTest") + myRoll + " (" + myResult + ")" + oppositionText;
   mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
   let youWin = false;
   let thereisEgality = false;

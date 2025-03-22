@@ -238,6 +238,8 @@
 
   "CEL1922.bonus": "Bonus supplémentaires",
   "CEL1922.malus": "Malus supplémentaires",
+  "CEL1922.malusRetirage": "Malus supplémentaires (relance)",
+
   "CEL1922.jaugewounds": "Jauge de Blessures",
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
@@ -341,6 +343,9 @@
 
   "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l’entre-temps !",
 
+  "CEL1922.Error111": "Jet ou opération annulé par l′utilisateur",
+
+
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-fiction !",
 
@@ -418,6 +423,7 @@
 
 
   "CEL1922.Test": "Test : ",
+  "CEL1922.ReTirageTest": "Relance-Test : ",
 
   "CEL1922.BonusMalusDetail": "Détail des bonus / malus",
 
@@ -457,6 +463,14 @@
   "CEL1922.ButYouOnly": "Malheureusement, vous avez rendu cet affichage invisible au MJ",
 
   "CEL1922.woundsapplyed": "Niveaux de blessure appliqués à l’Acteur (fiche de base)",
+
+  "CEL1922.SecondChance": "Relance",
+  "CEL1922.SecondChanceNoMalus": "Seconde chance sans aucun Malus",
+  "CEL1922.SecondChanceMalusOne": "Seconde chance avec Malus -1",
+  "CEL1922.SecondChanceMalusTwo": "Seconde chance avec Malus -2",
+  "CEL1922.SecondChanceMalusThree": "Seconde chance avec Malus -3",
+  "CEL1922.SecondChanceMalusFour": "Seconde chance avec Malus -4",
+  "CEL1922.SecondChanceMalusFive": "Seconde chance avec Malus -5",
 
   "TYPES": {
     "Actor": {

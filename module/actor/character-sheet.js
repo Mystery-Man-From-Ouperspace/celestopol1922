@@ -1359,7 +1359,9 @@ async _onClickMoonDieRoll(event) {
         titleDestiny: "Quelle jauge de Destin ?",
         dataDestiny: NaN,
         titleSpleen: "Quelle jauge de Spleen ?",
-        dataSpleen: NaN
+        dataSpleen: NaN,
+
+        numSpeciality: myData.mySkill
 
       }
 

@@ -12,6 +12,7 @@
             <div class="test" style="display: none;">{{test}}</div>
             <div class="specialitylibel" style="display: none;">{{specialitylibel}}</div>
             <div class="modifier" style="display: none;">{{modifier}}</div>
+            <div class="numSpeciality" style="display: none;">{{numSpeciality}}</div>
 
             <div class="typeofthrow" style="display: none;">{{typeofthrow}}</div>
             <div class="numberofdice" style="display: none;">{{numberofdice}}</div>
@@ -158,7 +159,6 @@
             <div class="green-buttons">
                 {{#if (eq mymodifier 999)}}
                 {{else}}
-
                     {{#if relance}}
                     <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.RerollDice" }}</span></p><br/>
                     {{else}}
