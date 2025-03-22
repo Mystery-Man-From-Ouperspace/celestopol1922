@@ -368,11 +368,14 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const myUser = game.user;
     console.log("game.user.id = ", game.user.id);
     console.log("yourplayerid = ", yourplayerid);
-    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
+
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM ! Pas le bon utilisateur !") ;return;}; // Pas le bon utilisateur !
+
 
     console.log("youractorid = ", youractorid);
     const myActor = game.actors.get(youractorid);
-    if (myActor == null) {console.log("TADAM !") ;return;};
+    if (myActor == null) {console.log("TADAM ! Pas le bon acteur !") ;return;};
+
 
     const myTypeOfThrow = parseInt(typeofthrow);
     

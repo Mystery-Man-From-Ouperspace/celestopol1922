@@ -1364,6 +1364,11 @@ async _onClickMoonDieRoll(event) {
       let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;
       mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
       mySmartRData = {
+        typeofthrow: myData.myTypeOfThrow,
+
+        yourplayerid: myData.myUserID,
+        youractorid: myData.myActorID,
+
         mymodifier: myModifier, 
         title: titleSmartR,
         numSpeciality: myData.mySkill
