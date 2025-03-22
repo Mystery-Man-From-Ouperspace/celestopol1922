@@ -9,6 +9,10 @@
         {{!-- Frame --}}
         <div class="cel1922-result-window">
 
+            <div class="test" style="display: none;">{{test}}</div>
+            <div class="specialitylibel" style="display: none;">{{specialitylibel}}</div>
+            <div class="modifier" style="display: none;">{{modifier}}</div>
+
             <div class="typeofthrow" style="display: none;">{{typeofthrow}}</div>
             <div class="numberofdice" style="display: none;">{{numberofdice}}</div>
             <div class="skill" style="display: none;">{{skill}}</div>
@@ -107,7 +111,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ titleMoreBonusMalus }}
+                            {{ localize "CEL1922.malusRetirage" }}
                         </th>
                         <td class="dataMoreBonusMalus" style="text-align: center;">
                             {{ dataMoreBonusMalus }}
@@ -154,7 +158,11 @@
             <div class="green-buttons">
                 {{#if (eq mymodifier 999)}}
                 {{else}}
-                <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.RerollDice" }}</span></p><br/>
+
+                    {{#if relance}}
+                    <p><span class="smart-green-button reroll-click" >{{ localize "CEL1922.RerollDice" }}</span></p><br/>
+                    {{else}}
+                    {{/if}}
                 {{/if}}
                 <p><span class="smart-green-button moon-click" data-libel-id="moon-die-randomize">{{ localize "CEL1922.DeDeLaLune" }}</span></p><br/>
                 {{#if (eq youropponentid '0')}}

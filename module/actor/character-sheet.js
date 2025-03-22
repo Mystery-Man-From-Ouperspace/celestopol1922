@@ -1310,11 +1310,20 @@ async _onClickMoonDieRoll(event) {
       console.log("game.user.id = ", game.user.id);
 
       mySmartRData = {
+        title: titleSmartR,
+
+        relance: true,
+
         typeofthrow: myData.myTypeOfThrow,
         numberofdice: myData.myNumberOfDice,
         skill: myData.mySkill,
         bonus: myData.totalBoni,
         rolldifficulty: parseInt(myOpposition),
+
+        test: myTest,
+        specialitylibel: myData.mySpecialityLibel,
+        mymodifier: myModifier, 
+
 
         youwin: youWin,
         egality: thereisEgality,
@@ -1329,31 +1338,29 @@ async _onClickMoonDieRoll(event) {
         youropponentdamage: myData.weaponOpponentVal,
         youropponentprotection: myData.armorOpponentVal,
 
-        mymodifier: myModifier, 
-        title: titleSmartR,
         dataNbrDice: myData.myNumberOfDice,
-        titleDomain: "",
+        titleDomain: "Quel Domaine ?",
         dataDomain: "",
-        titleSpeciality: "",
+        titleSpeciality: "Quelle Spécialité ?",
         dataSpeciality: "",
-        titleAnomaly: "",
+        titleAnomaly: "Quelle Anomalie ?",
         dataAnomaly: NaN,
-        titleAspect: "",
+        titleAspect: "Quel Aspect ?",
         dataAspect: NaN,
-        titleAttribute: "",
+        titleAttribute: "Quel Attribut ?",
         dataAttribute: NaN,
         dataBonus: myData.myBonus,
         dataMalus: myData.myMalus,
-        titleMoreBonusMalus: "Bonus/Malus supplémentaire (re-tirage)",
         dataMoreBonusMalus: 0,
-        titleArmor: "",
+        titleArmor: "Quel type d'armure ?",
         dataArmor: NaN,
-        titleWounds: "",
+        titleWounds: "Quelle jauge de Blessures ?",
         dataWounds: NaN,
-        titleDestiny: "",
+        titleDestiny: "Quelle jauge de Destin ?",
         dataDestiny: NaN,
-        titleSpleen: "",
-        dataSpleen: NaN,
+        titleSpleen: "Quelle jauge de Spleen ?",
+        dataSpleen: NaN
+
       }
 
       console.log("mySmartRData = ", mySmartRData);

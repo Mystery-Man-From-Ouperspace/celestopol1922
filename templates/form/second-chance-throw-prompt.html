@@ -18,16 +18,16 @@
 
             </div>
 
-            <div>
+            <div style="text-align: center;">
                 <b>{{ localize "CEL1922.SecondChance" }}</b>&nbsp;
-                <select name="moon">
+                <select name="dataMoreBonusMalus">
                 {{#select moon }}
                     <option value="0">{{ localize "CEL1922.SecondChanceNoMalus" }}</option>
-                    <option value="1">{{ localize "CEL1922.SecondChanceMalusOne" }}</option>
-                    <option value="2">{{ localize "CEL1922.SecondChanceMalusTwo" }}</option>
-                    <option value="3">{{ localize "CEL1922.SecondChanceMalusThree" }}</option>
-                    <option value="4">{{ localize "CEL1922.SecondChanceMalusFour" }}</option>
-                    <option value="5">{{ localize "CEL1922.SecondChanceMalusFive" }}</option>
+                    <option value="-1">{{ localize "CEL1922.SecondChanceMalusOne" }}</option>
+                    <option value="-2">{{ localize "CEL1922.SecondChanceMalusTwo" }}</option>
+                    <option value="-3">{{ localize "CEL1922.SecondChanceMalusThree" }}</option>
+                    <option value="-4">{{ localize "CEL1922.SecondChanceMalusFour" }}</option>
+                    <option value="-5">{{ localize "CEL1922.SecondChanceMalusFive" }}</option>
                 {{/select}}
                 </select>
             </div>

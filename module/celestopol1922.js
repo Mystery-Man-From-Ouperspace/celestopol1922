@@ -400,7 +400,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       //
     }
 
-    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData, 1);
+    await _showMessagesInChat (myActor, myTypeOfThrow, rMoon, mySmartRMoonTemplate, mySmartRMoonData, mySmartMoonTemplate, mySmartMoonData, true);
   
 
 
@@ -476,6 +476,11 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
 
     console.log('Je suis dans rerollButton')
 
+    const test = html[0].querySelector("div[class='test']").textContent;
+    const specialitylibel = html[0].querySelector("div[class='specialitylibel']").textContent;
+    const modifier = html[0].querySelector("div[class='modifier']").textContent;
+
+
     const typeofthrow = html[0].querySelector("div[class='typeofthrow']").textContent;
 
     const numberofdice = html[0].querySelector("div[class='numberofdice']").textContent;
@@ -522,68 +527,293 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     if (!(game.user.id == yourplayerid)) {console.log("TADAM ! Pas le bon utilisateur !") ;return;}; // Pas le bon utilisateur !
 
 
-    /*
-    mySmartRData = {
-      typeofthrow: myData.myTypeOfThrow,
-      numberofdice: myData.myNumberOfDice,
-      skill: myData.mySkill,
-      bonus: myData.totalBoni,
-      rolldifficulty: parseInt(myOpposition),
-
-      youwin: youWin,
-      egality: thereisEgality,
-
-      yourplayerid: myData.myUserID,
-      youractorid: myData.myActorID,
-      yourdamage: myData.myWeaponVal,
-      yourprotection: myData.myArmorVal,
-
-      youropponent: myData.opponentName,
-      youropponentid: myData.opponentID,
-      youropponentdamage: myData.weaponOpponentVal,
-      youropponentprotection: myData.armorOpponentVal,
-
-      mymodifier: myModifier, 
-      title: titleSmartR,
-      dataNbrDice: myData.myNumberOfDice,
-      titleDomain: "",
-      dataDomain: "",
-      titleSpeciality: "",
-      dataSpeciality: "",
-      titleAnomaly: "",
-      dataAnomaly: NaN,
-      titleAspect: "",
-      dataAspect: NaN,
-      titleAttribute: "",
-      dataAttribute: NaN,
-      dataBonus: myData.myBonus,
-      dataMalus: myData.myMalus,
-      titleMoreBonusMalus: "Bonus/Malus supplémentaire (re-tirage)",
-      dataMoreBonusMalus: 0,
-      titleArmor: "",
-      dataArmor: NaN,
-      titleWounds: "",
-      dataWounds: NaN,
-      titleDestiny: "",
-      dataDestiny: NaN,
-      titleSpleen: "",
-      dataSpleen: NaN,
-      numSpeciality: myData.mySkill
-    }
-    */
 
 
+    const myActor = game.actors.get(youractorid);
+    let template = "";
+    const myTitle  = game.i18n.localize("CEL1922.SecondChance");;
 
+    const myDialogOptions = "";
 
-
-
-
+    _MoreBonusMalusDialog(
+      myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
+      yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
+      dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
+      titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+      titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
+    );
 
   })
   }
 
-
 })
+
+/* -------------------------------------------- */
+
+async function _MoreBonusMalusDialog(
+  myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
+  yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
+  dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
+  titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+  titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
+) {
+
+  // Render modal dialog
+  template = template || 'systems/celestopol1922/templates/form/second-chance-throw-prompt.html';
+
+  let myResultDialog = await _executeDialog(
+    myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
+    yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
+    dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
+    titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+    titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
+  );
+  
+  //////////////////////////////////////////////////////////////////
+  if (!(myResultDialog)) {
+    ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+    return;
+  };
+  //////////////////////////////////////////////////////////////////
+
+  let myNewDataMoreBonusMalus = myResultDialog.dataMoreBonusMalus;
+  console.log("myNewDataMoreBonusMalus = ", myNewDataMoreBonusMalus);
+  let myNewBonus = parseInt(myResultDialog.bonus);
+
+  if (parseInt(myNewDataMoreBonusMalus) >=0) {
+    myNewBonus += parseInt(myNewDataMoreBonusMalus);
+  } else {
+    myNewBonus -= Math.abs(parseInt(myNewDataMoreBonusMalus));
+  }
+
+  let myData = {
+    title: "",
+
+    relance: false,
+
+    typeofthrow: parseInt(typeofthrow),
+    numberofdice: parseInt(numberofdice),
+    skill: skill,
+    bonus: myNewBonus,
+    rolldifficulty: parseInt(rolldifficulty),
+
+    test: test,
+    specialitylibel: specialitylibel,
+    mymodifier: modifier,
+
+    youwin: "",
+    egality: "",
+
+    yourplayerid: yourplayerid,
+    youractorid: youractorid,
+    yourdamage: yourdamage,
+    yourprotection: yourprotection,
+
+    youropponent: youropponent,
+    youropponentid: youropponentid,
+    youropponentdamage: youropponentdamage,
+    youropponentprotection: youropponentprotection,
+
+    dataNbrDice: dataNbrDice,
+    titleDomain: titleDomain,
+    dataDomain: dataDomain,
+    titleSpeciality: titleSpeciality,
+    dataSpeciality: dataSpeciality,
+    titleAnomaly: titleAnomaly,
+    dataAnomaly: dataAnomaly,
+    titleAspect: titleAspect,
+    dataAspect: dataAspect,
+    titleAttribute: titleAttribute,
+    dataAttribute: dataAttribute,
+    dataBonus: dataBonus,
+    dataMalus: dataMalus,
+    dataMoreBonusMalus: myNewDataMoreBonusMalus,
+    titleArmor: titleArmor,
+    dataArmor: dataArmor,
+    titleWounds: titleWounds,
+    dataWounds: dataWounds,
+    titleDestiny: titleDestiny,
+    dataDestiny: dataDestiny,
+    titleSpleen: titleSpleen,
+    dataSpleen: dataSpleen
+  }
+
+  let myRoll;
+
+  if (myData.bonus == 0) {
+    myRoll = myData.numberofdice+"d8";
+  } else if (myData.bonus > 0) {
+    myRoll = myData.numberofdice+"d8+" + (myData.bonus).toString();
+  } else {
+    myRoll = myData.numberofdice+"d8-" + Math.abs(myData.bonus).toString();
+  };
+  let r;
+  r = new Roll(myRoll, myActor.getRollData());
+  await r.evaluate();
+
+  const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
+  const mySmartData = {
+    mymodifier: myData.mymodifier, 
+    numberofdice: myData.numberofdice,
+    speciality: myData.specialitylibel,
+  }
+
+  let mySmartRTemplate;
+
+  let oppositionText = " ≽ ?";
+  let myResult;
+  if (myData.mymodifier == 999) {
+    myResult = -999;
+  } else {
+    myResult = r.total;
+  }
+  const myTest = myData.test;
+  console.log("myTest = ", myTest);
+
+  if (myTest != "blindopposition") oppositionText = " ≽ " + myData.rolldifficulty;
+
+  if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.OppositionEnAveugle");
+  if (myTest == "knownopposition" &&  myResult > myData.rolldifficulty) {
+    oppositionText += game.i18n.localize("CEL1922.OppositionSurpassee");
+  } else if (myTest == "knownopposition" && myResult == myData.rolldifficulty && myData.skill != 6) {
+    oppositionText += game.i18n.localize("CEL1922.OppositionEgalite");
+  } else if (myTest == "knownopposition" && myResult == myData.rolldifficulty && myData.skill == 6) {
+    oppositionText += game.i18n.localize("CEL1922.PersonneNestBlesse");
+  } else if (myTest == "knownopposition" &&  myResult < myData.rolldifficulty) {
+    oppositionText += game.i18n.localize("CEL1922.OppositionInsurpassee");
+  };
+  if (myTest == "simpletest" &&  myResult >= myData.rolldifficulty) {
+    oppositionText += game.i18n.localize("CEL1922.SeuilAtteint");
+  } else if (myTest == "simpletest" &&  myResult < myData.rolldifficulty) {
+    oppositionText += game.i18n.localize("CEL1922.SeuilNon-atteint");
+  };
+
+  let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+  mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
+  let youWin = false;
+  let thereisEgality = false;
+  if (modifier == 999) {
+    youWin = true;
+  } else if (myResult >= parseInt(myData.rolldifficulty)) {
+      youWin = true;
+      if (myResult == parseInt(myData.rolldifficulty) && myData.skill == 6) {
+        thereisEgality = true;
+      };
+  };
+
+  console.log("game.user = ", game.user);
+  console.log("game.user.id = ", game.user.id);
+
+  myData.youwin = youWin;
+  myData.egality = thereisEgality;
+  myData.title = titleSmartR;
+
+  console.log("myData = ", myData);
+
+  await _showMessagesInChat (myActor, myData.typeofthrow, r, mySmartRTemplate, myData, mySmartTemplate, mySmartData, false);
+}
+
+
+async function _executeDialog(
+  myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
+  yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
+  dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
+  titleAttribute, dataAttribute, dataBonus, dataMalus, titleMoreBonusMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+  titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen
+) {
+
+  let myDialogData = {
+    typeofthrow: typeofthrow,
+    numberofdice: parseInt(numberofdice),
+    skill: skill,
+    bonus: parseInt(bonus),
+    rolldifficulty: parseInt(rolldifficulty),
+
+    youwin: youwin,
+
+    yourplayerid: yourplayerid,
+    youractorid: youractorid,
+    yourdamage: yourdamage,
+    yourprotection: yourprotection,
+
+    youropponent: youropponent,
+    youropponentid: youropponentid,
+    youropponentdamage: youropponentdamage,
+    youropponentprotection: youropponentprotection,
+
+    dataNbrDice: dataNbrDice,
+    titleDomain: titleDomain,
+    dataDomain: dataDomain,
+    titleSpeciality: titleSpeciality,
+    dataSpeciality: dataSpeciality,
+    titleAnomaly: titleAnomaly,
+    dataAnomaly: dataAnomaly,
+    titleAspect: titleAspect,
+    dataAspect: dataAspect,
+    titleAttribute: titleAttribute,
+    dataAttribute: dataAttribute,
+    dataBonus: dataBonus,
+    dataMalus: dataMalus,
+    titleMoreBonusMalus: titleMoreBonusMalus,
+    dataMoreBonusMalus: dataMoreBonusMalus,
+    titleArmor: titleArmor,
+    dataArmor: dataArmor,
+    titleWounds: titleWounds,
+    dataWounds: dataWounds,
+    titleDestiny: titleDestiny,
+    dataDestiny: dataDestiny,
+    titleSpleen: titleSpleen,
+    dataSpleen: dataSpleen
+  }
+
+  const templateData = foundry.utils.mergeObject(myDialogData, myDialogOptions);
+  const html = await renderTemplate(template, templateData);
+
+  // Create the Dialog window
+  let prompt = await new Promise((resolve) => {
+  new Dialog(
+    {
+      title: myTitle,
+      content: html,
+      buttons: {
+        validateBtn: {
+          icon: `<div class="tooltip"><i class="fas fa-check"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Validate')}</span></div>`,
+          callback: (html) => resolve( myDialogData = _computeResult(myActor, myDialogData, html) )
+        },
+        cancelBtn: {
+          icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
+          callback: (html) => resolve( null )
+        }
+      },
+      default: 'validateBtn',
+      close: () => resolve( null )
+    },
+    myDialogOptions
+    ).render(true, {
+      width: 415,
+      height: "auto"
+    });
+  });
+
+  if (prompt == null) {
+    myDialogData = null;
+  };
+
+  return myDialogData;
+
+  async function _computeResult(
+    myActor, myDialogData, myHtml
+  ) {
+    // console.log("J'exécute bien _computeResult()");
+
+    // console.log("J'exécute bien _computeResult()");
+
+    myDialogData.dataMoreBonusMalus = myHtml.find("select[name='dataMoreBonusMalus']").val();
+    return myDialogData;
+  };
+
+}
+
 
 
 /* -------------------------------------------- */
