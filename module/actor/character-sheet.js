@@ -373,6 +373,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       const choice =  parseInt(myHtml.find("select[name='choice']").val());
       // console.log("choice = ", choice);
       await myActor.update({ "system.prefs.lastarmorusedid": myHtml.find("select[name='armor']").val() });
+      await myActor.update({ "system.prefs.typeofthrow.choice": choice.toString() });
+
     }
   }
 
@@ -814,6 +816,15 @@ async _onClickMoonDieRoll(event) {
     let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
     let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
 
+
+    //////////////////////////////////////////////////////////////////
+    if (!(myData)) {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+      return;
+      };
+    //////////////////////////////////////////////////////////////////
+
+
     // console.log("myTypeOfThrow : ", myTypeOfThrow);
     myMoon = parseInt(myData.moon);
     myTypeOfThrow = parseInt(myData.choice);
@@ -902,7 +913,7 @@ async _onClickMoonDieRoll(event) {
                                                           // Fait le tirage sur la table
       const drawTable = moonRollTable.draw({roll: myRollOnTable, recursive: false, results: customResults, displayChat: true, rollMode : rollModeTable});
                                                           // Affiche le résultat du tirage dans le Tchat
-    } else {                                             // Tirage de Lune de Chance
+    } else {                                              // Tirage de Lune de Chance
       const customResults = await moonRollTableChance.roll({myRollOnTable});
       
       const drawTable = moonRollTableChance.draw({roll: myRollOnTable, recursive: false, results: customResults, displayChat: true, rollMode : rollModeTable});
@@ -1017,9 +1028,14 @@ async _onClickMoonDieRoll(event) {
         myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myData.myTypeOfThrow, myData.totalBoni
       );
 
-      if (myResultDialog === null) { // On a cliqué sur Annuler
+
+      //////////////////////////////////////////////////////////////////
+      if (!(myResultDialog)) {
+        ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
         return;
-      };
+        };
+      //////////////////////////////////////////////////////////////////
+
 
       myData.myNumberOfDice = parseInt(myResultDialog.numberofdice);
       myData.mySkill = parseInt(myResultDialog.skill);
@@ -1038,6 +1054,11 @@ async _onClickMoonDieRoll(event) {
       myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
       myData.totalBoni = parseInt(myResultDialog.totalscoresbonusmalus);
 
+      if (myData.myWounds === 8) {
+        ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
+        return;
+      }
+
       let mySkillData = await _getSkillValueData (myActor, myData.mySkill);
       myData.mySpecialityLibel = mySkillData.libel;
       myData.myValue = mySkillData.value;
@@ -1049,7 +1070,14 @@ async _onClickMoonDieRoll(event) {
     if (myPromptPresent  && myData.mySkill == 6) {
       var myTarget = await _whichTarget (myActor, myData.mySpecialityLibel);
 
-      if (myTarget == null) {return};
+
+      //////////////////////////////////////////////////////////////////
+      if (!(myTarget)) {
+        ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+        return;
+        };
+      //////////////////////////////////////////////////////////////////
+
 
       if (game.user.targets.size != 0) {
         for (let targetedtoken of game.user.targets) {
@@ -1077,6 +1105,15 @@ async _onClickMoonDieRoll(event) {
     if (myPromptPresent) {
       var myTestData = await _whichTypeOfTest (myActor, myOpposition, myData.myTypeOfThrow, myData.mySpecialityLibel);
 
+
+      //////////////////////////////////////////////////////////////////
+      if (!(myTestData)) {
+        ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+        return;
+        };
+      //////////////////////////////////////////////////////////////////
+
+
       myTest = myTestData.test;
       myOpposition = parseInt(myTestData.opposition);
       console.log('myOpposition = ', myOpposition);
@@ -1099,6 +1136,16 @@ async _onClickMoonDieRoll(event) {
 
     if (myPromptPresent && myData.mySkill == 6) {
       var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
+
+
+      //////////////////////////////////////////////////////////////////
+      if (!(myDamageData)) {
+        ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+        return;
+        };
+      //////////////////////////////////////////////////////////////////
+
+
       isInventory = myDamageData.isinventory;
       myData.myWeaponVal = parseInt(myDamageData.damage);
       mySelectedInventory = myDamageData.selectedinventory;
@@ -1516,7 +1563,7 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
             callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
           },
           cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
             callback: (html) => resolve(null)
           }
         },
@@ -1529,6 +1576,10 @@ async function _whichTypeOfDamage (myActor, opponentActor, myTypeOfThrow) {
       height: "auto"
     });
   });
+
+  if (prompt == null) {
+    dialogData = null;
+  };
 
   return dialogData;
 
@@ -1586,7 +1637,7 @@ async function _whichTypeOfTest (myActor, myOpposition, myTypeOfThrow, mySkill) 
             callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
           },
           cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
             callback: (html) => resolve(null)
           }
         },
@@ -1599,6 +1650,10 @@ async function _whichTypeOfTest (myActor, myOpposition, myTypeOfThrow, mySkill) 
       height: "auto"
     });
   });
+
+  if (prompt == null) {
+    dialogData = null;
+  };
 
   return dialogData;
 
@@ -1763,7 +1818,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
             callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
           },
           cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
             callback: (html) => resolve(null)
           }
         },
@@ -1776,6 +1831,10 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
       height: "auto"
     });
   });
+
+  if (prompt == null) {
+    dialogData = null;
+  };
 
   return dialogData;
 

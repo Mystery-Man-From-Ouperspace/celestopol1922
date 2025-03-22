@@ -341,6 +341,9 @@
 
   "CEL1922.Error999": "Opération avortée : un item sélectionné dans le prompt a été supprimé dans l’entre-temps !",
 
+  "CEL1922.Error111": "Jet ou opération annulé par l′utilisateur",
+
+
   "CEL1922.YoureOutOfGame": "Attention ! Vous êtes Hors-fiction !",
   "CEL1922.ErrYoureOutOfGame": "Action impossible ! Vous êtes Hors-fiction !",
 

@@ -531,6 +531,17 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
   let myMoon = 0;
   let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
   let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
+
+
+  //////////////////////////////////////////////////////////////////
+  if (!(myData)) {
+    ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+    return;
+    };
+  //////////////////////////////////////////////////////////////////
+
+
+
   myMoon = parseInt(myData.moon);
   myTypeOfThrow = parseInt(myData.choice);
   let myRoll;
@@ -737,7 +748,7 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
                                                           // Fait le tirage sur la table
       const drawTable = moonRollTable.draw({roll: myRollOnTable, recursive: false, results: customResults, displayChat: true, rollMode : rollModeTable});
                                                           // Affiche le résultat du tirage dans le Tchat
-    } else {                                             // Tirage de Lune de Chance
+    } else {                                              // Tirage de Lune de Chance
       const customResults = await moonRollTableChance.roll({myRollOnTable});
       
       const drawTable = moonRollTableChance.draw({roll: myRollOnTable, recursive: false, results: customResults, displayChat: true, rollMode : rollModeTable});
@@ -829,6 +840,16 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
 
     } else {
       let myData = await _whichMoonTypeOfThrow(myActor, myMoon, myTypeOfThrow);
+
+
+      //////////////////////////////////////////////////////////////////
+      if (!(myData)) {
+        ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+        return;
+        };
+      //////////////////////////////////////////////////////////////////
+
+
       myMoon = myData.moon;
       myTypeOfThrow = myData.choice;
     };
@@ -1151,7 +1172,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
             callback: (html) => resolve( dialogData = _computeResult(myActor, html) )
           },
           cancelBtn: {
-            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.CancelChanges')}</span></div>`,
+            icon: `<div class="tooltip"><i class="fas fa-cancel"></i>&nbsp;<span class="tooltiptextleft">${game.i18n.localize('CEL1922.Cancel')}</span></div>`,
             callback: (html) => resolve(null)
           }
         },
@@ -1164,6 +1185,10 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
       height: "auto"
     });
   });
+
+  if (prompt == null) {
+    dialogData = null;
+  };
 
   return dialogData;
 
