@@ -492,11 +492,87 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const youropponentid = html[0].querySelector("div[class='youropponentid']").textContent;
     const youropponentdamage = html[0].querySelector("div[class='youropponentdamage']").textContent;
     const youropponentprotection = html[0].querySelector("div[class='youropponentprotection']").textContent;
+    
+    const dataNbrDice = html[0].querySelector("td[class='dataNbrDice']").textContent;
+    const titleDomain = html[0].querySelector("th[class='titleDomain']").textContent;
+    const dataDomain = html[0].querySelector("td[class='dataDomain']").textContent;
+    const titleSpeciality = html[0].querySelector("th[class='titleSpeciality']").textContent;
+    const dataSpeciality = html[0].querySelector("td[class='dataSpeciality']").textContent;
+    const titleAnomaly = html[0].querySelector("th[class='titleAnomaly']").textContent;
+    const dataAnomaly = html[0].querySelector("td[class='dataAnomaly']").textContent;
+    const titleAspect = html[0].querySelector("th[class='titleAspect']").textContent;
+    const dataAspect = html[0].querySelector("td[class='dataAspect']").textContent;
+    const titleAttribute = html[0].querySelector("th[class='titleAttribute']").textContent;
+    const dataAttribute = html[0].querySelector("td[class='dataAttribute']").textContent;
+    const dataBonus = html[0].querySelector("td[class='dataBonus']").textContent;
+    const dataMalus = html[0].querySelector("td[class='dataMalus']").textContent;
+    const dataMoreBonusMalus = html[0].querySelector("td[class='dataMoreBonusMalus']").textContent;
+    const titleArmor = html[0].querySelector("th[class='titleArmor']").textContent;
+    const dataArmor = html[0].querySelector("td[class='dataArmor']").textContent;
+    const titleWounds = html[0].querySelector("th[class='titleWounds']").textContent;
+    const dataWounds = html[0].querySelector("td[class='dataWounds']").textContent;
+    const titleDestiny = html[0].querySelector("th[class='titleDestiny']").textContent;
+    const dataDestiny = html[0].querySelector("td[class='dataDestiny']").textContent;
+    const titleSpleen = html[0].querySelector("th[class='titleSpleen']").textContent;
+    const dataSpleen = html[0].querySelector("td[class='dataSpleen']").textContent;
 
     const myUser = game.user;
     console.log("game.user.id = ", game.user.id);
     console.log("yourplayerid = ", yourplayerid);
-    if (!(game.user.id == yourplayerid)) {console.log("TADAM !") ;return;}; // Pas le bon utilisateur !
+    if (!(game.user.id == yourplayerid)) {console.log("TADAM ! Pas le bon utilisateur !") ;return;}; // Pas le bon utilisateur !
+
+
+    /*
+    mySmartRData = {
+      typeofthrow: myData.myTypeOfThrow,
+      numberofdice: myData.myNumberOfDice,
+      skill: myData.mySkill,
+      bonus: myData.totalBoni,
+      rolldifficulty: parseInt(myOpposition),
+
+      youwin: youWin,
+      egality: thereisEgality,
+
+      yourplayerid: myData.myUserID,
+      youractorid: myData.myActorID,
+      yourdamage: myData.myWeaponVal,
+      yourprotection: myData.myArmorVal,
+
+      youropponent: myData.opponentName,
+      youropponentid: myData.opponentID,
+      youropponentdamage: myData.weaponOpponentVal,
+      youropponentprotection: myData.armorOpponentVal,
+
+      mymodifier: myModifier, 
+      title: titleSmartR,
+      dataNbrDice: myData.myNumberOfDice,
+      titleDomain: "",
+      dataDomain: "",
+      titleSpeciality: "",
+      dataSpeciality: "",
+      titleAnomaly: "",
+      dataAnomaly: NaN,
+      titleAspect: "",
+      dataAspect: NaN,
+      titleAttribute: "",
+      dataAttribute: NaN,
+      dataBonus: myData.myBonus,
+      dataMalus: myData.myMalus,
+      titleMoreBonusMalus: "Bonus/Malus supplémentaire (re-tirage)",
+      dataMoreBonusMalus: 0,
+      titleArmor: "",
+      dataArmor: NaN,
+      titleWounds: "",
+      dataWounds: NaN,
+      titleDestiny: "",
+      dataDestiny: NaN,
+      titleSpleen: "",
+      dataSpleen: NaN,
+      numSpeciality: myData.mySkill
+    }
+    */
+
+
 
 
 

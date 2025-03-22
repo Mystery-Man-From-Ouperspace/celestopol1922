@@ -43,97 +43,105 @@
                 <table>
                     <tr>
                         <th>
-                            {{ titleNbrDice }}
+                            {{ localize "CEL1922.numberofdice" }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataNbrDice" style="text-align: center;">
                             {{ dataNbrDice }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleDomain">
                             {{ titleDomain }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataDomain" style="text-align: center;">
                             {{ dataDomain }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleSpeciality">
                             {{ titleSpeciality }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataSpeciality" style="text-align: center;">
                             {{ dataSpeciality }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleAnomaly">
                             {{ titleAnomaly }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataAnomaly" style="text-align: center;">
                             {{ dataAnomaly }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleAspect">
                             {{ titleAspect }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataAspect" style="text-align: center;">
                             {{ dataAspect }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleAttribute">
                             {{ titleAttribute }}
                         </th>
-                        <td style="text-align: center;">
-                            {{ dataSpeciality }}
+                        <td class="dataAttribute" style="text-align: center;">
+                            {{ dataAttribute }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ titleBonus }}
+                            {{ localize "CEL1922.bonus" }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataBonus" style="text-align: center;">
                             {{ dataBonus }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ titleMalus }}
+                            {{ localize "CEL1922.malus" }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataMalus" style="text-align: center;">
                             {{ dataMalus }}
                         </td>
                     </tr>
                     <tr>
                         <th>
+                            {{ titleMoreBonusMalus }}
+                        </th>
+                        <td class="dataMoreBonusMalus" style="text-align: center;">
+                            {{ dataMoreBonusMalus }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="titleArmor">
                             {{ titleArmor }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataArmor" style="text-align: center;">
                             {{ dataArmor }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleWounds">
                             {{ titleWounds }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataWounds" style="text-align: center;">
                             {{ dataWounds }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleDestiny">
                             {{ titleDestiny }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataDestiny" style="text-align: center;">
                             {{ dataDestiny }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th class="titleSpleen">
                             {{ titleSpleen }}
                         </th>
-                        <td style="text-align: center;">
+                        <td class="dataSpleen" style="text-align: center;">
                             {{ dataSpleen }}
                         </td>
                     </tr>
@@ -142,6 +150,7 @@
             </details>
             {{/if}}
             <br>
+
             <div class="green-buttons">
                 {{#if (eq mymodifier 999)}}
                 {{else}}

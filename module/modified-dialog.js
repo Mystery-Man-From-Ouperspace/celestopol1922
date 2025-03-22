@@ -251,7 +251,10 @@ export class ModifiedDialog extends Dialog {
     jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
     totalscoresbonusmalus += jaugespleen_score;
   
-  
+    if (totalscoresbonusmalus < -99) {
+      totalscoresbonusmalus = NaN;
+    };
+
     this.element.find('td[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
   
   

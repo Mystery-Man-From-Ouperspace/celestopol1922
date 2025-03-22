@@ -461,6 +461,14 @@
 
   "CEL1922.woundsapplyed": "Niveaux de blessure appliqués à l’Acteur (fiche de base)",
 
+  "CEL1922.SecondChance": "Seconde chance",
+  "CEL1922.SecondChanceNoMalus": "Seconde chance sans aucun Malus",
+  "CEL1922.SecondChanceMalusOne": "Seconde chance sans  Malus -1",
+  "CEL1922.SecondChanceMalusTwo": "Seconde chance sans  Malus -2",
+  "CEL1922.SecondChanceMalusThree": "Seconde chance sans  Malus -3",
+  "CEL1922.SecondChanceMalusFour": "Seconde chance sans  Malus -4",
+  "CEL1922.SecondChanceMalusFive": "Seconde chance sans  Malus -5",
+
   "TYPES": {
     "Actor": {
       "character": "Personnage",
