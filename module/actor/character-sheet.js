@@ -966,6 +966,7 @@ async _onClickMoonDieRoll(event) {
       // };
     };
 
+
     let myData = {
       myUserID: game.user.id,
       myActorID: myActor.id,
@@ -1039,11 +1040,11 @@ async _onClickMoonDieRoll(event) {
 
       myData.myNumberOfDice = parseInt(myResultDialog.numberofdice);
       myData.mySkill = parseInt(myResultDialog.skill);
-      myData.myAnomaly = parseInt(myResultDialog.anomaly);
+      myData.myAnomaly = myResultDialog.anomaly;
       myData.myBonusAnomaly = parseInt(myResultDialog.bonusanomaly);
-      myData.myAspect = parseInt(myResultDialog.aspect);
+      myData.myAspect = myResultDialog.aspect;
       myData.myBonusAspect = parseInt(myResultDialog.bonusaspect);
-      myData.myAttribute = parseInt(myResultDialog.attribute);
+      myData.myAttribute = myResultDialog.attribute;
       myData.myBonusAttribute = parseInt(myResultDialog.bonusattribute);
       myData.myBonus = parseInt(myResultDialog.bonus);
       myData.myMalus = parseInt(myResultDialog.malus);
@@ -1309,6 +1310,86 @@ async _onClickMoonDieRoll(event) {
       console.log("game.user = ", game.user);
       console.log("game.user.id = ", game.user.id);
 
+
+      const mySkill = parseInt(myData.mySkill);
+      let dataMySkill =  await _getSkillValueData (myActor, mySkill);
+
+
+
+
+      
+
+      const menuSkill = myActor.system.skill.skilltypes;
+      const menuJaugeWounds = myActor.system.skill.woundstypes;
+      const menuJaugeDestiny = myActor.system.skill.destinytypes;
+      const menuJaugeSpleen = myActor.system.skill.spleentypes;
+
+      // console.log("menuSkill", menuSkill);
+
+      const sizeMenuSkill = menuSkill.length;
+      const sizeMenuJaugeWounds = menuJaugeWounds.length;
+      const sizeMenuJaugeDestiny = menuJaugeDestiny.length;
+      const sizeMenuJaugeSpleen = menuJaugeSpleen.length;
+
+/*
+      for (let i=0; i<sizeMenuJaugeWounds; i++) {
+        i =  
+        myJauge_Wounds[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeWounds[i]));
+      };
+
+      for (let i=0; i<sizeMenuJaugeDestiny; i++) {
+        myJauge_Destiny[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeDestiny[i]));
+      };
+
+      for (let i=0; i<sizeMenuJaugeSpleen; i++) {
+        myJauge_Spleen[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeSpleen[i]));
+      };
+*/
+
+      let titleAnomaly = game.i18n.localize("CEL1922.opt.none");
+      let dataAnomaly = 0;
+      for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
+        if (myData.myAnomaly == anomaly.id) {
+          titleAnomaly = anomaly.name.toString();
+          dataAnomaly = parseInt(anomaly.system.value);
+        };
+      };
+
+      let titleAspect = game.i18n.localize("CEL1922.opt.none");
+      let dataAspect = 0;
+      for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
+        if (myData.myAspect == aspect.id) {
+          titleAspect = aspect.name.toString();
+          dataAspect = parseInt(aspect.system.value);
+        };
+      };
+
+      let titleAttribute = game.i18n.localize("CEL1922.opt.none");
+      let dataAttribute = 0;
+      for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
+        if (myData.myAttribute == attribute.id) {
+          titleAttribute = attribute.name.toString();
+          dataAttribute = parseInt(attribute.system.value);
+        };
+      };
+
+      /*
+      compt = 0;
+      myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+      for (let item of myActor.items.filter(item => item.type === 'item')) {
+        if (item.system.subtype == "armor") {
+          myArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+        };
+      };
+      */
+
+
+
+
+
+
+
+
       mySmartRData = {
         title: titleSmartR,
 
@@ -1339,16 +1420,16 @@ async _onClickMoonDieRoll(event) {
         youropponentprotection: myData.armorOpponentVal,
 
         dataNbrDice: myData.myNumberOfDice,
-        titleDomain: "Quel Domaine ?",
-        dataDomain: "",
-        titleSpeciality: "Quelle Spécialité ?",
-        dataSpeciality: "",
-        titleAnomaly: "Quelle Anomalie ?",
-        dataAnomaly: NaN,
-        titleAspect: "Quel Aspect ?",
-        dataAspect: NaN,
-        titleAttribute: "Quel Attribut ?",
-        dataAttribute: NaN,
+        titleDomain: dataMySkill.domainLibel,
+        dataDomain: NaN,
+        titleSpeciality: dataMySkill.libel,
+        dataSpeciality: parseInt(dataMySkill.value),
+        titleAnomaly: titleAnomaly,
+        dataAnomaly: dataAnomaly,
+        titleAspect: titleAspect,
+        dataAspect: dataAspect,
+        titleAttribute: titleAttribute,
+        dataAttribute: dataAttribute,
         dataBonus: myData.myBonus,
         dataMalus: myData.myMalus,
         dataMoreBonusMalus: 0,
@@ -1692,14 +1773,16 @@ async function _whichTypeOfTest (myActor, myOpposition, myTypeOfThrow, mySkill) 
 async function _getSkillValueData (myActor, mySkillNbr) {
 
   const mySkill = parseInt(mySkillNbr);
+  const cinq = parseInt(5);
   let myStringVal;
   let myStringRES;
 
-  let specialityLibel = await game.i18n.localize(myActor.system.skill.skilltypes[mySkillNbr]);
-  let specialityTab = specialityLibel.split(' ');
+  let domainLibel = await game.i18n.localize(myActor.system.skill.skilltypes[Math.trunc(mySkill / cinq) * cinq]);
+  let specialityLibel = await game.i18n.localize(myActor.system.skill.skilltypes[mySkill]);
+  let specialityTab = await specialityLibel.split(' ');
   if (specialityTab[0] == "⌞") {
-    specialityLibel = specialityLibel.substring(2);
-  }
+    specialityLibel = await specialityLibel.substring(2);
+  };
 
   switch (mySkill) {
     case 0:
@@ -1793,6 +1876,7 @@ async function _getSkillValueData (myActor, mySkillNbr) {
   if (myStringRES == null) myRESValue = 0;
 
   let myData = {
+    domainLibel: domainLibel,
     libel: specialityLibel,
     value: myValue,
     rESvalue: myRESValue
