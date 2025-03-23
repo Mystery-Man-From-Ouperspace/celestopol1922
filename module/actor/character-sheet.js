@@ -1005,7 +1005,7 @@ async _onClickMoonDieRoll(event) {
     }
 
 
-    myData.myWoundsMalus = parseInt(await myActor.system.skill.woundsmalus[myData.myWounds]);
+    myData.myWoundsMalus = parseInt(await myActor.system.skill.woundsmalus[parseInt(myData.myWounds)]);
     if (parseInt(myData.myWounds) === 8) {
       ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
       return;
@@ -1048,14 +1048,14 @@ async _onClickMoonDieRoll(event) {
       myData.myBonusAttribute = parseInt(myResultDialog.bonusattribute);
       myData.myBonus = parseInt(myResultDialog.bonus);
       myData.myMalus = parseInt(myResultDialog.malus);
-      myData.myWounds = parseInt(myResultDialog.jaugewounds);
-      myData.myDestiny = parseInt(myResultDialog.jaugedestiny);
-      myData.mySpleen = parseInt(myResultDialog.jaugespleen);
-      myData.myArmorEncumbrance = parseInt(myResultDialog.armor);
+      myData.myWounds = myResultDialog.jaugewounds;
+      myData.myDestiny = myResultDialog.jaugedestiny;
+      myData.mySpleen = myResultDialog.jaugespleen;
+      myData.myArmorEncumbrance = myResultDialog.armor;
       myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
       myData.totalBoni = parseInt(myResultDialog.totalscoresbonusmalus);
 
-      if (myData.myWounds === 8) {
+      if (parseInt(myData.myWounds) === 8) {
         ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
         return;
       }
@@ -1314,37 +1314,22 @@ async _onClickMoonDieRoll(event) {
       const mySkill = parseInt(myData.mySkill);
       let dataMySkill =  await _getSkillValueData (myActor, mySkill);
 
+      const libelJaugeWounds = myActor.system.skill.woundstypes;
+      const malusJaugeWounds = myActor.system.skill.woundsmalus;
+      const libelJaugeDestiny = myActor.system.skill.destinytypes;
+      // const malusJaugeDestiny = myActor.system.skill.destinymalus;
+      const libelJaugeSpleen = myActor.system.skill.spleentypes;
+      // const malusJaugeSpleen = myActor.system.skill.spleenmalus;
 
 
+      let dataWounds = malusJaugeWounds[parseInt(myData.myWounds)];
+      let titleWounds = game.i18n.localize(libelJaugeWounds[parseInt(myData.myWounds)]);
 
-      
+      let dataSpleen = game.i18n.localize("CEL1922.opt.none");
+      let titleSpleen = game.i18n.localize(libelJaugeSpleen[parseInt(myData.mySpleen)]);
 
-      const menuSkill = myActor.system.skill.skilltypes;
-      const menuJaugeWounds = myActor.system.skill.woundstypes;
-      const menuJaugeDestiny = myActor.system.skill.destinytypes;
-      const menuJaugeSpleen = myActor.system.skill.spleentypes;
-
-      // console.log("menuSkill", menuSkill);
-
-      const sizeMenuSkill = menuSkill.length;
-      const sizeMenuJaugeWounds = menuJaugeWounds.length;
-      const sizeMenuJaugeDestiny = menuJaugeDestiny.length;
-      const sizeMenuJaugeSpleen = menuJaugeSpleen.length;
-
-/*
-      for (let i=0; i<sizeMenuJaugeWounds; i++) {
-        i =  
-        myJauge_Wounds[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeWounds[i]));
-      };
-
-      for (let i=0; i<sizeMenuJaugeDestiny; i++) {
-        myJauge_Destiny[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeDestiny[i]));
-      };
-
-      for (let i=0; i<sizeMenuJaugeSpleen; i++) {
-        myJauge_Spleen[i.toString()] = new myObject(i.toString(), game.i18n.localize(menuJaugeSpleen[i]));
-      };
-*/
+      let dataDestiny = game.i18n.localize("CEL1922.opt.none");
+      let titleDestiny = game.i18n.localize(libelJaugeDestiny[parseInt(myData.myDestiny)]);
 
       let titleAnomaly = game.i18n.localize("CEL1922.opt.none");
       let dataAnomaly = 0;
@@ -1352,6 +1337,9 @@ async _onClickMoonDieRoll(event) {
         if (myData.myAnomaly == anomaly.id) {
           titleAnomaly = anomaly.name.toString();
           dataAnomaly = parseInt(anomaly.system.value);
+          if (myData.myBonusAnomaly) {
+            dataAnomaly *= -1;
+          }
         };
       };
 
@@ -1361,6 +1349,9 @@ async _onClickMoonDieRoll(event) {
         if (myData.myAspect == aspect.id) {
           titleAspect = aspect.name.toString();
           dataAspect = parseInt(aspect.system.value);
+          if (myData.myBonusAspect) {
+            dataAspect *= -1;
+          }
         };
       };
 
@@ -1370,25 +1361,24 @@ async _onClickMoonDieRoll(event) {
         if (myData.myAttribute == attribute.id) {
           titleAttribute = attribute.name.toString();
           dataAttribute = parseInt(attribute.system.value);
+          if (myData.myBonusAttribute) {
+            dataAttribute *= -1;
+          }
         };
       };
 
-      /*
-      compt = 0;
-      myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-      for (let item of myActor.items.filter(item => item.type === 'item')) {
-        if (item.system.subtype == "armor") {
-          myArmor[item.id.toString()] = new myObject(item.id.toString(), item.name.toString()+" ["+item.system.protection.toString()+"]");
+      let titleArmor = game.i18n.localize("CEL1922.opt.none");
+      let dataArmor = 0;
+      for (let armor of myActor.items.filter(item => item.type === 'item')) {
+        if (myData.myArmorEncumbrance == armor.id) {
+          titleArmor = armor.name.toString();
+          dataArmor = parseInt(armor.system.protection);
+          dataArmor *= -1;
         };
       };
-      */
-
-
-
-
-
-
-
+      
+      
+      const numberofdice = (myData.myNumberOfDice).toString()+"d8";
 
       mySmartRData = {
         title: titleSmartR,
@@ -1419,9 +1409,9 @@ async _onClickMoonDieRoll(event) {
         youropponentdamage: myData.weaponOpponentVal,
         youropponentprotection: myData.armorOpponentVal,
 
-        dataNbrDice: myData.myNumberOfDice,
+        dataNbrDice: numberofdice,
         titleDomain: dataMySkill.domainLibel,
-        dataDomain: NaN,
+        dataDomain: dataMySkill.rESvalue,
         titleSpeciality: dataMySkill.libel,
         dataSpeciality: parseInt(dataMySkill.value),
         titleAnomaly: titleAnomaly,
@@ -1433,14 +1423,14 @@ async _onClickMoonDieRoll(event) {
         dataBonus: myData.myBonus,
         dataMalus: myData.myMalus,
         dataMoreBonusMalus: 0,
-        titleArmor: "Quel type d'armure ?",
-        dataArmor: NaN,
-        titleWounds: "Quelle jauge de Blessures ?",
-        dataWounds: NaN,
-        titleDestiny: "Quelle jauge de Destin ?",
-        dataDestiny: NaN,
-        titleSpleen: "Quelle jauge de Spleen ?",
-        dataSpleen: NaN,
+        titleArmor: titleArmor,
+        dataArmor: dataArmor,
+        titleWounds: titleWounds,
+        dataWounds: dataWounds,
+        titleDestiny: titleDestiny,
+        dataDestiny: dataDestiny,
+        titleSpleen: titleSpleen,
+        dataSpleen: dataSpleen,
 
         numSpeciality: myData.mySkill
 
@@ -2082,7 +2072,7 @@ async function _skillDiceRollDialog(
     totalscoresbonusmalus += -(armor_score);
 
     let jaugewounds_score = 0;
-    jaugewounds_score = await _getJaugeWoundsValueData (myActor, myDialogData.jaugewounds);
+    jaugewounds_score = parseInt(await _getJaugeWoundsValueData (myActor, myDialogData.jaugewounds));
     totalscoresbonusmalus += jaugewounds_score;
     let jaugedestiny_score = 0;
     jaugedestiny_score = await _getJaugeDestinyValueData (myActor, myDialogData.jaugedestiny);
@@ -2366,7 +2356,7 @@ async function _skillDiceRollDialog(
   async function _getJaugeWoundsValueData (myActor, myjaugeWounds) {
     let myjaugeWoundsVal = 0;
 
-    myjaugeWoundsVal = parseInt(await myActor.system.skill.woundsmalus[myjaugeWounds]);
+    myjaugeWoundsVal = parseInt(await myActor.system.skill.woundsmalus[parseInt(myjaugeWounds)]);
 
     return myjaugeWoundsVal;
   }
