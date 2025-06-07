@@ -709,6 +709,15 @@ h1, h2, h3, h4, h5, h6 {
   left: calc(50% - 96px);
 }
 
+a.compendium-name,
+a.entry-name,
+strong.ellipsis {
+  color: orange;
+  font-family: "Copasetic";
+  text-transform: uppercase;
+}
+
+
 
 /* concerne les préférences */
 
