@@ -460,6 +460,58 @@ text-align: left;
   max-height: 900px;
 }
 
+.celestopol1922.sheet.character table tr th.moon-space,
+.celestopol1922.sheet.character table tr td.moon-space {
+  width: 70px;
+  text-align: left;
+}
+
+.celestopol1922.sheet.character table tr th p {
+  float: left;
+}
+
+.celestopol1922.sheet.character table tr th img {
+  float: left;
+}
+
+.celestopol1922.sheet.character table tr th input {
+  float: left;
+}
+
+
+.celestopol1922.sheet.character table tr td.left {
+  /* flex-direction: column; */
+  text-align: left;
+  width: 160px;
+  /* margin-left: auto; */
+ /*  margin-right: auto; */
+  /* float: none; */
+}
+
+
+.celestopol1922.sheet.character table tr td.left div.left {
+  display: table;
+  /* justify-content: center; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
+  /* float: none; */
+}
+
+.celestopol1922.sheet.character table tr td.left div.left p {
+  float: none;
+  clear: both;
+}
+
+
+.celestopol1922.sheet.character table tr td.left div.left img.left {
+  float: left;
+}
+
+.celestopol1922.sheet.character table tr td.left div.left input.left {
+  float: left;
+}
+
 .celestopol1922.sheet.item,
 .celestopol1922.sheet.anomaly,
 .celestopol1922.sheet.aspect {

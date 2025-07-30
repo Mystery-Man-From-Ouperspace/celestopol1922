@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <th>
+    <th class="moon-space">
       <img
       style="width: 27px"
       class="moon-click"
@@ -11,7 +11,7 @@
       >
     </th>
      <th class="AME">
-      {{ localize "CEL1922.AME" }}
+      <p>{{ localize "CEL1922.AME" }}</p>
       <img
       style="width: 27px"
       class="click"
@@ -20,11 +20,11 @@
       title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.ame' }}"
       alt="Die"
       >
-      {{ localize "CEL1922.RES" }}
+      <p>{{ localize "CEL1922.RES" }}</p>
       <input type="number" name="system.skill.ame.res" value="{{systemData.skill.ame.res}}" placeholder="0" />
     </th>
     <th class="CORPS">
-      {{ localize "CEL1922.CORPS" }}
+      <p>{{ localize "CEL1922.CORPS" }}</p>
       <img
       style="width: 27px"
       class="click"
@@ -33,11 +33,11 @@
       title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.corps' }}"
       alt="Die"
       >
-      {{ localize "CEL1922.RES" }}
+      <p>{{ localize "CEL1922.RES" }}</p>
       <input type="number" name="system.skill.corps.res" value="{{systemData.skill.corps.res}}" placeholder="0" />
     </th>
     <th class="COEUR">
-      {{ localize "CEL1922.COEUR" }}
+      <p>{{ localize "CEL1922.COEUR" }}</p>
       <img
       style="width: 27px"
       class="click"
@@ -46,11 +46,11 @@
       title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.coeur' }}"
       alt="Die"
       >
-      {{ localize "CEL1922.RES" }}
+      <p>{{ localize "CEL1922.RES" }}</p>
       <input type="number" name="system.skill.coeur.res" value="{{systemData.skill.coeur.res}}" placeholder="0" />
     </th>
     <th class="ESPRIT">
-      {{ localize "CEL1922.ESPRIT" }}
+      <p>{{ localize "CEL1922.ESPRIT" }}</p>
       <img
       style="width: 27px"
       class="click"
@@ -59,220 +59,252 @@
       title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.esprit' }}"
       alt="Die"
       >
-      {{ localize "CEL1922.RES" }}
+      <p>{{ localize "CEL1922.RES" }}</p>
       <input type="number" name="system.skill.esprit.res" value="{{systemData.skill.esprit.res}}" placeholder="0" />
     </th>
   </tr>
   <tr>
-    <td>
+    <td class="moon-space">
       ●
     </td>
-    <td class="attraction">
-      <p>{{ localize "CEL1922.Attraction" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="attraction-AME-1"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Attraction' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.ame.attraction.value" value="{{systemData.skill.ame.attraction.value}}" placeholder="-" />
+    <td class="attraction left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Attraction" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="attraction-AME-1"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Attraction' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.ame.attraction.value" value="{{systemData.skill.ame.attraction.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="echauffouree">
-      <p>{{ localize "CEL1922.Echauffouree" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="echauffouree-CORPS-6"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Echauffouree' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.corps.echauffouree.value" value="{{systemData.skill.corps.echauffouree.value}}" placeholder="-" />
+    <td class="echauffouree left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Echauffouree" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="echauffouree-CORPS-6"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Echauffouree' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.corps.echauffouree.value" value="{{systemData.skill.corps.echauffouree.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="appreciation">
-      <p>{{ localize "CEL1922.Appreciation" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="appreciation-COEUR-11"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Appreciation' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.coeur.appreciation.value" value="{{systemData.skill.coeur.appreciation.value}}" placeholder="-" />
+    <td class="appreciation left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Appreciation" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="appreciation-COEUR-11"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Appreciation' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.coeur.appreciation.value" value="{{systemData.skill.coeur.appreciation.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="traque">
-      <p>{{ localize "CEL1922.Instruction" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="traque-ESPRIT-16"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Instruction' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.esprit.instruction.value" value="{{systemData.skill.esprit.instruction.value}}" placeholder="-" />
+    <td class="traque left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Instruction" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="traque-ESPRIT-16"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Instruction' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.esprit.instruction.value" value="{{systemData.skill.esprit.instruction.value}}" placeholder="-" />
+      </div>
     </td>
   </tr>
   <tr>
-    <td>
+    <td class="moon-space">
       ●
     </td>
-    <td class="artifice">
-      <p>{{ localize "CEL1922.Artifice" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="artifice-AME-2"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Artifice' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.ame.artifice.value" value="{{systemData.skill.ame.artifice.value}}" placeholder="-" />
+    <td class="artifice left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Artifice" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="artifice-AME-2"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Artifice' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.ame.artifice.value" value="{{systemData.skill.ame.artifice.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="effacement">
-      <p>{{ localize "CEL1922.Effacement" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="effacement-CORPS-7"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Effacement' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.corps.effacement.value" value="{{systemData.skill.corps.effacement.value}}" placeholder="-" />
+    <td class="effacement left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Effacement" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="effacement-CORPS-7"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Effacement' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.corps.effacement.value" value="{{systemData.skill.corps.effacement.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="arts">
-      <p>{{ localize "CEL1922.Arts" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="arts-COEUR-12"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Arts' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.coeur.arts.value" value="{{systemData.skill.coeur.arts.value}}" placeholder="-" />
+    <td class="arts left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Arts" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="arts-COEUR-12"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Arts' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.coeur.arts.value" value="{{systemData.skill.coeur.arts.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="mtechnologique">
-      <p>{{ localize "CEL1922.Merveilleux technologique" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="mtechnologique-ESPRIT-17"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Merveilleux technologique' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.esprit.mtechnologique.value" value="{{systemData.skill.esprit.mtechnologique.value}}" placeholder="-" />
+    <td class="mtechnologique left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Merveilleux technologique" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="mtechnologique-ESPRIT-17"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Merveilleux technologique' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.esprit.mtechnologique.value" value="{{systemData.skill.esprit.mtechnologique.value}}" placeholder="-" />
+      </div>
     </td>
   </tr>
   <tr>
-    <td>
+    <td class="moon-space">
       ●
     </td>
-    <td class="coercition">
-      <p>{{ localize "CEL1922.Coercition" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="coercition-AME-3"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Coercition' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.ame.coercition.value" value="{{systemData.skill.ame.coercition.value}}" placeholder="-" />
+    <td class="coercition left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Coercition" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="coercition-AME-3"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Coercition' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.ame.coercition.value" value="{{systemData.skill.ame.coercition.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="prouesse">
-      <p>{{ localize "CEL1922.Prouesse" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="prouesse-CORPS-8"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Prouesse' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.corps.prouesse.value" value="{{systemData.skill.corps.prouesse.value}}" placeholder="-" />
+    <td class="prouesse left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Prouesse" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="prouesse-CORPS-8"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Prouesse' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.corps.prouesse.value" value="{{systemData.skill.corps.prouesse.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="inspiration">
-      <p>{{ localize "CEL1922.Inspiration" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="inspiration-COEUR-13"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Inspiration' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.coeur.inspiration.value" value="{{systemData.skill.coeur.inspiration.value}}" placeholder="-" />
+    <td class="inspiration left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Inspiration" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="inspiration-COEUR-13"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Inspiration' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.coeur.inspiration.value" value="{{systemData.skill.coeur.inspiration.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="raisonnement">
-      <p>{{ localize "CEL1922.Raisonnement" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="raisonnement-ESPRIT-18"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Raisonnement' }}"
-      alt="Die"
+    <td class="raisonnement left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Raisonnement" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="raisonnement-ESPRIT-18"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Raisonnement' }}"
+        alt="Die"
       >
-      <input type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" />
+      <input class="left" type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" />
+      </div>
     </td>
   </tr>
   <tr>
-    <td>
+    <td class="moon-space">
       ●
     </td>
-    <td class="faveur">
-      <p>{{ localize "CEL1922.Faveur" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="faveur-AME-4"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Faveur' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.ame.faveur.value" value="{{systemData.skill.ame.faveur.value}}" placeholder="-" />
+    <td class="faveur left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Faveur" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="faveur-AME-4"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Faveur' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.ame.faveur.value" value="{{systemData.skill.ame.faveur.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="mobilite">
-      <p>{{ localize "CEL1922.Mobilite" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="mobilite-CORPS-9"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Mobilite' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.corps.mobilite.value" value="{{systemData.skill.corps.mobilite.value}}" placeholder="-" />
+    <td class="mobilite left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Mobilite" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="mobilite-CORPS-9"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Mobilite' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.corps.mobilite.value" value="{{systemData.skill.corps.mobilite.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="traque">
-      <p>{{ localize "CEL1922.Traque" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="traque-COEUR-14"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traque' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.coeur.traque.value" value="{{systemData.skill.coeur.traque.value}}" placeholder="-" />
+    <td class="traque left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Traque" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="traque-COEUR-14"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traque' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.coeur.traque.value" value="{{systemData.skill.coeur.traque.value}}" placeholder="-" />
+      </div>
     </td>
-    <td class="traitement">
-      <p>{{ localize "CEL1922.Traitement" }}</p>
-      <img
-      style="width: 27px"
-      class="click"
-      data-libel-id="traitement-ESPRIT-19"
-      src="systems/celestopol1922/images/ui/d8_fond_transp.png"
-      title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traitement' }}"
-      alt="Die"
-      >
-      <input type="number" name="system.skill.esprit.traitement.value" value="{{systemData.skill.esprit.traitement.value}}" placeholder="-" />
+    <td class="traitement left">
+      <div class="left">
+        <p>{{ localize "CEL1922.Traitement" }}</p>
+        <img
+        style="width: 27px"
+        class="click left"
+        data-libel-id="traitement-ESPRIT-19"
+        src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+        title="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traitement' }}"
+        alt="Die"
+        >
+        <input class="left" type="number" name="system.skill.esprit.traitement.value" value="{{systemData.skill.esprit.traitement.value}}" placeholder="-" />
+      </div>
     </td>
   </tr>
 </table>
