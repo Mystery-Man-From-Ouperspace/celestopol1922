@@ -309,12 +309,12 @@ async function _getSkillValueData (myActor, mySkillNbr) {
       myStringVal = await myActor.system.skill.corps.effacement.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
-    case 8: 
-      myStringVal = await myActor.system.skill.corps.prouesse.value;
+    case 8:
+      myStringVal = await myActor.system.skill.corps.mobilite.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
-    case 9:
-      myStringVal = await myActor.system.skill.corps.mobilite.value;
+    case 9: 
+      myStringVal = await myActor.system.skill.corps.prouesse.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
 

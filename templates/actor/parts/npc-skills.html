@@ -6,7 +6,7 @@
       class="moon-click"
       data-libel-id="moon-die-randomize"
       src="systems/celestopol1922/images/ui/wheel.webp"
-      title="{{ localize 'CEL1922.MoonDieThrow' }}"
+      data-tooltip="{{ localize 'CEL1922.MoonDieThrow' }}"
       alt="Die"
       >
     </th>
@@ -51,7 +51,7 @@
 <table>
   <tr>
     <th class="blessures">
-      <p>{{ localize "CEL1922.jaugewounds" }}</p>
+      <span>{{ localize "CEL1922.jaugewounds" }}</span>
     </th>
   </tr>
 </table>
@@ -81,109 +81,71 @@
     <td>
       {{ localize "CEL1922.Dramatique" }}
     </td>
+  </tr>
   <tr>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-1"
-      name="system.blessures.blessure_1.check"
-      {{
-      checked
-      systemData.blessures.blessure_1.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 minute' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 minute' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 0)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-2"
-      name="system.blessures.blessure_2.check"
-      {{
-      checked
-      systemData.blessures.blessure_2.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 minute' }}"/>
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 minute' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 1)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-3"
-      name="system.blessures.blessure_3.check"
-      {{
-      checked
-      systemData.blessures.blessure_3.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.10 minutes' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.10 minutes' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 2)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-4"
-      name="system.blessures.blessure_4.check"
-      {{
-      checked
-      systemData.blessures.blessure_4.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.10 minutes' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.10 minutes' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 3)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-5"
-      name="system.blessures.blessure_5.check"
-      {{
-      checked
-      systemData.blessures.blessure_5.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.30 minutes' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.30 minutes' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 4)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-6"
-      name="system.blessures.blessure_6.check"
-      {{
-      checked
-      systemData.blessures.blessure_6.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.30 minutes' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.30 minutes' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 5)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-7"
-      name="system.blessures.blessure_7.check"
-      {{
-      checked
-      systemData.blessures.blessure_7.check
-      }}
-      title="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 day' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Recup' }}{{ localize 'CEL1922.1 day' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 6)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
     <td class="check">
-      <input
-      type="checkbox"
+      <img
       class="jauge-check"
       data-libel-id="blessure-8"
-      name="system.blessures.blessure_8.check"
-      {{
-      checked
-      systemData.blessures.blessure_8.check
-      }}
-      title="{{ localize 'CEL1922.Out of Fiction' }}"
-      />
+      data-tooltip="{{ localize 'CEL1922.Out of Fiction' }}"
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.blessures.lvl 7)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
     </td>
   </tr>
   <tr>

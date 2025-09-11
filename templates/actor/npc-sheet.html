@@ -11,7 +11,7 @@
           <h2>{{ localize "CEL1922.N.P.C." }}<h2>
         </div>
       </div>
-      <img class="logo-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+      <img class="logo-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}" />
       <table>
         <tr>
           <td style="width: 1%">
@@ -73,14 +73,14 @@
           </td>
         </tr>
         <tr>
-          <td class="initiative" title="{{ localize 'CEL1922.corps actuel' }}">
+          <td class="initiative" data-tooltip="{{ localize 'CEL1922.corps actuel' }}">
             -&nbsp;{{systemData.initiative}}&nbsp;-
             <!--
             <img
             class="tromblon-click"
             data-libel-id="FIGHT-BUTTON-0"
             src="systems/celestopol1922/images/icons/blunderbuss-orange.png"
-            title="{{ localize 'CEL1922.Fight' }}"
+            data-tooltip="{{ localize 'CEL1922.Fight' }}"
             alt="Die"
             >
             -->

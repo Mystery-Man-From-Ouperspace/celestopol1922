@@ -1,15 +1,15 @@
+<div class="titre">
+  <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyCreate' }}" data-action="create" data-type="anomaly">{{ localize "CEL1922.AnomalyCreate" }} <i class="fas fa-plus"></i>&nbsp;</a>
+</div>
 <ol class="item-list">
   {{#each anomalies as |item id|}}
   <li class="item flexrow" data-item-id="{{item._id}}">
-    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
     <span class="item-name">{{item.name}}</span>
     <div class="item-controls">
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
     </div>
   </li>
   {{/each}}
 </ol>
-<p>
-  <a class="item-control" title="{{ localize 'CEL1922.AnomalyCreate' }}" data-action="create" data-type="anomaly"><i class="fas fa-plus"></i> {{ localize "CEL1922.AnomalyCreate" }}</a>
-</p>

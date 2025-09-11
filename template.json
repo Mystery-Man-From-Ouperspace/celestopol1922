@@ -46,8 +46,8 @@
       },
       "skill": {
         "skilltypes": [
-          "CEL1922.opt.ame", "CEL1922.opt.attraction", "CEL1922.opt.artifice", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
-          "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.prouesse", "CEL1922.opt.mobilite",
+          "CEL1922.opt.ame", "CEL1922.opt.artifice", "CEL1922.opt.attraction", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
+          "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.mobilite", "CEL1922.opt.prouesse",
           "CEL1922.opt.coeur", "CEL1922.opt.appreciation", "CEL1922.opt.arts", "CEL1922.opt.inspiration", "CEL1922.opt.traque",
           "CEL1922.opt.esprit", "CEL1922.opt.instruction", "CEL1922.opt.mtechnologique", "CEL1922.opt.raisonnement", "CEL1922.opt.traitement"
         ],
@@ -274,6 +274,27 @@
           "bonus": 0,
           "malus": 0
         }
+      },
+      "factions": {
+        "pinkerton": 0,
+        "police": 0,
+        "okhrana": 0,
+        "lunanovatek": 0,
+        "oto": 0,
+        "syndicats": 0,
+        "vorovskoymir": 0,
+        "cour": 0,
+        "perso": 0,
+        "libel": "",
+        "perso2": 0,
+        "libel2": ""
+
+      },
+      "attributs": {
+        "entregent": 0,
+        "fortune": 0,
+        "reve": 0,
+        "vision": 0
       }
     },
     "npc": {
@@ -298,7 +319,7 @@
       "skill": {
         "skilltypes": [
           "CEL1922.opt.ame", "CEL1922.opt.attraction", "CEL1922.opt.artifice", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
-          "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.prouesse", "CEL1922.opt.mobilite",
+          "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.mobilite", "CEL1922.opt.prouesse",
           "CEL1922.opt.coeur", "CEL1922.opt.appreciation", "CEL1922.opt.arts", "CEL1922.opt.inspiration", "CEL1922.opt.traque",
           "CEL1922.opt.esprit", "CEL1922.opt.instruction", "CEL1922.opt.mtechnologique", "CEL1922.opt.raisonnement", "CEL1922.opt.traitement"
         ],
@@ -550,7 +571,7 @@
           },
           "attraction": {
             "indice": 1,
-            "label": "CEL1922.opt.attraction",
+            "label": "CEL1922.opt.artifice",
             "bonus_malus": {
               "bonus": 0,
               "malus": 0
@@ -558,7 +579,7 @@
           },
           "artifice": {
             "indice": 2,
-            "label": "CEL1922.opt.artifice",
+            "label": "CEL1922.opt.attraction",
             "bonus_malus": {
               "bonus": 0,
               "malus": 0
@@ -604,17 +625,17 @@
               "malus": 0
             }
           },
-          "prouesse": {
+          "mobilite": {
             "indice": 8,
-            "label": "CEL1922.opt.prouesse",
+            "label": "CEL1922.opt.mobilite",
             "bonus_malus": {
               "bonus": 0,
               "malus": 0
             }
           },
-          "mobilite": {
+          "prouesse": {
             "indice": 9,
-            "label": "CEL1922.opt.mobilite",
+            "label": "CEL1922.opt.prouesse",
             "bonus_malus": {
               "bonus": 0,
               "malus": 0

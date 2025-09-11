@@ -12,7 +12,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       classes: ["celestopol1922", "sheet", "actor", "character"],
       template: "systems/celestopol1922/templates/actor/character-sheet.html",
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".biography", ".items", ".attributes", ".aspects", ".anomalies"],
+      scrollY: [".biography", ".items", ".anomalies", "factions"],
       dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
   }
@@ -124,9 +124,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       switch (i) {
         case 0: myString = myActor.system.skill.ame.res;
         break;
-        case 1: myString = myActor.system.skill.ame.attraction.value;
+        case 1: myString = myActor.system.skill.ame.artifice.value;
         break;
-        case 2: myString = myActor.system.skill.ame.artifice.value;
+        case 2: myString = myActor.system.skill.ame.attraction.value;
         break;
         case 3: myString = myActor.system.skill.ame.coercition.value;
         break;
@@ -139,9 +139,9 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         break;
         case 7: myString = myActor.system.skill.corps.effacement.value;
         break;
-        case 8: myString = myActor.system.skill.corps.prouesse.value;
+        case 8: myString = myActor.system.skill.corps.mobilite.value;
         break;
-        case 9: myString = myActor.system.skill.corps.mobilite.value;
+        case 9: myString = myActor.system.skill.corps.prouesse.value;
         break;
 
         case 10: myString = myActor.system.skill.coeur.res;
@@ -398,373 +398,140 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     const jaugeNumber = whatIsItTab[1];                         // Va récupérer '1'
     // console.log("jaugeNumber = ", jaugeNumber);
     let whichCheckBox ="";
-    let whichLevel = 0;
     let myActor = this.actor;
     switch (jaugeType) {
       case "blessure":
-        switch (jaugeNumber) {
-          case "1":
-            whichCheckBox = myActor.system.blessures.blessure_1.check;
-            break;
-          case "2":
-            whichCheckBox = myActor.system.blessures.blessure_2.check;
-            break;
-          case "3":
-            whichCheckBox = myActor.system.blessures.blessure_3.check;
-            break;
-          case "4":
-            whichCheckBox = myActor.system.blessures.blessure_4.check;
-            break;
-          case "5":
-            whichCheckBox = myActor.system.blessures.blessure_5.check;
-            break;
-          case "6":
-            whichCheckBox = myActor.system.blessures.blessure_6.check;
-            break;
-          case "7":
-            whichCheckBox = myActor.system.blessures.blessure_7.check;
-            break;
-          case "8":
-            whichCheckBox = myActor.system.blessures.blessure_8.check;
-            break;
-          default:
-            console.log("C'est bizarre !");                                            }
-        break;
       case "destin":
-        switch (jaugeNumber) {
-          case "1":
-            whichCheckBox = myActor.system.destin.destin_1.check;
-            break;
-          case "2":
-            whichCheckBox = myActor.system.destin.destin_2.check;
-            break;
-          case "3":
-            whichCheckBox = myActor.system.destin.destin_3.check;
-            break;
-          case "4":
-            whichCheckBox = myActor.system.destin.destin_4.check;
-            break;
-          case "5":
-            whichCheckBox = myActor.system.destin.destin_5.check;
-            break;
-          case "6":
-            whichCheckBox = myActor.system.destin.destin_6.check;
-            break;
-          case "7":
-            whichCheckBox = myActor.system.destin.destin_7.check;
-            break;
-          case "8":
-            whichCheckBox = myActor.system.destin.destin_8.check;
-            break;
-          default:
-            console.log("C'est bizarre !");                                            }
-        break;
       case "spleen":
-        whichLevel = parseInt(await myActor.system.spleen.lvl);
+        whichCheckBox = jaugeNumber;
+      break;
+      case "pinkerton":
+      case "police":
+      case "okhrana":
+      case "lunanovatek":
+      case "oto":
+      case "syndicats":
+      case "vorovskoymir":
+      case "cour":
+      case "perso":
+      case "perso2":
         switch (jaugeNumber) {
-          case "1":
-            whichCheckBox = myActor.system.spleen.spleen_1.check;
+            case "m4": whichCheckBox = "-4";
             break;
-          case "2":
-            whichCheckBox = myActor.system.spleen.spleen_2.check;
+            case "m3": whichCheckBox = "-3";
             break;
-          case "3":
-            whichCheckBox = myActor.system.spleen.spleen_3.check;
+            case "m2": whichCheckBox = "-2";
             break;
-          case "4":
-            whichCheckBox = myActor.system.spleen.spleen_4.check;
+            case "m1": whichCheckBox = "-1";
             break;
-          case "5":
-            whichCheckBox = myActor.system.spleen.spleen_5.check;
+            case "0": whichCheckBox = "0";
             break;
-          case "6":
-            whichCheckBox = myActor.system.spleen.spleen_6.check;
+            case "p1": whichCheckBox = "1";
             break;
-          case "7":
-            whichCheckBox = myActor.system.spleen.spleen_7.check;
+            case "p2": whichCheckBox = "2";
             break;
-          case "8":
-            whichCheckBox = myActor.system.spleen.spleen_8.check;
+            case "p3": whichCheckBox = "3";
             break;
-          default:
-            console.log("C'est bizarre !");                                            }
-        break;
+            case "p4": whichCheckBox = "4";
+            break;
+            default:
+            console.log("C'est bizarre mp !");
+        }
+      break;
+      case "entregent":
+      case "fortune":
+      case "reve":
+      case "vision":
+        whichCheckBox = jaugeNumber;
+      break;
       default:
-        console.log("C'est bizarre !");
-      }
+        console.log("C'est bizarre faction !");
+    }
 
-
-      switch (jaugeType) {
+    switch (jaugeType) {
         case "blessure":
-          let oldLevelBlessures = myActor.system.blessures.lvl;
-          let newLevelBlessures = parseInt(jaugeNumber);
-          if (whichCheckBox) {
-            newLevelBlessures--;
+          if (whichCheckBox > myActor.system.blessures.lvl) {
+            myActor.update({ "system.blessures.lvl": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.blessures.lvl": parseInt(whichCheckBox) - 1 });
           }
-   
-          myActor.update({ "system.blessures.lvl": newLevelBlessures });
-
-          // console.log("oldLevelBlessures (OLD) = ", oldLevelBlessures);
-          // console.log("newLevelBlessures (NEW) = ", newLevelBlessures);
-
-          if (newLevelBlessures > oldLevelBlessures) {
-            if (newLevelBlessures > 0) {
-              myActor.update({ "system.blessures.blessure_1.check": true });
-            }
-            if (newLevelBlessures > 1) {
-              myActor.update({ "system.blessures.blessure_2.check": true });
-            }
-            if (newLevelBlessures > 2) {
-              myActor.update({ "system.blessures.blessure_3.check": true });
-            }
-            if (newLevelBlessures > 3) {
-              myActor.update({ "system.blessures.blessure_4.check": true });
-            }
-            if (newLevelBlessures > 4) {
-              myActor.update({ "system.blessures.blessure_5.check": true });
-            }
-            if (newLevelBlessures > 5) {
-              myActor.update({ "system.blessures.blessure_6.check": true });
-            }
-            if (newLevelBlessures > 6) {
-              myActor.update({ "system.blessures.blessure_7.check": true });
-            }
-            if (newLevelBlessures > 7) {
-              myActor.update({ "system.blessures.blessure_8.check": true });
-            }
-          } else if (newLevelBlessures < oldLevelBlessures) {
-            if (newLevelBlessures > 0) {
-              myActor.update({ "system.blessures.blessure_1.check": true });
-            }
-            if (newLevelBlessures > 1) {
-              myActor.update({ "system.blessures.blessure_2.check": true });
-            }
-            if (newLevelBlessures > 2) {
-              myActor.update({ "system.blessures.blessure_3.check": true });
-            }
-            if (newLevelBlessures > 3) {
-              myActor.update({ "system.blessures.blessure_4.check": true });
-            }
-            if (newLevelBlessures > 4) {
-              myActor.update({ "system.blessures.blessure_5.check": true });
-            }
-            if (newLevelBlessures > 5) {
-              myActor.update({ "system.blessures.blessure_6.check": true });
-            }
-            if (newLevelBlessures > 6) {
-              myActor.update({ "system.blessures.blessure_7.check": true });
-            }
-            if (newLevelBlessures > 7) {
-              myActor.update({ "system.blessures.blessure_8.check": true });
-            }
-            if (newLevelBlessures < 8) {
-              myActor.update({ "system.blessures.blessure_8.check": false });
-            }
-            if (newLevelBlessures < 7) {
-              myActor.update({ "system.blessures.blessure_7.check": false });
-            }
-            if (newLevelBlessures < 6) {
-              myActor.update({ "system.blessures.blessure_6.check": false });
-            }
-            if (newLevelBlessures < 5) {
-              myActor.update({ "system.blessures.blessure_5.check": false });
-            }
-            if (newLevelBlessures < 4) {
-              myActor.update({ "system.blessures.blessure_4.check": false });
-            }
-            if (newLevelBlessures < 3) {
-              myActor.update({ "system.blessures.blessure_3.check": false });
-            }
-            if (newLevelBlessures < 2) {
-              myActor.update({ "system.blessures.blessure_2.check": false });
-            }
-            if (newLevelBlessures < 1) {
-              myActor.update({ "system.blessures.blessure_1.check": false });
-            };
-          }
-          break;
+        break;
         case "destin":
-          let oldLevelDestin = myActor.system.destin.lvl;
-          let newLevelDestin = parseInt(jaugeNumber);
-          if (whichCheckBox) {
-            newLevelDestin--;
+          if (whichCheckBox > myActor.system.destin.lvl) {
+            myActor.update({ "system.destin.lvl": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.destin.lvl": parseInt(whichCheckBox) - 1 });
           }
-
-          myActor.update({ "system.destin.lvl": newLevelDestin});
-
-          // console.log("oldLevelDestin (OLD) = ", oldLevelDestin);
-          // console.log("newLevelDestin (NEW) = ", newLevelDestin);
-
-          if (newLevelDestin > oldLevelDestin) {
-            if (newLevelDestin > 0) {
-              myActor.update({ "system.destin.destin_1.check": true });
-            }
-            if (newLevelDestin > 1) {
-              myActor.update({ "system.destin.destin_2.check": true });
-            }
-            if (newLevelDestin > 2) {
-              myActor.update({ "system.destin.destin_3.check": true });
-            }
-            if (newLevelDestin > 3) {
-              myActor.update({ "system.destin.destin_4.check": true });
-            }
-            if (newLevelDestin > 4) {
-              myActor.update({ "system.destin.destin_5.check": true });
-            }
-            if (newLevelDestin > 5) {
-              myActor.update({ "system.destin.destin_6.check": true });
-            }
-            if (newLevelDestin > 6) {
-              myActor.update({ "system.destin.destin_7.check": true });
-            }
-            if (newLevelDestin > 7) {
-              myActor.update({ "system.destin.destin_8.check": true });
-            }
-          } else if (newLevelDestin < oldLevelDestin) {
-            if (newLevelDestin > 0) {
-              myActor.update({ "system.destin.destin_1.check": true });
-            }
-            if (newLevelDestin > 1) {
-              myActor.update({ "system.destin.destin_2.check": true });
-            }
-            if (newLevelDestin > 2) {
-              myActor.update({ "system.destin.destin_3.check": true });
-            }
-            if (newLevelDestin > 3) {
-              myActor.update({ "system.destin.destin_4.check": true });
-            }
-            if (newLevelDestin > 4) {
-              myActor.update({ "system.destin.destin_5.check": true });
-            }
-            if (newLevelDestin > 5) {
-              myActor.update({ "system.destin.destin_6.check": true });
-            }
-            if (newLevelDestin > 6) {
-              myActor.update({ "system.destin.destin_7.check": true });
-            }
-            if (newLevelDestin > 7) {
-              myActor.update({ "system.destin.destin_8.check": true });
-            }
-            if (newLevelDestin < 8) {
-              myActor.update({ "system.destin.destin_8.check": false });
-            }
-            if (newLevelDestin < 7) {
-              myActor.update({ "system.destin.destin_7.check": false });
-            }
-            if (newLevelDestin < 6) {
-              myActor.update({ "system.destin.destin_6.check": false });
-            }
-            if (newLevelDestin < 5) {
-              myActor.update({ "system.destin.destin_5.check": false });
-            }
-            if (newLevelDestin < 4) {
-              myActor.update({ "system.destin.destin_4.check": false });
-            }
-            if (newLevelDestin < 3) {
-              myActor.update({ "system.destin.destin_3.check": false });
-            }
-            if (newLevelDestin < 2) {
-              myActor.update({ "system.destin.destin_2.check": false });
-            }
-            if (newLevelDestin < 1) {
-              myActor.update({ "system.destin.destin_1.check": false });
-            };
-          }
-          break;
-
+        break;
         case "spleen":
-          let oldLevelSpleen = myActor.system.spleen.lvl;
-          let newLevelSpleen = parseInt(jaugeNumber);
-          if (whichCheckBox) {
-            newLevelSpleen--;
+          if (whichCheckBox > myActor.system.spleen.lvl) {
+            myActor.update({ "system.spleen.lvl": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.spleen.lvl": parseInt(whichCheckBox) - 1 });
           }
-
-          myActor.update({ "system.spleen.lvl": newLevelSpleen});
-
-          // console.log("oldLevelSpleen (OLD) = ", oldLevelSpleen);
-          // console.log("newLevelSpleen (NEW) = ", newLevelSpleen);
-
-          if (newLevelSpleen > oldLevelSpleen) {
-            if (newLevelSpleen > 0) {
-              myActor.update({ "system.spleen.spleen_1.check": true });
-            }
-            if (newLevelSpleen > 1) {
-              myActor.update({ "system.spleen.spleen_2.check": true });
-            }
-            if (newLevelSpleen > 2) {
-              myActor.update({ "system.spleen.spleen_3.check": true });
-            }
-            if (newLevelSpleen > 3) {
-              myActor.update({ "system.spleen.spleen_4.check": true });
-            }
-            if (newLevelSpleen > 4) {
-              myActor.update({ "system.spleen.spleen_5.check": true });
-            }
-            if (newLevelSpleen > 5) {
-              myActor.update({ "system.spleen.spleen_6.check": true });
-            }
-            if (newLevelSpleen > 6) {
-              myActor.update({ "system.spleen.spleen_7.check": true });
-            }
-            if (newLevelSpleen > 7) {
-              myActor.update({ "system.spleen.spleen_8.check": true });
-            }
-          } else if (newLevelSpleen < oldLevelSpleen) {
-            if (newLevelSpleen > 0) {
-              myActor.update({ "system.spleen.spleen_1.check": true });
-            }
-            if (newLevelSpleen > 1) {
-              myActor.update({ "system.spleen.spleen_2.check": true });
-            }
-            if (newLevelSpleen > 2) {
-              myActor.update({ "system.spleen.spleen_3.check": true });
-            }
-            if (newLevelSpleen > 3) {
-              myActor.update({ "system.spleen.spleen_4.check": true });
-            }
-            if (newLevelSpleen > 4) {
-              myActor.update({ "system.spleen.spleen_5.check": true });
-            }
-            if (newLevelSpleen > 5) {
-              myActor.update({ "system.spleen.spleen_6.check": true });
-            }
-            if (newLevelSpleen > 6) {
-              myActor.update({ "system.spleen.spleen_7.check": true });
-            }
-            if (newLevelSpleen > 7) {
-              myActor.update({ "system.spleen.spleen_8.check": true });
-            }
-            if (newLevelSpleen < 8) {
-              myActor.update({ "system.spleen.spleen_8.check": false });
-            }
-            if (newLevelSpleen < 7) {
-              myActor.update({ "system.spleen.spleen_7.check": false });
-            }
-            if (newLevelSpleen < 6) {
-              myActor.update({ "system.spleen.spleen_6.check": false });
-            }
-            if (newLevelSpleen < 5) {
-              myActor.update({ "system.spleen.spleen_5.check": false });
-            }
-            if (newLevelSpleen < 4) {
-              myActor.update({ "system.spleen.spleen_4.check": false });
-            }
-            if (newLevelSpleen < 3) {
-              myActor.update({ "system.spleen.spleen_3.check": false });
-            }
-            if (newLevelSpleen < 2) {
-              myActor.update({ "system.spleen.spleen_2.check": false });
-            }
-            if (newLevelSpleen < 1) {
-              myActor.update({ "system.spleen.spleen_1.check": false });
-            };
+        break;
+        case "pinkerton":
+            myActor.update({ "system.factions.pinkerton": parseInt(whichCheckBox) });
+            break;
+        case "police":
+            myActor.update({ "system.factions.police": parseInt(whichCheckBox) });
+            break;
+        case "okhrana":
+            myActor.update({ "system.factions.okhrana": parseInt(whichCheckBox) });
+        break;
+        case "lunanovatek":
+            myActor.update({ "system.factions.lunanovatek": parseInt(whichCheckBox) });
+        break;
+        case "oto":
+            myActor.update({ "system.factions.oto": parseInt(whichCheckBox) });
+        break;
+        case "syndicats":
+            myActor.update({ "system.factions.syndicats": parseInt(whichCheckBox) });
+        break;
+        case "vorovskoymir":
+            myActor.update({ "system.factions.vorovskoymir": parseInt(whichCheckBox) });
+        break;
+        case "cour":
+            myActor.update({ "system.factions.cour": parseInt(whichCheckBox) });
+            break;
+        case "perso":
+            myActor.update({ "system.factions.perso": parseInt(whichCheckBox) });
+            break;
+        case "perso2":
+            myActor.update({ "system.factions.perso2": parseInt(whichCheckBox) });
+            break;
+        case "entregent":
+          if (whichCheckBox > myActor.system.attributs.entregent) {
+            myActor.update({ "system.attributs.entregent": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.attributs.entregent": parseInt(whichCheckBox) - 1 });
           }
-          break;
-
+        break;
+        case "fortune":
+          if (whichCheckBox > myActor.system.attributs.fortune) {
+            myActor.update({ "system.attributs.fortune": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.attributs.fortune": parseInt(whichCheckBox) - 1 });
+          }
+        break;
+        case "reve":
+          if (whichCheckBox > myActor.system.attributs.reve) {
+            myActor.update({ "system.attributs.reve": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.attributs.reve": parseInt(whichCheckBox) - 1 });
+          }
+        break;
+        case "vision":
+          if (whichCheckBox > myActor.system.attributs.vision) {
+            myActor.update({ "system.attributs.vision": parseInt(whichCheckBox) });
+          } else {
+            myActor.update({ "system.attributs.vision": parseInt(whichCheckBox) - 1 });
+          }
+        break;
         default:
-          console.log("C'est bizarre !");
+            console.log("C'est bizarre parseInt() !");
       }
-    };
+  };
 
    
   /* -------------------------------------------- */
@@ -934,7 +701,7 @@ async _onClickMoonDieRoll(event) {
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
     // console.log("whatIsIt = ", whatIsIt)
     const whatIsItTab = whatIsIt.split('-');
-    const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
+    const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'artifice'
     // console.log("specialityUsedLibel = "+specialityUsedLibel)
     const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
     // console.log("skillUsedLibel = ", skillUsedLibel)
@@ -1780,11 +1547,11 @@ async function _getSkillValueData (myActor, mySkillNbr) {
       myStringRES = myStringVal;
     break;
     case 1:
-      myStringVal = await myActor.system.skill.ame.attraction.value;
+      myStringVal = await myActor.system.skill.ame.artifice.value;
       myStringRES = await myActor.system.skill.ame.res;
     break;
     case 2:
-      myStringVal = await myActor.system.skill.ame.artifice.value;
+      myStringVal = await myActor.system.skill.ame.attraction.value;
       myStringRES = await myActor.system.skill.ame.res;
       break;
     case 3:
@@ -1808,12 +1575,12 @@ async function _getSkillValueData (myActor, mySkillNbr) {
       myStringVal = await myActor.system.skill.corps.effacement.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
-    case 8: 
-      myStringVal = await myActor.system.skill.corps.prouesse.value;
+    case 8:
+      myStringVal = await myActor.system.skill.corps.mobilite.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
-    case 9:
-      myStringVal = await myActor.system.skill.corps.mobilite.value;
+    case 9: 
+      myStringVal = await myActor.system.skill.corps.prouesse.value;
       myStringRES = await myActor.system.skill.corps.res;
     break;
 
@@ -2158,14 +1925,8 @@ async function _skillDiceRollDialog(
         myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
       };
     };
-    compt = 0;
     myAttribute["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
-    for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
-      compt++;
-      if (compt <= 4) {
-        myAttribute[attribute.id.toString()] = new myObject(attribute.id.toString(), attribute.name.toString());
-      };
-    };
+    myAttribute["1"] = new myObject("1", game.i18n.localize("CEL1922.utiliserFortune").replace("^0", myActor.system.attributs.fortune));
 
     compt = 0;
     myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
@@ -2242,12 +2003,12 @@ async function _skillDiceRollDialog(
         myStringVal = await myActor.system.skill.corps.effacement.value;
         myStringRES = await myActor.system.skill.corps.res;
       break;
-      case 8: 
-        myStringVal = await myActor.system.skill.corps.prouesse.value;
+      case 8:
+        myStringVal = await myActor.system.skill.corps.mobilite.value;
         myStringRES = await myActor.system.skill.corps.res;
       break;
-      case 9:
-        myStringVal = await myActor.system.skill.corps.mobilite.value;
+      case 9: 
+        myStringVal = await myActor.system.skill.corps.prouesse.value;
         myStringRES = await myActor.system.skill.corps.res;
       break;
 

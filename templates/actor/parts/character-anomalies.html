@@ -1,13 +1,16 @@
+<div class="titre">
+  <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyCreate' }}" data-action="create" data-type="anomaly">{{ localize "CEL1922.AnomalyCreate" }} <i class="fas fa-plus"></i>&nbsp;</a>
+</div>
 <ol class="item-list">
   {{#if (or playersEditItems isGM)}}
 
   {{#each anomalies as |item id|}}
   <li class="item flexrow" data-item-id="{{item._id}}">
-    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
     <span class="item-name">{{item.name}}</span>
     <div class="item-controls">
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
     </div>
   </li>
   {{/each}}
@@ -16,11 +19,11 @@
 
   {{#each anomalies as |item id|}}
   <li class="item flexrow" data-item-id="{{item._id}}">
-    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
     <span class="item-name">{{item.name}}</span>
     <div class="item-controls">
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyRead' }}" data-action="read"><i class="fas fa-book-open-reader"></i></a>
-      <a class="item-control" title="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyRead' }}" data-action="read"><i class="fas fa-book-open-reader"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AnomalyDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
     </div>
   </li>
   {{/each}}
@@ -28,6 +31,185 @@
   {{/if}}
 
 </ol>
-<p>
-  <a class="item-control" title="{{ localize 'CEL1922.AnomalyCreate' }}" data-action="create" data-type="anomaly"><i class="fas fa-plus"></i> {{ localize "CEL1922.AnomalyCreate" }}</a>
-</p>
+<br>
+<div class="titre">
+  <a class="item-control" data-tooltip="{{ localize 'CEL1922.AspectCreate' }}" data-action="create" data-type="aspect">{{ localize "CEL1922.AspectCreate" }} <i class="fas fa-plus"></i>&nbsp;</a>
+</div>
+<ol class="item-list">
+  {{#if (or playersEditItems isGM)}}
+
+  {{#each aspects as |item id|}}
+  <li class="item flexrow" data-item-id="{{item._id}}">
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+    <div class="item-controls">
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AspectEdit' }}" data-action="edit"><i class="fas fa-edit"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AspectDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+    </div>
+  </li>
+  {{/each}}
+
+  {{else}}
+
+  {{#each aspects as |item id|}}
+  <li class="item flexrow" data-item-id="{{item._id}}">
+    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+    <div class="item-controls">
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AspectRead' }}" data-action="read"><i class="fas fa-book-open-reader"></i></a>
+      <a class="item-control" data-tooltip="{{ localize 'CEL1922.AspectDelete' }}" data-action="delete"><i class="fas fa-trash"></i></a>
+    </div>
+  </li>
+    {{/each}}
+
+    {{/if}}
+
+</ol>
+<br>
+<div class="titre">
+  <span>{{ localize "CEL1922.Attributes" }}&nbsp;</span>
+</div>
+<br>
+<div class="attribut-ligne">
+    <span class="attribut attribut-colonne">{{ localize "CEL1922.Entregent" }}</span>
+    <span class="check-entregent attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="entregent-1"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.entregent 0)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-entregent attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="entregent-2"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.entregent 1)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-entregent attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="entregent-3"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.entregent 2)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-entregent attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="entregent-4"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.entregent 3)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+</div>
+
+<div class="attribut-ligne">
+    <span class="attribut attribut-colonne">{{ localize "CEL1922.Fortune" }}</span>
+    <span class="check-fortune attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="fortune-1"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.fortune 0)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-fortune attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="fortune-2"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.fortune 1)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-fortune attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="fortune-3"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.fortune 2)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-fortune attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="fortune-4"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.fortune 3)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+</div>
+
+<div class="attribut-ligne">
+    <span class="attribut attribut-colonne">{{ localize "CEL1922.Reve" }}</span>
+    <span class="check-reve attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="reve-1"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.reve 0)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-reve attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="reve-2"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.reve 1)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-reve attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="reve-3"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.reve 2)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-reve attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="reve-4"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.reve 31)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+</div>
+
+<div class="attribut-ligne">
+    <span class="attribut attribut-colonne">{{ localize "CEL1922.Vision" }}</span>
+    <span class="check-vision attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="vision-1"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.vision 0)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-vision attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="vision-2"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.vision 1)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-vision attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="vision-3"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.vision 2)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+    <span class="check-vision attribut-colonne">
+      <img
+      class="jauge-check"
+      data-libel-id="vision-4"
+      data-tooltip=""
+      src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.vision 3)}}checked{{else}}unchecked{{/if}}.png"
+      ></img>
+    </span>
+</div>

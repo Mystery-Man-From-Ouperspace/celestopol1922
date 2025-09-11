@@ -7,7 +7,7 @@
       <div class="sheet-logo">
       <img src="systems/celestopol1922/images/ui/logo_jeu.png">
       </div>
-      <img class="logo-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+      <img class="logo-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}" />
       <table>
         <tr>
           <td style="width: 1%">
@@ -74,7 +74,7 @@
             class="tromblon-click"
             data-libel-id="FIGHT-BUTTON-0"
             src="systems/celestopol1922/images/icons/blunderbuss-orange.png"
-            title="{{ localize 'CEL1922.Fight' }}"
+            data-tooltip="{{ localize 'CEL1922.Fight' }}"
             alt="Die"
             >
             -->
@@ -82,7 +82,7 @@
         </tr>
         <tr>
           <td>
-            <b><i class="fas fa-eye check-sheet-click" title="{{ localize 'CEL1922.VerifySheet' }}"></i></b>
+            <b><i class="fas fa-eye check-sheet-click" data-tooltip="{{ localize 'CEL1922.VerifySheet' }}"></i></b>
           </td>
         </tr>
       </table>
@@ -94,9 +94,8 @@
       <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{ localize "CEL1922.Description" }}</a>
         <a class="item" data-tab="skills">{{ localize "CEL1922.Skills" }}</a>
-        <a class="item" data-tab="anomalies">{{ localize "CEL1922.Anomalies" }}</a>
-        <a class="item" data-tab="aspects">{{ localize "CEL1922.Aspects" }}</a>
-        <a class="item" data-tab="attributes">{{ localize "CEL1922.Attributes" }}</a>
+        <a class="item" data-tab="anomalies">{{ localize "CEL1922.AnomaliesAspects&Attributs" }}</a>
+        <a class="item" data-tab="factions">{{ localize "CEL1922.factions" }}</a>
         <a class="item" data-tab="items">{{ localize "CEL1922.Items" }}</a>
       </nav>
 
@@ -113,11 +112,8 @@
         {{!-- Owned Anomaly Tab --}}
         <div class="tab anomalies" data-group="primary" data-tab="anomalies">{{> "systems/celestopol1922/templates/actor/parts/character-anomalies.html"}}</div>
 
-        {{!-- Owned Aspect Tab --}}
-        <div class="tab aspects" data-group="primary" data-tab="aspects">{{> "systems/celestopol1922/templates/actor/parts/character-aspects.html"}}</div>
-
-        {{!-- Owned Attribute Tab --}}
-        <div class="tab attributes" data-group="primary" data-tab="attributes">{{> "systems/celestopol1922/templates/actor/parts/character-attributes.html"}}</div>
+        {{!-- Factions Tab --}}
+        <div class="tab factions" data-group="primary" data-tab="factions">{{> "systems/celestopol1922/templates/actor/parts/character-factions.html"}}</div>
 
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">{{> "systems/celestopol1922/templates/actor/parts/character-items.html"}}</div>

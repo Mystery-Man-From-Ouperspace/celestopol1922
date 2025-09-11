@@ -103,16 +103,16 @@ export class CEL1922PNJSheet extends CEL1922ActorSheet {
    */
   async _onClickJaugeCheck(event) {
 
-    // console.log("J'entre dans _onClickJaugeCheck()");
+    console.log("J'entre dans _onClickJaugeCheck()");
 
     const element = event.currentTarget;                        // On récupère le clic
     const whatIsIt = element.dataset.libelId;                   // Va récupérer 'blessure-1' par exemple
     // console.log("whatIsIt = ", whatIsIt);
     const whatIsItTab = whatIsIt.split('-');
     const jaugeType = whatIsItTab[0];                           // Va récupérer 'blessure'
-    // .log("jaugeType = ", jaugeType);
+    console.log("jaugeType = ", jaugeType);
     const jaugeNumber = whatIsItTab[1];                         // Va récupérer '1'
-    // console.log("jaugeNumber = ", jaugeNumber);
+    console.log("jaugeNumber = ", jaugeNumber);
     let whichCheckBox ="";
     let whichLevel = 0;
     let myActor = this.actor;

@@ -33,14 +33,14 @@
             <table class="cel1922-no-rich">
                 {{#if youwin}}
                 <tr class="cel1922-no-rich">
-                    <td title="{{ localize 'CEL1922.NPCWoundedDeveloped' }}">
+                    <td data-tooltip="{{ localize 'CEL1922.NPCWoundedDeveloped' }}">
                         {{ localize "CEL1922.YouWin" }}<br>{{ localize "CEL1922.NPCWounded" }}
                     </td>
                     <th style="text-align: center; font-size: 18px; width: 10%;">{{ NPCwoundedtotal }}</th>
                 </tr>
                 {{else}}
                 <tr class="cel1922-no-rich">
-                    <td title="{{ localize 'CEL1922.PCWoundedDeveloped' }}">
+                    <td data-tooltip="{{ localize 'CEL1922.PCWoundedDeveloped' }}">
                         {{ localize "CEL1922.YouLoose" }}<br>{{ localize "CEL1922.PCWounded" }}
                     </td>
                     <th style="text-align: center; font-size: 18px; width: 10%;">{{ PCwoundedtotal }}</th>
@@ -53,7 +53,7 @@
                     {{#if youwin}}
                     <span>
                         {{#if autoWoundsNPC}}
-                        <p><span title="{{ localize 'CEL1922.OnlyCanDM' }}" class="smart-green-button wounds-apply-to-NPC-click">{{ localize "CEL1922.ApplyWoundsNPC" }}</span></p><br/>
+                        <p><span data-tooltip="{{ localize 'CEL1922.OnlyCanDM' }}" class="smart-green-button wounds-apply-to-NPC-click">{{ localize "CEL1922.ApplyWoundsNPC" }}</span></p><br/>
                         <span>
                             {{#if (eq typeofthrow 3)}}
                             <span class="tooltip" style="text-align: center"><i class="fas fa-cancel"></i>&nbsp;{{ localize "CEL1922.ButYouOnly" }}</span>
@@ -62,7 +62,7 @@
                         {{/if}}
                     </span>
                     {{else}}
-                    <p><span  title="{{ localize 'CEL1922.OnlyCanOWner' }}" class="smart-green-button wounds-apply-to-PC-click">{{ localize "CEL1922.ApplyWoundsPC" }}</span></p><br/>
+                    <p><span  data-tooltip="{{ localize 'CEL1922.OnlyCanOWner' }}" class="smart-green-button wounds-apply-to-PC-click">{{ localize "CEL1922.ApplyWoundsPC" }}</span></p><br/>
                     {{/if}}
             </div>
 
