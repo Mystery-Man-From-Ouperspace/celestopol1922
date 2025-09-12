@@ -63,6 +63,29 @@
       <input type="number" name="system.skill.esprit.res" value="{{systemData.skill.esprit.res}}" placeholder="0" />
     </th>
   </tr>
+
+  <tr>
+    <td class="moon-space">
+    {{#if unlocked}}
+    <span class="lock"><i class="fas fa-lock mode-toggle" data-libel-id="lock-closed"></i></span>
+    {{else}}
+    <span class="lock"><i class="fas fa-lock-open mode-toggle" data-libel-id="lock-opened"></i></span>
+    {{/if}}
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        
+    </td>
+    <td>
+        
+    </td>
+  </tr>
+
   <tr>
     <td class="moon-space">
       ●
@@ -78,8 +101,26 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Artifice' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 5 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.ame.artifice.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.ame.artifice.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.ame.artifice.value" value="{{systemData.skill.ame.artifice.value}}" placeholder="-" />
-      </div>
+        {{/if}}
+    </div>
     </td>
     <td class="echauffouree left">
       <div class="left">
@@ -92,7 +133,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Echauffouree' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 6 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.corps.echauffouree.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.corps.echauffouree.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.corps.echauffouree.value" value="{{systemData.skill.corps.echauffouree.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="appreciation left">
@@ -106,7 +165,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Appreciation' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 6 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.coeur.appreciation.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.coeur.appreciation.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.coeur.appreciation.value" value="{{systemData.skill.coeur.appreciation.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="traque left">
@@ -120,7 +197,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Instruction' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 2 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.esprit.instruction.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.esprit.instruction.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.esprit.instruction.value" value="{{systemData.skill.esprit.instruction.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
   </tr>
@@ -139,7 +234,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Attraction' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 2 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.ame.attraction.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.ame.attraction.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.ame.attraction.value" value="{{systemData.skill.ame.attraction.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="effacement left">
@@ -153,7 +266,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Effacement' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 3 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.corps.effacement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.corps.effacement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.corps.effacement.value" value="{{systemData.skill.corps.effacement.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="arts left">
@@ -167,7 +298,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Arts' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 2 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.coeur.arts.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.coeur.arts.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.coeur.arts.value" value="{{systemData.skill.coeur.arts.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="mtechnologique left">
@@ -181,7 +330,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Merveilleux technologique' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 6 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.esprit.mtechnologique.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.esprit.mtechnologique.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.esprit.mtechnologique.value" value="{{systemData.skill.esprit.mtechnologique.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
   </tr>
@@ -200,7 +367,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Coercition' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 3 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.ame.coercition.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.ame.coercition.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.ame.coercition.value" value="{{systemData.skill.ame.coercition.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="mobilite left">
@@ -214,7 +399,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Mobilite' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 2 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.corps.mobilite.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.corps.mobilite.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.corps.mobilite.value" value="{{systemData.skill.corps.mobilite.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="inspiration left">
@@ -228,7 +431,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Inspiration' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 3 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.coeur.inspiration.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.coeur.inspiration.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.coeur.inspiration.value" value="{{systemData.skill.coeur.inspiration.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="raisonnement left">
@@ -242,7 +463,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Raisonnement' }}"
         alt="Die"
       >
-      <input class="left" type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" />
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 5 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.esprit.raisonnement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.esprit.raisonnement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
+        <input class="left" type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
   </tr>
@@ -261,10 +500,28 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Faveur' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 6 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.ame.faveur.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.ame.faveur.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.ame.faveur.value" value="{{systemData.skill.ame.faveur.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
-        <td class="prouesse left">
+    <td class="prouesse left">
       <div class="left">
         <p>{{ localize "CEL1922.Prouesse" }}</p>
         <img
@@ -275,7 +532,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Prouesse' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 5 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.corps.prouesse.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.corps.prouesse.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.corps.prouesse.value" value="{{systemData.skill.corps.prouesse.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="traque left">
@@ -289,7 +564,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traque' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 5 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.coeur.traque.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.coeur.traque.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.coeur.traque.value" value="{{systemData.skill.coeur.traque.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
     <td class="traitement left">
@@ -303,7 +596,25 @@
         data-tooltip="{{ localize 'CEL1922.Die' }}{{ localize 'CEL1922.Traitement' }}"
         alt="Die"
         >
+        {{#if unlocked}}
+        <div class="specialisation-ligne">
+            {{#times 8}}
+            <span class="specialisation-colonne">
+            <img
+            class="specialisation-bouton"
+            data-tooltip=""
+            {{#if (eq 3 @index)}}
+            src="systems/celestopol1922/images/ui/cercle-vert-augmente-{{#if (gte systemData.skill.esprit.traitement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{else}}
+            src="systems/celestopol1922/images/ui/cercle-vert-{{#if (gte systemData.skill.esprit.traitement.value @index)}}checked{{else}}unchecked{{/if}}.png"
+            {{/if}}
+            ></img>
+            </span>
+            {{/times}}
+        </div>
+        {{else}}
         <input class="left" type="number" name="system.skill.esprit.traitement.value" value="{{systemData.skill.esprit.traitement.value}}" placeholder="-" />
+        {{/if}}
       </div>
     </td>
   </tr>

@@ -38,15 +38,18 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     // context.isGM = false; // Pour tester la fonction
 
     context.CEL1922 = CEL1922;
-    return context;
+
+    context.unlocked = this.actor.system.unlocked;
+    context.locked = !this.actor.system.unlocked;
+
+    return context
   }
-
-
-  /* -------------------------------------------- */
 
   /** @inheritdoc */
   activateListeners(html) {
     super.activateListeners(html);
+
+  /* -------------------------------------------- */
 
     html.find(".click").click(this._onClickDieRoll.bind(this));
     html.find(".moon-click").click(this._onClickMoonDieRoll.bind(this));
@@ -54,6 +57,37 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     html.find(".jauge-check").click(this._onClickJaugeCheck.bind(this));
     // html.find(".tromblon-click").click(this._onClickInitiative.bind(this));
     html.find(".check-sheet-click").click(this._onClickCheckSheet.bind(this));
+
+    // Set toggle state and add status class to frame
+    html.find(".mode-toggle").click(this._renderModeToggle.bind(this));
+    // this._renderModeToggle(this.element)
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Handle re-rendering the mode toggle on ownership changes.
+   * @param {Event} event
+   * @protected
+   */
+  _renderModeToggle(event) {
+    console.log("Je passe bien là !");
+    const element = event.currentTarget;                        // On récupère le clic
+    const whatIsIt = element.dataset.libelId;                   // Va récupérer 'lock-closed' par exemple
+    const whatIsItTab = whatIsIt.split('-');
+    const lock = whatIsItTab[0];                                // Va récupérer 'lock'
+    const lockState = whatIsItTab[1];                           // Va récupérer 'closed'
+
+    /**
+     * Different sheet modes.
+     **/
+    const modes = { EDIT: 0, PLAY: 1 }
+
+    const newMode = (lockState === "closed" ? modes.EDIT : modes.PLAY);
+
+    this.actor.update({ "system.unlocked": newMode });
+    console.log("this.actor.system.unlocked", this.actor.system.unlocked);
+    this.render()
   }
 
 
@@ -2283,6 +2317,5 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     };
   
   }
-
 }
 

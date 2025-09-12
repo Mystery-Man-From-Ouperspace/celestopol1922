@@ -2,6 +2,7 @@
  * @extends {ActorSheet}
  */
 export class CEL1922ActorSheet extends ActorSheet {
+
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {

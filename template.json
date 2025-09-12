@@ -4,6 +4,7 @@
     "htmlFields": ["description"],
 
     "character": {
+      "unlocked": 0,
       "concept": "",
       "anomaly": "0",
       "anomalyval": 0,
