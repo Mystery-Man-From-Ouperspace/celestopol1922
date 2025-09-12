@@ -4,6 +4,148 @@ import { ModifiedDialog } from "../modified-dialog.js";
 /**
  * @extends {CEL1922ActorSheet}
  */
+
+  /** @override */
+  Hooks.on("preUpdateActor", (document, changed, options, userId) => {
+    console.log('Changement !')
+    if (foundry.utils.hasProperty(changed, "system.skill.ame.artifice.value")) {
+      if (changed.system.skill.ame.artifice.value > 8) {
+        console.log('Changement Artifice !')
+        foundry.utils.setProperty(changed, "system.skill.ame.artifice.value", 8)
+      }
+      if (changed.system.skill.ame.artifice.value < 0) {
+        console.log('Changement Artifice !')
+        foundry.utils.setProperty(changed, "system.skill.ame.artifice.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.ame.attraction.value")) {
+      if (changed.system.skill.ame.attraction.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.ame.attraction.value", 8)
+      }
+      if (changed.system.skill.ame.attraction.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.ame.attraction.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.ame.coercition.value")) {
+      if (changed.system.skill.ame.coercition.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.ame.coercition.value", 8)
+      }
+      if (changed.system.skill.ame.coercition.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.ame.coercition.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.ame.faveur.value")) {
+      if (changed.system.skill.ame.faveur.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.ame.faveur.value", 8)
+      }
+      if (changed.system.skill.ame.faveur.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.ame.faveur.value", 0)
+      }
+    }
+
+    if (foundry.utils.hasProperty(changed, "system.skill.corps.echauffouree.value")) {
+      if (changed.system.skill.corps.echauffouree.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.corps.echauffouree.value", 8)
+      }
+      if (changed.system.skill.corps.echauffouree.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.corps.echauffouree.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.corps.effacement.value")) {
+      if (changed.system.skill.corps.effacement.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.corps.effacement.value", 8)
+      }
+      if (changed.system.skill.corps.effacement.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.corps.effacement.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.corps.mobilite.value")) {
+      if (changed.system.skill.corps.mobilite.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.corps.mobilite.value", 8)
+      }
+      if (changed.system.skill.corps.mobilite.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.corps.mobilite.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.corps.prouesse.value")) {
+      if (changed.system.skill.corps.prouesse.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.corps.prouesse.value", 8)
+      }
+      if (changed.system.skill.corps.prouesse.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.corps.prouesse.value", 0)
+      }
+    }
+
+    if (foundry.utils.hasProperty(changed, "system.skill.coeur.appreciation.value")) {
+      if (changed.system.skill.coeur.appreciation.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.appreciation.value", 8)
+      }
+      if (changed.system.skill.coeur.appreciation.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.appreciation.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.coeur.arts.value")) {
+      if (changed.system.skill.coeur.arts.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.arts.value", 8)
+      }
+      if (changed.system.skill.coeur.arts.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.arts.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.coeur.inspiration.value")) {
+      if (changed.system.skill.coeur.inspiration.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.inspiration.value", 8)
+      }
+      if (changed.system.skill.coeur.inspiration.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.inspiration.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.coeur.traque.value")) {
+      if (changed.system.skill.coeur.traque.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.traque.value", 8)
+      }
+      if (changed.system.skill.coeur.traque.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.coeur.traque.value", 0)
+      }
+    }
+
+    if (foundry.utils.hasProperty(changed, "system.skill.esprit.instruction.value")) {
+      if (changed.system.skill.esprit.instruction.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.instruction.value", 8)
+      }
+      if (changed.system.skill.esprit.instruction.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.instruction.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.esprit.mtechnologique.value")) {
+      if (changed.system.skill.esprit.mtechnologique.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.mtechnologique.value", 8)
+      }
+      if (changed.system.skill.esprit.mtechnologique.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.mtechnologique.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.esprit.raisonnement.value")) {
+      if (changed.system.skill.esprit.raisonnement.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.raisonnement.value", 8)
+      }
+      if (changed.system.skill.esprit.raisonnement.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.raisonnement.value", 0)
+      }
+    }
+    if (foundry.utils.hasProperty(changed, "system.skill.esprit.traitement.value")) {
+      if (changed.system.skill.esprit.traitement.value > 8) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.traitement.value", 8)
+      }
+      if (changed.system.skill.esprit.traitement.value < 0) {
+        foundry.utils.setProperty(changed, "system.skill.esprit.traitement.value", 0)
+      }
+    }
+      document.render()
+  })
+
+
+
 export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
   /** @inheritdoc */
@@ -89,7 +231,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     console.log("this.actor.system.unlocked", this.actor.system.unlocked);
     this.render()
   }
-
 
   /* -------------------------------------------- */
 
