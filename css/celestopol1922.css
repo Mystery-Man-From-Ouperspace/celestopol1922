@@ -628,6 +628,11 @@ text-align: left;
   clear: both;
 }
 
+.celestopol1922.sheet.character table tr td span.lock:hover {
+  cursor: pointer;
+}
+
+
 
 .celestopol1922.sheet.character table tr td.left div.left .specialisation-ligne {
     float: left;

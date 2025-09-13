@@ -67,9 +67,9 @@
   <tr>
     <td class="moon-space">
     {{#if unlocked}}
-    <span class="lock"><i class="fas fa-lock mode-toggle" data-libel-id="lock-closed"></i></span>
+    <span class="lock"><i class="fas fa-lock-keyhole mode-toggle" data-libel-id="lock-closed"></i></span>
     {{else}}
-    <span class="lock"><i class="fas fa-lock-open mode-toggle" data-libel-id="lock-opened"></i></span>
+    <span class="lock"><i class="fas fa-lock-keyhole-open mode-toggle" data-libel-id="lock-opened"></i></span>
     {{/if}}
     </td>
     <td>
@@ -118,7 +118,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.ame.artifice.value" value="{{systemData.skill.ame.artifice.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.ame.artifice.value" value="{{systemData.skill.ame.artifice.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
     </div>
     </td>
@@ -150,7 +150,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.corps.echauffouree.value" value="{{systemData.skill.corps.echauffouree.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.corps.echauffouree.value" value="{{systemData.skill.corps.echauffouree.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -182,7 +182,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.coeur.appreciation.value" value="{{systemData.skill.coeur.appreciation.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.coeur.appreciation.value" value="{{systemData.skill.coeur.appreciation.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -214,7 +214,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.esprit.instruction.value" value="{{systemData.skill.esprit.instruction.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.esprit.instruction.value" value="{{systemData.skill.esprit.instruction.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -251,7 +251,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.ame.attraction.value" value="{{systemData.skill.ame.attraction.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.ame.attraction.value" value="{{systemData.skill.ame.attraction.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -283,7 +283,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.corps.effacement.value" value="{{systemData.skill.corps.effacement.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.corps.effacement.value" value="{{systemData.skill.corps.effacement.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -315,7 +315,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.coeur.arts.value" value="{{systemData.skill.coeur.arts.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.coeur.arts.value" value="{{systemData.skill.coeur.arts.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -347,7 +347,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.esprit.mtechnologique.value" value="{{systemData.skill.esprit.mtechnologique.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.esprit.mtechnologique.value" value="{{systemData.skill.esprit.mtechnologique.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -384,7 +384,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.ame.coercition.value" value="{{systemData.skill.ame.coercition.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.ame.coercition.value" value="{{systemData.skill.ame.coercition.value}}" placeholder="-"  min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -416,7 +416,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.corps.mobilite.value" value="{{systemData.skill.corps.mobilite.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.corps.mobilite.value" value="{{systemData.skill.corps.mobilite.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -448,7 +448,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.coeur.inspiration.value" value="{{systemData.skill.coeur.inspiration.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.coeur.inspiration.value" value="{{systemData.skill.coeur.inspiration.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -480,7 +480,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.esprit.raisonnement.value" value="{{systemData.skill.esprit.raisonnement.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -517,7 +517,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.ame.faveur.value" value="{{systemData.skill.ame.faveur.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.ame.faveur.value" value="{{systemData.skill.ame.faveur.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -549,7 +549,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.corps.prouesse.value" value="{{systemData.skill.corps.prouesse.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.corps.prouesse.value" value="{{systemData.skill.corps.prouesse.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -581,7 +581,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.coeur.traque.value" value="{{systemData.skill.coeur.traque.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.coeur.traque.value" value="{{systemData.skill.coeur.traque.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>
@@ -613,7 +613,7 @@
             {{/times}}
         </div>
         {{else}}
-        <input class="left" type="number" name="system.skill.esprit.traitement.value" value="{{systemData.skill.esprit.traitement.value}}" placeholder="-" />
+        <input class="left" type="number" name="system.skill.esprit.traitement.value" value="{{systemData.skill.esprit.traitement.value}}" placeholder="-" min="0" max="8" step="1" />
         {{/if}}
       </div>
     </td>

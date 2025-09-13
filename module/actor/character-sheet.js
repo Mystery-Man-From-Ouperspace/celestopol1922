@@ -1943,7 +1943,7 @@ async function _skillDiceRollDialog(
     },
     dialogOptions
     ).render(true, {
-      width: 415,
+      width: 515,
       height: "auto"
     });
   });
