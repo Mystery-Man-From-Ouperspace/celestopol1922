@@ -1172,7 +1172,23 @@ async _onClickMoonDieRoll(event) {
 
     console.log("totalBoni : ", myData.totalBoni);
 
+    // Traite la perte d'un point d'Attribut Fortune en cas d'utilisation pour remplacer 2d8 par 1d8+8
+    if (myData.myNumberOfDice === 8) {
+      const myFortune = myActor.system.attributs.fortune;
+      if (!myFortune) {
+        //////////////////////////////////////////////////////////////////
+        ui.notifications.warn(game.i18n.localize("CEL1922.ErrFortuneAZero"));
+        //////////////////////////////////////////////////////////////////
 
+        myData.myNumberOfDice = 2; // On annule et on lance plutôt 2d8
+      } else {
+        //////////////////////////////////////////////////////////////////
+        ui.notifications.info(game.i18n.localize("CEL1922.InfoFortune"));
+        //////////////////////////////////////////////////////////////////
+
+        await myActor.update({ "system.attributs.fortune": myFortune - 1 });
+      }
+    };
 
     if (myData.totalBoni == 0) {
       if (myData.myNumberOfDice === 7) {

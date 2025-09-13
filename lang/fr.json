@@ -340,6 +340,9 @@
   "CEL1922.Info2": "Tout me paraît normal",
   "CEL1922.Info3": "J’ai fini de vérifier votre fiche !",
 
+  "CEL1922.InfoFortune": "Votre score de Fortune a été diminué de 1 point ; vous lancerez 1D8+8.",
+  "CEL1922.ErrFortuneAZero": "Impossible ! Votre score de Fortune est à zéro ; vous lancerez 2D8.",
+
   "CEL1922.Error0": "Impossible de poursuivre : la gestion de l’Inititiative n’a pas été encore programmée.",
   "CEL1922.Error1": "J’ai trouvé au moins ^0 erreur(s) !",
   "CEL1922.Souci2": "J’ai trouvé ^0 souci(s) !",
