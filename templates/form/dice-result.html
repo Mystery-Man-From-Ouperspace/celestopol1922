@@ -31,6 +31,7 @@
             <div class="app">
             <table class="cel1922-no-rich">
                 <tr class="cel1922-no-rich">
+                    {{#if (lt numberofdice 7)}}
                     <td>
                         {{#if (gt numberofdice 0)}}
                         <div class="cel1922-die">
@@ -97,6 +98,19 @@
                         </div>
                         {{/if}}
                     </td>
+                    {{else}}
+                    <td>
+                        {{#if (gt numberofdice 7)}}
+                        <div class="cel1922-die">
+                            <img
+                            class="cel1922-die"
+                            src="systems/celestopol1922/images/ui/d8_fond_transp.png"
+                            alt="Die"
+                            >
+                        </div>
+                        {{/if}}
+                    </td>
+                    {{/if}}
                 </tr>
             </table>
             </div>

@@ -309,10 +309,11 @@ text-align: left;
 
 .celestopol1922 .sheet-body div.faction-ligne {
     margin-left: 115px;
+    margin-top: 5px;
     width: 250px;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: 35px;
+    grid-template-rows: 30px;
 
 }
 .celestopol1922 .sheet-body div.faction-colonne {
@@ -341,7 +342,7 @@ text-align: left;
     grid-column: 1;
 }
 .celestopol1922 .sheet-body div.faction-ligne-level {
-    margin-top: -33.5px;
+    margin-top: -28.5px;
 }
 
 .celestopol1922 .sheet-body div.faction-ligne-level span.jauge-level {

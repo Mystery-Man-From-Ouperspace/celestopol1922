@@ -643,12 +643,45 @@ async function _MoreBonusMalusDialog(
   let myRoll;
 
   if (myData.bonus == 0) {
+    if (myData.numberofdice === 7) {
+    myRoll = "0d8+7";
+    } else if (myData.numberofdice === 8) {
+    myRoll = "1d8+8";
+    } else {
+    myRoll = myData.numberofdice+"d8";
+    }
+  };
+
+  if (myData.bonus > 0) {
+    if (myData.numberofdice === 7) {
+    myRoll = "0d8+7+" + (myData.bonus).toString();;
+    } else if (myData.numberofdice === 8) {
+    myRoll = "1d8+8+" + (myData.bonus).toString();
+    } else {
+    myRoll = myData.numberofdice+"d8+" + (myData.bonus).toString();
+    }
+  };
+
+  if (myData.bonus < 0) {
+    if (myData.numberofdice === 7) {
+    myRoll = "0d8+7-" + + Math.abs(myData.bonus).toString();
+    } else if (myData.numberofdice === 8) {
+    myRoll = "1d8+8-" + Math.abs(myData.bonus).toString();
+    } else {
+    myRoll = myData.numberofdice+"d8-" + Math.abs(myData.bonus).toString();
+    }
+  };
+
+  /*
+  if (myData.bonus == 0) {
     myRoll = myData.numberofdice+"d8";
   } else if (myData.bonus > 0) {
     myRoll = myData.numberofdice+"d8+" + (myData.bonus).toString();
   } else {
     myRoll = myData.numberofdice+"d8-" + Math.abs(myData.bonus).toString();
   };
+  */
+ 
   let r;
   r = new Roll(myRoll, myActor.getRollData());
   await r.evaluate();

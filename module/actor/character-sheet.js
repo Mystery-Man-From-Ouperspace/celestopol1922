@@ -1175,12 +1175,35 @@ async _onClickMoonDieRoll(event) {
 
 
     if (myData.totalBoni == 0) {
-      myRoll = myData.myNumberOfDice+"d8";
-    } else if (myData.totalBoni > 0) {
-      myRoll = myData.myNumberOfDice+"d8+" + (myData.totalBoni).toString();
-    } else {
-      myRoll = myData.myNumberOfDice+"d8-" + Math.abs(myData.totalBoni).toString();
+      if (myData.myNumberOfDice === 7) {
+        myRoll = "0d8+7";
+      } else if (myData.myNumberOfDice === 8) {
+        myRoll = "1d8+8";
+      } else {
+        myRoll = myData.myNumberOfDice+"d8";
+      }
     };
+
+    if (myData.totalBoni > 0) {
+      if (myData.myNumberOfDice === 7) {
+        myRoll = "0d8+7+" + (myData.totalBoni).toString();;
+      } else if (myData.myNumberOfDice === 8) {
+        myRoll = "1d8+8+" + (myData.totalBoni).toString();
+      } else {
+        myRoll = myData.myNumberOfDice+"d8+" + (myData.totalBoni).toString();
+      }
+    };
+    
+    if (myData.totalBoni < 0) {
+      if (myData.myNumberOfDice === 7) {
+        myRoll = "0d8+7-" + + Math.abs(myData.totalBoni).toString();
+      } else if (myData.myNumberOfDice === 8) {
+        myRoll = "1d8+8-" + Math.abs(myData.totalBoni).toString();
+      } else {
+        myRoll = myData.myNumberOfDice+"d8-" + Math.abs(myData.totalBoni).toString();
+      }
+    };
+
     let r;
     if (myModifier != 999) {
       r = new Roll(myRoll, this.actor.getRollData());
@@ -2051,7 +2074,9 @@ async function _skillDiceRollDialog(
     let mySkill = {};
     let myAnomaly = {};
     let myAspect = {};
+    /*
     let myAttribute = {};
+    */
     let myJauge_Wounds = {};
     let myJauge_Destiny = {};
     let myJauge_Spleen = {};
@@ -2100,9 +2125,10 @@ async function _skillDiceRollDialog(
         myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
       };
     };
+    /*
     myAttribute["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     myAttribute["1"] = new myObject("1", game.i18n.localize("CEL1922.utiliserFortune").replace("^0", myActor.system.attributs.fortune));
-
+    */
     compt = 0;
     myArmor["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     for (let item of myActor.items.filter(item => item.type === 'item')) {
@@ -2118,7 +2144,9 @@ async function _skillDiceRollDialog(
     bonusanomaly: '1',
     aspectchoices: myAspect,
     bonusaspect: '1',
+    /*
     attributechoices: myAttribute,
+    */
     bonusattribute: '1',
     armorchoices: myArmor,
     jaugewoundschoices: myJauge_Wounds,

@@ -27,6 +27,8 @@
                         {{#select numberofdice}}
                             <option value="1">{{ localize "CEL1922.One" }}</option>
                             <option value="2">{{ localize "CEL1922.Two" }}</option>
+                            <option value="7">{{ localize "CEL1922.maitriseChance" }}</option>
+                            <option value="8">{{ localize "CEL1922.attributeFortune" }}</option>
                             <option value="3">{{ localize "CEL1922.Three" }}</option>
                             <option value="4">{{ localize "CEL1922.Four" }}</option>
                             <option value="5">{{ localize "CEL1922.Five" }}</option>
@@ -35,6 +37,17 @@
                         </select>
                 </tr>
             </table>
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <small><i class="fas fa-circle-info"></i> {{ localize 'CEL1922.utiliserFortune' }}</small>
+                    </td>
+                </tr>
+            </table>
+
 
             <table style="border: 0px; background-color: transparent;" >
                 <tr style="background-color: transparent;">
@@ -98,24 +111,6 @@
                     </td>
                 </tr>
             </table>
-
-            <table style="border: 0px; background-color: transparent;" >
-                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
-                    <td>
-                        <div>
-                            <span class="value"><b>{{ localize "CEL1922.attributefortune" }}</b></span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <select name="attribute" data-type="String">
-                                {{selectOptions attributechoices selected=attribute labelAttr="label" localize=true}}
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
 
             <table style="border: 0px; background-color: transparent;" >
                 <tr style="background-color: transparent;">
