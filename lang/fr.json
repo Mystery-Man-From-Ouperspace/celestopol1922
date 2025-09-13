@@ -82,6 +82,8 @@
   "CEL1922.Attributes": "Attributs",
   "CEL1922.Items": "Équipements",
 
+  "CEL1922.aspectUsed": "Aspect impliqué",
+
   "CEL1922.Entropie": "ENTROPIE",
   "CEL1922.CommunicationAvecLesMorts": "COMMUNICATION MORTS",
   "CEL1922.Illusion": "ILLUSION",
@@ -239,6 +241,7 @@
   "CEL1922.attribute": "Attribut",
   "CEL1922.attributes": "Attributs",
   "CEL1922.utiliserFortune": "En cas de tirage de Fortune, 1 point sera ôté automatiquement du total du score de Fortune si celui-ci est positif. Sinon, le tirage de Fortune sera ignoré et 2D8 seront lancés.",
+  "CEL1922.uneSeuleAnomalie": "Simple rappel, votre anomalie ne rentre pas dans les calculs. Vous devriez disposer d'une et d'une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n'est pas le cas.",
   "CEL1922.factions": "Factions",
   "CEL1922.Factions": "Factions",
   "CEL1922.VotrePropreFaction": "Votre propre faction",
@@ -267,6 +270,9 @@
   "CEL1922.jaugewounds": "Jauge de Blessures",
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
+  "CEL1922.anomalynocompute": "Anomalie (supprimer le signe +/- et les calculs qui en découlent)",
+  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel, ne rentre pas dans les calculs)",
+  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel, ne rentre pas dans les calculs)",
 
 
   "CEL1922.opt.none": "—",
@@ -444,7 +450,7 @@
 
   "CEL1922.barehands": "Mains nues [0]",
 
-  "CEL1922.TotalBonusMalus": "Cumul scores / bonus / malus :",
+  "CEL1922.TotalBonusMalus": "Cumul scores + bonus – malus :",
 
   "CEL1922.AutomatizationBlocked": "…a débrayé l’automatisation ; ce qui est affiché est le résultat d’un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 

@@ -70,7 +70,7 @@
                 <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
                         <div>
-                            <span class="value"><b>{{ localize "CEL1922.anomaly" }}</b></span>
+                            <span class="value"><b>{{ localize "CEL1922.anomalynocompute" }}</b></span>
                         </div>
                     </td>
                     <td>
@@ -89,11 +89,22 @@
                 </tr>
             </table>
 
+            <table>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <small><i class="fas fa-circle-info"></i> {{ localize 'CEL1922.uneSeuleAnomalie' }}</small>
+                    </td>
+                </tr>
+            </table>
+
             <table style="border: 0px; background-color: transparent;" >
                 <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
                         <div>
-                            <span class="value"><b>{{ localize "CEL1922.aspect" }}</b></span>
+                            <span class="value"><b>{{ localize "CEL1922.aspectUsed" }}</b></span>
                         </div>
                     </td>
                     <td>
@@ -196,7 +207,7 @@
                 <tr style="background-color: transparent;">
                     <td>
                         <div>
-                            <span class="value"><b>{{ localize "CEL1922.jaugedestiny" }}</b></span>
+                            <span class="value"><b>{{ localize "CEL1922.jaugedestinynocompute" }}</b></span>
                         </div>
                     </td>
                     <td style="display: flex; align-items: content; justify-content: end;">
@@ -211,7 +222,7 @@
                 <tr style="background-color: transparent;">
                     <td>
                         <div">
-                            <span class="value"><b>{{ localize "CEL1922.jaugespleen" }}</b></span>
+                            <span class="value"><b>{{ localize "CEL1922.jaugespleennocompute" }}</b></span>
                         </div>
                     </td>
                     <td style="display: flex; align-items: content; justify-content: end;">
@@ -238,9 +249,9 @@
                         </select>
                     </td>
                     <td>
-                        <small style="color: rgb(12, 76, 12);">{{ localize "CEL1922.TotalBonusMalus" }}</small>
+                        <small style="color: rgb(12, 76, 12);"><i class="fas fa-circle-info"></i> {{ localize "CEL1922.TotalBonusMalus" }}</small>
                     </td>
-                    <td class="scorebonusmalus" style="text-align: center; color: orange; background-color: rgb(12, 76, 12); display: flex; align-items: content; justify-content: end; margin-top: 5px;">
+                    <td class="scorebonusmalus" style="text-align: center; color: orange; background-color: rgb(12, 76, 12); margin-top: 5px;">
                         [&nbsp;{{ totalscoresbonusmalus }}&nbsp;]
                     </td>
                 </tr>

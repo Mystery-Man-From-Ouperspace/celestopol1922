@@ -2126,20 +2126,22 @@ async function _skillDiceRollDialog(
     // Create options for Aspects/Anomalies
 
     let compt = 0;
-    myAnomaly["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
       compt++;
-      if (compt <= 1) {
+      // if (compt <= 1) {
       myAnomaly[anomaly.id.toString()] = new myObject(anomaly.id.toString(), anomaly.name.toString());
-      };
+      // };
     };
+    if (!compt) {
+      myAnomaly["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+    }
     compt = 0;
     myAspect["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
       compt++;
-      if (compt <= 4) {
+      // if (compt <= 4) {
         myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-      };
+      // };
     };
     /*
     myAttribute["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
