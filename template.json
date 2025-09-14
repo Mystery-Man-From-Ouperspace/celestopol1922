@@ -86,10 +86,10 @@
         ],
         "ame": {
           "res": 0,
-          "attraction": {
+          "artifice": {
             "value": 0
           },
-          "artifice": {
+          "attraction": {
             "value": 0
           },
           "coercition": {
