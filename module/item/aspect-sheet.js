@@ -1,7 +1,24 @@
+Hooks.on("preCreateItem", (document, data, options, userId) => {
+    let updates = {}
+    const stats = document._stats
+
+    if (document.type === "aspect") {
+      // Pour un acteur non dupliqué, non provenant d'un compendium et non exporté
+      if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
+        // Image par défaut
+        if (!foundry.utils.hasProperty(data, "img")) {
+            updates.img = "systems/celestopol1922/images/icons/aspect.png";
+        }
+      }
+      document.updateSource(updates)
+    }
+})
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
+
 export class CEL1922AspectSheet extends ItemSheet {
   /** @inheritdoc */
   static get defaultOptions() {
@@ -14,7 +31,6 @@ export class CEL1922AspectSheet extends ItemSheet {
       scrollY: [".description-technique", ".description-narratif", ".data", ".notes"],
     });
   }
-
 
   /* -------------------------------------------- */
 

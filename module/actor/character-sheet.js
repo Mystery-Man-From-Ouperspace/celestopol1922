@@ -5,7 +5,6 @@ import { ModifiedDialog } from "../modified-dialog.js";
  * @extends {CEL1922ActorSheet}
  */
 
-  /** @override */
   Hooks.on("preUpdateActor", (document, changed, options, userId) => {
     console.log('Changement !')
     if (foundry.utils.hasProperty(changed, "system.skill.ame.artifice.value")) {

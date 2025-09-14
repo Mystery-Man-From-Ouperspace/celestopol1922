@@ -56,52 +56,19 @@ export class CEL1922ActorSheet extends ActorSheet {
       case "create":
         const cls = getDocumentClass("Item");
         let name = "";
-        let imgPath = "";
         if (type === "item") {
           name = game.i18n.localize("CEL1922.ItemNew");
-          imgPath = "systems/celestopol1922/images/icons/item.png";
         }
         else if (type === "anomaly") {
           name = game.i18n.localize("CEL1922.AnomalyNew");
-          imgPath = "systems/celestopol1922/images/icons/anomaly.png";
         }
         else if (type === "aspect") {
           name = game.i18n.localize("CEL1922.AspectNew");
-          imgPath = "systems/celestopol1922/images/icons/aspect.png";
         }
         else if (type === "attribute") {
           name = game.i18n.localize("CEL1922.AttributeNew");
-          imgPath = "systems/celestopol1922/images/icons/attribute.png";
         }
         await cls.create({ name: name, type: type }, { parent: this.actor });
-
-        const myType = type;
-        const myActor = this.actor;
-        switch (myType) {
-          case "item":
-            for (let item of myActor.items.filter(item => item.type === 'item')) {
-              if (item.img == "icons/svg/item-bag.svg") item.update({ "img": imgPath });
-            }
-          break;
-          case "anomaly":
-            for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
-              if (anomaly.img == "icons/svg/item-bag.svg") anomaly.update({ "img": imgPath });
-            }
-          break;
-          case "aspect":
-            for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
-              if (aspect.img == "icons/svg/item-bag.svg") aspect.update({ "img": imgPath });
-            }
-          break;
-          case "attribute":
-            for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
-              console.log("attribute = ", attribute);
-              if (attribute.img == "icons/svg/item-bag.svg") attribute.update({ "img": imgPath });
-              console.log("attribute = ", attribute);
-
-            }
-          break;
-        }
         return;
 
       case "read":
