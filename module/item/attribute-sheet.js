@@ -1,16 +1,16 @@
 Hooks.on("preCreateItem", (document, data, options, userId) => {
-    let updates = {}
-    const stats = document._stats
-
     if (document.type === "attribute") {
-        // Pour un acteur non dupliqué, non provenant d'un compendium et non exporté
-        if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
+      let updates = {}
+      const stats = document._stats
+
+      // Pour un acteur non dupliqué, non provenant d'un compendium et non exporté
+      if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
         // Image par défaut
           if (!foundry.utils.hasProperty(data, "img")) {
             updates.img = "systems/celestopol1922/images/icons/attribute.png";
           }
-        }
-        document.updateSource(updates)
+      }
+      document.updateSource(updates)
     }
 })
 

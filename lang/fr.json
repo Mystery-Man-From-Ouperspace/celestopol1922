@@ -1,5 +1,7 @@
 {
-  "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
+  "CEL1922.FACTIONS.Title": "Factions pour le/la GM",
+  
+    "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 
   "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Anomalies, Aspects et Attributs.",
 

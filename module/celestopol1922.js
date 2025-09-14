@@ -8,6 +8,8 @@ import { CEL1922AnomalySheet } from "./item/anomaly-sheet.js";
 import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
 import { CEL1922AttributeSheet } from "./item/attribute-sheet.js";
 
+import { CEL1922Factions } from "./appli/factions.js";
+
 import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerHandlebarsHelpers } from "./helpers.js";
@@ -20,6 +22,7 @@ import { registerHandlebarsHelpers } from "./helpers.js";
 /**
  * Init hook.
  */
+
 Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initializing`);
 
@@ -87,6 +90,12 @@ Hooks.once("init", async function () {
   Items.registerSheet("celestopol1922", CEL1922AspectSheet, { types: ["aspect"], makeDefault: true });
   Items.registerSheet("celestopol1922", CEL1922AttributeSheet, { types: ["attribute"], makeDefault: true });
 
+  // Game Manager Factions
+  // CONFIG.queries["celestopol1922.updateFactions"] = applications.CEL1922Factions._handleQueryUpdateFactions
+  // game.celestopol1922.celestopol1922Factions = new CEL1922Factions();
+  CEL1922.celestopol1922Factions = new CEL1922Factions();
+
+
   // Preload template partials
   await preloadHandlebarsTemplates();
 
@@ -98,6 +107,13 @@ Hooks.once("init", async function () {
 
   console.log(`CELESTOPOL1922 System | Initialized`);
 });
+
+/*
+Hooks.once("ready", function () {
+  game.system.applicationFactions = new applications.CEL1922Factions()
+  game.system.applicationFactions.render({ force: true })
+})
+*/
 
 async function modifyConfigurationSettings() {
   /**

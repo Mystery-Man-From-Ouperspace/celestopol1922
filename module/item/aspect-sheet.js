@@ -1,8 +1,8 @@
 Hooks.on("preCreateItem", (document, data, options, userId) => {
-    let updates = {}
-    const stats = document._stats
-
     if (document.type === "aspect") {
+      let updates = {}
+      const stats = document._stats
+
       // Pour un acteur non dupliqué, non provenant d'un compendium et non exporté
       if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
         // Image par défaut
