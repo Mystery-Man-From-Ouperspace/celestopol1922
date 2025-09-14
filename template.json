@@ -319,7 +319,7 @@
       },
       "skill": {
         "skilltypes": [
-          "CEL1922.opt.ame", "CEL1922.opt.attraction", "CEL1922.opt.artifice", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
+          "CEL1922.opt.ame", "CEL1922.opt.artifice", "CEL1922.opt.attraction", "CEL1922.opt.coercition", "CEL1922.opt.faveur",
           "CEL1922.opt.corps", "CEL1922.opt.echauffouree", "CEL1922.opt.effacement", "CEL1922.opt.mobilite", "CEL1922.opt.prouesse",
           "CEL1922.opt.coeur", "CEL1922.opt.appreciation", "CEL1922.opt.arts", "CEL1922.opt.inspiration", "CEL1922.opt.traque",
           "CEL1922.opt.esprit", "CEL1922.opt.instruction", "CEL1922.opt.mtechnologique", "CEL1922.opt.raisonnement", "CEL1922.opt.traitement"
@@ -359,10 +359,10 @@
         "ame": {
           "res": 0,
           "actuel": 0,
-          "attraction": {
+          "artifice": {
             "value": 0
           },
-          "artifice": {
+          "attraction": {
             "value": 0
           },
           "coercition": {
@@ -570,7 +570,7 @@
               "malus": 0
             }
           },
-          "attraction": {
+          "artifice": {
             "indice": 1,
             "label": "CEL1922.opt.artifice",
             "bonus_malus": {
@@ -578,7 +578,7 @@
               "malus": 0
             }
           },
-          "artifice": {
+          "attraction": {
             "indice": 2,
             "label": "CEL1922.opt.attraction",
             "bonus_malus": {

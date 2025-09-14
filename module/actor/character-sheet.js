@@ -917,11 +917,9 @@ async _onClickMoonDieRoll(event) {
       myNumberOfDice: 2,
       mySkill: Skill,
       myAnomaly: 0,
-      myBonusAnomaly: 1, // +
       myAspect: 0,
       myBonusAspect: 1, // +
       myAttribute: 0,
-      myBonusAttribute: 1, // +
       myBonus: 0,
       myMalus: -0,
       myWounds: myActor.system.blessures.lvl,
@@ -966,8 +964,8 @@ async _onClickMoonDieRoll(event) {
     if (myPromptPresent) {
       let myResultDialog =  await _skillDiceRollDialog(
         myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
-        myData.mySkill, myData.myAnomaly, myData.myBonusAnomaly, myData.myAspect, myData.myBonusAspect,
-        myData.myAttribute, myData.myBonusAttribute, myData.myBonus, myData.myMalus,
+        myData.mySkill, myData.myAnomaly, myData.myAspect, myData.myBonusAspect,
+        myData.myAttribute, myData.myBonus, myData.myMalus,
         myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myData.myTypeOfThrow, myData.totalBoni
       );
 
@@ -983,11 +981,9 @@ async _onClickMoonDieRoll(event) {
       myData.myNumberOfDice = parseInt(myResultDialog.numberofdice);
       myData.mySkill = parseInt(myResultDialog.skill);
       myData.myAnomaly = myResultDialog.anomaly;
-      myData.myBonusAnomaly = parseInt(myResultDialog.bonusanomaly);
       myData.myAspect = myResultDialog.aspect;
       myData.myBonusAspect = parseInt(myResultDialog.bonusaspect);
       myData.myAttribute = myResultDialog.attribute;
-      myData.myBonusAttribute = parseInt(myResultDialog.bonusattribute);
       myData.myBonus = parseInt(myResultDialog.bonus);
       myData.myMalus = parseInt(myResultDialog.malus);
       myData.myWounds = myResultDialog.jaugewounds;
@@ -1318,9 +1314,11 @@ async _onClickMoonDieRoll(event) {
         if (myData.myAnomaly == anomaly.id) {
           titleAnomaly = anomaly.name.toString();
           dataAnomaly = parseInt(anomaly.system.value);
+          /*
           if (myData.myBonusAnomaly) {
             dataAnomaly *= -1;
           }
+          */
         };
       };
 
@@ -1342,9 +1340,11 @@ async _onClickMoonDieRoll(event) {
         if (myData.myAttribute == attribute.id) {
           titleAttribute = attribute.name.toString();
           dataAttribute = parseInt(attribute.system.value);
+          /*
           if (myData.myBonusAttribute) {
             dataAttribute *= -1;
           }
+          */
         };
       };
 
@@ -1921,7 +1921,7 @@ async function _whichMoonTypeOfThrow (myActor, myMoon, myTypeOfThrow) {
 
 async function _skillDiceRollDialog(
   myActor, template, myTitle, myDialogOptions, myNumberOfDice,
-  mySkill, myAnomaly, myBonusAnomaly, myAspect, myBonusAspect, myAttribute, myBonusAttribute, myBonus, myMalus,
+  mySkill, myAnomaly, myAspect, myBonusAspect, myAttribute, myBonus, myMalus,
   myWounds, myDestiny, mySpleen, myArmor, myTypeOfThrow, myTotalScoresBonusMalus
 ) {
   // Render modal dialog
@@ -1943,9 +1943,7 @@ async function _skillDiceRollDialog(
     anomaly: myAnomaly.toString(),
     aspect: myAspect.toString(),
     attribute: myAttribute.toString(),
-    bonusanomalybonus: myBonusAnomaly.toString(),
     bonusaspect: myBonusAspect.toString(),
-    bonusattribute: myBonusAttribute.toString(),
     bonus: myBonus.toString(),
     malus: myMalus.toString(),
     jaugewounds: myWounds.toString(),
@@ -2000,11 +1998,9 @@ async function _skillDiceRollDialog(
     myDialogData.numberofdice = myHtml.find("select[name='numberofdice']").val();
     myDialogData.skill = myHtml.find("select[name='skill']").val();
     myDialogData.anomaly = myHtml.find("select[name='anomaly']").val();
-    myDialogData.bonusanomaly = myHtml.find("select[name='bonusanomaly']").val();
     myDialogData.aspect = myHtml.find("select[name='aspect']").val();
     myDialogData.bonusaspect = myHtml.find("select[name='bonusaspect']").val();
     myDialogData.attribute = myHtml.find("select[name='attribute']").val();
-    myDialogData.bonusattribute = myHtml.find("select[name='bonusttribute']").val();
     myDialogData.bonus = myHtml.find("select[name='bonus']").val();
     myDialogData.malus = myHtml.find("select[name='malus']").val();
     myDialogData.jaugewounds = myHtml.find("select[name='jaugewounds']").val();
@@ -2020,6 +2016,7 @@ async function _skillDiceRollDialog(
     let skill_score = await _getSkillValueData (myActor, myDialogData.skill);
     totalscoresbonusmalus += skill_score;
 
+    /*
     let bonusanomaly_score = parseInt(myDialogData.bonusanomaly) ? -1 : 1 ;
     let anomaly_score = 0;
     if (myDialogData.anomaly != 0) {
@@ -2027,6 +2024,7 @@ async function _skillDiceRollDialog(
     };
     anomaly_score = anomaly_score * parseInt(bonusanomaly_score);
     totalscoresbonusmalus += anomaly_score;
+    */
 
     let bonusaspect_score = parseInt(myDialogData.bonusaspect) ? -1 : 1 ;
     let aspect_score = 0;
@@ -2036,6 +2034,7 @@ async function _skillDiceRollDialog(
     aspect_score = aspect_score * parseInt(bonusaspect_score);
     totalscoresbonusmalus += aspect_score;
 
+    /*
     let bonusattribute_score = parseInt(myDialogData.bonusattribute) ? -1 : 1 ;
     let attribute_score = 0;
     if (myDialogData.attribute_score != 0) {
@@ -2043,6 +2042,7 @@ async function _skillDiceRollDialog(
     };
     attribute_score = attribute_score * parseInt(bonusattribute_score);
     totalscoresbonusmalus += attribute_score;
+    */
 
     totalscoresbonusmalus += (parseInt(myDialogData.bonus) + parseInt(myDialogData.malus));
 
@@ -2055,12 +2055,14 @@ async function _skillDiceRollDialog(
     let jaugewounds_score = 0;
     jaugewounds_score = parseInt(await _getJaugeWoundsValueData (myActor, myDialogData.jaugewounds));
     totalscoresbonusmalus += jaugewounds_score;
+    /*
     let jaugedestiny_score = 0;
     jaugedestiny_score = await _getJaugeDestinyValueData (myActor, myDialogData.jaugedestiny);
     totalscoresbonusmalus += jaugedestiny_score
     let jaugespleen_score = 0;
     jaugespleen_score = await _getJaugeSpleenValueData (myActor, myDialogData.jaugespleen);
     totalscoresbonusmalus += jaugespleen_score;
+    */
 
     myDialogData.totalscoresbonusmalus = totalscoresbonusmalus;
 
@@ -2128,20 +2130,21 @@ async function _skillDiceRollDialog(
     let compt = 0;
     for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
       compt++;
-      // if (compt <= 1) {
+      if (compt <= 1) {
       myAnomaly[anomaly.id.toString()] = new myObject(anomaly.id.toString(), anomaly.name.toString());
-      // };
+      };
     };
     if (!compt) {
       myAnomaly["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
+
     }
     compt = 0;
     myAspect["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
     for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
       compt++;
-      // if (compt <= 4) {
+      if (compt <= 4) {
         myAspect[aspect.id.toString()] = new myObject(aspect.id.toString(), aspect.name.toString());
-      // };
+      };
     };
     /*
     myAttribute["0"] = new myObject("0", game.i18n.localize("CEL1922.opt.none"));
@@ -2159,13 +2162,11 @@ async function _skillDiceRollDialog(
     const context = {
     skillchoices: mySkill,
     anomalychoices: myAnomaly,
-    bonusanomaly: '1',
     aspectchoices: myAspect,
     bonusaspect: '1',
     /*
     attributechoices: myAttribute,
     */
-    bonusattribute: '1',
     armorchoices: myArmor,
     jaugewoundschoices: myJauge_Wounds,
     jaugedestinychoices: myJauge_Destiny,
@@ -2505,4 +2506,3 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
   
   }
 }
-

@@ -1050,13 +1050,13 @@ async function _getSkillValueData (myActor, mySkillNbr) {
       myStringRES = myStringVal;
     break;
     case 1:
-      myStringVal = await myActor.system.skill.ame.attraction.value;
-      myStringRES = await myActor.system.skill.ame.res;
-    break;
-    case 2:
       myStringVal = await myActor.system.skill.ame.artifice.value;
       myStringRES = await myActor.system.skill.ame.res;
       break;
+    case 2:
+      myStringVal = await myActor.system.skill.ame.attraction.value;
+      myStringRES = await myActor.system.skill.ame.res;
+    break;
     case 3:
       myStringVal = await myActor.system.skill.ame.coercition.value;
       myStringRES = await myActor.system.skill.ame.res;

@@ -240,8 +240,8 @@
   "CEL1922.aspects": "Aspects",
   "CEL1922.attribute": "Attribut",
   "CEL1922.attributes": "Attributs",
-  "CEL1922.utiliserFortune": "En cas de tirage de Fortune, 1 point sera ôté automatiquement du total du score de Fortune si celui-ci est positif. Sinon, le tirage de Fortune sera ignoré et 2D8 seront lancés.",
-  "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez disposer d'une et d'une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n'est pas le cas.",
+  "CEL1922.utiliserFortune": "En cas de tirage de Fortune (Attribut), 1 point sera ôté automatiquement du total du score de Fortune si celui-ci est positif. Sinon, le tirage de Fortune sera ignoré et 2D8 seront lancés.",
+  "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez être porteur d’une et d’une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n’est pas le cas.",
   "CEL1922.factions": "Factions",
   "CEL1922.Factions": "Factions",
   "CEL1922.VotrePropreFaction": "Votre propre faction",
@@ -271,8 +271,8 @@
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
   "CEL1922.anomalynocompute": "Anomalie",
-  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel, ne rentre pas dans les calculs)",
-  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel, ne rentre pas dans les calculs)",
+  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel ; ne rentre pas dans les calculs)",
+  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel ; ne rentre pas dans les calculs)",
 
 
   "CEL1922.opt.none": "—",

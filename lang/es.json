@@ -82,6 +82,8 @@
   "CEL1922.Attributes": "Attributs",
   "CEL1922.Items": "Équipements",
 
+  "CEL1922.aspectUsed": "Aspect impliqué",
+
   "CEL1922.Entropie": "ENTROPIE",
   "CEL1922.CommunicationAvecLesMorts": "COMMUNICATION MORTS",
   "CEL1922.Illusion": "ILLUSION",
@@ -211,19 +213,22 @@
   "CEL1922.corps actuel": "Domaine Corps (actuel)",
 
 
-  "CEL1922.One": "Un",
-  "CEL1922.Two": "Deux",
-  "CEL1922.Three": "Trois",
-  "CEL1922.Four": "Quatre",
-  "CEL1922.Five": "Cinq",
-  "CEL1922.Six": "Six",
+  "CEL1922.One": "1D8",
+  "CEL1922.Two": "2D8",
+  "CEL1922.attributeFortune": "<!> 2D8 remplacés par 1D8+8 (Attribut Fortune)",
+  "CEL1922.maitriseChance": "<!> 2D8 remplacés par 7 (Maîtriser sa chance)",
+  "CEL1922.Three": "3D8",
+  "CEL1922.Four": "4D8",
+  "CEL1922.Five": "5D8",
+  "CEL1922.Six": "6D8",
 
 
   "CEL1922.NPC": "PNJ",
   "CEL1922.N.P.C.": "P . N . J .",
 
-  "CEL1922.DestinSpeech": "<p><span class='fontstyle0'>Vider la jauge permet de :</span></p><ul><li><p><span class='fontstyle0'>lancer 3d8 au lieu de 2 pour 1 test ;</span></p></li><li><p><span class='fontstyle0'>gagner l’initiative lors d’un combat ;</span></p></li><li><p><span class='fontstyle0'>trouver vite l’ensemble des indices (fouille, entretien, surveillance, etc.) ;</span></p></li><li><p><span class='fontstyle0'> éviter une blessure ;</span></p></li><li><p><span class='fontstyle0'>sortir de l’inconscience ;</span></p></li><li><p><span class='fontstyle0'>obtenir un Triomphe sur un test de Spécialisation (même sans dé de la Lune).</span> </p></li></ul>",
+  "CEL1922.DestinSpeech": "<p><span class='fontstyle0'>Vider la jauge de destin permet de :</span></p><ul><li><p><span class='fontstyle0'>lancer 3d8 au lieu de 2 pour 1 test ;</span></p></li><li><p><span class='fontstyle0'>gagner l’initiative lors d’un combat ;</span></p></li><li><p><span class='fontstyle0'>trouver vite l’ensemble des indices (fouille, entretien, surveillance, etc.) ;</span></p></li><li><p><span class='fontstyle0'> éviter une blessure ;</span></p></li><li><p><span class='fontstyle0'>sortir de l’inconscience ;</span></p></li><li><p><span class='fontstyle0'>obtenir un Triomphe sur un test de Spécialisation (même sans dé de la Lune).</span> </p></li></ul>",
   "CEL1922.SpleenSpeech": "<p><span class='fontstyle0'>Gain d’un point de spleen :</span></p><ul><li><p><span class='fontstyle0'>lors d’un test de Spécialisation, en obtenant un échec et une Pleine Lune sur le dé de la Lune ;</span></p></li><li><p><span class='fontstyle0'>pour transformer un échec de test de Spécialisation en réussite, même avec utilisation d’une Anomalie ;</span></p></li><li><p><span class='fontstyle0'>pour réussir automatiquement un test de résistance ;</span></p></li><li><p><span class='fontstyle0'>pour ne pas subir une blessure Dramatique ;</span></p></li><li><p><span class='fontstyle0'>en puisant dans ses ressources.</span> </p></li></ul>",
+  "CEL1922.FactionsSpeech": "La gestion des factions est partagée entre tous les protagonistes. Ce que tous les autres protagonistes feront à ce sujet sera répercuté ici sur votre fiche. Ce que vous ferez vous-même ici sera reflété sur leur propre fiche d'acteur.",
 
   "CEL1922.numberofdice": "Nombre de Dés",
   "CEL1922.AnomaliesAspects&Attributs": "Anomalies, Aspects & Attributs",
@@ -235,10 +240,11 @@
   "CEL1922.aspects": "Aspects",
   "CEL1922.attribute": "Attribut",
   "CEL1922.attributes": "Attributs",
-  "CEL1922.attributefortune": "Attribut Fortune (2d8 remplacés par 1d8+8)",
-  "CEL1922.utiliserFortune": "Ôter 1 du score de Fortune ^0",
+  "CEL1922.utiliserFortune": "En cas de tirage de Fortune (Attribut), 1 point sera ôté automatiquement du total du score de Fortune si celui-ci est positif. Sinon, le tirage de Fortune sera ignoré et 2D8 seront lancés.",
+  "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez disposer d'une et d'une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n'est pas le cas.",
   "CEL1922.factions": "Factions",
   "CEL1922.Factions": "Factions",
+  "CEL1922.VotrePropreFaction": "Votre propre faction",
 
   "CEL1922.Pinkerton": "Agence Pinkerton",
   "CEL1922.Police": "Police secrète du duc",
@@ -264,6 +270,9 @@
   "CEL1922.jaugewounds": "Jauge de Blessures",
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
+  "CEL1922.anomalynocompute": "Anomalie",
+  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel, ne rentre pas dans les calculs)",
+  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel, ne rentre pas dans les calculs)",
 
 
   "CEL1922.opt.none": "—",
@@ -336,6 +345,9 @@
   "CEL1922.Info1": "Je commence à vérifier votre fiche…",
   "CEL1922.Info2": "Tout me paraît normal",
   "CEL1922.Info3": "J’ai fini de vérifier votre fiche !",
+
+  "CEL1922.InfoFortune": "Votre score de Fortune a été diminué de 1 point ; vous lancerez 1D8+8.",
+  "CEL1922.ErrFortuneAZero": "Impossible ! Votre score de Fortune est à zéro ; vous lancerez 2D8.",
 
   "CEL1922.Error0": "Impossible de poursuivre : la gestion de l’Inititiative n’a pas été encore programmée.",
   "CEL1922.Error1": "J’ai trouvé au moins ^0 erreur(s) !",
@@ -438,7 +450,7 @@
 
   "CEL1922.barehands": "Mains nues [0]",
 
-  "CEL1922.TotalBonusMalus": "Cumul scores / bonus / malus :",
+  "CEL1922.TotalBonusMalus": "Cumul : scores + bonus – malus.",
 
   "CEL1922.AutomatizationBlocked": "…a débrayé l’automatisation ; ce qui est affiché est le résultat d’un test de 2d8, sous la Spécialité utilisée (et son Domaine), ajusté du malus dû à ses Blessures éventuelles.",
 
