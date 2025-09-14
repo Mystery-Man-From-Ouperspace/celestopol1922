@@ -38,7 +38,7 @@
                 </tr>
             </table>
             <table>
-                <tr>
+                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
 
                     </td>
@@ -75,12 +75,6 @@
                     </td>
                     <td>
                         <div>
-                            <select name="bonusanomaly" data-type="String">
-                                {{#select bonusanomaly }}
-                                <option value="0"><b>&nbsp;+&nbsp;</b></option>
-                                <option value="1"><b>&nbsp;–&nbsp;</b></option>
-                                {{/select}}
-                            </select>
                             <select name="anomaly" data-type="String">
                                 {{selectOptions anomalychoices selected=anomaly labelAttr="label" localize=true}}
                             </select>
@@ -90,7 +84,7 @@
             </table>
 
             <table>
-                <tr>
+                <tr style="background-color: transparent; width:100%; display: flex; align-items: content; justify-content: space-between;">
                     <td>
 
                     </td>
@@ -249,10 +243,9 @@
                         </select>
                     </td>
                     <td>
-                        <small style="color: rgb(12, 76, 12);"><i class="fas fa-circle-info"></i> {{ localize "CEL1922.TotalBonusMalus" }}</small>
-                    </td>
-                    <td class="scorebonusmalus" style="text-align: center; color: orange; background-color: rgb(12, 76, 12); margin-top: 5px;">
-                        [&nbsp;{{ totalscoresbonusmalus }}&nbsp;]
+                        <div  data-tooltip="{{ localize 'CEL1922.TotalBonusMalus' }}" style="margin-left: auto; margin-right: 10px; text-align: center; width: 75px; height: 30px; border-radius: 6px; color: orange; background-color: rgb(12, 76, 12);">
+                            <i class="fas fa-circle-info" style="margin-top: 8px;"></i> <span class="scorebonusmalus" style="margin-top: 8px;">[&nbsp;{{ totalscoresbonusmalus }}&nbsp;]</span>
+                        </div>
                     </td>
                 </tr>
                 <tr hidden>

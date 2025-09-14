@@ -24,12 +24,8 @@ export class ModifiedDialog extends Dialog {
 
 
     html.find('select[name="skill"]').change(this._onSkillDicePrompt.bind(this));
-    html.find('select[name="bonusanomaly"]').change(this._onSkillDicePrompt.bind(this));
-    html.find('select[name="anomaly"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="bonusaspect"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="aspect"]').change(this._onSkillDicePrompt.bind(this));
-    html.find('select[name="bonusattribute"]').change(this._onSkillDicePrompt.bind(this));
-    html.find('select[name="attribute"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="bonus"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="malus"]').change(this._onSkillDicePrompt.bind(this));
     html.find('select[name="armor"]').change(this._onSkillDicePrompt.bind(this));
@@ -180,16 +176,15 @@ export class ModifiedDialog extends Dialog {
   async _onSkillDicePrompt(event) {
     // console.log("Menu modifié");
 
+
     let skill = await this.element.find('select[name="skill"]').val();
+
+    
 
     // console.log("skill = ", skill);
 
-    let bonusanomaly = await this.element.find('select[name="bonusanomaly"]').val();
-    let anomaly = await this.element.find('select[name="anomaly"]').val();
     let bonusaspect = await this.element.find('select[name="bonusaspect"]').val();
     let aspect = await this.element.find('select[name="aspect"]').val();
-    let bonusattribute = await this.element.find('select[name="bonusattribute"]').val();
-    let attribute = await this.element.find('select[name="attribute"]').val();
     let bonus = await this.element.find('select[name="bonus"]').val();
     let malus = await this.element.find('select[name="malus"]').val();
     let armor = await this.element.find('select[name="armor"]').val();
@@ -206,16 +201,8 @@ export class ModifiedDialog extends Dialog {
 
     let totalscoresbonusmalus = 0;
 
-    let skill_score = await _getSkillValueData (myActor, skill);
+    let skill_score = await _getSkillValueData (myActor, skill); // score Spécialisation + score Domaine
     totalscoresbonusmalus += skill_score;
-
-    let bonusanomaly_score = parseInt(bonusanomaly) ? -1 : 1 ;
-    let anomaly_score = 0;
-    if (anomaly != 0) {
-      anomaly_score = await _getAnomalyValueData (myActor, anomaly);
-    };
-    anomaly_score = anomaly_score * parseInt(bonusanomaly_score);
-    totalscoresbonusmalus += anomaly_score;
 
     let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
     let aspect_score = 0;
@@ -224,14 +211,6 @@ export class ModifiedDialog extends Dialog {
     };
     aspect_score = aspect_score * parseInt(bonusaspect_score);
     totalscoresbonusmalus += aspect_score;
-
-    let bonusattribute_score = parseInt(bonusattribute) ? -1 : 1 ;
-    let attribute_score = 0;
-    if (attribute_score != 0) {
-      attribute_score = await _getAttributeValueData (myActor, attribute);
-    };
-    attribute_score = attribute_score * parseInt(bonusattribute_score);
-    totalscoresbonusmalus += attribute_score;
 
     totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
 
@@ -255,7 +234,7 @@ export class ModifiedDialog extends Dialog {
       totalscoresbonusmalus = NaN;
     };
 
-    this.element.find('td[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
+    this.element.find('span[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
   
   
   }
@@ -281,13 +260,13 @@ async function _getSkillValueData (myActor, mySkillNbr) {
       myStringRES = myStringVal;
     break;
     case 1:
-      myStringVal = await myActor.system.skill.ame.attraction.value;
-      myStringRES = await myActor.system.skill.ame.res;
-    break;
-    case 2:
       myStringVal = await myActor.system.skill.ame.artifice.value;
       myStringRES = await myActor.system.skill.ame.res;
       break;
+    case 2:
+      myStringVal = await myActor.system.skill.ame.attraction.value;
+      myStringRES = await myActor.system.skill.ame.res;
+    break;
     case 3:
       myStringVal = await myActor.system.skill.ame.coercition.value;
       myStringRES = await myActor.system.skill.ame.res;
@@ -367,22 +346,11 @@ async function _getSkillValueData (myActor, mySkillNbr) {
   if (myStringRES == null) myRESValue = 0;
 
   let myData = myValue;
-  if (mySkill % 5) myData = myValue + myRESValue;
+  if (mySkill % 5) myData = myValue + myRESValue; // C'est une Spécialisation (et pas un Domaine pur)
 
    // console.log("myData = ", myData);
 
   return myData;
-}
-
-async function _getAnomalyValueData (myActor, myAnomaly) {
-  let myAnomalyVal = 0;
-  for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
-    if (anomaly.id === myAnomaly) {
-      myAnomalyVal = anomaly.system.value;
-    };
-  };
-
-  return myAnomalyVal;
 }
 
 async function _getAspectValueData (myActor, myAspect) {
@@ -396,6 +364,7 @@ async function _getAspectValueData (myActor, myAspect) {
   return myAspectVal;
 }
 
+/*
 async function _getAttributeValueData (myActor, myAttribute) {
   let myAttributeVal = 0;
   for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
@@ -406,6 +375,7 @@ async function _getAttributeValueData (myActor, myAttribute) {
 
   return myAttributeVal;
 }
+  */
 
 async function _getArmorValueData (myActor, myArmor) {
   let myArmorVal = 0;
