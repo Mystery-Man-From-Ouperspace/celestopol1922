@@ -9,10 +9,13 @@ import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
 import { CEL1922AttributeSheet } from "./item/attribute-sheet.js";
 
 import { CEL1922Factions } from "./appli/factions.js";
+// import { CEL1922SidebarMenu } from "./appli/sidebar-menu.js"
 
 import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerHandlebarsHelpers } from "./helpers.js";
+
+
 
 
 /* -------------------------------------------- */
@@ -22,7 +25,6 @@ import { registerHandlebarsHelpers } from "./helpers.js";
 /**
  * Init hook.
  */
-
 Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initializing`);
 
@@ -62,6 +64,115 @@ Hooks.once("init", async function () {
   });
 
 
+
+  game.settings.register("celestopol1922", "pinkerton", {
+    name: game.i18n.localize("CEL1922.Pinkerton"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "police", {
+    name: game.i18n.localize("CEL1922.Police"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "okhrana", {
+    name: game.i18n.localize("CEL1922.Okhrana"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "lunanovatek", {
+    name: game.i18n.localize("CEL1922.Lunanovatek"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "oto", {
+    name: game.i18n.localize("CEL1922.OTO"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "syndicats", {
+    name: game.i18n.localize("CEL1922.Syndicats"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "vorovskoymir", {
+    name: game.i18n.localize("CEL1922.Vorovskoymir"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "cour", {
+    name: game.i18n.localize("CEL1922.Cour"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "perso", {
+    name: game.i18n.localize("CEL1922.Perso"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "libel", {
+    name: game.i18n.localize("CEL1922.Libel"),
+    hint: game.i18n.localize("CEL1922.texte"),
+    scope: "world",
+    config: false,
+    default: "?",
+    type: String,
+  });
+
+  game.settings.register("celestopol1922", "perso2", {
+    name: game.i18n.localize("CEL1922.Perso2"),
+    hint: game.i18n.localize("CEL1922.valeur"),
+    scope: "world",
+    config: false,
+    default: 0,
+    type: Number,
+  });
+
+  game.settings.register("celestopol1922", "libel2", {
+    name: game.i18n.localize("CEL1922.Libel2"),
+    hint: game.i18n.localize("CEL1922.texte"),
+    scope: "world",
+    config: false,
+    default: "?",
+    type: String,
+  });
+
    /**
 	 * Set an initiative formula for the system
 	 * @type {String}
@@ -90,10 +201,25 @@ Hooks.once("init", async function () {
   Items.registerSheet("celestopol1922", CEL1922AspectSheet, { types: ["aspect"], makeDefault: true });
   Items.registerSheet("celestopol1922", CEL1922AttributeSheet, { types: ["attribute"], makeDefault: true });
 
-  // Game Manager Factions
-  // CONFIG.queries["celestopol1922.updateFactions"] = applications.CEL1922Factions._handleQueryUpdateFactions
-  // game.celestopol1922.celestopol1922Factions = new CEL1922Factions();
   CEL1922.celestopol1922Factions = new CEL1922Factions();
+
+  CONFIG.queries["celestopol1922.updateFactions"] = CEL1922.celestopol1922Factions._handleQueryUpdateFactions
+
+  /*
+  // Ajout d'un nouvel onglet dans la barre latérale
+  CONFIG.ui.sidebar.TABS.celestopol1922 = {
+    active: false,
+    icon: `celestopol1922`,
+    tooltip: `Célestopol 1922`,
+  }
+  CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
+  */
+
+  
+  /*
+  helpers.CEL1922SettingsHandler.registerSettings()
+  helpers.registerHandlebars()
+  */
 
 
   // Preload template partials
@@ -108,12 +234,7 @@ Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initialized`);
 });
 
-/*
-Hooks.once("ready", function () {
-  game.system.applicationFactions = new applications.CEL1922Factions()
-  game.system.applicationFactions.render({ force: true })
-})
-*/
+
 
 async function modifyConfigurationSettings() {
   /**

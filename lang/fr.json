@@ -1,5 +1,5 @@
 {
-  "CEL1922.FACTIONS.Title": "Factions pour le/la GM",
+  "CEL1922.FACTIONS.Title": "Factions (mode Édition)",
   
     "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 
@@ -230,7 +230,8 @@
 
   "CEL1922.DestinSpeech": "<p><span class='fontstyle0'>Vider la jauge de destin permet de :</span></p><ul><li><p><span class='fontstyle0'>lancer 3d8 au lieu de 2 pour 1 test ;</span></p></li><li><p><span class='fontstyle0'>gagner l’initiative lors d’un combat ;</span></p></li><li><p><span class='fontstyle0'>trouver vite l’ensemble des indices (fouille, entretien, surveillance, etc.) ;</span></p></li><li><p><span class='fontstyle0'> éviter une blessure ;</span></p></li><li><p><span class='fontstyle0'>sortir de l’inconscience ;</span></p></li><li><p><span class='fontstyle0'>obtenir un Triomphe sur un test de Spécialisation (même sans dé de la Lune).</span> </p></li></ul>",
   "CEL1922.SpleenSpeech": "<p><span class='fontstyle0'>Gain d’un point de spleen :</span></p><ul><li><p><span class='fontstyle0'>lors d’un test de Spécialisation, en obtenant un échec et une Pleine Lune sur le dé de la Lune ;</span></p></li><li><p><span class='fontstyle0'>pour transformer un échec de test de Spécialisation en réussite, même avec utilisation d’une Anomalie ;</span></p></li><li><p><span class='fontstyle0'>pour réussir automatiquement un test de résistance ;</span></p></li><li><p><span class='fontstyle0'>pour ne pas subir une blessure Dramatique ;</span></p></li><li><p><span class='fontstyle0'>en puisant dans ses ressources.</span> </p></li></ul>",
-  "CEL1922.FactionsSpeech": "La gestion des factions est partagée entre tous les protagonistes. Ce que tous les autres protagonistes feront à ce sujet sera répercuté ici sur votre fiche. Ce que vous ferez vous-même ici sera reflété sur leur propre fiche d'acteur.",
+  "CEL1922.FactionsSpeechGM": "La gestion des factions est partagée entre tous les protagonistes et le narrateur. Ce que tous les protagonistes feront à ce sujet sera répercuté ici dans cette fenêtre. Ce que vous ferez vous-même ici sera reflété sur leur propre fiche d'acteur.",
+  "CEL1922.FactionsSpeech": "La gestion des factions est partagée entre tous les protagonistes et le narrateur. Ce que tous les autres feront à ce sujet sera répercuté ici sur votre fiche. Ce que vous ferez vous-même en mode édition sera reflété sur leur propre fiche d'acteur et chez votre narrateur.",
 
   "CEL1922.numberofdice": "Nombre de Dés",
   "CEL1922.AnomaliesAspects&Attributs": "Anomalies, Aspects & Attributs",
@@ -246,7 +247,11 @@
   "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez être porteur d’une et d’une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n’est pas le cas.",
   "CEL1922.factions": "Factions",
   "CEL1922.Factions": "Factions",
+  "CEL1922.autresFactions:": "Vos propres factions :",
   "CEL1922.VotrePropreFaction": "Votre propre faction",
+
+  "CEL1922.EditFactions": "Éditer les Factions",
+  "CEL1922.EditFactionsSpeech": "Cliquer ici vous permet d'éditer les données concernant les factions dans une fenêtre séparée.",
 
   "CEL1922.Pinkerton": "Agence Pinkerton",
   "CEL1922.Police": "Police secrète du duc",

@@ -141,6 +141,13 @@
     "minimum": "11",
     "verified": "13"
   },
+  "socket": true,
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "lang", "templates"]
+    }
+  },
   "initiative": "@initiative",
   "background": "/systems/celestopol1922/images/background/celestopol_game_banniere.webp",
   "grid": {

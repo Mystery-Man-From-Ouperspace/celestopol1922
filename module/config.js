@@ -1,5 +1,9 @@
 export const CEL1922 = {};
 
+//
+// CEL1922.CEL1922Factions = CEL1922Factions
+//
+
 CEL1922.SUBTYPES = {
   other: {
     id: "other",
@@ -17,4 +21,4 @@ CEL1922.SUBTYPES = {
     id: "vehicle",
     label: "CEL1922.Vehicle",
   },
-};
+}
