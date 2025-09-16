@@ -1,3 +1,4 @@
+// const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api
 import { CEL1922 } from "../config.js";
 
 
@@ -166,7 +167,9 @@ export class CEL1922Factions extends Application {
       }
       // C'est un joueur : utilisation de la requête
       else {
-        await game.users.activeGM.query("celestopol1922.updateFactions", { jaugeType, whichCheckBox })
+        const token = jaugeType + "|" + whichCheckBox;
+        console.log("token = ", token)
+        await game.users.activeGM.query("celestopol1922.updateFactions", { token })
       }
 
       this.render({ force: true })
@@ -178,40 +181,44 @@ export class CEL1922Factions extends Application {
    *
    * @async
    * @param {Object} params  The parameters object.
-   * @param {number} params.index The value to update.
+   * @param {number} params.token The value to update.
    * @returns {Promise<void>} Resolves when the Factions setting has been updated.
    */
-  static _handleQueryUpdateFactions = async ({ jaugeType, whichCheckBox }) => {
+  static _handleQueryUpdateFactions = async ({ token }) => {
+    console.log("Je passe par _handleQueryUpdateFactions()")
+    const tokenTab = token.split('|');
+    const jaugeType = tokenTab[0];
+    const whichCheckBox = tokenTab[1];
     switch (jaugeType) {
         case "pinkerton":
-            await game.settings.set("celestopol1922", "pinkerton", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "pinkerton", whichCheckBox)
         break
         case "police":
-            await game.settings.set("celestopol1922", "police", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "police", whichCheckBox)
         break
         case "okhrana":
-            await game.settings.set("celestopol1922", "okhrana", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "okhrana", whichCheckBox)
         break
         case "lunanovatek":
-            await game.settings.set("celestopol1922", "lunanovatek", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "lunanovatek", whichCheckBox)
         break
         case "oto":
-            await game.settings.set("celestopol1922", "oto", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "oto", whichCheckBox)
         break
         case "syndicats":
-            await game.settings.set("celestopol1922", "syndicats", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "syndicats", whichCheckBox)
         break
         case "vorovskoymir":
-            await game.settings.set("celestopol1922", "vorovskoymir", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "vorovskoymir", whichCheckBox)
         break
         case "cour":
-            await game.settings.set("celestopol1922", "cour", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "cour", whichCheckBox)
         break
         case "perso":
-            await game.settings.set("celestopol1922", "perso", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "perso", whichCheckBox)
         break
         case "perso2":
-            await game.settings.set("celestopol1922", "perso2", parseInt(whichCheckBox))
+            await game.settings.set("celestopol1922", "perso2", whichCheckBox)
         break
     default:
         console.log("C'est bizarre !");

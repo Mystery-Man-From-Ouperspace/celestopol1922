@@ -933,13 +933,12 @@ h1, h2, h3, h4, h5, h6 {
         Sidebar
 --------------------------------------------- */
 
-.icon.celestopol {
-  background-image: url('/systems/celestopol1922/images/ui/logo_jeu.png');
+.icon.celestopol1922 {
+  background-image: url('/systems/celestopol1922/images/ui/wheel.webp');
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
 }
-
 
 a.compendium-name,
 a.entry-name,
@@ -948,8 +947,6 @@ strong.ellipsis {
   font-family: "Copasetic";
   text-transform: uppercase;
 }
-
-
 
 /* concerne les préférences */
 

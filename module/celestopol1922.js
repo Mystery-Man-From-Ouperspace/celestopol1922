@@ -9,7 +9,6 @@ import { CEL1922AspectSheet } from "./item/aspect-sheet.js";
 import { CEL1922AttributeSheet } from "./item/attribute-sheet.js";
 
 import { CEL1922Factions } from "./appli/factions.js";
-// import { CEL1922SidebarMenu } from "./appli/sidebar-menu.js"
 
 import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
@@ -205,21 +204,22 @@ Hooks.once("init", async function () {
 
   CONFIG.queries["celestopol1922.updateFactions"] = CEL1922.celestopol1922Factions._handleQueryUpdateFactions
 
-  /*
   // Ajout d'un nouvel onglet dans la barre latérale
   CONFIG.ui.sidebar.TABS.celestopol1922 = {
     active: false,
     icon: `celestopol1922`,
     tooltip: `Célestopol 1922`,
   }
-  CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
-  */
+  // CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
+  // CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
 
-  
-  /*
+/*
+  registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
+  registerHandlebarsHelpers.registerHandlebars()
+
   helpers.CEL1922SettingsHandler.registerSettings()
   helpers.registerHandlebars()
-  */
+*/
 
 
   // Preload template partials

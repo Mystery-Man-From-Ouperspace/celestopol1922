@@ -1,6 +1,8 @@
 import { CEL1922 } from "../config.js"
-const { HandlebarsApplicationMixin } = CEL1922.api
-const { AbstractSidebarTab } = CEL1922.sidebar
+
+const { HandlebarsApplicationMixin } = foundry.applications.api
+const { AbstractSidebarTab } = foundry.applications.sidebar
+CEL1922.CEL1922SidebarMenu = CEL1922SidebarMenu
 
 export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(AbstractSidebarTab) {
   /** @inheritDoc */
@@ -8,9 +10,13 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
     window: {
       title: "CEL1922.Sidebar.title",
     },
+            /*
+
     actions: {
       openApp: CEL1922SidebarMenu.#onOpenApp,
     },
+         */
+
   }
 
   /** @override */
@@ -24,21 +30,26 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
     },
   }
 
+ /*
   static async #onOpenApp(event) {
     switch (event.target.dataset.app) {
       case "reserve":
-        if (!CEL1922.instances.has("celestopol1922-factions")) game.system.celestopol1922Factions.render({ force: true })
+        if (!foundry.applications.instances.has("celestopol1922-factions")) CEL1922.celestopol1922Factions.render({ force: true })
+        // if (!foundry.applications.instances.has("celestopol1922-factions")) game.system.celestopol1922Factions.render({ force: true })
         break
       default:
         break
     }
   }
+*/
 
   /** @inheritDoc */
+  /*
   async _prepareContext(options) {
     const context = await super._prepareContext(options)
     return Object.assign(context, {
       version: `Version ${game.system.version}`,
     })
   }
+*/
 }
