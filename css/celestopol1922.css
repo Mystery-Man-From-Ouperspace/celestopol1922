@@ -933,6 +933,67 @@ h1, h2, h3, h4, h5, h6 {
         Sidebar
 --------------------------------------------- */
 
+/* concerne l'ajout */
+
+.celestopol1922-sidebar {
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--color-text-secondary);
+}
+.celestopol1922-sidebar.active {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.celestopol1922-sidebar section {
+  gap: 0.5rem;
+}
+.celestopol1922-sidebar section h4 {
+  margin: 0;
+}
+.celestopol1922-sidebar section a.button {
+  flex-basis: 2rem;
+}
+.celestopol1922-sidebar .info {
+  font-size: var(--font-size-13);
+}
+.celestopol1922-sidebar .info .title {
+  margin: 0;
+  font-size: var(--font-size-32);
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+.celestopol1922-sidebar .info .subtitle {
+  margin: -0.5rem 0 0;
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+.celestopol1922-sidebar .info > div {
+  display: flex;
+  justify-content: space-between;
+}
+.celestopol1922-sidebar .info > div .label {
+  color: var(--color-text-emphatic);
+}
+.celestopol1922-sidebar .info > div .value {
+  color: var(--color-text-secondary);
+}
+.celestopol1922-sidebar .info .notification-pip {
+  margin-left: 0.25rem;
+  color: var(--color-text-accent);
+  position: initial;
+}
+
+
+#celestopol1922-popout {
+  overflow-y: hidden;
+}
+#celestopol1922-popout .window-content {
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+
 .icon.celestopol1922 {
   background-image: url('/systems/celestopol1922/images/ui/wheel.webp');
   background-size: 100%;

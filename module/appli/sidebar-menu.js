@@ -1,7 +1,10 @@
+// Kristov ***************************
 import { CEL1922 } from "../config.js"
 
 const { HandlebarsApplicationMixin } = foundry.applications.api
 const { AbstractSidebarTab } = foundry.applications.sidebar
+
+// Kristov ************************************
 CEL1922.CEL1922SidebarMenu = CEL1922SidebarMenu
 
 export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(AbstractSidebarTab) {
@@ -10,13 +13,9 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
     window: {
       title: "CEL1922.Sidebar.title",
     },
-            /*
-
     actions: {
       openApp: CEL1922SidebarMenu.#onOpenApp,
     },
-         */
-
   }
 
   /** @override */
@@ -30,7 +29,7 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
     },
   }
 
- /*
+
   static async #onOpenApp(event) {
     switch (event.target.dataset.app) {
       case "reserve":
@@ -41,15 +40,14 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
         break
     }
   }
-*/
+
 
   /** @inheritDoc */
-  /*
   async _prepareContext(options) {
     const context = await super._prepareContext(options)
     return Object.assign(context, {
       version: `Version ${game.system.version}`,
     })
   }
-*/
+
 }

@@ -27,8 +27,6 @@ import { registerHandlebarsHelpers } from "./helpers.js";
 Hooks.once("init", async function () {
   console.log(`CELESTOPOL1922 System | Initializing`);
 
-
-
   // Game Settings
   function delayedReload() {window.setTimeout(() => location.reload(), 500)}
 
@@ -146,12 +144,13 @@ Hooks.once("init", async function () {
   });
 
   game.settings.register("celestopol1922", "libel", {
-    name: game.i18n.localize("CEL1922.Libel"),
-    hint: game.i18n.localize("CEL1922.texte"),
+    name: game.i18n.localize("CEL1922.FactionPersonnalisee1"),
+    hint: game.i18n.localize("CEL1922.FactionPersonnaliseeTexte"),
     scope: "world",
-    config: false,
+    config: true,
     default: "?",
     type: String,
+    onChange: delayedReload,
   });
 
   game.settings.register("celestopol1922", "perso2", {
@@ -164,12 +163,13 @@ Hooks.once("init", async function () {
   });
 
   game.settings.register("celestopol1922", "libel2", {
-    name: game.i18n.localize("CEL1922.Libel2"),
-    hint: game.i18n.localize("CEL1922.texte"),
+    name: game.i18n.localize("CEL1922.FactionPersonnalisee2"),
+    hint: game.i18n.localize("CEL1922.FactionPersonnaliseeTexte"),
     scope: "world",
-    config: false,
+    config: true,
     default: "?",
     type: String,
+    onChange: delayedReload,
   });
 
    /**
@@ -202,7 +202,10 @@ Hooks.once("init", async function () {
 
   CEL1922.celestopol1922Factions = new CEL1922Factions();
 
+
+  // Kristov ****************************************************************
   CONFIG.queries["celestopol1922.updateFactions"] = CEL1922.celestopol1922Factions._handleQueryUpdateFactions
+
 
   // Ajout d'un nouvel onglet dans la barre latérale
   CONFIG.ui.sidebar.TABS.celestopol1922 = {
@@ -210,16 +213,17 @@ Hooks.once("init", async function () {
     icon: `celestopol1922`,
     tooltip: `Célestopol 1922`,
   }
+
+  // Kristov *********************************************
   // CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
   // CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
 
-/*
-  registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
-  registerHandlebarsHelpers.registerHandlebars()
+  // registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
+  // registerHandlebarsHelpers.registerHandlebars()
 
   helpers.CEL1922SettingsHandler.registerSettings()
   helpers.registerHandlebars()
-*/
+
 
 
   // Preload template partials

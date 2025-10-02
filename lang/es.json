@@ -1,7 +1,13 @@
 {
+  "CEL1922.FACTIONS.Title": "Factions (mode Édition)",
+  "CEL1922.FactionPersonnalisee:": "Faction personn. :",
+  "CEL1922.FactionPersonnalisee1": "Faction personnalisée 1",
+  "CEL1922.FactionPersonnalisee2": "Faction personnalisée 2",
+  "CEL1922.FactionPersonnaliseeTexte": "Saisissez le titre d’une faction personnalisée.",
+  
   "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 
-  "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Anomalies, Aspects et Attributs.",
+  "Cocher cette option autorisera les Joueuses à modifier les données (zones de descriptifs et paramètres) de leurs items tels que : Anomalies et Aspects.",
 
   "CEL1922.Tenir automatiquement le décompte des blessures": "Décompte auto. des Blessures",
   "CEL1922.Cocher cette option auto":
@@ -228,7 +234,8 @@
 
   "CEL1922.DestinSpeech": "<p><span class='fontstyle0'>Vider la jauge de destin permet de :</span></p><ul><li><p><span class='fontstyle0'>lancer 3d8 au lieu de 2 pour 1 test ;</span></p></li><li><p><span class='fontstyle0'>gagner l’initiative lors d’un combat ;</span></p></li><li><p><span class='fontstyle0'>trouver vite l’ensemble des indices (fouille, entretien, surveillance, etc.) ;</span></p></li><li><p><span class='fontstyle0'> éviter une blessure ;</span></p></li><li><p><span class='fontstyle0'>sortir de l’inconscience ;</span></p></li><li><p><span class='fontstyle0'>obtenir un Triomphe sur un test de Spécialisation (même sans dé de la Lune).</span> </p></li></ul>",
   "CEL1922.SpleenSpeech": "<p><span class='fontstyle0'>Gain d’un point de spleen :</span></p><ul><li><p><span class='fontstyle0'>lors d’un test de Spécialisation, en obtenant un échec et une Pleine Lune sur le dé de la Lune ;</span></p></li><li><p><span class='fontstyle0'>pour transformer un échec de test de Spécialisation en réussite, même avec utilisation d’une Anomalie ;</span></p></li><li><p><span class='fontstyle0'>pour réussir automatiquement un test de résistance ;</span></p></li><li><p><span class='fontstyle0'>pour ne pas subir une blessure Dramatique ;</span></p></li><li><p><span class='fontstyle0'>en puisant dans ses ressources.</span> </p></li></ul>",
-  "CEL1922.FactionsSpeech": "La gestion des factions est partagée entre tous les protagonistes. Ce que tous les autres protagonistes feront à ce sujet sera répercuté ici sur votre fiche. Ce que vous ferez vous-même ici sera reflété sur leur propre fiche d'acteur.",
+  "CEL1922.FactionsSpeechGM": "La gestion des factions est partagée entre tous les protagonistes et le narrateur. Ce que tous les protagonistes feront à ce sujet sera répercuté ici dans cette fenêtre. Ce que vous ferez vous-même ici sera reflété sur leur propre fiche d'acteur.",
+  "CEL1922.FactionsSpeech": "La gestion des factions est partagée entre tous les protagonistes et le narrateur. Ce que tous les autres feront à ce sujet sera répercuté ici sur votre fiche. Ce que vous ferez vous-même en mode édition sera reflété sur leur propre fiche d'acteur et chez votre narrateur.",
 
   "CEL1922.numberofdice": "Nombre de Dés",
   "CEL1922.AnomaliesAspects&Attributs": "Anomalies, Aspects & Attributs",
@@ -241,10 +248,14 @@
   "CEL1922.attribute": "Attribut",
   "CEL1922.attributes": "Attributs",
   "CEL1922.utiliserFortune": "En cas de tirage de Fortune (Attribut), 1 point sera ôté automatiquement du total du score de Fortune si celui-ci est positif. Sinon, le tirage de Fortune sera ignoré et 2D8 seront lancés.",
-  "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez disposer d'une et d'une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n'est pas le cas.",
+  "CEL1922.uneSeuleAnomalie": "Simple rappel ; votre anomalie ne rentre pas dans les calculs. Vous devriez être porteur d’une et d’une seule anomalie ; voyez avec votre narrateur ou narratrice si ce n’est pas le cas.",
   "CEL1922.factions": "Factions",
   "CEL1922.Factions": "Factions",
+  "CEL1922.autresFactions:": "Vos propres factions :",
   "CEL1922.VotrePropreFaction": "Votre propre faction",
+
+  "CEL1922.EditFactions": "Éditer les Factions",
+  "CEL1922.EditFactionsSpeech": "Cliquer ici vous permet d'éditer les données concernant les factions dans une fenêtre séparée.",
 
   "CEL1922.Pinkerton": "Agence Pinkerton",
   "CEL1922.Police": "Police secrète du duc",
@@ -271,8 +282,8 @@
   "CEL1922.jaugedestiny": "Jauge de Destin",
   "CEL1922.jaugespleen": "Jauge de Spleen",
   "CEL1922.anomalynocompute": "Anomalie",
-  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel, ne rentre pas dans les calculs)",
-  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel, ne rentre pas dans les calculs)",
+  "CEL1922.jaugedestinynocompute": "Jauge de Destin (rappel ; ne rentre pas dans les calculs)",
+  "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel ; ne rentre pas dans les calculs)",
 
 
   "CEL1922.opt.none": "—",

@@ -166,6 +166,7 @@ export class CEL1922Factions extends Application {
 
       }
       // C'est un joueur : utilisation de la requête
+      // Kristov ***********************************
       else {
         const token = jaugeType + "|" + whichCheckBox;
         console.log("token = ", token)
