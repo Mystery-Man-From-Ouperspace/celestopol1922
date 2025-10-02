@@ -221,8 +221,8 @@ Hooks.once("init", async function () {
   // registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
   // registerHandlebarsHelpers.registerHandlebars()
 
-  helpers.CEL1922SettingsHandler.registerSettings()
-  helpers.registerHandlebars()
+  // helpers.CEL1922SettingsHandler.registerSettings()
+  // helpers.registerHandlebars()
 
 
 
