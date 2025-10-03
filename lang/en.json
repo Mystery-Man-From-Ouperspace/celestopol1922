@@ -1,4 +1,18 @@
 {
+  "CEL1922": {
+    "Sidebar" : {
+      "title": "Célestopol 1922",
+      "support": "Support",
+      "menu": "Système",
+      "discordLaFonderie": "Discord de La Fonderie",
+      "discordAME": "Discord d’Antre Monde Éditions",
+      "factions": "Factions",
+      "discordLaFonderieTooltip": "Vous rendre sur le serveur de La Fonderie",
+      "discordAMETooltip": "Vous rendre sur le serveur d’Antre Monde Éditions",
+      "factionsTooltip": "Ouvrir la fenêtre Factions"
+    }
+  },
+  
   "CEL1922.FACTIONS.Title": "Factions (mode Édition)",
   "CEL1922.FactionPersonnalisee:": "Faction personn. :",
   "CEL1922.FactionPersonnalisee1": "Faction personnalisée 1",
