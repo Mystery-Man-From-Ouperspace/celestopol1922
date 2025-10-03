@@ -14,6 +14,7 @@ import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerHandlebarsHelpers } from "./helpers.js";
 
+import CEL1922SidebarMenu from "./appli/sidebar-menu.js";
 
 
 
@@ -204,7 +205,7 @@ Hooks.once("init", async function () {
 
 
   // Kristov ****************************************************************
-  CONFIG.queries["celestopol1922.updateFactions"] = CEL1922.celestopol1922Factions._handleQueryUpdateFactions
+  CONFIG.queries["celestopol1922.updateFactions"] = CEL1922Factions._handleQueryUpdateFactions
 
 
   // Ajout d'un nouvel onglet dans la barre latérale
@@ -212,10 +213,10 @@ Hooks.once("init", async function () {
     active: false,
     icon: `celestopol1922`,
     tooltip: `Célestopol 1922`,
-  }
+  }  
 
   // Kristov *********************************************
-  // CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
+  CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
   // CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
 
   // registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
