@@ -29,7 +29,8 @@
         "anomalies",
         "aspects",
         "attributs",
-        "equipements"
+        "equipements",
+        "macros-tirages-tarot"
       ],
       "folders": []
     }
@@ -113,6 +114,18 @@
       "system": "celestopol1922",
       "path": "packs/equipements",
       "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }    ,
+    {
+      "name": "macros-tirages-tarot",
+      "label": "Tirages Tarot",
+      "system": "celestopol1922",
+      "path": "packs/macros-tirages-tarot",
+      "type": "Macro",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
