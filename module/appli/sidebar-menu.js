@@ -29,7 +29,7 @@ export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(Abstr
 
   static async #onOpenApp(event) {
     switch (event.target.dataset.app) {
-      case "reserve":
+      case "factions":
         if (!foundry.applications.instances.has("celestopol1922-factions")) CEL1922.celestopol1922Factions.render({ force: true })
         // if (!foundry.applications.instances.has("celestopol1922-factions")) game.system.celestopol1922Factions.render({ force: true })
         break
