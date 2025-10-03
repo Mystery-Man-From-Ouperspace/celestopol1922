@@ -204,7 +204,7 @@ Hooks.once("init", async function () {
 
 
   // Kristov ****************************************************************
-  CONFIG.queries["celestopol1922.updateFactions"] = CEL1922.celestopol1922Factions._handleQueryUpdateFactions
+  CONFIG.queries["celestopol1922.updateFactions"] = CEL1922Factions._handleQueryUpdateFactions
 
 
   // Ajout d'un nouvel onglet dans la barre latérale
