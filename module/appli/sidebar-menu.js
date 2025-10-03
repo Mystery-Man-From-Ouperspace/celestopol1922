@@ -4,9 +4,6 @@ import { CEL1922 } from "../config.js"
 const { HandlebarsApplicationMixin } = foundry.applications.api
 const { AbstractSidebarTab } = foundry.applications.sidebar
 
-// Kristov ************************************
-CEL1922.CEL1922SidebarMenu = CEL1922SidebarMenu
-
 export default class CEL1922SidebarMenu extends HandlebarsApplicationMixin(AbstractSidebarTab) {
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {

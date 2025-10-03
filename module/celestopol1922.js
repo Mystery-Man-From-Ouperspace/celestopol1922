@@ -14,6 +14,7 @@ import { CEL1922 } from "./config.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerHandlebarsHelpers } from "./helpers.js";
 
+import CEL1922SidebarMenu from "./appli/sidebar-menu.js";
 
 
 
@@ -212,10 +213,10 @@ Hooks.once("init", async function () {
     active: false,
     icon: `celestopol1922`,
     tooltip: `Célestopol 1922`,
-  }
+  }  
 
   // Kristov *********************************************
-  // CONFIG.ui.celestopol1922 = CEL1922.CEL1922SidebarMenu
+  CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
   // CONFIG.ui.celestopol1922 = CEL1922SidebarMenu
 
   // registerHandlebarsHelpers.CEL1922SettingsHandler.registerSettings()
