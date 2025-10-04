@@ -24,6 +24,7 @@
       "color": "#0c4c0c",
       "packs": [
         "resume-des-regles",
+        "aide-pour-la-lumiere",
         "scenes-de-base",
         "tables",
         "anomalies",
@@ -43,6 +44,20 @@
       "type": "JournalEntry",
       "ownership": {
         "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "aide-pour-la-lumiere",
+      "label": "FR - Aide pour la lumière",
+      "system": "celestopol1922",
+      "path": "packs/aide-pour-la-lumiere",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
@@ -54,7 +69,8 @@
       "path": "packs/scenes-de-base",
       "type": "Scene",
       "ownership": {
-        "PLAYER": "OBSERVER",
+        "PLAYER": "NONE",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
@@ -67,6 +83,7 @@
       "type": "RollTable",
       "ownership": {
         "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
@@ -79,6 +96,7 @@
       "type": "Item",
       "ownership": {
         "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
@@ -91,6 +109,7 @@
       "type": "Item",
       "ownership": {
         "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
@@ -103,6 +122,7 @@
       "type": "Item",
       "ownership": {
         "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
         "ASSISTANT": "OWNER"
       },
       "flags": {}
