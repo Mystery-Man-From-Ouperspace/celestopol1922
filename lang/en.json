@@ -6,9 +6,11 @@
       "menu": "Système",
       "discordLaFonderie": "Discord de La Fonderie",
       "discordAME": "Discord d’Antre Monde Éditions",
+      "download": "Télécharger les Compendiums",
       "factions": "Factions",
       "discordLaFonderieTooltip": "Vous rendre sur le serveur de La Fonderie",
       "discordAMETooltip": "Vous rendre sur le serveur d’Antre Monde Éditions",
+      "downloadTooltip": "Aller sur le site de téléchargement de Compendiums",
       "factionsTooltip": "Ouvrir la fenêtre Factions"
     },
     

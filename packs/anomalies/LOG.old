@@ -1,7 +1,7 @@
-2025/03/20-13:52:44.948 b14 Recovering log #1890
-2025/03/20-13:52:44.962 b14 Delete type=0 #1890
-2025/03/20-13:52:44.962 b14 Delete type=3 #1888
-2025/03/20-14:13:21.517 6b5c Level-0 table #1895: started
-2025/03/20-14:13:21.519 6b5c Level-0 table #1895: 0 bytes OK
-2025/03/20-14:13:21.521 6b5c Delete type=0 #1893
-2025/03/20-14:13:21.529 6b5c Manual compaction at level-0 from 'undefined' @ 72057594037927935 : 1 .. 'undefined' @ 0 : 0; will stop at (end)
+2025/10/04-12:02:10.104 3efc Recovering log #2323
+2025/10/04-12:02:10.110 3efc Delete type=0 #2323
+2025/10/04-12:02:10.112 3efc Delete type=3 #2321
+2025/10/04-12:04:50.731 2754 Level-0 table #2328: started
+2025/10/04-12:04:50.731 2754 Level-0 table #2328: 0 bytes OK
+2025/10/04-12:04:50.732 2754 Delete type=0 #2326
+2025/10/04-12:04:50.742 2754 Manual compaction at level-0 from '!folders!Koa25Mi686Gnao3A' @ 72057594037927935 : 1 .. '!items!o83xfnkl0p393wIu' @ 0 : 0; will stop at (end)
