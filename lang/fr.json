@@ -3,12 +3,15 @@
     "Sidebar" : {
       "title": "Célestopol 1922",
       "support": "Support",
+      "resources": "Ressources",
       "menu": "Système",
       "discordLaFonderie": "Discord de La Fonderie",
       "discordAME": "Discord d’Antre Monde Éditions",
+      "buyAME": "Boutique d’Antre Monde Éditions",
       "download": "Télécharger les Compendiums",
       "factions": "Factions",
       "discordLaFonderieTooltip": "Vous rendre sur le serveur de La Fonderie",
+      "buyAMETooltip": "Acheter le jeu et ses suppléments dans la boutique d’Antre Monde Éditions",
       "discordAMETooltip": "Vous rendre sur le serveur d’Antre Monde Éditions",
       "downloadTooltip": "Aller sur le site de téléchargement de Compendiums",
       "factionsTooltip": "Ouvrir la fenêtre Factions"
