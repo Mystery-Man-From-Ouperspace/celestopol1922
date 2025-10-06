@@ -1085,11 +1085,12 @@ async _onClickMoonDieRoll(event) {
       let titleDestiny = game.i18n.localize(libelJaugeDestiny[parseInt(myData.myDestiny)]);
 
       let titleAnomaly = game.i18n.localize("CEL1922.opt.none");
-      let dataAnomaly = 0;
+      let dataAnomaly = game.i18n.localize("CEL1922.opt.none");
       for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
         if (myData.myAnomaly == anomaly.id) {
           titleAnomaly = anomaly.name.toString();
-          dataAnomaly = parseInt(anomaly.system.value);
+          // dataAnomaly = (anomaly.system.value);
+          // dataAnomaly = game.i18n.localize("CEL1922.opt.none");
           /*
           if (myData.myBonusAnomaly) {
             dataAnomaly *= -1;
@@ -1097,7 +1098,7 @@ async _onClickMoonDieRoll(event) {
           */
         };
       };
-
+   
       let titleAspect = game.i18n.localize("CEL1922.opt.none");
       let dataAspect = 0;
       for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
@@ -1110,19 +1111,20 @@ async _onClickMoonDieRoll(event) {
         };
       };
 
+      /*
       let titleAttribute = game.i18n.localize("CEL1922.opt.none");
-      let dataAttribute = 0;
+      let dataAttribute= game.i18n.localize("CEL1922.opt.none");
       for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
         if (myData.myAttribute == attribute.id) {
           titleAttribute = attribute.name.toString();
-          dataAttribute = parseInt(attribute.system.value);
-          /*
-          if (myData.myBonusAttribute) {
-            dataAttribute *= -1;
-          }
-          */
+          // dataAttribute = parseInt(attribute.system.value);
+          // dataAttribute = game.i18n.localize("CEL1922.opt.none");
+          // if (myData.myBonusAttribute) {
+          //   dataAttribute *= -1;
+          // }
         };
       };
+      */
 
       let titleArmor = game.i18n.localize("CEL1922.opt.none");
       let dataArmor = 0;
@@ -1175,8 +1177,6 @@ async _onClickMoonDieRoll(event) {
         dataAnomaly: dataAnomaly,
         titleAspect: titleAspect,
         dataAspect: dataAspect,
-        titleAttribute: titleAttribute,
-        dataAttribute: dataAttribute,
         dataBonus: myData.myBonus,
         dataMalus: myData.myMalus,
         dataMoreBonusMalus: 0,

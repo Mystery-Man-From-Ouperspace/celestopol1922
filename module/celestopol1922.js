@@ -649,8 +649,6 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
     const dataAnomaly = html[0].querySelector("td[class='dataAnomaly']").textContent;
     const titleAspect = html[0].querySelector("th[class='titleAspect']").textContent;
     const dataAspect = html[0].querySelector("td[class='dataAspect']").textContent;
-    const titleAttribute = html[0].querySelector("th[class='titleAttribute']").textContent;
-    const dataAttribute = html[0].querySelector("td[class='dataAttribute']").textContent;
     const dataBonus = html[0].querySelector("td[class='dataBonus']").textContent;
     const dataMalus = html[0].querySelector("td[class='dataMalus']").textContent;
     const dataMoreBonusMalus = html[0].querySelector("td[class='dataMoreBonusMalus']").textContent;
@@ -681,7 +679,7 @@ Hooks.on("renderChatMessage", (app, html, data,) => {
       myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
       yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
       dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
-      titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+      dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
       titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
     );
 
@@ -696,7 +694,7 @@ async function _MoreBonusMalusDialog(
   myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
   yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
   dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
-  titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+  dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
   titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
 ) {
 
@@ -707,7 +705,7 @@ async function _MoreBonusMalusDialog(
     myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
     yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
     dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
-    titleAttribute, dataAttribute, dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+    dataBonus, dataMalus, dataMoreBonusMalus, titleArmor, dataArmor,
     titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen, test, specialitylibel, modifier
   );
   
@@ -765,8 +763,6 @@ async function _MoreBonusMalusDialog(
     dataAnomaly: dataAnomaly,
     titleAspect: titleAspect,
     dataAspect: dataAspect,
-    titleAttribute: titleAttribute,
-    dataAttribute: dataAttribute,
     dataBonus: dataBonus,
     dataMalus: dataMalus,
     dataMoreBonusMalus: myNewDataMoreBonusMalus,
@@ -895,7 +891,7 @@ async function _executeDialog(
   myActor, template, myTitle, myDialogOptions, typeofthrow, numberofdice, skill, bonus, rolldifficulty, youwin,
   yourplayerid, youractorid, yourdamage, yourprotection, youropponent, youropponentid, youropponentdamage, youropponentprotection,
   dataNbrDice, titleDomain, dataDomain, titleSpeciality, dataSpeciality, titleAnomaly, dataAnomaly, titleAspect, dataAspect,
-  titleAttribute, dataAttribute, dataBonus, dataMalus, titleMoreBonusMalus, dataMoreBonusMalus, titleArmor, dataArmor,
+  dataBonus, dataMalus, titleMoreBonusMalus, dataMoreBonusMalus, titleArmor, dataArmor,
   titleWounds, dataWounds, titleDestiny, dataDestiny, titleSpleen, dataSpleen
 ) {
 
@@ -927,8 +923,6 @@ async function _executeDialog(
     dataAnomaly: dataAnomaly,
     titleAspect: titleAspect,
     dataAspect: dataAspect,
-    titleAttribute: titleAttribute,
-    dataAttribute: dataAttribute,
     dataBonus: dataBonus,
     dataMalus: dataMalus,
     titleMoreBonusMalus: titleMoreBonusMalus,

@@ -1392,8 +1392,6 @@ async _onClickMoonDieRoll(event) {
         dataAnomaly: dataAnomaly,
         titleAspect: titleAspect,
         dataAspect: dataAspect,
-        titleAttribute: titleAttribute,
-        dataAttribute: dataAttribute,
         dataBonus: myData.myBonus,
         dataMalus: myData.myMalus,
         dataMoreBonusMalus: 0,
