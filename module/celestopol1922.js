@@ -149,7 +149,7 @@ Hooks.once("init", async function () {
     hint: game.i18n.localize("CEL1922.FactionPersonnaliseeTexte"),
     scope: "world",
     config: true,
-    default: "?",
+    default: "Le Lys blanc",
     type: String,
     onChange: delayedReload,
   });
