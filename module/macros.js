@@ -25,7 +25,7 @@ export default class Macros {
         };
 
         foundry.utils.mergeObject(macroData, {
-          name: `Lancer un test pour ${game.i18n.localize(`${specialityLibel}`)} (${dropData.actorName})`,
+          name: `Test pour ${game.i18n.localize(`${specialityLibel}`)} (${dropData.actorName})`,
           img: `/systems/celestopol1922/images/ui/d8_fond_transp.png`,
           command: `await game.system.api.Macros._onClickDiceRoll("${dropData.actorId}", "${dropData.skillNumUsedLibel}")`,
           flags: { "celestopol1922.macros.lancerDeDes": true },
