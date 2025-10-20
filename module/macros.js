@@ -1,3 +1,8 @@
+// import { CEL1922CharacterSheet } from "./actor/character-sheet.js";
+import * as CEL1922Actor from "./actor/actor.js";
+// import { _onClickDiceRollFromHotbar } from "./roll-from-hotbar.js";
+
+
 export default class Macros {
   /**
    * Attempt to create a macro from the dropped data. Will use an existing macro if one exists.
@@ -8,11 +13,22 @@ export default class Macros {
     const macroData = { type: "script", scope: "actor" }
     switch (dropData.type) {
       case "celestopol1922.lancerDeDes":
+
+        console.log("game.system", game.system);
+        
+
+        const myActor = await game.actors.get(dropData.actorId);
+        const mySkillNbr = parseInt(dropData.skillNumUsedLibel);
+        let specialityLibel = await game.i18n.localize(myActor.system.skill.skilltypes[parseInt(mySkillNbr)]);
+        if (specialityLibel[0] == "⌞") {
+          specialityLibel = await specialityLibel.substring(2);
+        };
+
         foundry.utils.mergeObject(macroData, {
-          name: `Jet de ${game.i18n.localize(`PENOMBRE.ui.${dropData.harmonique}`)} (${dropData.actorName})`,
-          img: `/systems/penombre/assets/ui/${dropData.valeur}.webp`,
-          command: `await game.system.api.helpers.Macros.rollHarmonique("${dropData.actorId}", "${dropData.harmonique}")`,
-          flags: { "penombre.macros.harmonique": true },
+          name: `Lancer un test pour ${game.i18n.localize(`${specialityLibel}`)} (${dropData.actorName})`,
+          img: `/systems/celestopol1922/images/ui/d8_fond_transp.png`,
+          command: `await game.system.api.Macros._onClickDiceRoll("${dropData.actorId}", "${dropData.skillNumUsedLibel}")`,
+          flags: { "celestopol1922.macros.lancerDeDes": true },
         })
         break
       default:
@@ -27,12 +43,17 @@ export default class Macros {
     }
   }
 
-  static async rollHarmonique(actorId, harmonique) {
+  static async _onClickDiceRoll(actorId, skillNumUsedLibel) {
     let actor
     if (actorId) actor = game.actors.get(actorId)
     if (!actor) return
     if (actor) {
-      await actor.rollHarmonique({ harmonique })
+
+      console.log("actor", actor)
+      console.log("CEL1922Actor", CEL1922Actor)
+
+      // await CEL1922Actor._onClickDiceRollFromHotbar(actor, skillNumUsedLibel)
+      await actor._onClickDiceRollFromHotbar(actor, skillNumUsedLibel)
     }
   }
 }

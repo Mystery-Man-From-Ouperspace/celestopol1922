@@ -99,4 +99,5 @@ export class CEL1922ActorSheet extends ActorSheet {
     });
   }
   */
+
 }

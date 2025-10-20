@@ -1,7 +1,7 @@
 import { CEL1922ActorSheet } from "./actor-sheet.js";
 import { CEL1922 } from "../config.js";
 import { ModifiedDialog } from "../modified-dialog.js";
-// import { Macros } from "../macros.js"
+import  Macros from "../macros.js"
 
 /**
  * @extends {CEL1922ActorSheet}
@@ -9,14 +9,14 @@ import { ModifiedDialog } from "../modified-dialog.js";
     // Hooks.on("updateSetting", async (setting, update, options, id) => this.document.render(false))
 
 
-/*
     Hooks.on("hotbarDrop", (bar, data, slot) => {
       if (["celestopol1922.lancerDeDes"].includes(data.type)) {
-        helpers.Macros.create(data, slot)
+        Macros.create(data, slot)
         return false
       }
     })
-*/
+
+
 
 
     Hooks.on("preUpdateActor", (document, changed, options, userId) => {
@@ -160,6 +160,15 @@ import { ModifiedDialog } from "../modified-dialog.js";
 
 export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
+
+  /*
+  async _onClickDiceRollFromHotbar(myActor, skillNumUsedLibel) {
+    await _onClickDiceRollFollow(myActor, skillNumUsedLibel);
+  }
+  */
+
+
+
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -167,7 +176,7 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
       template: "systems/celestopol1922/templates/actor/character-sheet.html",
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       scrollY: [".biography", ".items", ".anomalies", "factions"],
-      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}, {dragSelector: ".draggable", dropSelector: "li.slot"}]
     });
   }
 
@@ -218,7 +227,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
 
 
   /** @override */
-  /*
   _onDragStart(event) {
     const target = event.currentTarget
     let dragData
@@ -242,8 +250,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
         type,
         actorName: this.actor.name,
         actorId: this.actor.id,
-        specialityUsedLibel,
-        skillUsedLibel,
+        // specialityUsedLibel,
+        // skillUsedLibel,
         skillNumUsedLibel,
       }
       event.dataTransfer.setData("text/plain", JSON.stringify(dragData))
@@ -251,7 +259,6 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     // Sinon dataset contient itemUuid, itemId, itemType
     else super._onDragStart(event)
   }
-  */
 
 
   /** @inheritdoc */
@@ -560,26 +567,26 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
   };
 
 
-/* -------------------------------------------- */
+  /* -------------------------------------------- */
 
-/**
- * Listen for roll buttons on Moon-die.
- * @param {MouseEvent} event    The originating left click event
- */
-async _onClickMoonDieRoll(event) {
+  /**
+   * Listen for roll buttons on Moon-die.
+   * @param {MouseEvent} event    The originating left click event
+   */
+  async _onClickMoonDieRoll(event) {
 
-  /*
-    const element = event.currentTarget;                        // On récupère le clic
-    const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
-    console.log("whatIsIt = ", whatIsIt)
-    const whatIsItTab = whatIsIt.split('-');
-    const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
-    console.log("specialityUsedLibel = "+specialityUsedLibel)
-    const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
-    console.log("skillUsedLibel = ", skillUsedLibel)
-    const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
-    console.log("skillNumUsedLibel = ", skillNumUsedLibel)
-  */
+    /*
+      const element = event.currentTarget;                        // On récupère le clic
+      const whatIsIt = element.dataset.libelId;                   // Va récupérer 'attraction-AME-1' par exemple
+      console.log("whatIsIt = ", whatIsIt)
+      const whatIsItTab = whatIsIt.split('-');
+      const specialityUsedLibel = whatIsItTab[0];                 // Va récupérer 'attraction'
+      console.log("specialityUsedLibel = "+specialityUsedLibel)
+      const skillUsedLibel = whatIsItTab[1];                      // Va récupérer 'AME'
+      console.log("skillUsedLibel = ", skillUsedLibel)
+      const skillNumUsedLibel = whatIsItTab[2];                   // Va récupérer '1'
+      console.log("skillNumUsedLibel = ", skillNumUsedLibel)
+    */
     let myActor = this.actor;
     let myMoon = 0;
     let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
@@ -712,570 +719,10 @@ async _onClickMoonDieRoll(event) {
 
     let myActor = this.actor;
 
-    _onClickDiceRollFollow(myActor, skillNumUsedLibel);
+    await _onClickDiceRollFollow(myActor, skillNumUsedLibel);
   }
 
 }
-
-
-
-async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
-  let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
-  let myPromptPresent = await game.settings.get("celestopol1922", "usePromptsForAutomatization");
-  let myRoll;
-  var msg;
-
-  
-  let template = "";
-  let myTitle = game.i18n.localize("CEL1922.ThrowDice");
-  let myDialogOptions = {};
-
-  let Skill = parseInt(skillNumUsedLibel);
-  let mySkillData = await _getSkillValueData (myActor, Skill);
-
-  let myArmor = myActor.system.prefs.lastarmorusedid;
-
-  let armorVal = 0;
-  for (let item of myActor.items.filter(item => item.type === 'item')) {
-    // if (item.system.subtype == "armor") {
-      if (item.id === myArmor) {
-        armorVal = item.system.protection;
-      };
-    // };
-  };
-
-
-  let myData = {
-    myUserID: game.user.id,
-    myActorID: myActor.id,
-    myTypeOfThrow: myTypeOfThrow,
-    myPromptPresent: myPromptPresent,
-    myNumberOfDice: 2,
-    mySkill: Skill,
-    myAnomaly: 0,
-    myAspect: 0,
-    myBonusAspect: 1, // +
-    myAttribute: 0,
-    myBonus: 0,
-    myMalus: -0,
-    myWounds: myActor.system.blessures.lvl,
-    myWoundsMalus: 0,
-    myDestiny: myActor.system.destin.lvl,
-    mySpleen: myActor.system.spleen.lvl,
-    myArmorEncumbrance: myActor.system.prefs.lastarmorusedid,
-    myArmorProtection: myActor.system.prefs.lastarmorusedid,
-
-    totalBoni: 0,
-
-    mySpecialityLibel: mySkillData.libel,
-    myValue: mySkillData.value,
-    myRESValue: mySkillData.rESvalue,
-
-    myWeaponVal: 0,
-    myArmorVal: armorVal,
-
-    opponentName: "",
-    opponentID: "0",
-    weaponOpponentVal: 0,
-    armorOpponentVal: 0,
-  }
-
-
-  myData.myWoundsMalus = parseInt(await myActor.system.skill.woundsmalus[parseInt(myData.myWounds)]);
-  if (parseInt(myData.myWounds) === 8) {
-    ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
-    return;
-  }
-
-  console.log("myWoundsMalus = ", myData.myWoundsMalus);
-
-
-  myData.totalBoni = myData.myValue + myData.myRESValue + myData.myWoundsMalus - myData.myArmorVal;
-
-
-
-
-
-
-  if (myPromptPresent) {
-    let myResultDialog =  await _skillDiceRollDialog(
-      myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
-      myData.mySkill, myData.myAnomaly, myData.myAspect, myData.myBonusAspect,
-      myData.myAttribute, myData.myBonus, myData.myMalus,
-      myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myData.myTypeOfThrow, myData.totalBoni
-    );
-
-
-    //////////////////////////////////////////////////////////////////
-    if (!(myResultDialog)) {
-      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
-      return;
-      };
-    //////////////////////////////////////////////////////////////////
-
-
-    myData.myNumberOfDice = parseInt(myResultDialog.numberofdice);
-    myData.mySkill = parseInt(myResultDialog.skill);
-    myData.myAnomaly = myResultDialog.anomaly;
-    myData.myAspect = myResultDialog.aspect;
-    myData.myBonusAspect = parseInt(myResultDialog.bonusaspect);
-    myData.myAttribute = myResultDialog.attribute;
-    myData.myBonus = parseInt(myResultDialog.bonus);
-    myData.myMalus = parseInt(myResultDialog.malus);
-    myData.myWounds = myResultDialog.jaugewounds;
-    myData.myDestiny = myResultDialog.jaugedestiny;
-    myData.mySpleen = myResultDialog.jaugespleen;
-    myData.myArmorEncumbrance = myResultDialog.armor;
-    myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
-    myData.totalBoni = parseInt(myResultDialog.totalscoresbonusmalus);
-
-    if (parseInt(myData.myWounds) === 8) {
-      ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
-      return;
-    }
-
-    let mySkillData = await _getSkillValueData (myActor, myData.mySkill);
-    myData.mySpecialityLibel = mySkillData.libel;
-    myData.myValue = mySkillData.value;
-    myData.myRESValue = mySkillData.rESvalue;
-  };
-
-
-  var opponentActor = null;
-  if (myPromptPresent  && myData.mySkill == 6) {
-    var myTarget = await _whichTarget (myActor, myData.mySpecialityLibel);
-
-
-    //////////////////////////////////////////////////////////////////
-    if (!(myTarget)) {
-      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
-      return;
-      };
-    //////////////////////////////////////////////////////////////////
-
-
-    if (game.user.targets.size != 0) {
-      for (let targetedtoken of game.user.targets) {
-        if (targetedtoken.id == myTarget.selectedtarget) {
-          opponentActor = targetedtoken.actor;
-        };
-      };
-    };
-  };
-
-
-  console.log("opponentActor = ", opponentActor);
-  
-
-  let myTest;
-  let myOpposition = 13;
-  let myModifier;
-
-  if (opponentActor && myData.mySkill == 6) {
-    myOpposition = parseInt(opponentActor.system.skill.corps.actuel);
-  };
-
-  console.log ("myOpposition = ", myOpposition);
-
-  if (myPromptPresent) {
-    var myTestData = await _whichTypeOfTest (myActor, myOpposition, myData.myTypeOfThrow, myData.mySpecialityLibel);
-
-
-    //////////////////////////////////////////////////////////////////
-    if (!(myTestData)) {
-      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
-      return;
-      };
-    //////////////////////////////////////////////////////////////////
-
-
-    myTest = myTestData.test;
-    myOpposition = parseInt(myTestData.opposition);
-    console.log('myOpposition = ', myOpposition);
-    myModifier = parseInt(myTestData.modifier);
-    console.log('myModifier = ', myModifier);
-  };
-
-  console.log("myValue = ", myData.myValue);
-  console.log("myRESValue = ", myData.myRESValue);
-
-  console.log("myBonus = ", myData.myBonus);
-  console.log("myMalus = ", myData.myMalus);
-
-  let isInventory;
-  let mySelectedInventory;
-
-  let isInventoryOpponent;
-  let selectedInventoryOpponent;
-  let armorProtectionOpponent;
-
-  if (myPromptPresent && myData.mySkill == 6) {
-    var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
-
-
-    //////////////////////////////////////////////////////////////////
-    if (!(myDamageData)) {
-      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
-      return;
-      };
-    //////////////////////////////////////////////////////////////////
-
-
-    isInventory = myDamageData.isinventory;
-    myData.myWeaponVal = parseInt(myDamageData.damage);
-    mySelectedInventory = myDamageData.selectedinventory;
-    myData.myArmorProtection = myDamageData.selectedarmor;
-    if (opponentActor) {
-      isInventoryOpponent = myDamageData.isinventoryopponent;
-      myData.weaponOpponentVal = parseInt(myDamageData.damageopponent);
-      selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
-      armorProtectionOpponent = myDamageData.selectedarmoropponent;
-    };
-
-    console.log("myDamageData = ", myDamageData);
-    console.log("isInventory = ", isInventory);
-
-    if (isInventory) {
-      myData.myWeaponVal = 0;
-      // myData.myWeaponVal = à récupérer dans les items de la fiche de PJ;
-      for (let item of myActor.items.filter(item => item.type === 'item')) {
-        if (item.system.subtype == "weapon" && item.id == mySelectedInventory) {
-          myData.myWeaponVal = parseInt(item.system.damage);
-        };
-      };
-    };
-
-    if (isInventoryOpponent) {
-    // myData.weaponOpponentVal = à récupérer dans les items de la fiche de PNJ;
-      if (opponentActor) {
-        myData.weaponOpponentVal = 0;
-        for (let item of opponentActor.items.filter(item => item.type === 'item')) {
-          if (item.system.subtype == "weapon" && item.id == selectedInventoryOpponent) {
-            myData.weaponOpponentVal = parseInt(item.system.damage);
-          };
-        };
-      };
-    };
-
-    // myData.myArmorVal = à récupérer dans les items de la fiche de PJ;
-    myData.myArmorVal = 0;
-    for (let item of myActor.items.filter(item => item.type === 'item')) {
-      if (item.system.subtype == "armor" && item.id == myData.myArmorProtection) {
-        myData.myArmorVal = parseInt(item.system.protection);
-      };
-    };
-
-    // myData.armorOpponentVal = à récupérer dans les items de la fiche de PNJ;
-    if (opponentActor) {
-      myData.armorOpponentVal = 0;
-      for (let item of opponentActor.items.filter(item => item.type === 'item')) {
-        if (item.system.subtype == "armor" && item.id == armorProtectionOpponent) {
-          myData.armorOpponentVal = parseInt(item.system.protection);
-        };
-      };
-    };
-
-    console.log(myData.myWeaponVal, " ", myData.myArmorVal, " ", myData.weaponOpponentVal, " ", myData.armorOpponentVal);
-
-  };
-
-
-  let smartR = "Joli message à venir";
-
-
-  if (!myPromptPresent) {
-    myData.totalBoni = myData.myValue + myData.myWoundsMalus; // Si on a décoché l'automatisation, seules les blessures sont décomptées
-    smartR = game.i18n.localize("CEL1922.AutomatizationBlocked");
-  } else {
-  
-    let numberOfErrors = 0;
-
-
-    // Traiter ici les autres boni / mali et paramètres
-
-    // test, opposition, modifier, myinventory, selectedinventory, damage
-
-    if (numberOfErrors) {
-      ui.notifications.error(game.i18n.localize("CEL1922.Error999"));
-      return;
-    }
-    
-  };
-
-  console.log("totalBoni : ", myData.totalBoni);
-
-  // Traite la perte d'un point d'Attribut Fortune en cas d'utilisation pour remplacer 2d8 par 1d8+8
-  if (myData.myNumberOfDice === 8) {
-    const myFortune = myActor.system.attributs.fortune;
-    if (!myFortune) {
-      //////////////////////////////////////////////////////////////////
-      ui.notifications.warn(game.i18n.localize("CEL1922.ErrFortuneAZero"));
-      //////////////////////////////////////////////////////////////////
-
-      myData.myNumberOfDice = 2; // On annule et on lance plutôt 2d8
-    } else {
-      //////////////////////////////////////////////////////////////////
-      ui.notifications.info(game.i18n.localize("CEL1922.InfoFortune"));
-      //////////////////////////////////////////////////////////////////
-
-      await myActor.update({ "system.attributs.fortune": myFortune - 1 });
-    }
-  };
-
-  if (myData.totalBoni == 0) {
-    if (myData.myNumberOfDice === 7) {
-      myRoll = "0d8+7";
-    } else if (myData.myNumberOfDice === 8) {
-      myRoll = "1d8+8";
-    } else {
-      myRoll = myData.myNumberOfDice+"d8";
-    }
-  };
-
-  if (myData.totalBoni > 0) {
-    if (myData.myNumberOfDice === 7) {
-      myRoll = "0d8+7+" + (myData.totalBoni).toString();;
-    } else if (myData.myNumberOfDice === 8) {
-      myRoll = "1d8+8+" + (myData.totalBoni).toString();
-    } else {
-      myRoll = myData.myNumberOfDice+"d8+" + (myData.totalBoni).toString();
-    }
-  };
-  
-  if (myData.totalBoni < 0) {
-    if (myData.myNumberOfDice === 7) {
-      myRoll = "0d8+7-" + + Math.abs(myData.totalBoni).toString();
-    } else if (myData.myNumberOfDice === 8) {
-      myRoll = "1d8+8-" + Math.abs(myData.totalBoni).toString();
-    } else {
-      myRoll = myData.myNumberOfDice+"d8-" + Math.abs(myData.totalBoni).toString();
-    }
-  };
-
-  let r;
-  if (myModifier != 999) {
-    r = new Roll(myRoll, myActor.getRollData());
-    await r.evaluate();
-  } else {
-    ui.notifications.warn(game.i18n.localize("CEL1922.Evident"));
-  };
-
-  const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
-  const mySmartData = {
-    mymodifier: myModifier, 
-    numberofdice: myData.myNumberOfDice,
-    speciality: myData.mySpecialityLibel,
-  }
-
-  let mySmartRTemplate;
-  let mySmartRData;
-
-  if (myPromptPresent) {
-    let oppositionText = " ≽ ?";
-    let myResult;
-    if (myModifier == 999) {
-      myResult = -999;
-    } else {
-      myResult = r.total;
-    }
-    const myTest = myTestData.test;
-    console.log("myTest = ", myTest);
-
-    if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
-
-    if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.OppositionEnAveugle");
-    if (myTest == "knownopposition" &&  myResult > myOpposition) {
-      oppositionText += game.i18n.localize("CEL1922.OppositionSurpassee");
-    } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill != 6) {
-      oppositionText += game.i18n.localize("CEL1922.OppositionEgalite");
-    } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill == 6) {
-      oppositionText += game.i18n.localize("CEL1922.PersonneNestBlesse");
-    } else if (myTest == "knownopposition" &&  myResult < myOpposition) {
-      oppositionText += game.i18n.localize("CEL1922.OppositionInsurpassee");
-    };
-    if (myTest == "simpletest" &&  myResult >= myOpposition) {
-      oppositionText += game.i18n.localize("CEL1922.SeuilAtteint");
-    } else if (myTest == "simpletest" &&  myResult < myOpposition) {
-      oppositionText += game.i18n.localize("CEL1922.SeuilNon-atteint");
-    };
-
-    let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
-    mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
-    let youWin = false;
-    let thereisEgality = false;
-    if (myPromptPresent) {
-      if (myModifier == 999) {
-        youWin = true;
-      } else if (myResult >= parseInt(myOpposition)) {
-          youWin = true;
-          if (myResult == parseInt(myOpposition) && myData.mySkill == 6) {
-            thereisEgality = true;
-          };
-      };
-    };
-    if (opponentActor) {
-      myData.opponentName = opponentActor.name;
-      myData.opponentID = opponentActor.id;
-    } else {
-      myData.opponentName = game.i18n.localize("CEL1922.Missing");
-    };
-
-    console.log("game.user = ", game.user);
-    console.log("game.user.id = ", game.user.id);
-
-
-    const mySkill = parseInt(myData.mySkill);
-    let dataMySkill =  await _getSkillValueData (myActor, mySkill);
-
-    const libelJaugeWounds = myActor.system.skill.woundstypes;
-    const malusJaugeWounds = myActor.system.skill.woundsmalus;
-    const libelJaugeDestiny = myActor.system.skill.destinytypes;
-    // const malusJaugeDestiny = myActor.system.skill.destinymalus;
-    const libelJaugeSpleen = myActor.system.skill.spleentypes;
-    // const malusJaugeSpleen = myActor.system.skill.spleenmalus;
-
-
-    let dataWounds = malusJaugeWounds[parseInt(myData.myWounds)];
-    let titleWounds = game.i18n.localize(libelJaugeWounds[parseInt(myData.myWounds)]);
-
-    let dataSpleen = game.i18n.localize("CEL1922.opt.none");
-    let titleSpleen = game.i18n.localize(libelJaugeSpleen[parseInt(myData.mySpleen)]);
-
-    let dataDestiny = game.i18n.localize("CEL1922.opt.none");
-    let titleDestiny = game.i18n.localize(libelJaugeDestiny[parseInt(myData.myDestiny)]);
-
-    let titleAnomaly = game.i18n.localize("CEL1922.opt.none");
-    let dataAnomaly = game.i18n.localize("CEL1922.opt.none");
-    for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
-      if (myData.myAnomaly == anomaly.id) {
-        titleAnomaly = anomaly.name.toString();
-        // dataAnomaly = (anomaly.system.value);
-        // dataAnomaly = game.i18n.localize("CEL1922.opt.none");
-        /*
-        if (myData.myBonusAnomaly) {
-          dataAnomaly *= -1;
-        }
-        */
-      };
-    };
-  
-    let titleAspect = game.i18n.localize("CEL1922.opt.none");
-    let dataAspect = 0;
-    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
-      if (myData.myAspect == aspect.id) {
-        titleAspect = aspect.name.toString();
-        dataAspect = parseInt(aspect.system.value);
-        if (myData.myBonusAspect) {
-          dataAspect *= -1;
-        }
-      };
-    };
-
-    /*
-    let titleAttribute = game.i18n.localize("CEL1922.opt.none");
-    let dataAttribute= game.i18n.localize("CEL1922.opt.none");
-    for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
-      if (myData.myAttribute == attribute.id) {
-        titleAttribute = attribute.name.toString();
-        // dataAttribute = parseInt(attribute.system.value);
-        // dataAttribute = game.i18n.localize("CEL1922.opt.none");
-        // if (myData.myBonusAttribute) {
-        //   dataAttribute *= -1;
-        // }
-      };
-    };
-    */
-
-    let titleArmor = game.i18n.localize("CEL1922.opt.none");
-    let dataArmor = 0;
-    for (let armor of myActor.items.filter(item => item.type === 'item')) {
-      if (myData.myArmorEncumbrance == armor.id) {
-        titleArmor = armor.name.toString();
-        dataArmor = parseInt(armor.system.protection);
-        dataArmor *= -1;
-      };
-    };
-    
-    
-    const numberofdice = (myData.myNumberOfDice).toString()+"d8";
-
-    mySmartRData = {
-      title: titleSmartR,
-
-      relance: true,
-
-      typeofthrow: myData.myTypeOfThrow,
-      numberofdice: myData.myNumberOfDice,
-      skill: myData.mySkill,
-      bonus: myData.totalBoni,
-      rolldifficulty: parseInt(myOpposition),
-
-      test: myTest,
-      specialitylibel: myData.mySpecialityLibel,
-      mymodifier: myModifier, 
-
-
-      youwin: youWin,
-      egality: thereisEgality,
-
-      yourplayerid: myData.myUserID,
-      youractorid: myData.myActorID,
-      yourdamage: myData.myWeaponVal,
-      yourprotection: myData.myArmorVal,
-
-      youropponent: myData.opponentName,
-      youropponentid: myData.opponentID,
-      youropponentdamage: myData.weaponOpponentVal,
-      youropponentprotection: myData.armorOpponentVal,
-
-      dataNbrDice: numberofdice,
-      titleDomain: dataMySkill.domainLibel,
-      dataDomain: dataMySkill.rESvalue,
-      titleSpeciality: dataMySkill.libel,
-      dataSpeciality: parseInt(dataMySkill.value),
-      titleAnomaly: titleAnomaly,
-      dataAnomaly: dataAnomaly,
-      titleAspect: titleAspect,
-      dataAspect: dataAspect,
-      dataBonus: myData.myBonus,
-      dataMalus: myData.myMalus,
-      dataMoreBonusMalus: 0,
-      titleArmor: titleArmor,
-      dataArmor: dataArmor,
-      titleWounds: titleWounds,
-      dataWounds: dataWounds,
-      titleDestiny: titleDestiny,
-      dataDestiny: dataDestiny,
-      titleSpleen: titleSpleen,
-      dataSpleen: dataSpleen,
-
-      numSpeciality: myData.mySkill
-
-    }
-
-    console.log("mySmartRData = ", mySmartRData);
-
-  } else {
-    let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;
-    mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
-    mySmartRData = {
-      typeofthrow: myData.myTypeOfThrow,
-
-      yourplayerid: myData.myUserID,
-      youractorid: myData.myActorID,
-
-      mymodifier: myModifier, 
-      title: titleSmartR,
-      numSpeciality: myData.mySkill
-    };
-  };
-
-
-  await _showMessagesInChat (myActor, myData.myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData, false);
-
-}
-
-
 
 
 /* -------------------------------------------- */
@@ -2341,4 +1788,559 @@ async function _showMessagesInChat (myActor, myTypeOfThrow, r, mySmartRTemplate,
     };
   
   }
+}
+
+async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
+  let myTypeOfThrow = parseInt(await myActor.system.prefs.typeofthrow.choice);
+  let myPromptPresent = await game.settings.get("celestopol1922", "usePromptsForAutomatization");
+  let myRoll;
+  var msg;
+
+
+  let template = "";
+  let myTitle = game.i18n.localize("CEL1922.ThrowDice");
+  let myDialogOptions = {};
+
+  let Skill = parseInt(skillNumUsedLibel);
+  let mySkillData = await _getSkillValueData (myActor, Skill);
+
+  let myArmor = myActor.system.prefs.lastarmorusedid;
+
+  let armorVal = 0;
+  for (let item of myActor.items.filter(item => item.type === 'item')) {
+    // if (item.system.subtype == "armor") {
+      if (item.id === myArmor) {
+        armorVal = item.system.protection;
+      };
+    // };
+  };
+
+
+  let myData = {
+    myUserID: game.user.id,
+    myActorID: myActor.id,
+    myTypeOfThrow: myTypeOfThrow,
+    myPromptPresent: myPromptPresent,
+    myNumberOfDice: 2,
+    mySkill: Skill,
+    myAnomaly: 0,
+    myAspect: 0,
+    myBonusAspect: 1, // +
+    myAttribute: 0,
+    myBonus: 0,
+    myMalus: -0,
+    myWounds: myActor.system.blessures.lvl,
+    myWoundsMalus: 0,
+    myDestiny: myActor.system.destin.lvl,
+    mySpleen: myActor.system.spleen.lvl,
+    myArmorEncumbrance: myActor.system.prefs.lastarmorusedid,
+    myArmorProtection: myActor.system.prefs.lastarmorusedid,
+
+    totalBoni: 0,
+
+    mySpecialityLibel: mySkillData.libel,
+    myValue: mySkillData.value,
+    myRESValue: mySkillData.rESvalue,
+
+    myWeaponVal: 0,
+    myArmorVal: armorVal,
+
+    opponentName: "",
+    opponentID: "0",
+    weaponOpponentVal: 0,
+    armorOpponentVal: 0,
+  }
+
+
+  myData.myWoundsMalus = parseInt(await myActor.system.skill.woundsmalus[parseInt(myData.myWounds)]);
+  if (parseInt(myData.myWounds) === 8) {
+    ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
+    return;
+  }
+
+  console.log("myWoundsMalus = ", myData.myWoundsMalus);
+
+
+  myData.totalBoni = myData.myValue + myData.myRESValue + myData.myWoundsMalus - myData.myArmorVal;
+
+
+
+
+
+
+  if (myPromptPresent) {
+    let myResultDialog =  await _skillDiceRollDialog(
+      myActor, template, myTitle, myDialogOptions, myData.myNumberOfDice,
+      myData.mySkill, myData.myAnomaly, myData.myAspect, myData.myBonusAspect,
+      myData.myAttribute, myData.myBonus, myData.myMalus,
+      myData.myWounds, myData.myDestiny, myData.mySpleen, myData.myArmorEncumbrance, myData.myTypeOfThrow, myData.totalBoni
+    );
+
+
+    //////////////////////////////////////////////////////////////////
+    if (!(myResultDialog)) {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+      return;
+      };
+    //////////////////////////////////////////////////////////////////
+
+
+    myData.myNumberOfDice = parseInt(myResultDialog.numberofdice);
+    myData.mySkill = parseInt(myResultDialog.skill);
+    myData.myAnomaly = myResultDialog.anomaly;
+    myData.myAspect = myResultDialog.aspect;
+    myData.myBonusAspect = parseInt(myResultDialog.bonusaspect);
+    myData.myAttribute = myResultDialog.attribute;
+    myData.myBonus = parseInt(myResultDialog.bonus);
+    myData.myMalus = parseInt(myResultDialog.malus);
+    myData.myWounds = myResultDialog.jaugewounds;
+    myData.myDestiny = myResultDialog.jaugedestiny;
+    myData.mySpleen = myResultDialog.jaugespleen;
+    myData.myArmorEncumbrance = myResultDialog.armor;
+    myData.myTypeOfThrow = parseInt(myResultDialog.typeofthrow);
+    myData.totalBoni = parseInt(myResultDialog.totalscoresbonusmalus);
+
+    if (parseInt(myData.myWounds) === 8) {
+      ui.notifications.error(game.i18n.localize("CEL1922.ErrYoureOutOfGame"));
+      return;
+    }
+
+    let mySkillData = await _getSkillValueData (myActor, myData.mySkill);
+    myData.mySpecialityLibel = mySkillData.libel;
+    myData.myValue = mySkillData.value;
+    myData.myRESValue = mySkillData.rESvalue;
+  };
+
+
+  var opponentActor = null;
+  if (myPromptPresent  && myData.mySkill == 6) {
+    var myTarget = await _whichTarget (myActor, myData.mySpecialityLibel);
+
+
+    //////////////////////////////////////////////////////////////////
+    if (!(myTarget)) {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+      return;
+      };
+    //////////////////////////////////////////////////////////////////
+
+
+    if (game.user.targets.size != 0) {
+      for (let targetedtoken of game.user.targets) {
+        if (targetedtoken.id == myTarget.selectedtarget) {
+          opponentActor = targetedtoken.actor;
+        };
+      };
+    };
+  };
+
+
+  console.log("opponentActor = ", opponentActor);
+  
+
+  let myTest;
+  let myOpposition = 13;
+  let myModifier;
+
+  if (opponentActor && myData.mySkill == 6) {
+    myOpposition = parseInt(opponentActor.system.skill.corps.actuel);
+  };
+
+  console.log ("myOpposition = ", myOpposition);
+
+  if (myPromptPresent) {
+    var myTestData = await _whichTypeOfTest (myActor, myOpposition, myData.myTypeOfThrow, myData.mySpecialityLibel);
+
+
+    //////////////////////////////////////////////////////////////////
+    if (!(myTestData)) {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+      return;
+      };
+    //////////////////////////////////////////////////////////////////
+
+
+    myTest = myTestData.test;
+    myOpposition = parseInt(myTestData.opposition);
+    console.log('myOpposition = ', myOpposition);
+    myModifier = parseInt(myTestData.modifier);
+    console.log('myModifier = ', myModifier);
+  };
+
+  console.log("myValue = ", myData.myValue);
+  console.log("myRESValue = ", myData.myRESValue);
+
+  console.log("myBonus = ", myData.myBonus);
+  console.log("myMalus = ", myData.myMalus);
+
+  let isInventory;
+  let mySelectedInventory;
+
+  let isInventoryOpponent;
+  let selectedInventoryOpponent;
+  let armorProtectionOpponent;
+
+  if (myPromptPresent && myData.mySkill == 6) {
+    var myDamageData = await _whichTypeOfDamage (myActor, opponentActor, myData.myTypeOfThrow);
+
+
+    //////////////////////////////////////////////////////////////////
+    if (!(myDamageData)) {
+      ui.notifications.warn(game.i18n.localize("CEL1922.Error111"));
+      return;
+      };
+    //////////////////////////////////////////////////////////////////
+
+
+    isInventory = myDamageData.isinventory;
+    myData.myWeaponVal = parseInt(myDamageData.damage);
+    mySelectedInventory = myDamageData.selectedinventory;
+    myData.myArmorProtection = myDamageData.selectedarmor;
+    if (opponentActor) {
+      isInventoryOpponent = myDamageData.isinventoryopponent;
+      myData.weaponOpponentVal = parseInt(myDamageData.damageopponent);
+      selectedInventoryOpponent = myDamageData.selectedinventoryopponent;
+      armorProtectionOpponent = myDamageData.selectedarmoropponent;
+    };
+
+    console.log("myDamageData = ", myDamageData);
+    console.log("isInventory = ", isInventory);
+
+    if (isInventory) {
+      myData.myWeaponVal = 0;
+      // myData.myWeaponVal = à récupérer dans les items de la fiche de PJ;
+      for (let item of myActor.items.filter(item => item.type === 'item')) {
+        if (item.system.subtype == "weapon" && item.id == mySelectedInventory) {
+          myData.myWeaponVal = parseInt(item.system.damage);
+        };
+      };
+    };
+
+    if (isInventoryOpponent) {
+    // myData.weaponOpponentVal = à récupérer dans les items de la fiche de PNJ;
+      if (opponentActor) {
+        myData.weaponOpponentVal = 0;
+        for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+          if (item.system.subtype == "weapon" && item.id == selectedInventoryOpponent) {
+            myData.weaponOpponentVal = parseInt(item.system.damage);
+          };
+        };
+      };
+    };
+
+    // myData.myArmorVal = à récupérer dans les items de la fiche de PJ;
+    myData.myArmorVal = 0;
+    for (let item of myActor.items.filter(item => item.type === 'item')) {
+      if (item.system.subtype == "armor" && item.id == myData.myArmorProtection) {
+        myData.myArmorVal = parseInt(item.system.protection);
+      };
+    };
+
+    // myData.armorOpponentVal = à récupérer dans les items de la fiche de PNJ;
+    if (opponentActor) {
+      myData.armorOpponentVal = 0;
+      for (let item of opponentActor.items.filter(item => item.type === 'item')) {
+        if (item.system.subtype == "armor" && item.id == armorProtectionOpponent) {
+          myData.armorOpponentVal = parseInt(item.system.protection);
+        };
+      };
+    };
+
+    console.log(myData.myWeaponVal, " ", myData.myArmorVal, " ", myData.weaponOpponentVal, " ", myData.armorOpponentVal);
+
+  };
+
+
+  let smartR = "Joli message à venir";
+
+
+  if (!myPromptPresent) {
+    myData.totalBoni = myData.myValue + myData.myWoundsMalus; // Si on a décoché l'automatisation, seules les blessures sont décomptées
+    smartR = game.i18n.localize("CEL1922.AutomatizationBlocked");
+  } else {
+  
+    let numberOfErrors = 0;
+
+
+    // Traiter ici les autres boni / mali et paramètres
+
+    // test, opposition, modifier, myinventory, selectedinventory, damage
+
+    if (numberOfErrors) {
+      ui.notifications.error(game.i18n.localize("CEL1922.Error999"));
+      return;
+    }
+    
+  };
+
+  console.log("totalBoni : ", myData.totalBoni);
+
+  // Traite la perte d'un point d'Attribut Fortune en cas d'utilisation pour remplacer 2d8 par 1d8+8
+  if (myData.myNumberOfDice === 8) {
+    const myFortune = myActor.system.attributs.fortune;
+    if (!myFortune) {
+      //////////////////////////////////////////////////////////////////
+      ui.notifications.warn(game.i18n.localize("CEL1922.ErrFortuneAZero"));
+      //////////////////////////////////////////////////////////////////
+
+      myData.myNumberOfDice = 2; // On annule et on lance plutôt 2d8
+    } else {
+      //////////////////////////////////////////////////////////////////
+      ui.notifications.info(game.i18n.localize("CEL1922.InfoFortune"));
+      //////////////////////////////////////////////////////////////////
+
+      await myActor.update({ "system.attributs.fortune": myFortune - 1 });
+    }
+  };
+
+  if (myData.totalBoni == 0) {
+    if (myData.myNumberOfDice === 7) {
+      myRoll = "0d8+7";
+    } else if (myData.myNumberOfDice === 8) {
+      myRoll = "1d8+8";
+    } else {
+      myRoll = myData.myNumberOfDice+"d8";
+    }
+  };
+
+  if (myData.totalBoni > 0) {
+    if (myData.myNumberOfDice === 7) {
+      myRoll = "0d8+7+" + (myData.totalBoni).toString();;
+    } else if (myData.myNumberOfDice === 8) {
+      myRoll = "1d8+8+" + (myData.totalBoni).toString();
+    } else {
+      myRoll = myData.myNumberOfDice+"d8+" + (myData.totalBoni).toString();
+    }
+  };
+  
+  if (myData.totalBoni < 0) {
+    if (myData.myNumberOfDice === 7) {
+      myRoll = "0d8+7-" + + Math.abs(myData.totalBoni).toString();
+    } else if (myData.myNumberOfDice === 8) {
+      myRoll = "1d8+8-" + Math.abs(myData.totalBoni).toString();
+    } else {
+      myRoll = myData.myNumberOfDice+"d8-" + Math.abs(myData.totalBoni).toString();
+    }
+  };
+
+  let r;
+  if (myModifier != 999) {
+    r = new Roll(myRoll, myActor.getRollData());
+    await r.evaluate();
+  } else {
+    ui.notifications.warn(game.i18n.localize("CEL1922.Evident"));
+  };
+
+  const mySmartTemplate = 'systems/celestopol1922/templates/form/dice-result.html';
+  const mySmartData = {
+    mymodifier: myModifier, 
+    numberofdice: myData.myNumberOfDice,
+    speciality: myData.mySpecialityLibel,
+  }
+
+  let mySmartRTemplate;
+  let mySmartRData;
+
+  if (myPromptPresent) {
+    let oppositionText = " ≽ ?";
+    let myResult;
+    if (myModifier == 999) {
+      myResult = -999;
+    } else {
+      myResult = r.total;
+    }
+    const myTest = myTestData.test;
+    console.log("myTest = ", myTest);
+
+    if (myTest != "blindopposition") oppositionText = " ≽ " + myOpposition;
+
+    if (myTest == "blindopposition") oppositionText += game.i18n.localize("CEL1922.OppositionEnAveugle");
+    if (myTest == "knownopposition" &&  myResult > myOpposition) {
+      oppositionText += game.i18n.localize("CEL1922.OppositionSurpassee");
+    } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill != 6) {
+      oppositionText += game.i18n.localize("CEL1922.OppositionEgalite");
+    } else if (myTest == "knownopposition" && myResult == myOpposition && myData.mySkill == 6) {
+      oppositionText += game.i18n.localize("CEL1922.PersonneNestBlesse");
+    } else if (myTest == "knownopposition" &&  myResult < myOpposition) {
+      oppositionText += game.i18n.localize("CEL1922.OppositionInsurpassee");
+    };
+    if (myTest == "simpletest" &&  myResult >= myOpposition) {
+      oppositionText += game.i18n.localize("CEL1922.SeuilAtteint");
+    } else if (myTest == "simpletest" &&  myResult < myOpposition) {
+      oppositionText += game.i18n.localize("CEL1922.SeuilNon-atteint");
+    };
+
+    let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll + " (" + myResult + ")" + oppositionText;
+    mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-comments.html';
+    let youWin = false;
+    let thereisEgality = false;
+    if (myPromptPresent) {
+      if (myModifier == 999) {
+        youWin = true;
+      } else if (myResult >= parseInt(myOpposition)) {
+          youWin = true;
+          if (myResult == parseInt(myOpposition) && myData.mySkill == 6) {
+            thereisEgality = true;
+          };
+      };
+    };
+    if (opponentActor) {
+      myData.opponentName = opponentActor.name;
+      myData.opponentID = opponentActor.id;
+    } else {
+      myData.opponentName = game.i18n.localize("CEL1922.Missing");
+    };
+
+    console.log("game.user = ", game.user);
+    console.log("game.user.id = ", game.user.id);
+
+
+    const mySkill = parseInt(myData.mySkill);
+    let dataMySkill =  await _getSkillValueData (myActor, mySkill);
+
+    const libelJaugeWounds = myActor.system.skill.woundstypes;
+    const malusJaugeWounds = myActor.system.skill.woundsmalus;
+    const libelJaugeDestiny = myActor.system.skill.destinytypes;
+    // const malusJaugeDestiny = myActor.system.skill.destinymalus;
+    const libelJaugeSpleen = myActor.system.skill.spleentypes;
+    // const malusJaugeSpleen = myActor.system.skill.spleenmalus;
+
+
+    let dataWounds = malusJaugeWounds[parseInt(myData.myWounds)];
+    let titleWounds = game.i18n.localize(libelJaugeWounds[parseInt(myData.myWounds)]);
+
+    let dataSpleen = game.i18n.localize("CEL1922.opt.none");
+    let titleSpleen = game.i18n.localize(libelJaugeSpleen[parseInt(myData.mySpleen)]);
+
+    let dataDestiny = game.i18n.localize("CEL1922.opt.none");
+    let titleDestiny = game.i18n.localize(libelJaugeDestiny[parseInt(myData.myDestiny)]);
+
+    let titleAnomaly = game.i18n.localize("CEL1922.opt.none");
+    let dataAnomaly = game.i18n.localize("CEL1922.opt.none");
+    for (let anomaly of myActor.items.filter(item => item.type === 'anomaly')) {
+      if (myData.myAnomaly == anomaly.id) {
+        titleAnomaly = anomaly.name.toString();
+        // dataAnomaly = (anomaly.system.value);
+        // dataAnomaly = game.i18n.localize("CEL1922.opt.none");
+        /*
+        if (myData.myBonusAnomaly) {
+          dataAnomaly *= -1;
+        }
+        */
+      };
+    };
+  
+    let titleAspect = game.i18n.localize("CEL1922.opt.none");
+    let dataAspect = 0;
+    for (let aspect of myActor.items.filter(item => item.type === 'aspect')) {
+      if (myData.myAspect == aspect.id) {
+        titleAspect = aspect.name.toString();
+        dataAspect = parseInt(aspect.system.value);
+        if (myData.myBonusAspect) {
+          dataAspect *= -1;
+        }
+      };
+    };
+
+    /*
+    let titleAttribute = game.i18n.localize("CEL1922.opt.none");
+    let dataAttribute= game.i18n.localize("CEL1922.opt.none");
+    for (let attribute of myActor.items.filter(item => item.type === 'attribute')) {
+      if (myData.myAttribute == attribute.id) {
+        titleAttribute = attribute.name.toString();
+        // dataAttribute = parseInt(attribute.system.value);
+        // dataAttribute = game.i18n.localize("CEL1922.opt.none");
+        // if (myData.myBonusAttribute) {
+        //   dataAttribute *= -1;
+        // }
+      };
+    };
+    */
+
+    let titleArmor = game.i18n.localize("CEL1922.opt.none");
+    let dataArmor = 0;
+    for (let armor of myActor.items.filter(item => item.type === 'item')) {
+      if (myData.myArmorEncumbrance == armor.id) {
+        titleArmor = armor.name.toString();
+        dataArmor = parseInt(armor.system.protection);
+        dataArmor *= -1;
+      };
+    };
+    
+    
+    const numberofdice = (myData.myNumberOfDice).toString()+"d8";
+
+    mySmartRData = {
+      title: titleSmartR,
+
+      relance: true,
+
+      typeofthrow: myData.myTypeOfThrow,
+      numberofdice: myData.myNumberOfDice,
+      skill: myData.mySkill,
+      bonus: myData.totalBoni,
+      rolldifficulty: parseInt(myOpposition),
+
+      test: myTest,
+      specialitylibel: myData.mySpecialityLibel,
+      mymodifier: myModifier, 
+
+
+      youwin: youWin,
+      egality: thereisEgality,
+
+      yourplayerid: myData.myUserID,
+      youractorid: myData.myActorID,
+      yourdamage: myData.myWeaponVal,
+      yourprotection: myData.myArmorVal,
+
+      youropponent: myData.opponentName,
+      youropponentid: myData.opponentID,
+      youropponentdamage: myData.weaponOpponentVal,
+      youropponentprotection: myData.armorOpponentVal,
+
+      dataNbrDice: numberofdice,
+      titleDomain: dataMySkill.domainLibel,
+      dataDomain: dataMySkill.rESvalue,
+      titleSpeciality: dataMySkill.libel,
+      dataSpeciality: parseInt(dataMySkill.value),
+      titleAnomaly: titleAnomaly,
+      dataAnomaly: dataAnomaly,
+      titleAspect: titleAspect,
+      dataAspect: dataAspect,
+      dataBonus: myData.myBonus,
+      dataMalus: myData.myMalus,
+      dataMoreBonusMalus: 0,
+      titleArmor: titleArmor,
+      dataArmor: dataArmor,
+      titleWounds: titleWounds,
+      dataWounds: dataWounds,
+      titleDestiny: titleDestiny,
+      dataDestiny: dataDestiny,
+      titleSpleen: titleSpleen,
+      dataSpleen: dataSpleen,
+
+      numSpeciality: myData.mySkill
+
+    }
+
+    console.log("mySmartRData = ", mySmartRData);
+
+  } else {
+    let titleSmartR = game.i18n.localize("CEL1922.Test") + myRoll;
+    mySmartRTemplate = 'systems/celestopol1922/templates/form/dice-result-just-title.html';
+    mySmartRData = {
+      typeofthrow: myData.myTypeOfThrow,
+
+      yourplayerid: myData.myUserID,
+      youractorid: myData.myActorID,
+
+      mymodifier: myModifier, 
+      title: titleSmartR,
+      numSpeciality: myData.mySkill
+    };
+  };
+
+  await _showMessagesInChat (myActor, myData.myTypeOfThrow, r, mySmartRTemplate, mySmartRData, mySmartTemplate, mySmartData, false);
+
 }

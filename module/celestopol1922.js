@@ -16,6 +16,8 @@ import { registerHandlebarsHelpers } from "./helpers.js";
 
 import CEL1922SidebarMenu from "./appli/sidebar-menu.js";
 
+import  Macros from "./macros.js"
+
 
 
 /* -------------------------------------------- */
@@ -184,7 +186,13 @@ Hooks.once("init", async function () {
       };
 */
 
+
   game.system.CONST = CEL1922;
+
+  game.system.api = {
+    Macros,
+  }
+
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = CEL1922Actor;
