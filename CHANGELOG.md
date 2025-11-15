@@ -1,3 +1,6 @@
+1.0.1
+- Ajout wiki Célestopol dans les ressources
+
 1.0.0
 - Première release "officielle"
 - Les dés à huit faces sont glissables-déposables dans la Hotbar
