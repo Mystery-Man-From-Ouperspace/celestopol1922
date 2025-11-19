@@ -1,3 +1,6 @@
+1.0.2 (à venir)
+- Ajout macro affichage factions
+
 1.0.1
 - Ajout wiki Célestopol dans les ressources
 

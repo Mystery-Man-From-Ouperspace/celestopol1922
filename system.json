@@ -30,7 +30,8 @@
         "anomalies",
         "aspects",
         "attributs",
-        "equipements"
+        "equipements",
+        "macros-systeme"
       ],
       "folders": []
     }
@@ -120,6 +121,19 @@
       "system": "celestopol1922",
       "path": "packs/equipements",
       "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "TRUSTED": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "macros-systeme",
+      "label": "FR - Macros Système",
+      "system": "celestopol1922",
+      "path": "packs/macros-systeme",
+      "type": "Macro",
       "ownership": {
         "PLAYER": "OBSERVER",
         "TRUSTED": "OBSERVER",
