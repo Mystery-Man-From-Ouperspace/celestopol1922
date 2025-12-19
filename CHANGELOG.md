@@ -1,4 +1,4 @@
-1.0.2 (à venir)
+1.0.2
 - Ajout macro affichage factions
 
 1.0.1
