@@ -254,6 +254,35 @@ Hooks.once("init", async function () {
 
 
 
+/**
+ * Adds custom dice to Dice So Nice!.
+ */
+Hooks.once("diceSoNiceReady", (dice3d) => {
+  // Called once the module is ready to listen to new rolls and display 3D animations.
+  // dice3d: Main class, instantiated and ready to use.
+
+  /**
+   * Add a colorset (theme)
+   * @param {Object} colorset (see below)
+   * @param {string} mode= "default","preferred"
+   * The "mode" parameter have 2 modes :
+   * - "default" only register the colorset
+   * - "preferred" apply the colorset if the player didn't already change his dice appearance for this world.
+   */
+  dice3d.addColorset(
+    {
+      name: "celestopol1922",
+      description: "Célestopol",
+      foreground: "#ffa500",
+      background: "#2f4e35",
+      edge: "#2f4e35",
+      font: "Copasetic-Bold",
+    },
+    "preferred",
+  )
+});
+
+
 async function modifyConfigurationSettings() {
   /**
    * Runtime configuration settings for Foundry VTT which exposes a large number of variables which determine how
