@@ -1,3 +1,6 @@
+1.0.3
+- Ajout de l'avatar dans le Tchat
+
 1.0.2
 - Ajout macro affichage factions
 

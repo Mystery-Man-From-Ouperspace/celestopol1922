@@ -1046,3 +1046,14 @@ strong.ellipsis {
   text-transform: uppercase;
   color:rgb(12, 76, 12);
 }
+
+/* concerne le Tchat */
+
+#interface .chat-message .message-header img {
+  max-width: 80px;
+  border-radius: 5px;
+  border: 0.5px solid orange;
+  /* max-width: 50px; */
+  /* max-height: 50px; */
+  margin-right: 4px;
+}

@@ -1,6 +1,8 @@
 import { CEL1922Actor } from "./actor/actor.js";
 import { CEL1922Item } from "./item/item.js";
 
+import { CEL1922Message } from "./chat-message.js";
+
 import { CEL1922CharacterSheet } from "./actor/character-sheet.js";
 import { CEL1922PNJSheet } from "./actor/npc-sheet.js";
 import { CEL1922ItemSheet } from "./item/item-sheet.js";
@@ -197,6 +199,9 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = CEL1922Actor;
   CONFIG.Item.documentClass = CEL1922Item;
+
+  CONFIG.ChatMessage.documentClass = CEL1922Message;
+
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
