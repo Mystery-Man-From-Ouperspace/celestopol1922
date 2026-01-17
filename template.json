@@ -292,9 +292,13 @@
       },
       "attributs": {
         "entregent": 0,
+        "entregentmax": 0,
         "fortune": 0,
+        "fortunemax": 0,
         "reve": 0,
-        "vision": 0
+        "revemax": 0,
+        "vision": 0,
+        "visionmax": 0
       }
     },
     "npc": {

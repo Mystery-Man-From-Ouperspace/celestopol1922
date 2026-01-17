@@ -156,6 +156,8 @@
   "CEL1922.ResourceValue": "Valeur",
   "CEL1922.ResourceMax": "Max",
 
+  "CEL1922.Max": "Max :",
+
   "CEL1922.DefineTemplate": "Définir comme Modèle",
   "CEL1922.UnsetTemplate": "Désactiver le Modèle",
   "CEL1922.NoTemplate": "Aucun Modèle",

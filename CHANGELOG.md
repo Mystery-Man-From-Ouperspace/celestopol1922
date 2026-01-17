@@ -1,3 +1,7 @@
+1.0.5
+- Seuil moyen par défaut à 11 au lieu de 13
+- Cases Max pour les Attributs
+
 1.0.4
 - Thème de dés par défaut dans Dice-so-Nice!
 
@@ -21,3 +25,4 @@
 
 ---
 Bugs connus et non encore traités
+Certains utilisateurs demandent l'ajout d'une jauge de points d'aspect de faction en plus de la jauge de points de bonus de faction

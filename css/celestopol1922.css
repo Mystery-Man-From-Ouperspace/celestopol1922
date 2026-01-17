@@ -377,14 +377,19 @@ text-align: left;
 
 .celestopol1922 .sheet-body div.attribut-ligne {
     margin-left: 100px;
-    width: 300px;
+    width: 400px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 35px;
 
 }
 .celestopol1922 .sheet-body div.attribut-colonne {
     grid-column: 1;
+}
+
+.celestopol1922 .sheet-body div.attribut-ligne input.max {
+    width: 25px;
+    text-align: center;
 }
 
 .celestopol1922 .sheet-body div.attribut-ligne span img.jauge-check {

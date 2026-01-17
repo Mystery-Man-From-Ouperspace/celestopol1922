@@ -1939,7 +1939,8 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
   
 
   let myTest;
-  let myOpposition = 13;
+  // let myOpposition = 13; // Dans les règles finales, l'opposition pardéfaut serait passé de 13 à 11
+  let myOpposition = 11; // Dans les règles finales, l'opposition pardéfaut serait passé de 13 à 11
   let myModifier;
 
   if (opponentActor && myData.mySkill == 6) {

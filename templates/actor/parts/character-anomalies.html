@@ -72,6 +72,9 @@
 <br>
 <div class="attribut-ligne">
     <span class="attribut attribut-colonne">{{ localize "CEL1922.Entregent" }}</span>
+    <span class="attribut-colonne">
+      <input class="max" name="system.attributs.entregentmax" type="number" value="{{systemData.attributs.entregentmax}}" min="0" max="4" step="1" />
+    </span>
     <span class="check-entregent attribut-colonne">
       <img
       class="jauge-check"
@@ -108,7 +111,11 @@
 
 <div class="attribut-ligne">
     <span class="attribut attribut-colonne">{{ localize "CEL1922.Fortune" }}</span>
-    <span class="check-fortune attribut-colonne">
+    <span class="attribut-colonne">
+      <input class="max" name="system.attributs.fortunemax" type="number" value="{{systemData.attributs.fortunemax}}" min="0" max="4" step="1"/>
+    </span>
+
+    <span class="attribut-colonne">
       <img
       class="jauge-check"
       data-libel-id="fortune-1"
@@ -139,11 +146,15 @@
       data-tooltip=""
       src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.fortune 3)}}checked{{else}}unchecked{{/if}}.png"
       ></img>
-    </span>
+    </span class="attribut-colonne">
 </div>
 
 <div class="attribut-ligne">
     <span class="attribut attribut-colonne">{{ localize "CEL1922.Reve" }}</span>
+    <span class="attribut-colonne">
+      <input class="max" name="system.attributs.revemax" type="number" value="{{systemData.attributs.revemax}}" />
+    </span>
+
     <span class="check-reve attribut-colonne">
       <img
       class="jauge-check"
@@ -180,6 +191,9 @@
 
 <div class="attribut-ligne">
     <span class="attribut attribut-colonne">{{ localize "CEL1922.Vision" }}</span>
+    <span class="attribut-colonne">
+      <input class="max" name="system.attributs.visionmax" type="number" value="{{systemData.attributs.visionmax}}" />
+    </span>
     <span class="check-vision attribut-colonne">
       <img
       class="jauge-check"
@@ -211,5 +225,5 @@
       data-tooltip=""
       src="systems/celestopol1922/images/ui/cercle-jaune-{{#if (gt systemData.attributs.vision 3)}}checked{{else}}unchecked{{/if}}.png"
       ></img>
-    </span>
+    </span class="attribut-colonne">
 </div>
