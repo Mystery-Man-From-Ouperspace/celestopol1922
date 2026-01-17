@@ -70,7 +70,7 @@ Hooks.once("init", async function () {
     hint: game.i18n.localize("CEL1922.valeur dispo (0 à 8)"),
     scope: "world",
     config: true,
-    default: "demo",
+    default: "zero",
     type: String,
     choices: {
       zero: "0",

@@ -1,5 +1,5 @@
 1.0.8
-- Points de faction à répartir dand menu dans paramètres du système
+- Points de faction à répartir dans menu dans paramètres du système
 
 1.0.7
 - Points de faction à répartir ajoutés sur la fiche
