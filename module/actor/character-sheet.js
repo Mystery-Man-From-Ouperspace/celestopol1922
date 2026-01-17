@@ -208,7 +208,37 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     context.unlocked = this.actor.system.unlocked;
     context.locked = !this.actor.system.unlocked;
 
-        context.dispo = await game.settings.get("celestopol1922", "dispo")
+    let dispotext = await game.settings.get("celestopol1922", "dispo")
+    let mydispo;
+    switch(dispotext) {
+      case "zero": mydispo = 0;
+      break;
+      case "un": mydispo = 1;
+      break;
+      case "deux": mydispo = 2;
+      break;
+      case "trois": mydispo = 3;
+      break;
+      case "quatre": mydispo = 4;
+      break;
+      case "cinq": mydispo = 5;
+      break;
+      case "six": mydispo = 6;
+      break;
+      case "sept": mydispo = 7;
+      break;
+      case "huit": mydispo = 8;
+      break;
+      default: mydispo = -1;
+    }
+
+    /*
+    Initialise les Factions avec les valeurs des settings
+    */
+    context.userId = game.user.id,
+    context.isGM = game.user.isGM,
+
+        context.dispo = mydispo;
 
     context.pinkerton = await game.settings.get("celestopol1922", "pinkerton")
         context.pinkertondispo = await game.settings.get("celestopol1922", "pinkertondispo")
