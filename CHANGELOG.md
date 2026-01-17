@@ -1,3 +1,7 @@
+1.0.6
+- Valeurs des points disponibles des factions ajoutées sur la fiche
+- Valeurs des points disponibles des factions réglables par le MJ dans les paramètres du système
+
 1.0.5
 - Seuil moyen par défaut à 11 au lieu de 13
 - Cases Max pour les Attributs

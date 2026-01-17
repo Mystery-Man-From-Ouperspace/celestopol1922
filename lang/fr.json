@@ -107,6 +107,19 @@
   "CEL1922.FactionPersonnalisee1": "Faction personnalisée 1",
   "CEL1922.FactionPersonnalisee2": "Faction personnalisée 2",
   "CEL1922.FactionPersonnaliseeTexte": "Saisissez le titre d’une faction personnalisée.",
+
+  "CEL1922.Pinkerton Dispo": "Agence Pinkerton disponible",
+  "CEL1922.Police Dispo": "Police secrète du duc disponible",
+  "CEL1922.Okhrana Dispo": "Okhrana disponible",
+  "CEL1922.Lunanovatek Dispo": "Luna NovaTek disponible",
+  "CEL1922.OTO Dispo": "Société théosophique OTO disponible",
+  "CEL1922.Syndicats Dispo": "Syndicats clandestins disponible",
+  "CEL1922.Vorovskoymir Dispo": "Vorovskoymir Mir disponible",
+  "CEL1922.Cour Dispo": "Cour des merveilles disponible",
+  "CEL1922.Perso Dispo": "Faction personnalisée disponible",
+  "CEL1922.Perso2 Dispo": "Faction personnalisée 2 disponible",
+
+  "CEL1922.valeur dispo": "Points disponibles pour cette faction."
   
   "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 

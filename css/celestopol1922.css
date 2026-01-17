@@ -320,7 +320,7 @@ text-align: left;
     margin-top: 5px;
     width: 250px;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 30px;
 }
 .celestopol1922.celestopol1922-factions .sheet-body div.faction-ligne {
@@ -344,7 +344,7 @@ text-align: left;
     margin-left: 115px;
     width: 250px;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 35px;
 }
 .celestopol1922.celestopol1922-factions .sheet-body div.faction-ligne-level {

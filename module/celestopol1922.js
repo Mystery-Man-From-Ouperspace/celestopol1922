@@ -76,6 +76,17 @@ Hooks.once("init", async function () {
     type: Number,
   });
 
+  game.settings.register("celestopol1922", "pinkertondispo", {
+    name: game.i18n.localize("CEL1922.Pinkerton Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  });
+
+
   game.settings.register("celestopol1922", "police", {
     name: game.i18n.localize("CEL1922.Police"),
     hint: game.i18n.localize("CEL1922.valeur"),
@@ -84,6 +95,17 @@ Hooks.once("init", async function () {
     default: 0,
     type: Number,
   });
+
+  game.settings.register("celestopol1922", "policedispo", {
+    name: game.i18n.localize("CEL1922.Police Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  });
+
 
   game.settings.register("celestopol1922", "okhrana", {
     name: game.i18n.localize("CEL1922.Okhrana"),
@@ -94,6 +116,17 @@ Hooks.once("init", async function () {
     type: Number,
   });
 
+  game.settings.register("celestopol1922", "okhranadispo", {
+    name: game.i18n.localize("CEL1922.Okhrana Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  });
+
+
   game.settings.register("celestopol1922", "lunanovatek", {
     name: game.i18n.localize("CEL1922.Lunanovatek"),
     hint: game.i18n.localize("CEL1922.valeur"),
@@ -102,6 +135,17 @@ Hooks.once("init", async function () {
     default: 0,
     type: Number,
   });
+
+  game.settings.register("celestopol1922", "lunanovatekdispo", {
+    name: game.i18n.localize("CEL1922.Lunanovatek Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  });
+
 
   game.settings.register("celestopol1922", "oto", {
     name: game.i18n.localize("CEL1922.OTO"),
@@ -112,6 +156,16 @@ Hooks.once("init", async function () {
     type: Number,
   });
 
+  game.settings.register("celestopol1922", "otodispo", {
+    name: game.i18n.localize("CEL1922.OTO Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
+
   game.settings.register("celestopol1922", "syndicats", {
     name: game.i18n.localize("CEL1922.Syndicats"),
     hint: game.i18n.localize("CEL1922.valeur"),
@@ -120,6 +174,16 @@ Hooks.once("init", async function () {
     default: 0,
     type: Number,
   });
+
+  game.settings.register("celestopol1922", "syndicatsdispo", {
+    name: game.i18n.localize("CEL1922.Syndicats Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
 
   game.settings.register("celestopol1922", "vorovskoymir", {
     name: game.i18n.localize("CEL1922.Vorovskoymir"),
@@ -130,6 +194,16 @@ Hooks.once("init", async function () {
     type: Number,
   });
 
+  game.settings.register("celestopol1922", "vorovskoymirdispo", {
+    name: game.i18n.localize("CEL1922.OTO Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
+
   game.settings.register("celestopol1922", "cour", {
     name: game.i18n.localize("CEL1922.Cour"),
     hint: game.i18n.localize("CEL1922.valeur"),
@@ -138,6 +212,16 @@ Hooks.once("init", async function () {
     default: 0,
     type: Number,
   });
+
+  game.settings.register("celestopol1922", "courdispo", {
+    name: game.i18n.localize("CEL1922.Cour Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
 
   game.settings.register("celestopol1922", "perso", {
     name: game.i18n.localize("CEL1922.Perso"),
@@ -158,6 +242,16 @@ Hooks.once("init", async function () {
     onChange: delayedReload,
   });
 
+  game.settings.register("celestopol1922", "persodispo", {
+    name: game.i18n.localize("CEL1922.Perso Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
+
   game.settings.register("celestopol1922", "perso2", {
     name: game.i18n.localize("CEL1922.Perso2"),
     hint: game.i18n.localize("CEL1922.valeur"),
@@ -176,6 +270,16 @@ Hooks.once("init", async function () {
     type: String,
     onChange: delayedReload,
   });
+
+  game.settings.register("celestopol1922", "perso2dispo", {
+    name: game.i18n.localize("CEL1922.Perso2 Dispo"),
+    hint: game.i18n.localize("CEL1922.valeur dispo"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  })
 
    /**
 	 * Set an initiative formula for the system

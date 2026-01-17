@@ -70,18 +70,39 @@ export class CEL1922Factions extends Application {
     */
     context.userId = game.user.id,
     context.isGM = game.user.isGM,
+    
     context.pinkerton = await game.settings.get("celestopol1922", "pinkerton")
+        context.pinkertondispo = await game.settings.get("celestopol1922", "pinkertondispo")
+
     context.police = await game.settings.get("celestopol1922", "police")
+        context.policedispo = await game.settings.get("celestopol1922", "policedispo")
+
     context.okhrana = await game.settings.get("celestopol1922", "okhrana")
+        context.okhranadispo = await game.settings.get("celestopol1922", "okhranadispo")
+
     context.lunanovatek = await game.settings.get("celestopol1922", "lunanovatek")
+        context.lunanovatekdispo = await game.settings.get("celestopol1922", "lunanovatekdispo")
+
     context.oto = await game.settings.get("celestopol1922", "oto")
+        context.otodispo = await game.settings.get("celestopol1922", "otodispo")
+
     context.syndicats = await game.settings.get("celestopol1922", "syndicats")
+        context.syndicatsdispo = await game.settings.get("celestopol1922", "syndicatsdispo")
+
     context.vorovskoymir = await game.settings.get("celestopol1922", "vorovskoymir")
+        context.vorovskoymirdispo = await game.settings.get("celestopol1922", "vorovskoymirdispo")
+
     context.cour = await game.settings.get("celestopol1922", "cour")
+        context.courdispo = await game.settings.get("celestopol1922", "courdispo")
+
     context.perso = await game.settings.get("celestopol1922", "perso")
     context.libel = await game.settings.get("celestopol1922", "libel")
+        context.persodispo = await game.settings.get("celestopol1922", "persodispo")
+
     context.perso2 = await game.settings.get("celestopol1922", "perso2")
     context.libel2 = await game.settings.get("celestopol1922", "libel2")
+        context.perso2dispo = await game.settings.get("celestopol1922", "perso2dispo")
+
     
     return context
   }
