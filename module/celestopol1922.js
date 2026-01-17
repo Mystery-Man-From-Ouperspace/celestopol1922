@@ -65,7 +65,15 @@ Hooks.once("init", async function () {
     onChange: delayedReload
   });
 
-
+  game.settings.register("celestopol1922", "dispo", {
+    name: game.i18n.localize("CEL1922.Dispo (0 à 8)"),
+    hint: game.i18n.localize("CEL1922.valeur dispo (0 à 8)"),
+    scope: "world",
+    config: true,
+    default: 0,
+    type: Number,
+    onChange: delayedReload,
+  });
 
   game.settings.register("celestopol1922", "pinkerton", {
     name: game.i18n.localize("CEL1922.Pinkerton"),
@@ -279,6 +287,7 @@ Hooks.once("init", async function () {
     default: 0,
     type: Number,
     onChange: delayedReload,
+
   })
 
    /**

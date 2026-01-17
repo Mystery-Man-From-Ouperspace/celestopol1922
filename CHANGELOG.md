@@ -1,3 +1,7 @@
+1.0.7
+- Points de faction à répartir ajoutés sur la fiche
+- Points de faction à répartir réglables par le MJ dans les paramètres du système
+
 1.0.6
 - Valeurs des points disponibles des factions ajoutées sur la fiche
 - Valeurs des points disponibles des factions réglables par le MJ dans les paramètres du système

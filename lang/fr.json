@@ -108,6 +108,10 @@
   "CEL1922.FactionPersonnalisee2": "Faction personnalisée 2",
   "CEL1922.FactionPersonnaliseeTexte": "Saisissez le titre d’une faction personnalisée.",
 
+  "CEL1922.Dispo": "Points de Faction disponibles (à répartir)",
+  "CEL1922.Dispo (0 à 8)": "Points de Faction disponibles (0 à 8)",
+  "CEL1922.valeur dispo (0 à 8)": "Points de Faction disponibles (à répartir).",
+
   "CEL1922.Pinkerton Dispo": "Agence Pinkerton disponible",
   "CEL1922.Police Dispo": "Police secrète du duc disponible",
   "CEL1922.Okhrana Dispo": "Okhrana disponible",
@@ -119,7 +123,7 @@
   "CEL1922.Perso Dispo": "Faction personnalisée disponible",
   "CEL1922.Perso2 Dispo": "Faction personnalisée 2 disponible",
 
-  "CEL1922.valeur dispo": "Points disponibles pour cette faction."
+  "CEL1922.valeur dispo": "Points disponibles pour cette faction.",
   
   "CEL1922.Autoriser les joueuses à modifer les items": "Les Joueuses modifent les items",
   "CEL1922.Cocher cette option autorisera les joueuses": 

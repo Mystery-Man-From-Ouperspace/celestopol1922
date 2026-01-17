@@ -70,7 +70,10 @@ export class CEL1922Factions extends Application {
     */
     context.userId = game.user.id,
     context.isGM = game.user.isGM,
-    
+
+      context.dispo = await game.settings.get("celestopol1922", "dispo")
+
+
     context.pinkerton = await game.settings.get("celestopol1922", "pinkerton")
         context.pinkertondispo = await game.settings.get("celestopol1922", "pinkertondispo")
 

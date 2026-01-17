@@ -208,6 +208,8 @@ export class CEL1922CharacterSheet extends CEL1922ActorSheet {
     context.unlocked = this.actor.system.unlocked;
     context.locked = !this.actor.system.unlocked;
 
+        context.dispo = await game.settings.get("celestopol1922", "dispo")
+
     context.pinkerton = await game.settings.get("celestopol1922", "pinkerton")
         context.pinkertondispo = await game.settings.get("celestopol1922", "pinkertondispo")
 
