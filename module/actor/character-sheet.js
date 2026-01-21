@@ -1924,8 +1924,8 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
     const faveur = "4"; const faveur_seuil = 6;
 
     const echauffouree = "6"; const echauffouree_seuil = 6;
-    const effacement = "7"; const effacement_seuil = 2;
-    const mobilite = "8"; const mobilite_seuil = 3;
+    const effacement = "7"; const effacement_seuil = 3;
+    const mobilite = "8"; const mobilite_seuil = 2;
     const prouesse = "9"; const prouesse_seuil = 5;
 
     const appreciation = "11"; const appreciation_seuil = 6;

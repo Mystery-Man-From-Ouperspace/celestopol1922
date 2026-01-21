@@ -176,10 +176,7 @@ export class ModifiedDialog extends Dialog {
   async _onSkillDicePrompt(event) {
     // console.log("Menu modifié");
 
-
     let skill = await this.element.find('select[name="skill"]').val();
-
-    
 
     // console.log("skill = ", skill);
 
@@ -199,10 +196,7 @@ export class ModifiedDialog extends Dialog {
 
     // console.log("myActor = ", myActor);
 
-
     let totalscoresbonusmalus = 0;
-
-    let skill_score = await _getSkillValueData (myActor, skill); // score Spécialisation (+ score Domaine : non !)
 
     if (skill === "0" || skill === "5" || skill === "10" || skill === "15") { // Si c'est un test de résistance
 
@@ -212,8 +206,8 @@ export class ModifiedDialog extends Dialog {
       const faveur = "4"; const faveur_seuil = 6;
 
       const echauffouree = "6"; const echauffouree_seuil = 6;
-      const effacement = "7"; const effacement_seuil = 2;
-      const mobilite = "8"; const mobilite_seuil = 3;
+      const effacement = "7"; const effacement_seuil = 3;
+      const mobilite = "8"; const mobilite_seuil = 2;
       const prouesse = "9"; const prouesse_seuil = 5;
 
       const appreciation = "11"; const appreciation_seuil = 6;
@@ -255,7 +249,9 @@ export class ModifiedDialog extends Dialog {
 
     } else { // Si c'est un test de spécialisation
 
-      totalscoresbonusmalus += skill_score;
+      let skill_score = await _getSkillValueData (myActor, skill); // score Spécialisation (+ score Domaine : non !)
+
+      totalscoresbonusmalus = skill_score;
 
       let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
       let aspect_score = 0;
