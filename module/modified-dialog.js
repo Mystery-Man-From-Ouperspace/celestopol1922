@@ -253,18 +253,6 @@ export class ModifiedDialog extends Dialog {
           break;
       }
 
-      totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
-
-      let armor_score = 0;
-      if (armor != 0) {
-        armor_score = await _getArmorValueData (myActor, armor);
-      };
-      totalscoresbonusmalus += -(armor_score);
-
-      let jaugewounds_score = 0;
-      jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
-      totalscoresbonusmalus += jaugewounds_score;
-
     } else { // Si c'est un test de spécialisation
 
       totalscoresbonusmalus += skill_score;
@@ -277,29 +265,30 @@ export class ModifiedDialog extends Dialog {
       aspect_score = aspect_score * parseInt(bonusaspect_score);
       totalscoresbonusmalus += aspect_score;
 
-      totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
-
-      let armor_score = 0;
-      if (armor != 0) {
-        armor_score = await _getArmorValueData (myActor, armor);
-      };
-      totalscoresbonusmalus += -(armor_score);
-
-      let jaugewounds_score = 0;
-      jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
-      totalscoresbonusmalus += jaugewounds_score;
-      // let jaugedestiny_score = 0;
-      // jaugedestiny_score = await _getJaugeDestinyValueData (myActor, jaugedestiny);
-      // totalscoresbonusmalus += jaugedestiny_score
-      // let jaugespleen_score = 0;
-      // jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
-      // totalscoresbonusmalus += jaugespleen_score;
-    
-      if (totalscoresbonusmalus < -99) {
-        totalscoresbonusmalus = NaN;
-      };
-
     }
+
+    totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
+
+    let armor_score = 0;
+    if (armor != 0) {
+      armor_score = await _getArmorValueData (myActor, armor);
+    };
+    totalscoresbonusmalus += -(armor_score);
+
+    let jaugewounds_score = 0;
+    jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
+    totalscoresbonusmalus += jaugewounds_score;
+    // let jaugedestiny_score = 0;
+    // jaugedestiny_score = await _getJaugeDestinyValueData (myActor, jaugedestiny);
+    // totalscoresbonusmalus += jaugedestiny_score
+    // let jaugespleen_score = 0;
+    // jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
+    // totalscoresbonusmalus += jaugespleen_score;
+
+
+    if (totalscoresbonusmalus < -99) {
+      totalscoresbonusmalus = NaN;
+    };
 
     this.element.find('span[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
   
