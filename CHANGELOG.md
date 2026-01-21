@@ -1,3 +1,6 @@
+1.0.9
+- Correction tests de spécialisation / tests de résistance
+
 1.0.8
 - Points de faction à répartir dans menu dans paramètres du système
 

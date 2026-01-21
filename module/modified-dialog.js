@@ -199,40 +199,107 @@ export class ModifiedDialog extends Dialog {
 
     // console.log("myActor = ", myActor);
 
+
     let totalscoresbonusmalus = 0;
 
-    let skill_score = await _getSkillValueData (myActor, skill); // score Spécialisation + score Domaine
-    totalscoresbonusmalus += skill_score;
+    let skill_score = await _getSkillValueData (myActor, skill); // score Spécialisation (+ score Domaine : non !)
 
-    let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
-    let aspect_score = 0;
-    if (aspect != 0) {
-      aspect_score = await _getAspectValueData (myActor, aspect);
-    };
-    aspect_score = aspect_score * parseInt(bonusaspect_score);
-    totalscoresbonusmalus += aspect_score;
+    if (skill === "0" || skill === "5" || skill === "10" || skill === "15") { // Si c'est un test de résistance
 
-    totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
+      const artifice = "1"; const artifice_seuil = 5;
+      const attraction = "2"; const attraction_seuil = 2;
+      const coercition = "3"; const coercition_seuil = 3;
+      const faveur = "4"; const faveur_seuil = 6;
 
-    let armor_score = 0;
-    if (armor != 0) {
-      armor_score = await _getArmorValueData (myActor, armor);
-    };
-    totalscoresbonusmalus += -(armor_score);
+      const echauffouree = "6"; const echauffouree_seuil = 6;
+      const effacement = "7"; const effacement_seuil = 2;
+      const mobilite = "8"; const mobilite_seuil = 3;
+      const prouesse = "9"; const prouesse_seuil = 5;
 
-    let jaugewounds_score = 0;
-    jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
-    totalscoresbonusmalus += jaugewounds_score;
-    let jaugedestiny_score = 0;
-    jaugedestiny_score = await _getJaugeDestinyValueData (myActor, jaugedestiny);
-    totalscoresbonusmalus += jaugedestiny_score
-    let jaugespleen_score = 0;
-    jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
-    totalscoresbonusmalus += jaugespleen_score;
-  
-    if (totalscoresbonusmalus < -99) {
-      totalscoresbonusmalus = NaN;
-    };
+      const appreciation = "11"; const appreciation_seuil = 6;
+      const arts = "12"; const arts_seuil = 2;
+      const inspiration = "13"; const inspiration_seuil = 3;
+      const traque = "14"; const traque_seuil = 5;
+
+      const instruction = "16"; const instruction_seuil = 2;
+      const mervtechno = "17"; const mervtechno_seuil = 6;
+      const raisonnement = "18"; const raisonnement_seuil = 5;
+      const traitement = "19"; const traitement_seuil = 3;
+
+      switch (skill) {
+        case "0":
+          if (await _getSkillValueData (myActor, artifice) >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, attraction) >= attraction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, coercition) >= coercition_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, faveur) >= faveur_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          break;
+        case "5":
+          if (await _getSkillValueData (myActor, echauffouree) >= echauffouree_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, effacement) >= effacement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, mobilite) >= mobilite_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, prouesse) >= prouesse_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          break;
+        case "10":
+          if (await _getSkillValueData (myActor, appreciation) >= appreciation_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, arts) >= arts_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, inspiration) >= inspiration_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, traque) >= traque_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          break;
+        case "15":
+          if (await _getSkillValueData (myActor, instruction) >= instruction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, mervtechno) >= mervtechno_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, raisonnement) >= raisonnement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, traitement) >= traitement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          break;
+      }
+
+      totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
+
+      let armor_score = 0;
+      if (armor != 0) {
+        armor_score = await _getArmorValueData (myActor, armor);
+      };
+      totalscoresbonusmalus += -(armor_score);
+
+      let jaugewounds_score = 0;
+      jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
+      totalscoresbonusmalus += jaugewounds_score;
+
+    } else { // Si c'est un test de spécialisation
+
+      totalscoresbonusmalus += skill_score;
+
+      let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
+      let aspect_score = 0;
+      if (aspect != 0) {
+        aspect_score = await _getAspectValueData (myActor, aspect);
+      };
+      aspect_score = aspect_score * parseInt(bonusaspect_score);
+      totalscoresbonusmalus += aspect_score;
+
+      totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
+
+      let armor_score = 0;
+      if (armor != 0) {
+        armor_score = await _getArmorValueData (myActor, armor);
+      };
+      totalscoresbonusmalus += -(armor_score);
+
+      let jaugewounds_score = 0;
+      jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
+      totalscoresbonusmalus += jaugewounds_score;
+      // let jaugedestiny_score = 0;
+      // jaugedestiny_score = await _getJaugeDestinyValueData (myActor, jaugedestiny);
+      // totalscoresbonusmalus += jaugedestiny_score
+      // let jaugespleen_score = 0;
+      // jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
+      // totalscoresbonusmalus += jaugespleen_score;
+    
+      if (totalscoresbonusmalus < -99) {
+        totalscoresbonusmalus = NaN;
+      };
+
+    }
 
     this.element.find('span[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
   
@@ -346,7 +413,7 @@ async function _getSkillValueData (myActor, mySkillNbr) {
   if (myStringRES == null) myRESValue = 0;
 
   let myData = myValue;
-  if (mySkill % 5) myData = myValue + myRESValue; // C'est une Spécialisation (et pas un Domaine pur)
+  // if (mySkill % 5) myData = myValue + myRESValue; // C'est une Spécialisation (et pas un Domaine pur)
 
    // console.log("myData = ", myData);
 

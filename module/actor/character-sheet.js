@@ -1617,7 +1617,7 @@ async function _skillDiceRollDialog(
     if (myStringRES == null) myRESValue = 0;
 
     let myData = myValue;
-    if (mySkill % 5) myData = myValue + myRESValue;
+    // if (mySkill % 5) myData = myValue + myRESValue;
 
     // console.log("myData = ", myData);
 
@@ -1912,9 +1912,66 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
   console.log("myWoundsMalus = ", myData.myWoundsMalus);
 
 
-  myData.totalBoni = myData.myValue + myData.myRESValue + myData.myWoundsMalus - myData.myArmorVal;
 
 
+  if (myData.mySkill === "0" || myData.mySkill === "5" || myData.mySkill === "10" || myData.mySkill === "15") { // Si c'est un test de résistance
+
+    let totalscoresbonusmalus = 0;
+
+    const artifice = "1"; const artifice_seuil = 5;
+    const attraction = "2"; const attraction_seuil = 2;
+    const coercition = "3"; const coercition_seuil = 3;
+    const faveur = "4"; const faveur_seuil = 6;
+
+    const echauffouree = "6"; const echauffouree_seuil = 6;
+    const effacement = "7"; const effacement_seuil = 2;
+    const mobilite = "8"; const mobilite_seuil = 3;
+    const prouesse = "9"; const prouesse_seuil = 5;
+
+    const appreciation = "11"; const appreciation_seuil = 6;
+    const arts = "12"; const arts_seuil = 2;
+    const inspiration = "13"; const inspiration_seuil = 3;
+    const traque = "14"; const traque_seuil = 5;
+
+    const instruction = "16"; const instruction_seuil = 2;
+    const mervtechno = "17"; const mervtechno_seuil = 6;
+    const raisonnement = "18"; const raisonnement_seuil = 5;
+    const traitement = "19"; const traitement_seuil = 3;
+
+    switch (myData.mySkill) {
+      case "0":
+        if (await _getSkillValueData (myActor, artifice).value >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, attraction).value >= attraction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, coercition).value >= coercition_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, faveur).value >= faveur_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        break;
+      case "5":
+        if (await _getSkillValueData (myActor, echauffouree).value >= echauffouree_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, effacement).value >= effacement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, mobilite).value >= mobilite_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, prouesse).value >= prouesse_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        break;
+      case "10":
+        if (await _getSkillValueData (myActor, appreciation).value >= appreciation_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, arts).value >= arts_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, inspiration).value >= inspiration_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, traque).value >= traque_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        break;
+      case "15":
+        if (await _getSkillValueData (myActor, instruction).value >= instruction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, mervtechno).value >= mervtechno_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, raisonnement).value >= raisonnement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        if (await _getSkillValueData (myActor, traitement).value >= traitement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+        break;
+    }
+
+    myData.totalBoni = totalscoresbonusmalus + myData.myWoundsMalus - myData.myArmorVal;
+
+  } else { // Si c'est un test de spécialisation
+
+    myData.totalBoni = myData.myValue + myData.myWoundsMalus - myData.myArmorVal;
+
+  }
 
 
 

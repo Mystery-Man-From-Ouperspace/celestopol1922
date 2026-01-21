@@ -332,7 +332,8 @@
   "CEL1922.jaugespleennocompute": "Jauge de Spleen (rappel ; ne rentre pas dans les calculs)",
 
 
-  "CEL1922.ThrowDice": "Test de Spécialité",
+  "CEL1922.ThrowDice": "Test de Spécialité ou de Résistance",
+  "CEL1922.ThrowDice2": "Test de Résistance",
   "CEL1922.ThrowMoonDice": "Faire un test de dé de la Lune",
 
 
@@ -349,7 +350,8 @@
 
   "CEL1922.Initiative": "Initiative",
 
-  "CEL1922.Die": "Cliquez ici pour effectuer un test pour ",
+  "CEL1922.Die": "Cliquez ici pour effectuer un test de spécialisation pour ",
+  "CEL1922.Die2": "Cliquez ici pour effectuer un test de résistance pour ",
   "CEL1922.MoonDieThrow": "Cliquez ici pour effectuer un test de dé de la Lune",
   "CEL1922.ame": "Âme",
   "CEL1922.corps": "Corps",
