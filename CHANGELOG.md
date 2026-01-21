@@ -39,5 +39,5 @@
 
 ---
 Bugs connus et non encore traités
-Quand on fait un test de résistance, on ne peut pas utiliser le Dé de la Lune.
-Pour l'instant, le bouton de Dé de la Lune est tout de même affiché sans le Tchat, il faudra faire avec en attendant.
+Selon les règles, quand on fait un test de résistance, on ne peut pas utiliser le Dé de la Lune.
+Pour l'instant, le bouton de Dé de la Lune est tout de même affiché dans le Tchat, il faudra faire avec en attendant.
