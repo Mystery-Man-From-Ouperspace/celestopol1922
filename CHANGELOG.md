@@ -1,3 +1,7 @@
+1.1.2
+- Aspects pris en compte pour les tests de résistance
+- Armures non prises en compte pour les tests de résistance (ni protection, ni encombrement)
+
 1.1.1
 - Correction tests de spécialisation / tests de résistance (bug)
 

@@ -1,6 +1,6 @@
 {
   "id": "celestopol1922",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "title": "Célestopol 1922 (Unofficial)",
   "url": "https://serveurdavid.fr/celestopol1922.html",
   "description": "Unofficial game system for Célestopol 1922.",
@@ -179,5 +179,5 @@
   "primaryTokenAttribute": "skill.woundsmalus",
   "secondaryTokenAttribute": "",
   "manifest": "https://serveurdavid.fr/download/foundry/celestopol1922/system.json",
-  "download": "https://serveurdavid.fr/download/foundry/celestopol1922/release-111.zip"
+  "download": "https://serveurdavid.fr/download/foundry/celestopol1922/release-112.zip"
 }

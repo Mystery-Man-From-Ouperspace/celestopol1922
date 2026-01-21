@@ -222,28 +222,28 @@ export class ModifiedDialog extends Dialog {
 
       switch (skill) {
         case "0":
-          if (await _getSkillValueData (myActor, artifice) >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, attraction) >= attraction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, coercition) >= coercition_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, faveur) >= faveur_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, artifice) >= artifice_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, attraction) >= attraction_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, coercition) >= coercition_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, faveur) >= faveur_seuil) {totalscoresbonusmalus += 2}
           break;
         case "5":
-          if (await _getSkillValueData (myActor, echauffouree) >= echauffouree_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, effacement) >= effacement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, mobilite) >= mobilite_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, prouesse) >= prouesse_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, echauffouree) >= echauffouree_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, effacement) >= effacement_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, mobilite) >= mobilite_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, prouesse) >= prouesse_seuil) {totalscoresbonusmalus += 2}
           break;
         case "10":
-          if (await _getSkillValueData (myActor, appreciation) >= appreciation_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, arts) >= arts_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, inspiration) >= inspiration_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, traque) >= traque_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, appreciation) >= appreciation_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, arts) >= arts_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, inspiration) >= inspiration_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, traque) >= traque_seuil) {totalscoresbonusmalus += 2}
           break;
         case "15":
-          if (await _getSkillValueData (myActor, instruction) >= instruction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, mervtechno) >= mervtechno_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, raisonnement) >= raisonnement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
-          if (await _getSkillValueData (myActor, traitement) >= traitement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2}
+          if (await _getSkillValueData (myActor, instruction) >= instruction_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, mervtechno) >= mervtechno_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, raisonnement) >= raisonnement_seuil) {totalscoresbonusmalus += 2}
+          if (await _getSkillValueData (myActor, traitement) >= traitement_seuil) {totalscoresbonusmalus += 2}
           break;
       }
 
@@ -253,23 +253,23 @@ export class ModifiedDialog extends Dialog {
 
       totalscoresbonusmalus = skill_score;
 
-      let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
-      let aspect_score = 0;
-      if (aspect != 0) {
-        aspect_score = await _getAspectValueData (myActor, aspect);
+      let armor_score = 0;
+      if (armor != 0) {
+        armor_score = await _getArmorValueData (myActor, armor);
       };
-      aspect_score = aspect_score * parseInt(bonusaspect_score);
-      totalscoresbonusmalus += aspect_score;
+      totalscoresbonusmalus += -(armor_score);
 
     }
 
-    totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
-
-    let armor_score = 0;
-    if (armor != 0) {
-      armor_score = await _getArmorValueData (myActor, armor);
+    let bonusaspect_score = parseInt(bonusaspect) ? -1 : 1 ;
+    let aspect_score = 0;
+    if (aspect != 0) {
+      aspect_score = await _getAspectValueData (myActor, aspect);
     };
-    totalscoresbonusmalus += -(armor_score);
+    aspect_score = aspect_score * parseInt(bonusaspect_score);
+    totalscoresbonusmalus += aspect_score;
+
+    totalscoresbonusmalus += (parseInt(bonus) + parseInt(malus));
 
     let jaugewounds_score = 0;
     jaugewounds_score = await _getJaugeWoundsValueData (myActor, jaugewounds);
@@ -281,13 +281,11 @@ export class ModifiedDialog extends Dialog {
     // jaugespleen_score = await _getJaugeSpleenValueData (myActor, jaugespleen);
     // totalscoresbonusmalus += jaugespleen_score;
 
-
     if (totalscoresbonusmalus < -99) {
       totalscoresbonusmalus = NaN;
     };
 
     this.element.find('span[class="scorebonusmalus"]').text("[ "+totalscoresbonusmalus+" ]");
-  
   
   }
 }

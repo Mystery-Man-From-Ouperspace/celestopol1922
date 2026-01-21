@@ -1938,31 +1938,31 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
     const raisonnement = 18; const raisonnement_seuil = 5;
     const traitement = 19; const traitement_seuil = 3;
 
-    var data;
+    let data;
     switch (myData.mySkill) {
       case 0:
-        data = await _getSkillValueData(myActor, artifice) ; if (data.value >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, attraction) ; if (data.value >= attraction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, coercition) ; if (data.value >= coercition_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, faveur) ; if (data.value >= faveur_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
+        data = await _getSkillValueData(myActor, artifice) ; if (data.value >= artifice_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, attraction) ; if (data.value >= attraction_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, coercition) ; if (data.value >= coercition_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, faveur) ; if (data.value >= faveur_seuil) {totalscoresbonusmalus += 2};
         break;
       case 5:
-        data = await _getSkillValueData(myActor, echauffouree) ; if (data.value >= echauffouree_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, effacement) ; if (data.value >= effacement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, mobilite) ; if (data.value >= mobilite_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, prouesse) ; if (data.value >= prouesse_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
+        data = await _getSkillValueData(myActor, echauffouree) ; if (data.value >= echauffouree_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, effacement) ; if (data.value >= effacement_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, mobilite) ; if (data.value >= mobilite_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, prouesse) ; if (data.value >= prouesse_seuil) {totalscoresbonusmalus += 2};
         break;
       case 10:
-        data = await _getSkillValueData(myActor, appreciation) ; if (data.value >= appreciation_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, arts) ; if (data.value >= arts_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, inspiration) ; if (data.value >= inspiration_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, traque) ; if (data.value >= traque_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
+        data = await _getSkillValueData(myActor, appreciation) ; if (data.value >= appreciation_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, arts) ; if (data.value >= arts_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, inspiration) ; if (data.value >= inspiration_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, traque) ; if (data.value >= traque_seuil) {totalscoresbonusmalus += 2};
         break;
       case 15:
-        data = await _getSkillValueData(myActor, instruction) ; if (data.value >= instruction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, mervtechno) ; if (data.value >= mervtechno_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, raisonnement) ; if (data.value >= raisonnement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
-        data = await _getSkillValueData(myActor, traitement) ; if (data.value >= traitement_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
+        data = await _getSkillValueData(myActor, instruction) ; if (data.value >= instruction_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, mervtechno) ; if (data.value >= mervtechno_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, raisonnement) ; if (data.value >= raisonnement_seuil) {totalscoresbonusmalus += 2};
+        data = await _getSkillValueData(myActor, traitement) ; if (data.value >= traitement_seuil) {totalscoresbonusmalus += 2};
         break;
     }
 
