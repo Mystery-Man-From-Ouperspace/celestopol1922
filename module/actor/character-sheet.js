@@ -1966,7 +1966,7 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
         break;
     }
 
-    myData.totalBoni = totalscoresbonusmalus + myData.myWoundsMalus - myData.myArmorVal;
+    myData.totalBoni = totalscoresbonusmalus + myData.myWoundsMalus;
 
   } else { // Si c'est un test de spécialisation
 
