@@ -2165,6 +2165,8 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
 
   if (!myPromptPresent) {
     myData.totalBoni = myData.myValue + myData.myWoundsMalus; // Si on a décoché l'automatisation, seules les blessures sont décomptées
+    //// Attention ! Si c'est un test de résistance, c'est la valeur saisie dans le Domaine qui sera prise en compte et non pas la
+    //// valeur calculée à partir des développement de Spécialisation
     smartR = game.i18n.localize("CEL1922.AutomatizationBlocked");
   } else {
   
