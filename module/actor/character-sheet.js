@@ -1941,7 +1941,7 @@ async function _onClickDiceRollFollow(myActor, skillNumUsedLibel) {
     var data;
     switch (myData.mySkill) {
       case 0:
-        data = await _getSkillValueData(mmyActor, artifice) ; if (data.value >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
+        data = await _getSkillValueData(myActor, artifice) ; if (data.value >= artifice_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
         data = await _getSkillValueData(myActor, attraction) ; if (data.value >= attraction_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
         data = await _getSkillValueData(myActor, coercition) ; if (data.value >= coercition_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
         data = await _getSkillValueData(myActor, faveur) ; if (data.value >= faveur_seuil) {totalscoresbonusmalus = totalscoresbonusmalus + 2};
