@@ -1,3 +1,6 @@
+1.1.1
+- Correction tests de spécialisation / tests de résistance (bug)
+
 1.1.0
 - Correction tests de spécialisation / tests de résistance (erreur dans 2 calculs)
 
