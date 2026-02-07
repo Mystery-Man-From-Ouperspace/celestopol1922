@@ -15,7 +15,7 @@
 - Points de faction à répartir dans menu dans paramètres du système
 
 1.0.7
-- Points de faction à répartir ajoutés sur la fiche
+- Points de faction à répartir manuellement ajoutés sur la fiche
 - Points de faction à répartir réglables par le MJ dans les paramètres du système
 
 1.0.6
